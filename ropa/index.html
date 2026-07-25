@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider Gear Chile - Equipamiento Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header>
+            <div class="logo">RIDER<span>GEAR</span></div>
+            <div class="header-actions">
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero -->
+            <section class="hero" style="background-image: url('hero.png');">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1>Siente la <span>Aventura</span></h1>
+                    <p>Equipamiento técnico para rutas extremas.</p>
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-cat="all">Todos</button>
+                <button class="filter-btn" data-cat="chaquetas">Chaquetas</button>
+                <button class="filter-btn" data-cat="guantes">Guantes</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid">
+                <!-- Jacket -->
+                <div class="product-card" data-category="chaquetas">
+                    <div class="product-img-container">
+                        <img src="jacket.png" alt="Chaqueta Explorer">
+                        <span class="tag">Nuevo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Chaqueta Explorer X</h3>
+                        <p>Protección nivel 2, malla térmica.</p>
+                        <div class="bottom-row">
+                            <span class="price">$189.990</span>
+                            <button class="btn-buy" onclick="openProduct('Chaqueta Explorer X', 189990, 'jacket.png')">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gloves -->
+                <div class="product-card" data-category="guantes">
+                    <div class="product-img-container">
+                        <img src="gloves.png" alt="Guantes Pro Carbon">
+                    </div>
+                    <div class="product-info">
+                        <h3>Guantes Pro Carbon</h3>
+                        <p>Cuero premium, palma reforzada.</p>
+                        <div class="bottom-row">
+                            <span class="price">$45.990</span>
+                            <button class="btn-buy" onclick="openProduct('Guantes Pro Carbon', 45990, 'gloves.png')">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Product Details Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+                <div class="modal-img">
+                    <img id="modal-img-src" src="" alt="Producto">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Nombre Producto</h2>
+                    <p id="modal-price" class="modal-price">$0</p>
+                    
+                    <div class="option-group">
+                        <label>Selecciona tu Talla</label>
+                        <div class="size-selector">
+                            <div class="size-btn">S</div>
+                            <div class="size-btn active">M</div>
+                            <div class="size-btn">L</div>
+                            <div class="size-btn">XL</div>
+                        </div>
+                    </div>
+
+                    <button class="btn-add-to-cart" onclick="addToCart()">Añadir al Carrito</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="toast" class="toast">Añadido al carrito</div>
+
+        <!-- Bottom Tab Bar -->
+        <nav class="tab-bar">
+            <button class="tab-item active"><i class="fa-solid fa-shop"></i><span>Tienda</span></button>
+            <button class="tab-item"><i class="fa-solid fa-magnifying-glass"></i><span>Buscar</span></button>
+            <button class="tab-item"><i class="fa-solid fa-heart"></i><span>Favoritos</span></button>
+            <button class="tab-item"><i class="fa-solid fa-user"></i><span>Cuenta</span></button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Almacén Express</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header>
+            <div class="logo"><i class="fa-solid fa-basket-shopping"></i> Almacén <span>Express</span></div>
+            <div class="cart-pill" id="cart-pill"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span></div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Vistas se inyectan acá -->
+        </main>
+
+        <!-- Modals -->
+        <div id="payment-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Finalizar Compra</h2>
+                    <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="cart-summary" id="cart-summary"></div>
+                <button id="btn-pay" class="btn-primary" onclick="processPayment()">Pagar Pedido</button>
+            </div>
+        </div>
+
+        <!-- Bottom Nav -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-view="store">
+                <i class="fa-solid fa-store"></i>
+                <span>Góndolas</span>
+            </button>
+            <button class="nav-item" data-view="cashier">
+                <i class="fa-solid fa-cash-register"></i>
+                <span>Caja</span>
+            </button>
+        </nav>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

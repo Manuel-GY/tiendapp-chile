@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kibo | Omakase & Premium Rolls</title>
+    <!-- Premium Typographies from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js para gráficas de ventas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">KIBO <span>鮨</span></div>
+            <div class="header-actions">
+                <div class="cart-pill" id="cart-pill" onclick="if(cartCount > 0) openPaymentModal()">
+                    <i class="fa-solid fa-bag-shopping"></i> 
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main id="main-content">
+            <!-- Vistas inyectadas por JS -->
+        </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-view="catalog">
+                <i class="fa-solid fa-wine-glass"></i>
+                <span>Menú</span>
+            </button>
+            <button class="nav-item" data-view="tracking">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                <span>Rastreo</span>
+            </button>
+            <button class="nav-item staff-only" data-view="dashboard">
+                <i class="fa-solid fa-bell-concierge"></i>
+                <span>Cocina</span>
+            </button>
+            <button class="nav-item staff-only" data-view="promos">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </button>
+            <button class="nav-item super-only" data-view="finances">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Finanzas</span>
+            </button>
+            <button class="nav-item staff-only" data-view="admin">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Staff</span>
+            </button>
+            <button class="nav-item login-only" onclick="openLoginModal()" style="margin-top: auto; opacity: 0.3;" title="Acceso Personal">
+                <i class="fa-solid fa-lock"></i>
+            </button>
+            <button class="nav-item staff-only" onclick="logoutStaff()" style="margin-top: auto; opacity: 0.3;" title="Cerrar Sesión">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </nav>
+
+        <!-- Botón flotante pagar -->
+        <button id="floating-pay-btn" class="floating-pay-btn" onclick="openPaymentModal()">
+            Finalizar Pedido <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <!-- Modal de Pagos -->
+        <div id="payment-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Completar Reserva</h2>
+                    <button class="close-modal" onclick="closePaymentModal()" style="background: none; border: none; color: #fff; font-size: 1.5rem;"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="payment-options">
+                    <div class="pay-option" onclick="selectPayment('mercado_pago')">
+                        <i class="fa-solid fa-handshake" style="color: #009EE3;"></i> MercadoPago
+                    </div>
+                    <div class="pay-option" onclick="selectPayment('webpay')">
+                        <i class="fa-regular fa-credit-card"></i> Webpay Plus
+                    </div>
+                    <div class="pay-option" onclick="selectPayment('cash')">
+                        <i class="fa-solid fa-money-bill-wave" style="color: var(--success);"></i> Pago en el Local
+                    </div>
+                </div>
+                <button id="btn-confirm-pay" class="btn-confirm-disabled" disabled onclick="processPayment()">Selecciona un método</button>
+            </div>
+        </div>
+
+        <!-- Modal de Login Staff -->
+        <div id="login-modal" class="modal">
+            <div class="modal-content" style="border-radius: 20px; text-align: center; max-width: 400px; margin: auto; padding-bottom: 25px;">
+                <div class="modal-header">
+                    <h2>Acceso Local</h2>
+                    <button class="close-modal" onclick="closeLoginModal()" style="background: none; border: none; color: #fff; font-size: 1.5rem;"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Ingresa la clave de administrador para ver las herramientas internas.</p>
+                <input type="password" id="staff-pin" placeholder="PIN" onkeyup="if(event.key === 'Enter') attemptLogin()" style="width: 100%; padding: 15px; border-radius: 10px; background: rgba(0,0,0,0.5); border: 1px solid var(--primary); color: #fff; font-size: 1.2rem; text-align: center; margin-bottom: 20px;">
+                <button onclick="attemptLogin()" class="btn-confirm-active" style="width: 100%; padding: 15px; border-radius: 10px; border: none; font-weight: 600;">Entrar al Sistema</button>
+            </div>
+        </div>
+
+        <!-- Toast de Notificaciones (ej. para WhatsApp) -->
+        <div id="toast" class="toast-hidden"></div>
+
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

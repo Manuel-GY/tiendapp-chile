@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LubriScan Chile - Gestión Automotriz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header>
+            <div class="logo">Lubri<span>Scan</span></div>
+            <div class="user-profile">
+                <i class="fa-solid fa-circle-user"></i>
+            </div>
+        </header>
+
+        <main>
+            <!-- Dashboard View -->
+            <div id="view-dashboard" class="view active">
+                <div class="hero-card" style="background-image: url('hero.png');">
+                    <div class="hero-content">
+                        <h2>Tu auto es prioridad</h2>
+                        <p>Agenda tu mantención en segundos</p>
+                        <button class="btn-primary-action" onclick="switchView('view-brands')">Agendar Ahora <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <section class="quick-status">
+                    <div class="status-card">
+                        <i class="fa-solid fa-oil-can"></i>
+                        <span class="label">Próximo Cambio</span>
+                        <span class="value">5,000 km</span>
+                    </div>
+                    <div class="status-card warning">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span class="label">Estado Filtros</span>
+                        <span class="value">Revisar</span>
+                    </div>
+                </section>
+
+                <h3 class="section-title">Servicios Populares</h3>
+                <div class="services-list">
+                    <div class="service-item-mini" onclick="selectService('Lubricación Premium', 45000)">
+                        <div class="icon"><i class="fa-solid fa-droplet"></i></div>
+                        <div class="info">
+                            <h4>Lubricación Premium</h4>
+                            <p>Aceite sintético + Filtro</p>
+                        </div>
+                        <div class="price">$45.000</div>
+                    </div>
+                    <div class="service-item-mini" onclick="selectService('Scanner General', 25000)">
+                        <div class="icon"><i class="fa-solid fa-gauge-high"></i></div>
+                        <div class="info">
+                            <h4>Scanner General</h4>
+                            <p>Diagnóstico electrónico</p>
+                        </div>
+                        <div class="price">$25.000</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand Selection View -->
+            <div id="view-brands" class="view">
+                <button class="btn-back" onclick="switchView('view-dashboard')"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+                <h2 class="view-title">Selecciona tu Vehículo</h2>
+                <div class="brand-grid">
+                    <div class="brand-item" onclick="selectBrand('Toyota', 'corolla')">
+                        <i class="fa-solid fa-car"></i>
+                        <span>Toyota</span>
+                    </div>
+                    <div class="brand-item" onclick="selectBrand('Hyundai', 'tucson')">
+                        <i class="fa-solid fa-car"></i>
+                        <span>Hyundai</span>
+                    </div>
+                    <div class="brand-item" onclick="selectBrand('Nissan', 'versa')">
+                        <i class="fa-solid fa-car"></i>
+                        <span>Nissan</span>
+                    </div>
+                    <div class="brand-item" onclick="selectBrand('Kia', 'morning')">
+                        <i class="fa-solid fa-car"></i>
+                        <span>Kia</span>
+                    </div>
+                    <div class="brand-item" onclick="selectBrand('Suzuki', 'swift')">
+                        <i class="fa-solid fa-car"></i>
+                        <span>Suzuki</span>
+                    </div>
+                    <div class="brand-item" onclick="selectBrand('Peugeot', '208')">
+                        <i class="fa-solid fa-car"></i>
+                        <span>Peugeot</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking View -->
+            <div id="view-booking" class="view">
+                <button class="btn-back" onclick="switchView('view-brands')"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+                <div class="booking-summary">
+                    <div class="car-summary">
+                        <h2 id="selected-car">Toyota Corolla</h2>
+                        <span class="badge">Patente Seleccionada</span>
+                    </div>
+
+                    <div class="booking-config">
+                        <label>Selecciona el Aceite</label>
+                        <div class="oil-options">
+                            <div class="oil-option active" onclick="setOil('5W-30 Sintético', 0)">
+                                <img src="oil.png" alt="Oil">
+                                <span>5W-30 Sintético</span>
+                            </div>
+                            <div class="oil-option" onclick="setOil('10W-40 Premium', 5000)">
+                                <img src="oil.png" alt="Oil">
+                                <span>10W-40 Premium</span>
+                            </div>
+                        </div>
+
+                        <label>Fecha de Agendamiento</label>
+                        <div class="date-selector">
+                            <div class="date-chip active"><span>Mañana</span><small>18 Abr</small></div>
+                            <div class="date-chip"><span>Lunes</span><small>20 Abr</small></div>
+                            <div class="date-chip"><span>Martes</span><small>21 Abr</small></div>
+                        </div>
+                    </div>
+
+                    <div class="total-bar">
+                        <div class="total-info">
+                            <span>Total estimado</span>
+                            <h3 id="total-price">$45.000</h3>
+                        </div>
+                        <button class="btn-confirm" onclick="confirmBooking()">Confirmar Cita</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Overlay -->
+            <div id="overlay-success" class="overlay">
+                <div class="overlay-content">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h2>¡Agendado con éxito!</h2>
+                    <p>Te enviamos un recordatorio a tu WhatsApp.</p>
+                    <button onclick="location.reload()">Aceptar</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="switchView('view-dashboard')">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </button>
+            <button class="nav-item" onclick="switchView('view-brands')">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Agenda</span>
+            </button>
+            <button class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Mi Auto</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

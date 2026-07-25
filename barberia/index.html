@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Agenda Barber VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header>
+            <div class="logo"><i class="fa-solid fa-scissors"></i> VANGUARD <span>Barber</span></div>
+            <div class="user-pill"><i class="fa-regular fa-user"></i> Mi Perfil</div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Vistas se inyectan acá -->
+        </main>
+
+        <!-- Modals -->
+        <div id="booking-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Elegir Horario</h2>
+                    <button class="close-modal" onclick="closeBookingModal()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="booking-flow">
+                    <h3>Hoy, Jueves 16</h3>
+                    <div class="time-slots">
+                        <button class="time-btn" onclick="selectTime('15:00')">15:00</button>
+                        <button class="time-btn" onclick="selectTime('16:30')">16:30</button>
+                        <button class="time-btn" onclick="selectTime('18:00')">18:00</button>
+                        <button class="time-btn disabled">19:30</button>
+                    </div>
+                </div>
+                <button id="btn-confirm-book" class="btn-primary disabled" disabled onclick="confirmBooking()">Confirmar Reserva</button>
+            </div>
+        </div>
+
+        <!-- Bottom Nav -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-view="services">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Reservar</span>
+            </button>
+            <button class="nav-item" data-view="appointments">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>Mis Citas</span>
+            </button>
+            <button class="nav-item" data-view="barber-panel">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>El Barbero</span>
+            </button>
+        </nav>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

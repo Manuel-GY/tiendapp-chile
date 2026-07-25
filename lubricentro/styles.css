@@ -1,0 +1,449 @@
+:root {
+    --bg-dark: #0a0e14;
+    --bg-card: #151b23;
+    --primary: #3b82f6;
+    --primary-glow: rgba(59, 130, 246, 0.4);
+    --accent: #00efff;
+    --text-main: #f0f4f8;
+    --text-muted: #8b949e;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #000;
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    max-width: 450px;
+    margin: 0 auto;
+    background-color: var(--bg-dark);
+    position: relative;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(10, 14, 20, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.user-profile {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+}
+
+main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    padding-bottom: 100px;
+}
+
+.view {
+    display: none;
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Hero Card */
+.hero-card {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.hero-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(10,14,20,0.9) 0%, rgba(10,14,20,0) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.hero-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.btn-primary-action {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+/* Quick Status */
+.quick-status {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.status-card {
+    background: var(--bg-card);
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.status-card i {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.status-card.warning i {
+    color: var(--warning);
+}
+
+.status-card .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.status-card .value {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Services */
+.section-title {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-item-mini {
+    background: var(--bg-card);
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.service-item-mini:active {
+    background: rgba(255,255,255,0.05);
+}
+
+.service-item-mini .icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.service-item-mini .info {
+    flex: 1;
+}
+
+.service-item-mini h4 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.service-item-mini p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.service-item-mini .price {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* Brands View */
+.btn-back {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.view-title {
+    margin-bottom: 25px;
+}
+
+.brand-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.brand-item {
+    background: var(--bg-card);
+    padding: 25px 15px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.brand-item i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.brand-item span {
+    font-weight: 600;
+}
+
+/* Booking View */
+.booking-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.car-summary {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.badge {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.booking-config label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.oil-options {
+    display: flex;
+    gap: 15px;
+}
+
+.oil-option {
+    flex: 1;
+    background: var(--bg-card);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.oil-option img {
+    height: 40px;
+}
+
+.oil-option.active {
+    border-color: var(--primary);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.date-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.date-chip {
+    flex: 1;
+    background: var(--bg-card);
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid var(--border);
+}
+
+.date-chip.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.date-chip small {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.total-bar {
+    margin-top: 20px;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border);
+}
+
+.total-info h3 {
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.btn-confirm {
+    background: var(--success);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.overlay-content {
+    text-align: center;
+}
+
+.overlay-content i {
+    font-size: 4rem;
+    color: var(--success);
+    margin-bottom: 20px;
+}
+
+.overlay-content h2 { margin-bottom: 10px; }
+.overlay-content p { color: var(--text-muted); margin-bottom: 30px; }
+.overlay-content button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* Navigation */
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(10, 14, 20, 0.95);
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.nav-item {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+}
+
+.nav-item.active {
+    color: var(--primary);
+}
+
+.nav-item i { font-size: 1.2rem; }

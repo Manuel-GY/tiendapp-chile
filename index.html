@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiendApp Chile - Soluciones Digitales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="public-site">
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">⚡ TiendApp <span>Chile</span></div>
+            <div class="nav-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#planes">Planes</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#faq">FAQ</a>
+                <a href="streaming.html">Streaming</a>
+                <a href="retro.html">Retro Gaming</a>
+                <a href="javascript:void(0)" onclick="openSupportLogin()">Soporte</a>
+                <a href="#contacto" class="btn-primary">Cotizar</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg" style="background-image: url('agency_hero_bg.png');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Transformamos negocios tradicionales en <span>Experiencias Digitales</span>.</h1>
+            <p>Especialistas en desarrollo de aplicaciones web y móviles para Almacenes, Barberías, Restaurantes y más en todo Chile.</p>
+            <div class="hero-actions">
+                <a href="#proyectos" class="btn-primary">Ver Portafolio <i class="fa-solid fa-arrow-down"></i></a>
+                <a href="streaming.html" class="btn-outline"><i class="fa-solid fa-tv"></i> Ver Streaming</a>
+                <a href="retro.html" class="btn-outline"><i class="fa-solid fa-gamepad"></i> Ver Retro Gaming</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="stats-section reveal">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="stat-info">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Optimizado Móvil</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <div class="stat-info">
+                    <span class="stat-value">< 2s</span>
+                    <span class="stat-label">Carga Ultra-Rápida</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="stat-info">
+                    <span class="stat-value">24/7</span>
+                    <span class="stat-label">Soporte Local</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="section reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Demos Interactivos</h2>
+                <p>Explora cómo se vería tu negocio en la palma de la mano de tus clientes.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('sushi_thumbnail.png');">
+                        <div class="project-tag">Restaurantes</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>SushiApp Premium</h3>
+                        <p>Sistema completo con Menú interactivo, simulación de carrito de compras y panel de despacho para cocina.</p>
+                        <div class="tech-stack">
+                            <span>HTML5</span><span>CSS3</span><span>JS</span>
+                        </div>
+                        <a href="sushi/index.html" class="btn-outline">
+                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('barber_app_thumbnail.png');">
+                        <div class="project-tag">Barberías</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Agenda Barber VIP</h3>
+                        <p>Plataforma de reservas de turnos con calendario interactivo, panel de barberos y recordatorios automáticos.</p>
+                        <div class="tech-stack">
+                            <span>React</span><span>Node.js</span>
+                        </div>
+                        <a href="barberia/index.html" class="btn-outline">
+                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('grocery_app_thumbnail.png');">
+                        <div class="project-tag">Minimarkets</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Almacén Express</h3>
+                        <p>Catálogo de abarrotes, control de stock y pedidos vecinales con entrega rápida. Interfaz ultra sencilla.</p>
+                        <div class="tech-stack">
+                            <span>Mobile App</span><span>UX/UI</span>
+                        </div>
+                        <a href="almacen/index.html" class="btn-outline">
+                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('lubricentro_thumbnail.png');">
+                        <div class="project-tag">Lubricentros</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>LubriScan Chile</h3>
+                        <p>Gestión de mantenciones con selector de insumos, scanner digital y agendamiento de horas en línea.</p>
+                        <div class="tech-stack">
+                            <span>IoT Ready</span><span>Booking AI</span>
+                        </div>
+                        <a href="lubricentro/index.html" class="btn-outline">
+                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('clothing_store_thumbnail.png');">
+                        <div class="project-tag">E-commerce</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Rider Gear Premium</h3>
+                        <p>Tienda de alta gama para accesorios y ropa técnica. Carrito dinámico y visualización de productos en 4K.</p>
+                        <div class="tech-stack">
+                            <span>High Perf</span><span>E-commerce</span>
+                        </div>
+                        <a href="ropa/index.html" class="btn-outline">
+                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section bg-alt reveal">
+        <div class="container">
+            <div class="section-header center">
+                <h2>¿Qué hacemos?</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <h3>Apps a Medida</h3>
+                    <p>Diseño y desarrollo de aplicaciones web y móviles centradas en convertir visitas en ventas.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <h3>Diseño UX/UI Premium</h3>
+                    <p>Nuestras interfaces son la clave del éxito. En TiendApp Chile priorizamos el diseño moderno y experiencias de usuario excepcionales.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-cog"></i>
+                    <h3>Sistemas de Gestión</h3>
+                    <p>Paneles de control para que manejes tu negocio, pedidos y promociones desde tu propio celular.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proceso" class="section reveal">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Tu éxito en 4 pasos</h2>
+                <p>Nuestra metodología comprobada para digitalizar tu negocio.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <h3>Diseño del Prototipo</h3>
+                    <p>Creamos la experiencia visual de tu aplicación para que veas cómo funcionará antes de escribir código.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <h3>Desarrollo Maestro</h3>
+                    <p>Construimos la plataforma con las mejores tecnologías, asegurando velocidad y seguridad total.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <h3>Pruebas y Ajustes</h3>
+                    <p>Auditamos cada detalle para garantizar que el sistema sea perfecto en todos los modelos de celular.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <h3>Lanzamiento y Soporte</h3>
+                    <p>Publicamos tu solución y te acompañamos en el crecimiento de tu negocio digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planes" class="section reveal">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Elige tu Plan</h2>
+                <p>Opciones flexibles diseñadas para potenciar tu marca desde el primer día.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Plan Inicio</h3>
+                        <p class="price">$20.000 <span>/ mes</span></p>
+                        <p class="setup-fee">Inversión Inicial: $0</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Subdominio tiendapp.cl</li>
+                        <li><i class="fa-solid fa-check"></i> Hosting Premium</li>
+                        <li><i class="fa-solid fa-check"></i> Soporte vía Tickets</li>
+                        <li><i class="fa-solid fa-check"></i> Seguridad Activada</li>
+                        <li class="disabled"><i class="fa-solid fa-xmark"></i> Dominio Propio .cl</li>
+                        <li class="disabled"><i class="fa-solid fa-xmark"></i> 4 Meses de Mantención Gratis</li>
+                    </ul>
+                    <div class="pricing-actions">
+                        <a href="#contacto" class="btn-outline">Consultar</a>
+                        <a href="mailto:ventas@tiendappchile.cl?subject=Interés en Plan Inicio" class="btn-link-small"><i class="fa-solid fa-envelope"></i> Enviar Correo</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Más Rentable</div>
+                    <div class="pricing-header">
+                        <h3>Plan Pro</h3>
+                        <p class="price">Desde $60.000</p>
+                        <p class="setup-fee">Pago único de implementación</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> <strong>Dominio Propio .cl</strong></li>
+                        <li><i class="fa-solid fa-check"></i> <strong>4 Meses Mantención Gratis</strong></li>
+                        <li><i class="fa-solid fa-check"></i> Correo Corporativo</li>
+                        <li><i class="fa-solid fa-check"></i> SEO Avanzado</li>
+                        <li><i class="fa-solid fa-check"></i> Soporte Prioritario WhatsApp</li>
+                    </ul>
+                    <div class="pricing-actions">
+                        <a href="#contacto" class="btn-primary" style="display: block; text-align: center; text-decoration: none;">Solicitar Plan Pro</a>
+                        <a href="mailto:ventas@tiendappchile.cl?subject=Interés en Plan Pro" class="btn-link-small"><i class="fa-solid fa-envelope"></i> Consultar por Email</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="popular-badge" style="background: #8b5cf6;">Otro Servicio</div>
+                    <div class="pricing-header">
+                        <h3>¿Streaming o Retro?</h3>
+                        <p class="price" style="font-size: 1.5rem;">Visita nuestras otras tiendas</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-tv"></i> <a href="streaming.html" style="color: var(--primary); text-decoration: none;">Netflix, Disney+, HBO y más</a></li>
+                        <li><i class="fa-solid fa-gamepad"></i> <a href="retro.html" style="color: var(--primary); text-decoration: none;">Consolas con +10,000 juegos</a></li>
+                        <li><i class="fa-solid fa-check"></i> Soporte 24/7</li>
+                    </ul>
+                    <div class="pricing-actions">
+                        <a href="streaming.html" class="btn-outline" style="display: block; text-align: center;">Ver Streaming</a>
+                        <a href="retro.html" class="btn-outline" style="display: block; text-align: center; margin-top: 10px;">Ver Retro Gaming</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="section bg-alt reveal">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Clientes de confianza</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote"><i class="fa-solid fa-quote-left"></i></div>
+                    <p>"TiendApp Chile transformó mi restaurante. Ahora todos mis clientes piden por la web y la cocina recibe todo ordenado."</p>
+                    <div class="user">
+                        <h4>Ricardo M.</h4>
+                        <span>Sushiman Owner</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote"><i class="fa-solid fa-quote-left"></i></div>
+                    <p>"La aplicación de reservas para mi barbería es increíble. Ya no pierdo tiempo en WhatsApp y mis clientes están fascinados."</p>
+                    <div class="user">
+                        <h4>Felipe G.</h4>
+                        <span>The Boss Barber</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section reveal">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Preguntas Frecuentes</h2>
+            </div>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">¿Cuánto tiempo demora el desarrollo? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer">
+                        <p>Dependiendo de la complejidad, un sistema base (como el de los demos) puede estar listo entre 7 a 15 días hábiles.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Cuánto demora una página web? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer">
+                        <p>Una página web profesional puede estar lista entre 3 a 7 días hábiles, dependiendo de la complejidad.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Debo pagar mensualidades? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer">
+                        <p>Depende de la complejidad de la aplicación y los requerimientos de soporte. Generalmente incluimos un monto mínimo mensual que cubre el mantenimiento del servidor, actualizaciones de seguridad y soporte técnico constante.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Es seguro para mis clientes pagar por la App? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer">
+                        <p>Absolutamente. Integramos pasarelas de pago cifradas como MercadoPago y Transbank, cumpliendo con todos los estándares bancarios de Chile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-cta">
+                <h2>¿Listo para digitalizar tu negocio?</h2>
+                <div class="contact-methods">
+                    <a href="https://wa.me/56976739157" class="btn-whatsapp-large" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Ventas
+                    </a>
+                    <a href="mailto:ventas@tiendappchile.cl" class="btn-email-large">
+                        <i class="fa-solid fa-envelope"></i> ventas@tiendappchile.cl
+                    </a>
+                </div>
+                <p class="cotizacion-note">Cotizaciones y prototipos sin compromiso.</p>
+            </div>
+            <div class="footer-bottom">
+                <div class="logo">⚡ TiendApp <span>Chile</span></div>
+                <p>&copy; 2026 Todos los derechos reservados. | <a href="javascript:void(0)" onclick="openAgencyLogin()" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">Gestión Interna</a></p>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <div id="agency-erp" style="display: none; padding-top: 40px;">
+        <div class="container">
+            <div class="admin-header">
+                <div class="logo">⚡ TiendApp <span>ERP</span></div>
+                <button class="btn-outline" onclick="logoutAgency()" style="width: auto; padding: 10px 20px;">Cerrar Administración</button>
+            </div>
+
+            <div class="erp-grid">
+                <div class="erp-card">
+                    <h3>Ingresos Mensuales (MRR)</h3>
+                    <div class="erp-value">$ 0</div>
+                    <p>Suscripciones activas</p>
+                </div>
+                <div class="erp-card">
+                    <h3>Clientes Reales</h3>
+                    <div class="erp-value">0</div>
+                    <p>Contratos vigentes</p>
+                </div>
+                <div class="erp-card">
+                    <h3>Prototipos Listos</h3>
+                    <div class="erp-value">5</div>
+                    <p>Demos en catálogo</p>
+                </div>
+            </div>
+
+            <div class="erp-section">
+                <h2>Inventario de Soluciones</h2>
+                <div class="erp-table-container">
+                    <table class="erp-table">
+                        <thead>
+                            <tr>
+                                <th>Demo / Plantilla</th>
+                                <th>Tecnología</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SushiApp Premium</td>
+                                <td>HTML/JS/Chart.js</td>
+                                <td><span class="status-badge">Listo</span></td>
+                                <td><a href="sushi/index.html" class="btn-link">Ver Demo</a></td>
+                            </tr>
+                            <tr>
+                                <td>Agenda Barber VIP</td>
+                                <td>React/Node.js</td>
+                                <td><span class="status-badge">Listo</span></td>
+                                <td><a href="barberia/index.html" class="btn-link">Ver Demo</a></td>
+                            </tr>
+                            <tr>
+                                <td>Almacén Express</td>
+                                <td>Mobile First</td>
+                                <td><span class="status-badge">Listo</span></td>
+                                <td><a href="almacen/index.html" class="btn-link">Ver Demo</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="erp-section">
+                <h2>Cientes / Suscripciones</h2>
+                <div class="empty-state">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <p>Aún no tienes clientes registrados. ¡Sal a vender tus soluciones!</p>
+                </div>
+            </div>
+
+            <div class="erp-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                    <h2><i class="fa-solid fa-headset" style="margin-right: 10px; color: var(--primary);"></i> Soporte Técnico</h2>
+                </div>
+                <div class="erp-card" style="background: rgba(255, 255, 255, 0.02); padding: 20px;">
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px;">Utiliza esta herramienta interna para dar feedback y resolver las solicitudes enviadas por los clientes.</p>
+                    <div id="agency-ticket-list" style="margin-top: 20px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="agency-login-modal" class="agency-modal">
+        <div class="agency-modal-content">
+            <div class="logo" style="margin-bottom: 20px; text-align: center;">⚡ TiendApp <span>Agencia</span></div>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">Zona de Administración Interna</p>
+            <input type="password" id="agency-pin" placeholder="PIN de Seguridad" onkeyup="if(event.key === 'Enter') attemptAgencyLogin()">
+            <button class="btn-primary" onclick="attemptAgencyLogin()" style="width: 100%; border: none; cursor: pointer;">Entrar al ERP</button>
+            <button class="btn-link" onclick="closeAgencyModal()" style="width: 100%; margin-top: 10px; color: var(--text-muted); background:none; border:none; cursor:pointer;">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="client-support-portal" style="display: none; padding-top: 40px; min-height: 100vh;">
+        <div class="container">
+            <div class="admin-header">
+                <div class="logo">⚡ TiendApp <span>Soporte</span></div>
+                <button class="btn-outline" onclick="logoutSupport()" style="width: auto; padding: 10px 20px;">Volver al Inicio</button>
+            </div>
+
+            <div class="erp-section" style="max-width: 600px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: 30px;">Ingreso de Ticket de Ayuda</h2>
+                <div class="erp-card" style="text-align: left;">
+                    <p style="color:var(--text-muted); margin-bottom:20px;">Por favor, completa los siguientes datos para abrir un ticket. Nuestro equipo lo revisará y procesará de acuerdo a tu pago mensual.</p>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Nombre del Negocio / Cliente</label>
+                        <input type="text" id="ticket-negocio" placeholder="Ej: Barbería Vintage" style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Tipo de Solicitud</label>
+                        <select id="ticket-tipo" style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; appearance: auto;">
+                            <option value="Actualización de Precios/Menú">Actualización de Precios / Productos</option>
+                            <option value="Cambio de Imágenes">Cambio de Imágenes o Textos</option>
+                            <option value="Problema Técnico">Problema Técnico / Reporte de Error</option>
+                            <option value="Duda General">Duda General / Asesoría</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Detalles de lo requerido</label>
+                        <textarea id="ticket-detalle" rows="5" placeholder="Escribe aquí los detalles precisos (ej. Cambiar precio del Corte Premium a $15.000 y actualizar logo)..." style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; resize: vertical; font-family: 'Inter', sans-serif;"></textarea>
+                    </div>
+
+                    <button class="btn-primary" onclick="sendSupportTicket()" style="width: 100%; border: none; cursor: pointer; padding: 15px; font-size: 1.1rem;"><i class="fa-solid fa-paper-plane"></i> Enviar Ticket de Soporte</button>
+                </div>
+            </div>
+            
+            <div class="erp-section" style="max-width: 600px; margin: 40px auto 0;">
+                <h3 style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">Consultar Estado de Ticket</h3>
+                <div class="erp-card" style="display:flex; gap:10px; margin-bottom: 20px; padding: 15px;">
+                    <input type="text" id="consulta-ticket-id" placeholder="N° de Ticket (Ej: 1234)" style="flex:1; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+                    <button class="btn-primary" onclick="consultarTicket()">Consultar</button>
+                </div>
+                <div id="consulta-resultado">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="support-login-modal" class="agency-modal">
+        <div class="agency-modal-content">
+            <div class="logo" style="margin-bottom: 20px; text-align: center;">⚡ Soporte <span>Técnico</span></div>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">Acceso exclusivo para clientes activos.</p>
+            <input type="password" id="support-password" placeholder="Clave de Cliente" onkeyup="if(event.key === 'Enter') attemptSupportLogin()">
+            <button class="btn-primary" onclick="attemptSupportLogin()" style="width: 100%; border: none; cursor: pointer;">Ingresar al Portal</button>
+            <button class="btn-link" onclick="closeSupportModal()" style="width: 100%; margin-top: 10px; color: var(--text-muted); background:none; border:none; cursor:pointer;">Regresar</button>
+        </div>
+    </div>
+
+    <div id="agency-reply-modal" class="agency-modal">
+        <div class="agency-modal-content" style="max-width: 500px;">
+            <div class="logo" style="margin-bottom: 20px; text-align: center;">⚡ Responder <span>Ticket</span></div>
+            <p id="reply-ticket-info" style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;"></p>
+            <textarea id="reply-text" rows="4" placeholder="Escribe tu feedback o resolución aquí para notificar al cliente..." style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; resize: vertical; margin-bottom: 15px;"></textarea>
+            <input type="hidden" id="reply-ticket-id">
+            <button class="btn-primary" onclick="sendReply()" style="width: 100%; border: none; cursor: pointer; margin-bottom: 10px;">Enviar Feedback al Cliente</button>
+            <button class="btn-link" onclick="closeReplyModal()" style="width: 100%; color: var(--text-muted); background:none; border:none; cursor:pointer;">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
