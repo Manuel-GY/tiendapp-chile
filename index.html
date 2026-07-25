@@ -3,497 +3,750 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TiendApp Chile - Desarrollo Web & Apps</title>
+    <title>TiendApp Chile - Todo lo que necesitas en un solo lugar</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --accent: #06b6d4;
+            --accent2: #8b5cf6;
+            --accent3: #ec4899;
+            --bg-dark: #030712;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f1f5f9;
+            --text-muted: #64748b;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+            --gradient-2: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --gradient-3: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 8px 16px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            background: var(--glass);
+        }
+
+        .nav-links .btn-primary {
+            background: var(--gradient-1);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 10px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 80% 60%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 40%);
+            animation: meshMove 20s ease-in-out infinite;
+        }
+
+        @keyframes meshMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(2%, -2%) scale(1.02); }
+            66% { transform: translate(-1%, 1%) scale(0.98); }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--bg-dark), transparent);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 0 24px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .hero-badge i {
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white !important;
+            padding: 16px 36px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            padding: 16px 36px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1px solid var(--glass-border);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--glass);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* SERVICES SECTION */
+        .services {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .services-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .services-header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 48px 36px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-main);
+            display: block;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            border-color: transparent;
+        }
+
+        .service-card.development::before {
+            background: var(--gradient-1);
+        }
+
+        .service-card.development:hover {
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .service-card.streaming-card::before {
+            background: var(--gradient-2);
+        }
+
+        .service-card.streaming-card:hover {
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .service-card.retro-card::before {
+            background: var(--gradient-3);
+        }
+
+        .service-card.retro-card:hover {
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.15);
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            font-size: 2rem;
+        }
+
+        .development .service-icon {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+        }
+
+        .streaming-card .service-icon {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent2);
+        }
+
+        .retro-card .service-icon {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .service-card .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .development .card-link {
+            color: var(--primary);
+        }
+
+        .streaming-card .card-link {
+            color: var(--accent2);
+        }
+
+        .retro-card .card-link {
+            color: var(--accent);
+        }
+
+        .card-link i {
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .card-link i {
+            transform: translateX(5px);
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(99,102,241,0.03) 50%, var(--bg-dark) 100%);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .feature-item h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .cta-content p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white !important;
+            padding: 16px 36px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-content p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(3, 7, 18, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 16px;
+                gap: 4px;
+                border-bottom: 1px solid var(--glass-border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="public-site">
+
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">⚡ TiendApp <span>Chile</span></div>
             <div class="nav-links">
-                <a href="#proyectos">Portafolio</a>
                 <a href="#servicios">Servicios</a>
-                <a href="#planes">Planes</a>
-                <a href="#faq">FAQ</a>
-                <a href="streaming.html">Streaming</a>
-                <a href="retro.html">Retro Gaming</a>
-                <a href="javascript:void(0)" onclick="openSupportLogin()">Soporte</a>
-                <a href="#contacto" class="btn-primary">Cotizar</a>
+                <a href="#por-que">¿Por qué nosotros?</a>
+                <a href="#contacto" class="btn-primary">Contactar</a>
             </div>
-            <button class="mobile-toggle" aria-label="Menu">
+            <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Transformamos negocios en <span>experiencias digitales</span></h1>
-            <p>Aplicaciones web y móviles para restaurantes, barberías, almacenes y más. Diseño premium que convierte visitas en ventas.</p>
-            <div class="hero-actions">
-                <a href="#proyectos" class="btn-primary"><i class="fa-solid fa-arrow-down"></i> Ver Portafolio</a>
-                <a href="https://wa.me/56976739157" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar Gratis</a>
+            <div class="hero-badge">
+                <i class="fa-solid fa-bolt"></i> Soluciones digitales para todo Chile
+            </div>
+            <h1>Tu negocio necesita <span>TiendApp</span></h1>
+            <p>Desarrollo de apps, streaming legal y gaming retro. Tres formas de llevar tu entretenimiento y negocio al siguiente nivel.</p>
+            <div class="hero-cta">
+                <a href="#servicios" class="btn-primary"><i class="fa-solid fa-arrow-down"></i> Explorar Servicios</a>
+                <a href="https://wa.me/56976739157" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> Hablar con Ventas</a>
             </div>
         </div>
     </header>
 
-    <section class="stats-section reveal">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <i class="fa-solid fa-bolt stat-icon"></i>
-                    <div>
-                        <span class="stat-value">100%</span>
-                        <span class="stat-label">Optimizado Móvil</span>
-                    </div>
+    <section id="servicios" class="services">
+        <div class="services-header reveal">
+            <h2>3 servicios, 1 solo lugar</h2>
+            <p>Elige lo que necesitas. Cada servicio está diseñado para darte la mejor experiencia.</p>
+        </div>
+        <div class="services-grid">
+            <a href="desarrollo/" class="service-card development reveal">
+                <div class="service-icon">
+                    <i class="fa-solid fa-code"></i>
                 </div>
-                <div class="stat-item">
-                    <i class="fa-solid fa-gauge-high stat-icon"></i>
-                    <div>
-                        <span class="stat-value">&lt; 2s</span>
-                        <span class="stat-label">Carga Ultra-Rápida</span>
-                    </div>
+                <h3>Desarrollo Web</h3>
+                <p>Aplicaciones web y móviles para tu negocio. Restaurantes, barberías, almacenes y más. Diseño premium que convierte visitas en ventas.</p>
+                <div class="card-link">Ver Desarrollo <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="streaming/" class="service-card streaming-card reveal">
+                <div class="service-icon">
+                    <i class="fa-solid fa-tv"></i>
                 </div>
-                <div class="stat-item">
-                    <i class="fa-solid fa-shield-halved stat-icon"></i>
-                    <div>
-                        <span class="stat-value">24/7</span>
-                        <span class="stat-label">Soporte Local</span>
-                    </div>
+                <h3>Streaming Legal</h3>
+                <p>Suscripciones a Netflix, Disney+, HBO Max y más. Entretenimiento premium al mejor precio con soporte incluido.</p>
+                <div class="card-link">Ver Streaming <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="retro/" class="service-card retro-card reveal">
+                <div class="service-icon">
+                    <i class="fa-solid fa-gamepad"></i>
                 </div>
+                <h3>Retro Gaming</h3>
+                <p>Consolas emuladoras con miles de juegos precargados. PS1, PS2, N64, SNES y más. ¡Revive la nostalgia!</p>
+                <div class="card-link">Ver Retro Gaming <i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+        </div>
+    </section>
+
+    <section id="por-que" class="features">
+        <div class="features-grid">
+            <div class="feature-item reveal">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Carga Ultra-Rápida</h4>
+                <p>Todas nuestras apps cargan en menos de 2 segundos.</p>
+            </div>
+            <div class="feature-item reveal">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h4>100% Móvil</h4>
+                <p>Diseñadas para funcionar perfecto en cualquier celular.</p>
+            </div>
+            <div class="feature-item reveal">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Seguridad Total</h4>
+                <p>Pasarelas de pago cifradas y protección de datos.</p>
+            </div>
+            <div class="feature-item reveal">
+                <i class="fa-solid fa-headset"></i>
+                <h4>Soporte 24/7</h4>
+                <p>Estamos disponibles cuando nos necesites.</p>
             </div>
         </div>
     </section>
 
-    <section id="proyectos" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>Portafolio</h2>
-                <p>Demos interactivas de lo que podemos crear para tu negocio.</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img" style="background-image: url('sushi_thumbnail.png');">
-                        <div class="project-tag">Restaurantes</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>SushiApp Premium</h3>
-                        <p>Menú interactivo, carrito de compras y panel de despacho para cocina en tiempo real.</p>
-                        <div class="tech-stack">
-                            <span>HTML5</span><span>CSS3</span><span>JS</span>
-                        </div>
-                        <a href="sushi/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img" style="background-image: url('barber_app_thumbnail.png');">
-                        <div class="project-tag">Barberías</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Agenda Barber VIP</h3>
-                        <p>Reservas con calendario interactivo, panel de barberos y recordatorios automáticos.</p>
-                        <div class="tech-stack">
-                            <span>React</span><span>Node.js</span>
-                        </div>
-                        <a href="barberia/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img" style="background-image: url('grocery_app_thumbnail.png');">
-                        <div class="project-tag">Minimarkets</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Almacén Express</h3>
-                        <p>Catálogo de abarrotes, control de stock y pedidos vecinales con entrega rápida.</p>
-                        <div class="tech-stack">
-                            <span>Mobile App</span><span>UX/UI</span>
-                        </div>
-                        <a href="almacen/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img" style="background-image: url('lubricentro_thumbnail.png');">
-                        <div class="project-tag">Lubricentros</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>LubriScan Chile</h3>
-                        <p>Gestión de mantenciones con selector de insumos y agendamiento en línea.</p>
-                        <div class="tech-stack">
-                            <span>IoT Ready</span><span>Booking AI</span>
-                        </div>
-                        <a href="lubricentro/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img" style="background-image: url('clothing_store_thumbnail.png');">
-                        <div class="project-tag">E-commerce</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Rider Gear Premium</h3>
-                        <p>Tienda de alta gama con carrito dinámico y visualización de productos en 4K.</p>
-                        <div class="tech-stack">
-                            <span>High Perf</span><span>E-commerce</span>
-                        </div>
-                        <a href="ropa/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo
-                        </a>
-                    </div>
-                </div>
+    <section id="contacto" class="cta-section">
+        <div class="cta-content reveal">
+            <h2>¿Listo para empezar?</h2>
+            <p>Cotizaciones y asesoría sin compromiso. Escríbenos por WhatsApp o email.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/56976739157" class="btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Ventas
+                </a>
+                <a href="mailto:ventas@tiendappchile.cl" class="btn-outline">
+                    <i class="fa-solid fa-envelope"></i> ventas@tiendappchile.cl
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="servicios" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(99,102,241,0.03) 50%, var(--bg-dark) 100%);">
-        <div class="container">
-            <div class="section-header center">
-                <h2>¿Qué hacemos?</h2>
-                <p>Soluciones completas para digitalizar tu negocio</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-item">
-                    <i class="fa-solid fa-mobile-screen"></i>
-                    <h3>Apps a Medida</h3>
-                    <p>Aplicaciones web y móviles diseñadas para convertir visitas en ventas.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fa-solid fa-paintbrush"></i>
-                    <h3>Diseño UX/UI</h3>
-                    <p>Interfaces modernas y experiencias de usuario que sorprenden.</p>
-                </div>
-                <div class="service-item">
-                    <i class="fa-solid fa-cog"></i>
-                    <h3>Sistemas de Gestión</h3>
-                    <p>Paneles de control para manejar tu negocio desde tu celular.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="proceso" class="section reveal">
-        <div class="container">
-            <div class="section-header center">
-                <h2>Tu éxito en 4 pasos</h2>
-                <p>Metodología comprobada para digitalizar tu negocio</p>
-            </div>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-num">01</div>
-                    <h3>Prototipo</h3>
-                    <p>Creamos la experiencia visual antes de escribir una línea de código.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-num">02</div>
-                    <h3>Desarrollo</h3>
-                    <p>Construimos con las mejores tecnologías, asegurando velocidad y seguridad.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-num">03</div>
-                    <h3>Pruebas</h3>
-                    <p>Auditamos cada detalle para garantizar perfección en todos los dispositivos.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-num">04</div>
-                    <h3>Lanzamiento</h3>
-                    <p>Publicamos tu solución y te acompañamos en el crecimiento digital.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="planes" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(6,182,212,0.03) 50%, var(--bg-dark) 100%);">
-        <div class="container">
-            <div class="section-header center">
-                <h2>Planes de Desarrollo</h2>
-                <p>Opciones flexibles para potenciar tu marca desde el primer día</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Plan Inicio</h3>
-                        <p class="price">$20.000 <span>/ mes</span></p>
-                        <p class="setup-fee">Inversión inicial: $0</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fa-solid fa-check"></i> Subdominio tiendapp.cl</li>
-                        <li><i class="fa-solid fa-check"></i> Hosting Premium</li>
-                        <li><i class="fa-solid fa-check"></i> Soporte vía Tickets</li>
-                        <li><i class="fa-solid fa-check"></i> Seguridad Activada</li>
-                        <li class="disabled"><i class="fa-solid fa-xmark"></i> Dominio Propio .cl</li>
-                        <li class="disabled"><i class="fa-solid fa-xmark"></i> Mantención Gratis</li>
-                    </ul>
-                    <div class="pricing-actions">
-                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Plan%20Inicio" class="btn-outline" target="_blank">Consultar</a>
-                        <a href="mailto:ventas@tiendappchile.cl?subject=Interés en Plan Inicio" class="btn-link-small"><i class="fa-solid fa-envelope"></i> Enviar Correo</a>
-                    </div>
-                </div>
-
-                <div class="pricing-card popular">
-                    <div class="popular-badge">Más Popular</div>
-                    <div class="pricing-header">
-                        <h3>Plan Pro</h3>
-                        <p class="price">Desde $60.000</p>
-                        <p class="setup-fee">Pago único de implementación</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fa-solid fa-check"></i> <strong>Dominio Propio .cl</strong></li>
-                        <li><i class="fa-solid fa-check"></i> <strong>4 Meses Mantención Gratis</strong></li>
-                        <li><i class="fa-solid fa-check"></i> Correo Corporativo</li>
-                        <li><i class="fa-solid fa-check"></i> SEO Avanzado</li>
-                        <li><i class="fa-solid fa-check"></i> Soporte Prioritario WhatsApp</li>
-                    </ul>
-                    <div class="pricing-actions">
-                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Plan%20Pro" class="btn-primary" target="_blank">Solicitar Plan Pro</a>
-                        <a href="mailto:ventas@tiendappchile.cl?subject=Interés en Plan Pro" class="btn-link-small"><i class="fa-solid fa-envelope"></i> Consultar por Email</a>
-                    </div>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Otros Servicios</h3>
-                        <p class="price" style="font-size: 1.3rem;">Streaming & Retro Gaming</p>
-                        <p class="setup-fee">Visita nuestras tiendas</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fa-solid fa-tv" style="color: #8b5cf6;"></i> Netflix, Disney+, HBO y más</li>
-                        <li><i class="fa-solid fa-gamepad" style="color: #ec4899;"></i> Consolas con +10,000 juegos</li>
-                        <li><i class="fa-solid fa-check"></i> Soporte 24/7 incluido</li>
-                    </ul>
-                    <div class="pricing-actions">
-                        <a href="streaming.html" class="btn-outline" style="border-color: #8b5cf6; color: #8b5cf6;"><i class="fa-solid fa-tv"></i> Ver Streaming</a>
-                        <a href="retro.html" class="btn-outline" style="border-color: #ec4899; color: #ec4899; margin-top: 4px;"><i class="fa-solid fa-gamepad"></i> Ver Retro Gaming</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonios" class="section reveal">
-        <div class="container">
-            <div class="section-header center">
-                <h2>Clientes de confianza</h2>
-                <p>Lo que dicen quienes ya trabajan con nosotros</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="quote"><i class="fa-solid fa-quote-left"></i></div>
-                    <p>"TiendApp Chile transformó mi restaurante. Ahora todos mis clientes piden por la web y la cocina recibe todo ordenado."</p>
-                    <div class="user">
-                        <h4>Ricardo M.</h4>
-                        <span>Sushiman Owner</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote"><i class="fa-solid fa-quote-left"></i></div>
-                    <p>"La aplicación de reservas para mi barbería es increíble. Ya no pierdo tiempo en WhatsApp y mis clientes están fascinados."</p>
-                    <div class="user">
-                        <h4>Felipe G.</h4>
-                        <span>The Boss Barber</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(139,92,246,0.03) 50%, var(--bg-dark) 100%);">
-        <div class="container">
-            <div class="section-header center">
-                <h2>Preguntas Frecuentes</h2>
-            </div>
-            <div class="faq-accordion">
-                <div class="faq-item">
-                    <div class="faq-question">¿Cuánto tiempo demora el desarrollo? <i class="fa-solid fa-plus"></i></div>
-                    <div class="faq-answer">
-                        <p>Dependiendo de la complejidad, un sistema base puede estar listo entre 7 a 15 días hábiles.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">¿Cuánto demora una página web? <i class="fa-solid fa-plus"></i></div>
-                    <div class="faq-answer">
-                        <p>Una página web profesional puede estar lista entre 3 a 7 días hábiles, dependiendo de la complejidad.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">¿Debo pagar mensualidades? <i class="fa-solid fa-plus"></i></div>
-                    <div class="faq-answer">
-                        <p>Depende de la complejidad y el soporte. Generalmente incluimos un monto mínimo mensual que cubre mantenimiento, actualizaciones y soporte técnico.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">¿Es seguro para mis clientes pagar por la App? <i class="fa-solid fa-plus"></i></div>
-                    <div class="faq-answer">
-                        <p>Sí. Integramos pasarelas de pago cifradas como MercadoPago y Transbank, cumpliendo con todos los estándares bancarios de Chile.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contacto">
-        <div class="container">
-            <div class="footer-cta">
-                <h2>¿Listo para digitalizar tu negocio?</h2>
-                <div class="contact-methods">
-                    <a href="https://wa.me/56976739157" class="btn-whatsapp-large" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Ventas
-                    </a>
-                    <a href="mailto:ventas@tiendappchile.cl" class="btn-email-large">
-                        <i class="fa-solid fa-envelope"></i> ventas@tiendappchile.cl
-                    </a>
-                </div>
-                <p class="cotizacion-note">Cotizaciones y prototipos sin compromiso.</p>
-            </div>
-            <div class="footer-bottom">
-                <div class="logo">⚡ TiendApp <span>Chile</span></div>
-                <p>&copy; 2026 Todos los derechos reservados. | <a href="javascript:void(0)" onclick="openAgencyLogin()" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">Gestión Interna</a></p>
-            </div>
+    <footer>
+        <div class="footer-content">
+            <div class="logo">⚡ TiendApp <span>Chile</span></div>
+            <p>&copy; 2026 Todos los derechos reservados.</p>
         </div>
     </footer>
-    </div>
 
-    <div id="agency-erp" style="display: none; padding-top: 40px;">
-        <div class="container">
-            <div class="admin-header">
-                <div class="logo">⚡ TiendApp <span>ERP</span></div>
-                <button class="btn-outline" onclick="logoutAgency()" style="width: auto; padding: 10px 20px;">Cerrar Administración</button>
-            </div>
-            <div class="erp-grid">
-                <div class="erp-card">
-                    <h3>Ingresos Mensuales (MRR)</h3>
-                    <div class="erp-value">$ 0</div>
-                    <p>Suscripciones activas</p>
-                </div>
-                <div class="erp-card">
-                    <h3>Clientes Reales</h3>
-                    <div class="erp-value">0</div>
-                    <p>Contratos vigentes</p>
-                </div>
-                <div class="erp-card">
-                    <h3>Prototipos Listos</h3>
-                    <div class="erp-value">5</div>
-                    <p>Demos en catálogo</p>
-                </div>
-            </div>
-            <div class="erp-section">
-                <h2>Inventario de Soluciones</h2>
-                <div class="erp-table-container">
-                    <table class="erp-table">
-                        <thead>
-                            <tr><th>Demo / Plantilla</th><th>Tecnología</th><th>Estado</th><th>Acción</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>SushiApp Premium</td><td>HTML/JS/Chart.js</td><td><span class="status-badge">Listo</span></td><td><a href="sushi/index.html" class="btn-link">Ver Demo</a></td></tr>
-                            <tr><td>Agenda Barber VIP</td><td>React/Node.js</td><td><span class="status-badge">Listo</span></td><td><a href="barberia/index.html" class="btn-link">Ver Demo</a></td></tr>
-                            <tr><td>Almacén Express</td><td>Mobile First</td><td><span class="status-badge">Listo</span></td><td><a href="almacen/index.html" class="btn-link">Ver Demo</a></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="erp-section">
-                <h2>Clientes / Suscripciones</h2>
-                <div class="empty-state">
-                    <i class="fa-solid fa-folder-open"></i>
-                    <p>Aún no tienes clientes registrados. ¡Sal a vender!</p>
-                </div>
-            </div>
-            <div class="erp-section">
-                <h2><i class="fa-solid fa-headset" style="margin-right: 10px;"></i> Soporte Técnico</h2>
-                <div class="erp-card" style="padding: 20px;">
-                    <p style="color:var(--text-muted); font-size:0.9rem;">Herramienta interna para resolver solicitudes de clientes.</p>
-                    <div id="agency-ticket-list" style="margin-top: 20px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Reveal on scroll
+            const reveals = document.querySelectorAll('.reveal');
+            const checkReveal = () => {
+                reveals.forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                        el.classList.add('active');
+                    }
+                });
+            };
+            window.addEventListener('scroll', checkReveal);
+            checkReveal();
 
-    <div id="agency-login-modal" class="agency-modal">
-        <div class="agency-modal-content">
-            <div class="logo" style="margin-bottom: 20px; text-align: center;">⚡ TiendApp <span>Agencia</span></div>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">Zona de Administración Interna</p>
-            <input type="password" id="agency-pin" placeholder="PIN de Seguridad" onkeyup="if(event.key === 'Enter') attemptAgencyLogin()">
-            <button class="btn-primary" onclick="attemptAgencyLogin()" style="width: 100%; border: none; cursor: pointer;">Entrar al ERP</button>
-            <button class="btn-link" onclick="closeAgencyModal()" style="width: 100%; margin-top: 10px; color: var(--text-muted); background:none; border:none; cursor:pointer;">Cancelar</button>
-        </div>
-    </div>
-
-    <div id="client-support-portal" style="display: none; padding-top: 40px; min-height: 100vh;">
-        <div class="container">
-            <div class="admin-header">
-                <div class="logo">⚡ TiendApp <span>Soporte</span></div>
-                <button class="btn-outline" onclick="logoutSupport()" style="width: auto; padding: 10px 20px;">Volver al Inicio</button>
-            </div>
-            <div class="erp-section" style="max-width: 600px; margin: 0 auto;">
-                <h2 style="text-align: center; margin-bottom: 30px;">Ticket de Ayuda</h2>
-                <div class="erp-card" style="text-align: left;">
-                    <p style="color:var(--text-muted); margin-bottom:20px;">Completa los datos para abrir un ticket. Nuestro equipo lo revisará según tu plan.</p>
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 0.9rem;">Nombre del Negocio</label>
-                        <input type="text" id="ticket-negocio" placeholder="Ej: Barbería Vintage" style="width: 100%; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; font-family: 'Space Grotesk', sans-serif;">
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 0.9rem;">Tipo de Solicitud</label>
-                        <select id="ticket-tipo" style="width: 100%; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; appearance: auto; font-family: 'Space Grotesk', sans-serif;">
-                            <option value="Actualización de Precios/Menú">Actualización de Precios / Productos</option>
-                            <option value="Cambio de Imágenes">Cambio de Imágenes o Textos</option>
-                            <option value="Problema Técnico">Problema Técnico / Error</option>
-                            <option value="Duda General">Duda General / Asesoría</option>
-                        </select>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 0.9rem;">Detalles</label>
-                        <textarea id="ticket-detalle" rows="5" placeholder="Describe lo que necesitas..." style="width: 100%; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; resize: vertical; font-family: 'Space Grotesk', sans-serif;"></textarea>
-                    </div>
-                    <button class="btn-primary" onclick="sendSupportTicket()" style="width: 100%; border: none; cursor: pointer; padding: 16px; font-size: 1rem;"><i class="fa-solid fa-paper-plane"></i> Enviar Ticket</button>
-                </div>
-            </div>
-            <div class="erp-section" style="max-width: 600px; margin: 40px auto 0;">
-                <h3 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">Consultar Estado de Ticket</h3>
-                <div class="erp-card" style="display:flex; gap:10px; margin-bottom: 20px; padding: 15px;">
-                    <input type="text" id="consulta-ticket-id" placeholder="N° de Ticket (Ej: 1234)" style="flex:1; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; font-family: 'Space Grotesk', sans-serif;">
-                    <button class="btn-primary" onclick="consultarTicket()">Consultar</button>
-                </div>
-                <div id="consulta-resultado"></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="support-login-modal" class="agency-modal">
-        <div class="agency-modal-content">
-            <div class="logo" style="margin-bottom: 20px; text-align: center;">⚡ Soporte <span>Técnico</span></div>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">Acceso exclusivo para clientes activos.</p>
-            <input type="password" id="support-password" placeholder="Clave de Cliente" onkeyup="if(event.key === 'Enter') attemptSupportLogin()">
-            <button class="btn-primary" onclick="attemptSupportLogin()" style="width: 100%; border: none; cursor: pointer;">Ingresar al Portal</button>
-            <button class="btn-link" onclick="closeSupportModal()" style="width: 100%; margin-top: 10px; color: var(--text-muted); background:none; border:none; cursor:pointer;">Regresar</button>
-        </div>
-    </div>
-
-    <div id="agency-reply-modal" class="agency-modal">
-        <div class="agency-modal-content" style="max-width: 500px;">
-            <div class="logo" style="margin-bottom: 20px; text-align: center;">⚡ Responder <span>Ticket</span></div>
-            <p id="reply-ticket-info" style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;"></p>
-            <textarea id="reply-text" rows="4" placeholder="Escribe tu feedback para el cliente..." style="width: 100%; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; resize: vertical; margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;"></textarea>
-            <input type="hidden" id="reply-ticket-id">
-            <button class="btn-primary" onclick="sendReply()" style="width: 100%; border: none; cursor: pointer; margin-bottom: 10px;">Enviar Feedback</button>
-            <button class="btn-link" onclick="closeReplyModal()" style="width: 100%; color: var(--text-muted); background:none; border:none; cursor:pointer;">Cancelar</button>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelector('.nav-links')?.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
