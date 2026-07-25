@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TiendApp Chile - Soluciones Digitales</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>TiendApp Chile - Desarrollo Web & Apps</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -14,9 +14,9 @@
         <div class="nav-content">
             <div class="logo">⚡ TiendApp <span>Chile</span></div>
             <div class="nav-links">
+                <a href="#proyectos">Portafolio</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#planes">Planes</a>
-                <a href="#proyectos">Proyectos</a>
                 <a href="#faq">FAQ</a>
                 <a href="streaming.html">Streaming</a>
                 <a href="retro.html">Retro Gaming</a>
@@ -30,40 +30,41 @@
     </nav>
 
     <header class="hero">
-        <div class="hero-bg" style="background-image: url('agency_hero_bg.png');"></div>
+        <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Transformamos negocios tradicionales en <span>Experiencias Digitales</span>.</h1>
-            <p>Especialistas en desarrollo de aplicaciones web y móviles para Almacenes, Barberías, Restaurantes y más en todo Chile.</p>
+            <h1>Transformamos negocios en <span>experiencias digitales</span></h1>
+            <p>Aplicaciones web y móviles para restaurantes, barberías, almacenes y más. Diseño premium que convierte visitas en ventas.</p>
             <div class="hero-actions">
-                <a href="#proyectos" class="btn-primary">Ver Portafolio <i class="fa-solid fa-arrow-down"></i></a>
-                <a href="streaming.html" class="btn-outline"><i class="fa-solid fa-tv"></i> Ver Streaming</a>
-                <a href="retro.html" class="btn-outline"><i class="fa-solid fa-gamepad"></i> Ver Retro Gaming</a>
+                <a href="#proyectos" class="btn-primary"><i class="fa-solid fa-arrow-down"></i> Ver Portafolio</a>
+                <a href="https://wa.me/56976739157" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar Gratis</a>
             </div>
         </div>
     </header>
 
     <section class="stats-section reveal">
-        <div class="container stats-grid">
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
-                <div class="stat-info">
-                    <span class="stat-value">100%</span>
-                    <span class="stat-label">Optimizado Móvil</span>
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fa-solid fa-bolt stat-icon"></i>
+                    <div>
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Optimizado Móvil</span>
+                    </div>
                 </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-gauge-high"></i></div>
-                <div class="stat-info">
-                    <span class="stat-value">< 2s</span>
-                    <span class="stat-label">Carga Ultra-Rápida</span>
+                <div class="stat-item">
+                    <i class="fa-solid fa-gauge-high stat-icon"></i>
+                    <div>
+                        <span class="stat-value">&lt; 2s</span>
+                        <span class="stat-label">Carga Ultra-Rápida</span>
+                    </div>
                 </div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <div class="stat-info">
-                    <span class="stat-value">24/7</span>
-                    <span class="stat-label">Soporte Local</span>
+                <div class="stat-item">
+                    <i class="fa-solid fa-shield-halved stat-icon"></i>
+                    <div>
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Soporte Local</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,10 +73,9 @@
     <section id="proyectos" class="section reveal">
         <div class="container">
             <div class="section-header">
-                <h2>Nuestros Demos Interactivos</h2>
-                <p>Explora cómo se vería tu negocio en la palma de la mano de tus clientes.</p>
+                <h2>Portafolio</h2>
+                <p>Demos interactivas de lo que podemos crear para tu negocio.</p>
             </div>
-            
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('sushi_thumbnail.png');">
@@ -83,12 +83,12 @@
                     </div>
                     <div class="project-info">
                         <h3>SushiApp Premium</h3>
-                        <p>Sistema completo con Menú interactivo, simulación de carrito de compras y panel de despacho para cocina.</p>
+                        <p>Menú interactivo, carrito de compras y panel de despacho para cocina en tiempo real.</p>
                         <div class="tech-stack">
                             <span>HTML5</span><span>CSS3</span><span>JS</span>
                         </div>
                         <a href="sushi/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                            <i class="fa-solid fa-play"></i> Probar Demo
                         </a>
                     </div>
                 </div>
@@ -99,12 +99,12 @@
                     </div>
                     <div class="project-info">
                         <h3>Agenda Barber VIP</h3>
-                        <p>Plataforma de reservas de turnos con calendario interactivo, panel de barberos y recordatorios automáticos.</p>
+                        <p>Reservas con calendario interactivo, panel de barberos y recordatorios automáticos.</p>
                         <div class="tech-stack">
                             <span>React</span><span>Node.js</span>
                         </div>
                         <a href="barberia/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                            <i class="fa-solid fa-play"></i> Probar Demo
                         </a>
                     </div>
                 </div>
@@ -115,12 +115,12 @@
                     </div>
                     <div class="project-info">
                         <h3>Almacén Express</h3>
-                        <p>Catálogo de abarrotes, control de stock y pedidos vecinales con entrega rápida. Interfaz ultra sencilla.</p>
+                        <p>Catálogo de abarrotes, control de stock y pedidos vecinales con entrega rápida.</p>
                         <div class="tech-stack">
                             <span>Mobile App</span><span>UX/UI</span>
                         </div>
                         <a href="almacen/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                            <i class="fa-solid fa-play"></i> Probar Demo
                         </a>
                     </div>
                 </div>
@@ -131,12 +131,12 @@
                     </div>
                     <div class="project-info">
                         <h3>LubriScan Chile</h3>
-                        <p>Gestión de mantenciones con selector de insumos, scanner digital y agendamiento de horas en línea.</p>
+                        <p>Gestión de mantenciones con selector de insumos y agendamiento en línea.</p>
                         <div class="tech-stack">
                             <span>IoT Ready</span><span>Booking AI</span>
                         </div>
                         <a href="lubricentro/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                            <i class="fa-solid fa-play"></i> Probar Demo
                         </a>
                     </div>
                 </div>
@@ -147,12 +147,12 @@
                     </div>
                     <div class="project-info">
                         <h3>Rider Gear Premium</h3>
-                        <p>Tienda de alta gama para accesorios y ropa técnica. Carrito dinámico y visualización de productos en 4K.</p>
+                        <p>Tienda de alta gama con carrito dinámico y visualización de productos en 4K.</p>
                         <div class="tech-stack">
                             <span>High Perf</span><span>E-commerce</span>
                         </div>
                         <a href="ropa/index.html" class="btn-outline">
-                            <i class="fa-solid fa-play"></i> Probar Demo en Vivo
+                            <i class="fa-solid fa-play"></i> Probar Demo
                         </a>
                     </div>
                 </div>
@@ -160,26 +160,27 @@
         </div>
     </section>
 
-    <section id="servicios" class="section bg-alt reveal">
+    <section id="servicios" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(99,102,241,0.03) 50%, var(--bg-dark) 100%);">
         <div class="container">
             <div class="section-header center">
                 <h2>¿Qué hacemos?</h2>
+                <p>Soluciones completas para digitalizar tu negocio</p>
             </div>
             <div class="services-grid">
                 <div class="service-item">
                     <i class="fa-solid fa-mobile-screen"></i>
                     <h3>Apps a Medida</h3>
-                    <p>Diseño y desarrollo de aplicaciones web y móviles centradas en convertir visitas en ventas.</p>
+                    <p>Aplicaciones web y móviles diseñadas para convertir visitas en ventas.</p>
                 </div>
                 <div class="service-item">
                     <i class="fa-solid fa-paintbrush"></i>
-                    <h3>Diseño UX/UI Premium</h3>
-                    <p>Nuestras interfaces son la clave del éxito. En TiendApp Chile priorizamos el diseño moderno y experiencias de usuario excepcionales.</p>
+                    <h3>Diseño UX/UI</h3>
+                    <p>Interfaces modernas y experiencias de usuario que sorprenden.</p>
                 </div>
                 <div class="service-item">
                     <i class="fa-solid fa-cog"></i>
                     <h3>Sistemas de Gestión</h3>
-                    <p>Paneles de control para que manejes tu negocio, pedidos y promociones desde tu propio celular.</p>
+                    <p>Paneles de control para manejar tu negocio desde tu celular.</p>
                 </div>
             </div>
         </div>
@@ -189,46 +190,45 @@
         <div class="container">
             <div class="section-header center">
                 <h2>Tu éxito en 4 pasos</h2>
-                <p>Nuestra metodología comprobada para digitalizar tu negocio.</p>
+                <p>Metodología comprobada para digitalizar tu negocio</p>
             </div>
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-num">01</div>
-                    <h3>Diseño del Prototipo</h3>
-                    <p>Creamos la experiencia visual de tu aplicación para que veas cómo funcionará antes de escribir código.</p>
+                    <h3>Prototipo</h3>
+                    <p>Creamos la experiencia visual antes de escribir una línea de código.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">02</div>
-                    <h3>Desarrollo Maestro</h3>
-                    <p>Construimos la plataforma con las mejores tecnologías, asegurando velocidad y seguridad total.</p>
+                    <h3>Desarrollo</h3>
+                    <p>Construimos con las mejores tecnologías, asegurando velocidad y seguridad.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">03</div>
-                    <h3>Pruebas y Ajustes</h3>
-                    <p>Auditamos cada detalle para garantizar que el sistema sea perfecto en todos los modelos de celular.</p>
+                    <h3>Pruebas</h3>
+                    <p>Auditamos cada detalle para garantizar perfección en todos los dispositivos.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-num">04</div>
-                    <h3>Lanzamiento y Soporte</h3>
-                    <p>Publicamos tu solución y te acompañamos en el crecimiento de tu negocio digital.</p>
+                    <h3>Lanzamiento</h3>
+                    <p>Publicamos tu solución y te acompañamos en el crecimiento digital.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="planes" class="section reveal">
+    <section id="planes" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(6,182,212,0.03) 50%, var(--bg-dark) 100%);">
         <div class="container">
             <div class="section-header center">
-                <h2>Elige tu Plan</h2>
-                <p>Opciones flexibles diseñadas para potenciar tu marca desde el primer día.</p>
+                <h2>Planes de Desarrollo</h2>
+                <p>Opciones flexibles para potenciar tu marca desde el primer día</p>
             </div>
-            
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>Plan Inicio</h3>
                         <p class="price">$20.000 <span>/ mes</span></p>
-                        <p class="setup-fee">Inversión Inicial: $0</p>
+                        <p class="setup-fee">Inversión inicial: $0</p>
                     </div>
                     <ul class="pricing-features">
                         <li><i class="fa-solid fa-check"></i> Subdominio tiendapp.cl</li>
@@ -236,16 +236,16 @@
                         <li><i class="fa-solid fa-check"></i> Soporte vía Tickets</li>
                         <li><i class="fa-solid fa-check"></i> Seguridad Activada</li>
                         <li class="disabled"><i class="fa-solid fa-xmark"></i> Dominio Propio .cl</li>
-                        <li class="disabled"><i class="fa-solid fa-xmark"></i> 4 Meses de Mantención Gratis</li>
+                        <li class="disabled"><i class="fa-solid fa-xmark"></i> Mantención Gratis</li>
                     </ul>
                     <div class="pricing-actions">
-                        <a href="#contacto" class="btn-outline">Consultar</a>
+                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Plan%20Inicio" class="btn-outline" target="_blank">Consultar</a>
                         <a href="mailto:ventas@tiendappchile.cl?subject=Interés en Plan Inicio" class="btn-link-small"><i class="fa-solid fa-envelope"></i> Enviar Correo</a>
                     </div>
                 </div>
 
                 <div class="pricing-card popular">
-                    <div class="popular-badge">Más Rentable</div>
+                    <div class="popular-badge">Más Popular</div>
                     <div class="pricing-header">
                         <h3>Plan Pro</h3>
                         <p class="price">Desde $60.000</p>
@@ -259,35 +259,36 @@
                         <li><i class="fa-solid fa-check"></i> Soporte Prioritario WhatsApp</li>
                     </ul>
                     <div class="pricing-actions">
-                        <a href="#contacto" class="btn-primary" style="display: block; text-align: center; text-decoration: none;">Solicitar Plan Pro</a>
+                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Plan%20Pro" class="btn-primary" target="_blank">Solicitar Plan Pro</a>
                         <a href="mailto:ventas@tiendappchile.cl?subject=Interés en Plan Pro" class="btn-link-small"><i class="fa-solid fa-envelope"></i> Consultar por Email</a>
                     </div>
                 </div>
 
                 <div class="pricing-card">
-                    <div class="popular-badge" style="background: #8b5cf6;">Otro Servicio</div>
                     <div class="pricing-header">
-                        <h3>¿Streaming o Retro?</h3>
-                        <p class="price" style="font-size: 1.5rem;">Visita nuestras otras tiendas</p>
+                        <h3>Otros Servicios</h3>
+                        <p class="price" style="font-size: 1.3rem;">Streaming & Retro Gaming</p>
+                        <p class="setup-fee">Visita nuestras tiendas</p>
                     </div>
                     <ul class="pricing-features">
-                        <li><i class="fa-solid fa-tv"></i> <a href="streaming.html" style="color: var(--primary); text-decoration: none;">Netflix, Disney+, HBO y más</a></li>
-                        <li><i class="fa-solid fa-gamepad"></i> <a href="retro.html" style="color: var(--primary); text-decoration: none;">Consolas con +10,000 juegos</a></li>
-                        <li><i class="fa-solid fa-check"></i> Soporte 24/7</li>
+                        <li><i class="fa-solid fa-tv" style="color: #8b5cf6;"></i> Netflix, Disney+, HBO y más</li>
+                        <li><i class="fa-solid fa-gamepad" style="color: #ec4899;"></i> Consolas con +10,000 juegos</li>
+                        <li><i class="fa-solid fa-check"></i> Soporte 24/7 incluido</li>
                     </ul>
                     <div class="pricing-actions">
-                        <a href="streaming.html" class="btn-outline" style="display: block; text-align: center;">Ver Streaming</a>
-                        <a href="retro.html" class="btn-outline" style="display: block; text-align: center; margin-top: 10px;">Ver Retro Gaming</a>
+                        <a href="streaming.html" class="btn-outline" style="border-color: #8b5cf6; color: #8b5cf6;"><i class="fa-solid fa-tv"></i> Ver Streaming</a>
+                        <a href="retro.html" class="btn-outline" style="border-color: #ec4899; color: #ec4899; margin-top: 4px;"><i class="fa-solid fa-gamepad"></i> Ver Retro Gaming</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="testimonios" class="section bg-alt reveal">
+    <section id="testimonios" class="section reveal">
         <div class="container">
             <div class="section-header center">
                 <h2>Clientes de confianza</h2>
+                <p>Lo que dicen quienes ya trabajan con nosotros</p>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
@@ -310,7 +311,7 @@
         </div>
     </section>
 
-    <section id="faq" class="section reveal">
+    <section id="faq" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(139,92,246,0.03) 50%, var(--bg-dark) 100%);">
         <div class="container">
             <div class="section-header center">
                 <h2>Preguntas Frecuentes</h2>
@@ -319,7 +320,7 @@
                 <div class="faq-item">
                     <div class="faq-question">¿Cuánto tiempo demora el desarrollo? <i class="fa-solid fa-plus"></i></div>
                     <div class="faq-answer">
-                        <p>Dependiendo de la complejidad, un sistema base (como el de los demos) puede estar listo entre 7 a 15 días hábiles.</p>
+                        <p>Dependiendo de la complejidad, un sistema base puede estar listo entre 7 a 15 días hábiles.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -331,13 +332,13 @@
                 <div class="faq-item">
                     <div class="faq-question">¿Debo pagar mensualidades? <i class="fa-solid fa-plus"></i></div>
                     <div class="faq-answer">
-                        <p>Depende de la complejidad de la aplicación y los requerimientos de soporte. Generalmente incluimos un monto mínimo mensual que cubre el mantenimiento del servidor, actualizaciones de seguridad y soporte técnico constante.</p>
+                        <p>Depende de la complejidad y el soporte. Generalmente incluimos un monto mínimo mensual que cubre mantenimiento, actualizaciones y soporte técnico.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Es seguro para mis clientes pagar por la App? <i class="fa-solid fa-plus"></i></div>
                     <div class="faq-answer">
-                        <p>Absolutamente. Integramos pasarelas de pago cifradas como MercadoPago y Transbank, cumpliendo con todos los estándares bancarios de Chile.</p>
+                        <p>Sí. Integramos pasarelas de pago cifradas como MercadoPago y Transbank, cumpliendo con todos los estándares bancarios de Chile.</p>
                     </div>
                 </div>
             </div>
@@ -372,7 +373,6 @@
                 <div class="logo">⚡ TiendApp <span>ERP</span></div>
                 <button class="btn-outline" onclick="logoutAgency()" style="width: auto; padding: 10px 20px;">Cerrar Administración</button>
             </div>
-
             <div class="erp-grid">
                 <div class="erp-card">
                     <h3>Ingresos Mensuales (MRR)</h3>
@@ -390,59 +390,33 @@
                     <p>Demos en catálogo</p>
                 </div>
             </div>
-
             <div class="erp-section">
                 <h2>Inventario de Soluciones</h2>
                 <div class="erp-table-container">
                     <table class="erp-table">
                         <thead>
-                            <tr>
-                                <th>Demo / Plantilla</th>
-                                <th>Tecnología</th>
-                                <th>Estado</th>
-                                <th>Acción</th>
-                            </tr>
+                            <tr><th>Demo / Plantilla</th><th>Tecnología</th><th>Estado</th><th>Acción</th></tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>SushiApp Premium</td>
-                                <td>HTML/JS/Chart.js</td>
-                                <td><span class="status-badge">Listo</span></td>
-                                <td><a href="sushi/index.html" class="btn-link">Ver Demo</a></td>
-                            </tr>
-                            <tr>
-                                <td>Agenda Barber VIP</td>
-                                <td>React/Node.js</td>
-                                <td><span class="status-badge">Listo</span></td>
-                                <td><a href="barberia/index.html" class="btn-link">Ver Demo</a></td>
-                            </tr>
-                            <tr>
-                                <td>Almacén Express</td>
-                                <td>Mobile First</td>
-                                <td><span class="status-badge">Listo</span></td>
-                                <td><a href="almacen/index.html" class="btn-link">Ver Demo</a></td>
-                            </tr>
+                            <tr><td>SushiApp Premium</td><td>HTML/JS/Chart.js</td><td><span class="status-badge">Listo</span></td><td><a href="sushi/index.html" class="btn-link">Ver Demo</a></td></tr>
+                            <tr><td>Agenda Barber VIP</td><td>React/Node.js</td><td><span class="status-badge">Listo</span></td><td><a href="barberia/index.html" class="btn-link">Ver Demo</a></td></tr>
+                            <tr><td>Almacén Express</td><td>Mobile First</td><td><span class="status-badge">Listo</span></td><td><a href="almacen/index.html" class="btn-link">Ver Demo</a></td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
             <div class="erp-section">
-                <h2>Cientes / Suscripciones</h2>
+                <h2>Clientes / Suscripciones</h2>
                 <div class="empty-state">
                     <i class="fa-solid fa-folder-open"></i>
-                    <p>Aún no tienes clientes registrados. ¡Sal a vender tus soluciones!</p>
+                    <p>Aún no tienes clientes registrados. ¡Sal a vender!</p>
                 </div>
             </div>
-
             <div class="erp-section">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
-                    <h2><i class="fa-solid fa-headset" style="margin-right: 10px; color: var(--primary);"></i> Soporte Técnico</h2>
-                </div>
-                <div class="erp-card" style="background: rgba(255, 255, 255, 0.02); padding: 20px;">
-                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px;">Utiliza esta herramienta interna para dar feedback y resolver las solicitudes enviadas por los clientes.</p>
-                    <div id="agency-ticket-list" style="margin-top: 20px;">
-                    </div>
+                <h2><i class="fa-solid fa-headset" style="margin-right: 10px;"></i> Soporte Técnico</h2>
+                <div class="erp-card" style="padding: 20px;">
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Herramienta interna para resolver solicitudes de clientes.</p>
+                    <div id="agency-ticket-list" style="margin-top: 20px;"></div>
                 </div>
             </div>
         </div>
@@ -464,44 +438,37 @@
                 <div class="logo">⚡ TiendApp <span>Soporte</span></div>
                 <button class="btn-outline" onclick="logoutSupport()" style="width: auto; padding: 10px 20px;">Volver al Inicio</button>
             </div>
-
             <div class="erp-section" style="max-width: 600px; margin: 0 auto;">
-                <h2 style="text-align: center; margin-bottom: 30px;">Ingreso de Ticket de Ayuda</h2>
+                <h2 style="text-align: center; margin-bottom: 30px;">Ticket de Ayuda</h2>
                 <div class="erp-card" style="text-align: left;">
-                    <p style="color:var(--text-muted); margin-bottom:20px;">Por favor, completa los siguientes datos para abrir un ticket. Nuestro equipo lo revisará y procesará de acuerdo a tu pago mensual.</p>
-                    
+                    <p style="color:var(--text-muted); margin-bottom:20px;">Completa los datos para abrir un ticket. Nuestro equipo lo revisará según tu plan.</p>
                     <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Nombre del Negocio / Cliente</label>
-                        <input type="text" id="ticket-negocio" placeholder="Ej: Barbería Vintage" style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 0.9rem;">Nombre del Negocio</label>
+                        <input type="text" id="ticket-negocio" placeholder="Ej: Barbería Vintage" style="width: 100%; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; font-family: 'Space Grotesk', sans-serif;">
                     </div>
-                    
                     <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Tipo de Solicitud</label>
-                        <select id="ticket-tipo" style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; appearance: auto;">
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 0.9rem;">Tipo de Solicitud</label>
+                        <select id="ticket-tipo" style="width: 100%; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; appearance: auto; font-family: 'Space Grotesk', sans-serif;">
                             <option value="Actualización de Precios/Menú">Actualización de Precios / Productos</option>
                             <option value="Cambio de Imágenes">Cambio de Imágenes o Textos</option>
-                            <option value="Problema Técnico">Problema Técnico / Reporte de Error</option>
+                            <option value="Problema Técnico">Problema Técnico / Error</option>
                             <option value="Duda General">Duda General / Asesoría</option>
                         </select>
                     </div>
-
                     <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">Detalles de lo requerido</label>
-                        <textarea id="ticket-detalle" rows="5" placeholder="Escribe aquí los detalles precisos (ej. Cambiar precio del Corte Premium a $15.000 y actualizar logo)..." style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; resize: vertical; font-family: 'Inter', sans-serif;"></textarea>
+                        <label style="display: block; margin-bottom: 5px; color: var(--text-muted); font-size: 0.9rem;">Detalles</label>
+                        <textarea id="ticket-detalle" rows="5" placeholder="Describe lo que necesitas..." style="width: 100%; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; resize: vertical; font-family: 'Space Grotesk', sans-serif;"></textarea>
                     </div>
-
-                    <button class="btn-primary" onclick="sendSupportTicket()" style="width: 100%; border: none; cursor: pointer; padding: 15px; font-size: 1.1rem;"><i class="fa-solid fa-paper-plane"></i> Enviar Ticket de Soporte</button>
+                    <button class="btn-primary" onclick="sendSupportTicket()" style="width: 100%; border: none; cursor: pointer; padding: 16px; font-size: 1rem;"><i class="fa-solid fa-paper-plane"></i> Enviar Ticket</button>
                 </div>
             </div>
-            
             <div class="erp-section" style="max-width: 600px; margin: 40px auto 0;">
-                <h3 style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">Consultar Estado de Ticket</h3>
+                <h3 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">Consultar Estado de Ticket</h3>
                 <div class="erp-card" style="display:flex; gap:10px; margin-bottom: 20px; padding: 15px;">
-                    <input type="text" id="consulta-ticket-id" placeholder="N° de Ticket (Ej: 1234)" style="flex:1; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+                    <input type="text" id="consulta-ticket-id" placeholder="N° de Ticket (Ej: 1234)" style="flex:1; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; font-family: 'Space Grotesk', sans-serif;">
                     <button class="btn-primary" onclick="consultarTicket()">Consultar</button>
                 </div>
-                <div id="consulta-resultado">
-                </div>
+                <div id="consulta-resultado"></div>
             </div>
         </div>
     </div>
@@ -520,9 +487,9 @@
         <div class="agency-modal-content" style="max-width: 500px;">
             <div class="logo" style="margin-bottom: 20px; text-align: center;">⚡ Responder <span>Ticket</span></div>
             <p id="reply-ticket-info" style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;"></p>
-            <textarea id="reply-text" rows="4" placeholder="Escribe tu feedback o resolución aquí para notificar al cliente..." style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px; resize: vertical; margin-bottom: 15px;"></textarea>
+            <textarea id="reply-text" rows="4" placeholder="Escribe tu feedback para el cliente..." style="width: 100%; padding: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; border-radius: 12px; resize: vertical; margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;"></textarea>
             <input type="hidden" id="reply-ticket-id">
-            <button class="btn-primary" onclick="sendReply()" style="width: 100%; border: none; cursor: pointer; margin-bottom: 10px;">Enviar Feedback al Cliente</button>
+            <button class="btn-primary" onclick="sendReply()" style="width: 100%; border: none; cursor: pointer; margin-bottom: 10px;">Enviar Feedback</button>
             <button class="btn-link" onclick="closeReplyModal()" style="width: 100%; color: var(--text-muted); background:none; border:none; cursor:pointer;">Cancelar</button>
         </div>
     </div>
