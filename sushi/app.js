@@ -368,10 +368,10 @@ function closePaymentModal() {
     document.getElementById('payment-modal').classList.remove('active');
 }
 
-function selectPayment(method) {
+function selectPayment(method, e) {
     selectedMethod = method;
     document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
+    e.currentTarget.classList.add('selected');
     
     const btn = document.getElementById('btn-confirm-pay');
     btn.classList.remove('btn-confirm-disabled');

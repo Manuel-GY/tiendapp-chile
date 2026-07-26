@@ -96,7 +96,7 @@ function consultarTicket() {
     container.innerHTML = `
         <div style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 20px;">
             <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                <strong>Ticket #${t.id.toString().slice(-4)} - ${t.tipo}</strong>
+                <strong>Ticket #${t.id.toString().slice(-4)} - ${sanitize(t.tipo)}</strong>
                 <span style="color: ${statusColor}; font-weight: 600; font-size: 0.9rem;">${t.estado}</span>
             </div>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px;"><strong>Tu Solicitud:</strong> ${sanitize(t.detalle)}</p>

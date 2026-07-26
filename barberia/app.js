@@ -104,10 +104,10 @@ function openBookingModal(srv) {
 function closeBookingModal() {
     document.getElementById('booking-modal').classList.remove('active');
 }
-function selectTime(time) {
+function selectTime(time, e) {
     selectedTime = time;
     document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
+    e.currentTarget.classList.add('selected');
     const btn = document.getElementById('btn-confirm-book');
     btn.classList.remove('disabled');
     btn.disabled = false;
