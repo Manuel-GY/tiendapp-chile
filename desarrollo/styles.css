@@ -159,6 +159,8 @@ body {
     align-items: center;
     gap: 8px;
     transition: all 0.3s;
+    position: relative;
+    z-index: 2;
 }
 
 .btn-outline:hover {
@@ -352,6 +354,8 @@ body {
     mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.4s;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .project-card:hover::before {
@@ -377,6 +381,7 @@ body {
     inset: 0;
     background: linear-gradient(to bottom, transparent 50%, var(--bg-dark) 100%);
     opacity: 0.5;
+    pointer-events: none;
 }
 
 .project-tag {
