@@ -12,222 +12,514 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="../shared.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         :root {
-            --retro-pink: #ec4899;
-            --retro-pink-dark: #db2777;
-            --retro-orange: #f97316;
+            --ps1-dark: #1a1a2e;
+            --ps1-mid: #2a2a3e;
+            --ps1-gray: #3a3a4e;
+            --ps1-light: #8c8c9e;
+            --ps1-green: #00cc66;
+            --ps1-red: #ff3333;
+            --ps1-blue: #3366ff;
+            --ps1-pink: #cc33cc;
+            --ps1-amber: #ffaa00;
+            --ps1-bg: #0d0d1a;
         }
+
+        * { font-family: 'Space Grotesk', sans-serif; }
+
+        .pixel-font {
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        body {
+            background: var(--ps1-bg);
+        }
+
+        /* CRT Scanline overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.08) 0px,
+                rgba(0, 0, 0, 0.08) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ===== NAVBAR PS1 ===== */
+        .navbar {
+            background: rgba(13, 13, 26, 0.95) !important;
+            border-bottom: 2px solid var(--ps1-gray) !important;
+        }
+
+        .logo span {
+            background: none !important;
+            -webkit-text-fill-color: var(--ps1-amber) !important;
+        }
+
+        /* ===== HERO PS1 STARTUP ===== */
         .hero-retro {
             position: relative;
-            height: min-content;
-            min-height: 80vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding-top: 80px;
-            background: linear-gradient(135deg, #0f172a 0%, #4a1942 50%, #0f172a 100%);
+            background: radial-gradient(ellipse at center, #1a1a3e 0%, #0d0d1a 70%);
+            overflow: hidden;
         }
+
         .hero-retro::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 50%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+            animation: ps1Glow 4s ease-in-out infinite alternate;
         }
+
+        @keyframes ps1Glow {
+            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
         .hero-retro .hero-content {
             position: relative;
             z-index: 2;
         }
+
+        .ps1-symbols {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            letter-spacing: 20px;
+            opacity: 0.6;
+        }
+
+        .ps1-symbols .triangle { color: var(--ps1-green); }
+        .ps1-symbols .circle { color: var(--ps1-red); }
+        .ps1-symbols .cross { color: var(--ps1-blue); }
+        .ps1-symbols .square { color: var(--ps1-pink); }
+
         .hero-retro h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.2;
             margin-bottom: 20px;
             letter-spacing: -1px;
+            text-transform: uppercase;
         }
+
+        .hero-retro h1 .pixel-font {
+            display: block;
+            font-size: clamp(0.7rem, 2vw, 1.2rem);
+            color: var(--ps1-amber);
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
         .hero-retro h1 span {
-            background: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background: none;
+            -webkit-text-fill-color: var(--text-main);
         }
+
         .hero-retro p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
+            font-size: 1.1rem;
+            color: var(--ps1-light);
             margin-bottom: 30px;
-            max-width: 600px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-retro .btn-primary {
+            background: var(--ps1-green) !important;
+            color: #000 !important;
+            font-weight: 700;
+        }
+
+        .hero-retro .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(0, 204, 102, 0.4);
+        }
+
+        .hero-retro .btn-outline {
+            border-color: var(--ps1-gray);
+        }
+
+        .hero-retro .btn-outline:hover {
+            border-color: var(--ps1-green);
+            color: var(--ps1-green);
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header h2 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-header p {
+            color: var(--ps1-light);
+        }
+
+        /* ===== CONSOLE CARDS — MEMORY CARD STYLE ===== */
         .consoles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .console-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.08);
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        .console-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--retro-pink);
-            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.2);
-        }
-        .console-img {
-            height: 180px;
-            background: linear-gradient(135deg, #1e1b4b, #4a1942);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .console-img i {
-            font-size: 5rem;
-            color: var(--retro-pink);
-        }
-        .console-info {
-            padding: 25px;
-        }
-        .console-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        .console-info p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        .console-specs {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .console-specs span {
-            background: rgba(236, 72, 153, 0.1);
-            color: var(--retro-pink);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        .plans-retro {
-            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 24px;
             margin-top: 40px;
         }
-        .plan-retro-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.08);
+
+        .console-card {
+            background: linear-gradient(145deg, #1e1e32, #15152a);
+            border-radius: 4px;
+            border: 2px solid var(--ps1-gray);
             overflow: hidden;
             transition: all 0.3s;
             position: relative;
         }
-        .plan-retro-card:hover {
-            transform: translateY(-10px);
+
+        .console-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ps1-green), var(--ps1-blue), var(--ps1-pink), var(--ps1-red));
         }
-        .plan-retro-card.popular {
-            border-color: var(--retro-pink);
-            box-shadow: 0 0 40px rgba(236, 72, 153, 0.3);
+
+        .console-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--ps1-green);
+            box-shadow: 0 0 30px rgba(0, 204, 102, 0.15);
         }
-        .plan-retro-header {
-            padding: 40px 30px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+        .console-img {
+            height: 160px;
+            background: linear-gradient(135deg, #12122a, #1a1a3e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 2px solid var(--ps1-gray);
         }
-        .plan-retro-header i {
-            font-size: 2.5rem;
-            color: var(--retro-pink);
+
+        .console-img i {
+            font-size: 4rem;
+            color: var(--ps1-light);
+            opacity: 0.7;
+        }
+
+        .console-img .ps1-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.5rem;
+            color: var(--ps1-amber);
+            background: rgba(0,0,0,0.5);
+            padding: 4px 8px;
+            border: 1px solid var(--ps1-amber);
+        }
+
+        .console-info {
+            padding: 24px;
+        }
+
+        .console-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .console-info p {
+            color: var(--ps1-light);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .console-specs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
             margin-bottom: 20px;
         }
+
+        .console-specs span {
+            background: rgba(0, 204, 102, 0.1);
+            color: var(--ps1-green);
+            padding: 4px 10px;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 204, 102, 0.2);
+            font-family: 'Press Start 2P', monospace;
+            letter-spacing: 0;
+        }
+
+        /* ===== GAMES SECTION — CARTRIDGE GRID ===== */
+        .games-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--ps1-bg) 0%, #0f0f24 100%);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .game-tag {
+            background: linear-gradient(145deg, #1a1a30, #12122a);
+            border: 2px solid var(--ps1-gray);
+            border-radius: 4px;
+            padding: 20px 12px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .game-tag:hover {
+            border-color: var(--ps1-green);
+            background: linear-gradient(145deg, #1e1e3a, #16162e);
+            transform: scale(1.05);
+        }
+
+        .game-tag i {
+            font-size: 1.8rem;
+            color: var(--ps1-amber);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .game-tag p {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+        }
+
+        /* ===== PRICING — PS1 UI STYLE ===== */
+        .plans-retro {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .plan-retro-card {
+            background: linear-gradient(145deg, #1e1e32, #15152a);
+            border-radius: 4px;
+            border: 2px solid var(--ps1-gray);
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .plan-retro-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--ps1-green);
+        }
+
+        .plan-retro-card.popular {
+            border-color: var(--ps1-green);
+            box-shadow: 0 0 40px rgba(0, 204, 102, 0.2);
+        }
+
+        .badge-retro-popular {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--ps1-green);
+            color: #000;
+            padding: 8px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.55rem;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .plan-retro-header {
+            padding: 40px 30px 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--ps1-gray);
+        }
+
+        .plan-retro-card.popular .plan-retro-header {
+            padding-top: 55px;
+        }
+
+        .plan-retro-header i {
+            font-size: 2.2rem;
+            color: var(--ps1-green);
+            margin-bottom: 16px;
+        }
+
         .plan-retro-header h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
         }
+
         .plan-retro-price {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
+            color: var(--text-main);
         }
+
         .plan-retro-price span {
-            font-size: 1rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--ps1-light);
             font-weight: 400;
         }
+
         .plan-retro-features {
             list-style: none;
-            padding: 30px;
+            padding: 24px 30px;
         }
+
         .plan-retro-features li {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
+            color: var(--ps1-light);
+            font-size: 0.9rem;
         }
+
         .plan-retro-features li:last-child {
             border-bottom: none;
         }
+
         .plan-retro-features i {
-            color: var(--retro-pink);
-            font-size: 0.9rem;
+            color: var(--ps1-green);
+            font-size: 0.8rem;
         }
+
         .plan-retro-actions {
             padding: 0 30px 30px;
         }
+
         .plan-retro-actions .btn-primary,
         .plan-retro-actions .btn-outline {
             width: 100%;
             justify-content: center;
             display: flex;
         }
-        .badge-retro-popular {
+
+        .plan-retro-actions .btn-primary {
+            background: var(--ps1-green) !important;
+            color: #000 !important;
+        }
+
+        /* ===== CONSOLES DETALLADAS ===== */
+        .section.bg-alt {
+            background: linear-gradient(180deg, #0f0f24 0%, var(--ps1-bg) 100%) !important;
+        }
+
+        .console-img .ps1-symbols-small {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, var(--retro-pink), var(--retro-orange));
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.3;
         }
-        .games-section {
-            padding: 60px 0;
+
+        .console-img .ps1-symbols-small .t { color: var(--ps1-green); }
+        .console-img .ps1-symbols-small .c { color: var(--ps1-red); }
+        .console-img .ps1-symbols-small .x { color: var(--ps1-blue); }
+        .console-img .ps1-symbols-small .s { color: var(--ps1-pink); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(180deg, var(--ps1-bg), #080816) !important;
+            border-top: 2px solid var(--ps1-gray);
         }
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+
+        footer::before {
+            background: linear-gradient(90deg, var(--ps1-green), var(--ps1-blue), var(--ps1-pink), var(--ps1-red)) !important;
+            width: 300px !important;
         }
-        .game-tag {
-            background: rgba(236, 72, 153, 0.1);
-            border: 1px solid rgba(236, 72, 153, 0.2);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            transition: all 0.3s;
+
+        .footer-cta h2 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        .game-tag:hover {
-            background: rgba(236, 72, 153, 0.2);
-            transform: scale(1.05);
+
+        .footer-cta p {
+            color: var(--ps1-light);
         }
-        .game-tag i {
-            font-size: 1.5rem;
-            color: var(--retro-pink);
-            margin-bottom: 8px;
+
+        .btn-whatsapp-large {
+            background: var(--ps1-green) !important;
+            color: #000 !important;
         }
-        .game-tag p {
-            font-size: 0.85rem;
-            font-weight: 600;
+
+        .btn-whatsapp-large:hover {
+            box-shadow: 0 0 30px rgba(0, 204, 102, 0.4);
+        }
+
+        .btn-email-large {
+            border-color: var(--ps1-gray);
+        }
+
+        .btn-email-large:hover {
+            background: var(--ps1-gray);
+            border-color: var(--ps1-gray);
+        }
+
+        .cotizacion-note {
+            color: var(--ps1-light);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .consoles-grid,
+            .plans-retro,
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ps1-symbols {
+                letter-spacing: 10px;
+                font-size: 1.5rem;
+            }
+
+            .hero-retro h1 {
+                font-size: clamp(1.5rem, 5vw, 2.5rem);
+            }
         }
     </style>
 </head>
@@ -252,11 +544,20 @@
 
     <header class="hero-retro">
         <div class="hero-content">
-            <h1>Revive la <span>Nostalgia</span></h1>
-            <p>Consolas emuladoras con miles de juegos precargados. PS1, PS2, Nintendo 64, SNES y mucho más. ¡El gaming clásico en tu hogar!</p>
+            <div class="ps1-symbols">
+                <span class="triangle">&#9650;</span>
+                <span class="circle">&#9679;</span>
+                <span class="cross">&#10005;</span>
+                <span class="square">&#9632;</span>
+            </div>
+            <h1>
+                <span class="pixel-font">PlayStation Experience</span>
+                Revive la <span>Nostalgia</span>
+            </h1>
+            <p>Consolas emuladoras con miles de juegos precargados. PS1, PS2, Nintendo 64, SNES y mucho más. El gaming clásico en tu hogar.</p>
             <div class="hero-actions">
-                <a href="#consolas" class="btn-primary" style="background: var(--retro-pink);"><i class="fa-solid fa-gamepad"></i> Ver Consolas</a>
-                <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Retro" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> Preguntar por WhatsApp</a>
+                <a href="#consolas" class="btn-primary"><i class="fa-solid fa-gamepad"></i> Ver Consolas</a>
+                <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Retro" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </header>
@@ -268,9 +569,11 @@
                 <p>Elige la consola perfecta para revivir tus juegos favoritos</p>
             </div>
             <div class="consoles-grid">
-                <div class="console-card">
+                <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-gamepad"></i>
+                        <span class="ps1-badge">PS1</span>
+                        <div class="ps1-symbols-small"><span class="t">&#9650;</span> <span class="c">&#9679;</span> <span class="x">&#10005;</span> <span class="s">&#9632;</span></div>
                     </div>
                     <div class="console-info">
                         <h3>Consola Básica</h3>
@@ -284,9 +587,11 @@
                     </div>
                 </div>
 
-                <div class="console-card">
+                <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-tv"></i>
+                        <span class="ps1-badge">PRO</span>
+                        <div class="ps1-symbols-small"><span class="t">&#9650;</span> <span class="c">&#9679;</span> <span class="x">&#10005;</span> <span class="s">&#9632;</span></div>
                     </div>
                     <div class="console-info">
                         <h3>Consola Pro</h3>
@@ -297,13 +602,15 @@
                             <span>N64</span>
                             <span>SNES</span>
                         </div>
-                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Pro%20Retro" class="btn-primary" style="background: var(--retro-pink);" target="_blank">Consultar Precio</a>
+                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Pro%20Retro" class="btn-primary" target="_blank">Consultar Precio</a>
                     </div>
                 </div>
 
-                <div class="console-card">
+                <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-robot"></i>
+                        <span class="ps1-badge">ULTRA</span>
+                        <div class="ps1-symbols-small"><span class="t">&#9650;</span> <span class="c">&#9679;</span> <span class="x">&#10005;</span> <span class="s">&#9632;</span></div>
                     </div>
                     <div class="console-info">
                         <h3>Consola Ultra</h3>
@@ -327,36 +634,40 @@
                 <h2>Consolas que Incluimos</h2>
             </div>
             <div class="consoles-grid">
-                <div class="console-card">
+                <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-microchip"></i>
+                        <span class="ps1-badge">PS1</span>
                     </div>
                     <div class="console-info">
                         <h3>PlayStation 1</h3>
                         <p>Crash Bandicoot, Spyro, Final Fantasy VII y más clásicos.</p>
                     </div>
                 </div>
-                <div class="console-card">
+                <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-memory"></i>
+                        <span class="ps1-badge">PS2</span>
                     </div>
                     <div class="console-info">
                         <h3>PlayStation 2</h3>
                         <p>La consola más vendida de la historia con miles de títulos.</p>
                     </div>
                 </div>
-                <div class="console-card">
+                <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-leaf"></i>
+                        <span class="ps1-badge">N64</span>
                     </div>
                     <div class="console-info">
                         <h3>Nintendo 64</h3>
                         <p>Super Mario 64, Zelda: Ocarina of Time, GoldenEye 007.</p>
                     </div>
                 </div>
-                <div class="console-card">
+                <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-star"></i>
+                        <span class="ps1-badge">SNES</span>
                     </div>
                     <div class="console-info">
                         <h3>SNES</h3>
@@ -374,35 +685,35 @@
                 <p>Todos los juegos clásicos precargados y listos para jugar</p>
             </div>
             <div class="games-grid">
-                <div class="game-tag">
+                <div class="game-tag reveal">
                     <i class="fa-solid fa-car"></i>
                     <p>Carreras</p>
                 </div>
-                <div class="game-tag">
+                <div class="game-tag reveal">
                     <i class="fa-solid fa-fist-raised"></i>
                     <p>Lucha</p>
                 </div>
-                <div class="game-tag">
+                <div class="game-tag reveal">
                     <i class="fa-solid fa-hat-wizard"></i>
                     <p>Aventura</p>
                 </div>
-                <div class="game-tag">
+                <div class="game-tag reveal">
                     <i class="fa-solid fa-gun"></i>
                     <p>Shooter</p>
                 </div>
-                <div class="game-tag">
+                <div class="game-tag reveal">
                     <i class="fa-solid fa-puzzle-piece"></i>
                     <p>Puzzle</p>
                 </div>
-                <div class="game-tag">
+                <div class="game-tag reveal">
                     <i class="fa-solid fa-futbol"></i>
                     <p>Deportes</p>
                 </div>
-                <div class="game-tag">
+                <div class="game-tag reveal">
                     <i class="fa-solid fa-dragon"></i>
                     <p>RPG</p>
                 </div>
-                <div class="game-tag">
+                <div class="game-tag reveal">
                     <i class="fa-solid fa-chess"></i>
                     <p>Estrategia</p>
                 </div>
@@ -417,7 +728,7 @@
                 <p>Pagos únicos con garantía incluida</p>
             </div>
             <div class="plans-retro">
-                <div class="plan-retro-card">
+                <div class="plan-retro-card reveal">
                     <div class="plan-retro-header">
                         <i class="fa-solid fa-gamepad"></i>
                         <h3>Consola Básica</h3>
@@ -435,7 +746,7 @@
                     </div>
                 </div>
 
-                <div class="plan-retro-card popular">
+                <div class="plan-retro-card popular reveal">
                     <div class="badge-retro-popular">Más Popular</div>
                     <div class="plan-retro-header">
                         <i class="fa-solid fa-crown"></i>
@@ -450,11 +761,11 @@
                         <li><i class="fa-solid fa-check"></i> Garantía 6 meses</li>
                     </ul>
                     <div class="plan-retro-actions">
-                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Pro%20Retro" class="btn-primary" style="background: var(--retro-pink);" target="_blank">Consultar Precio</a>
+                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Pro%20Retro" class="btn-primary" target="_blank">Consultar Precio</a>
                     </div>
                 </div>
 
-                <div class="plan-retro-card">
+                <div class="plan-retro-card reveal">
                     <div class="plan-retro-header">
                         <i class="fa-solid fa-rocket"></i>
                         <h3>Consola Ultra</h3>

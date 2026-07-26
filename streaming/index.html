@@ -14,189 +14,471 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --streaming-purple: #8b5cf6;
-            --streaming-purple-dark: #7c3aed;
-            --streaming-pink: #ec4899;
+            --nf-red: #e50914;
+            --nf-red-dark: #b81d24;
+            --nf-black: #141414;
+            --nf-dark: #1a1a1a;
+            --nf-card: #1f1f1f;
+            --nf-border: #333;
+            --nf-text: #ffffff;
+            --nf-muted: #808080;
+            --nf-muted-light: #b3b3b3;
         }
+
+        body {
+            background: var(--nf-black);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(20, 20, 20, 0.95) !important;
+            border-bottom: 1px solid var(--nf-border) !important;
+        }
+
+        .logo span {
+            background: none !important;
+            -webkit-text-fill-color: var(--nf-red) !important;
+        }
+
+        .nav-links a:hover {
+            color: var(--nf-text) !important;
+        }
+
+        /* ===== HERO NETFLIX-STYLE ===== */
         .hero-streaming {
             position: relative;
-            height: min-content;
-            min-height: 80vh;
+            min-height: 90vh;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
-            text-align: center;
-            padding-top: 80px;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            text-align: left;
+            padding: 0 0 80px 0;
+            background: var(--nf-black);
+            overflow: hidden;
         }
+
         .hero-streaming::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(229, 9, 20, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 30%, rgba(229, 9, 20, 0.1) 0%, transparent 40%),
+                linear-gradient(to bottom, transparent 40%, var(--nf-black) 100%);
+            z-index: 1;
         }
+
+        .hero-streaming::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--nf-black), transparent);
+            z-index: 1;
+        }
+
         .hero-streaming .hero-content {
             position: relative;
             z-index: 2;
-        }
-        .hero-streaming h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-        .hero-streaming h1 span {
-            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-streaming p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 0 60px;
         }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--nf-red);
+            margin-bottom: 16px;
+            padding: 6px 14px;
+            border: 1px solid var(--nf-red);
+            border-radius: 4px;
+        }
+
+        .hero-streaming h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            color: var(--nf-text);
+        }
+
+        .hero-streaming h1 span {
+            background: none;
+            -webkit-text-fill-color: var(--nf-red);
+        }
+
+        .hero-streaming > .hero-content > p {
+            font-size: 1.1rem;
+            color: var(--nf-muted-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-streaming .btn-primary {
+            background: var(--nf-red) !important;
+            font-weight: 700;
+            border-radius: 6px;
+        }
+
+        .hero-streaming .btn-primary:hover {
+            background: var(--nf-red-dark) !important;
+            box-shadow: 0 0 30px rgba(229, 9, 20, 0.4);
+        }
+
+        .hero-streaming .btn-outline {
+            background: rgba(109, 109, 110, 0.7) !important;
+            border: none;
+            color: var(--nf-text) !important;
+            border-radius: 6px;
+        }
+
+        .hero-streaming .btn-outline:hover {
+            background: rgba(109, 109, 110, 0.5) !important;
+        }
+
+        /* ===== PLATFORMS — CATEGORY ROWS ===== */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--nf-text);
+        }
+
+        .section-header p {
+            color: var(--nf-muted);
+        }
+
         .platforms-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
         }
+
         .platform-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 30px;
+            background: var(--nf-card);
+            border-radius: 8px;
+            padding: 30px 20px;
             text-align: center;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            transition: all 0.3s;
+            border: none;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
         }
+
+        .platform-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.03);
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
         .platform-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--streaming-purple);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
         }
+
+        .platform-card:hover::after {
+            opacity: 1;
+        }
+
         .platform-card i {
             font-size: 3rem;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
         }
+
         .platform-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1rem;
+            margin-bottom: 6px;
+            color: var(--nf-text);
+            position: relative;
+            z-index: 1;
         }
+
         .platform-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
         }
+
         .netflix i { color: #e50914; }
         .disney i { color: #0057e7; }
         .hbo i { color: #b535f6; }
         .prime i { color: #00a8e1; }
         .spotify i { color: #1db954; }
         .getParamount i { color: #0064ff; }
+
+        .platform-card h3 { color: var(--nf-text); }
+        .platform-card p { color: var(--nf-muted); }
+
+        /* ===== PLANS — NETFLIX PRICING ===== */
+        .section.bg-alt {
+            background: var(--nf-dark) !important;
+        }
+
         .plans-streaming {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 20px;
             margin-top: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
         .plan-streaming-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.08);
+            background: var(--nf-card);
+            border-radius: 8px;
+            border: 1px solid var(--nf-border);
             overflow: hidden;
             transition: all 0.3s;
         }
+
         .plan-streaming-card:hover {
-            transform: translateY(-10px);
+            transform: scale(1.03);
+            border-color: #555;
         }
+
         .plan-streaming-card.popular {
-            border-color: var(--streaming-purple);
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+            border-color: var(--nf-red);
+            box-shadow: 0 0 40px rgba(229, 9, 20, 0.2);
         }
+
         .plan-streaming-header {
-            padding: 40px 30px;
+            padding: 36px 28px;
             text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid var(--nf-border);
             position: relative;
         }
+
+        .plan-streaming-card.popular .plan-streaming-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--nf-red);
+        }
+
         .plan-streaming-header i {
-            font-size: 2.5rem;
-            color: var(--streaming-purple);
-            margin-bottom: 20px;
+            font-size: 2rem;
+            color: var(--nf-red);
+            margin-bottom: 16px;
         }
+
         .plan-streaming-header h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--nf-text);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
         .plan-streaming-price {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
+            color: var(--nf-text);
         }
+
         .plan-streaming-price span {
-            font-size: 1rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--nf-muted);
             font-weight: 400;
         }
+
         .plan-streaming-features {
             list-style: none;
-            padding: 30px;
+            padding: 24px 28px;
         }
+
         .plan-streaming-features li {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--nf-muted-light);
+            font-size: 0.9rem;
         }
+
         .plan-streaming-features li:last-child {
             border-bottom: none;
         }
+
         .plan-streaming-features i {
-            color: var(--streaming-purple);
-            font-size: 0.9rem;
+            color: var(--nf-red);
+            font-size: 0.8rem;
         }
+
         .plan-streaming-actions {
-            padding: 0 30px 30px;
+            padding: 0 28px 28px;
         }
+
         .plan-streaming-actions .btn-primary,
         .plan-streaming-actions .btn-outline {
             width: 100%;
             justify-content: center;
             display: flex;
+            border-radius: 6px;
         }
+
+        .plan-streaming-actions .btn-primary {
+            background: var(--nf-red) !important;
+            color: var(--nf-text) !important;
+        }
+
+        .plan-streaming-actions .btn-primary:hover {
+            background: var(--nf-red-dark) !important;
+        }
+
+        .plan-streaming-actions .btn-outline {
+            background: transparent !important;
+            border: 1px solid var(--nf-border) !important;
+            color: var(--nf-muted-light) !important;
+        }
+
+        .plan-streaming-actions .btn-outline:hover {
+            border-color: var(--nf-text) !important;
+            color: var(--nf-text) !important;
+        }
+
         .badge-popular {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, var(--streaming-purple), var(--streaming-pink));
+            top: 12px;
+            right: 12px;
+            background: var(--nf-red);
             color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
+        /* ===== GUARANTEE ===== */
         .guarantee-section {
             text-align: center;
             padding: 60px 0;
         }
+
         .guarantee-section i {
-            font-size: 4rem;
-            color: var(--streaming-purple);
+            font-size: 3.5rem;
+            color: var(--nf-red);
             margin-bottom: 20px;
         }
+
         .guarantee-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: var(--nf-text);
+            margin-bottom: 12px;
         }
+
         .guarantee-section p {
-            color: var(--text-muted);
-            max-width: 600px;
+            color: var(--nf-muted);
+            max-width: 550px;
             margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--nf-black) !important;
+            border-top: 1px solid var(--nf-border);
+        }
+
+        footer::before {
+            background: var(--nf-red) !important;
+            width: 100px !important;
+        }
+
+        .footer-cta h2 {
+            color: var(--nf-text);
+        }
+
+        .footer-cta p {
+            color: var(--nf-muted);
+        }
+
+        .btn-whatsapp-large {
+            background: #25d366 !important;
+            color: white !important;
+            border-radius: 6px;
+        }
+
+        .btn-whatsapp-large:hover {
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-email-large {
+            background: var(--nf-card) !important;
+            border: 1px solid var(--nf-border) !important;
+            color: var(--nf-muted-light) !important;
+            border-radius: 6px;
+        }
+
+        .btn-email-large:hover {
+            background: var(--nf-dark) !important;
+            border-color: #555 !important;
+        }
+
+        .cotizacion-note {
+            color: var(--nf-muted);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--nf-border);
+        }
+
+        .footer-bottom p {
+            color: var(--nf-muted);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-streaming {
+                align-items: center;
+                padding-bottom: 60px;
+                min-height: 80vh;
+            }
+
+            .hero-streaming .hero-content {
+                padding: 0 24px;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .platforms-grid,
+            .plans-streaming {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -221,48 +503,49 @@
 
     <header class="hero-streaming">
         <div class="hero-content">
+            <span class="hero-tag">Streaming</span>
             <h1>Tu Entretenimiento <span>Sin Límites</span></h1>
             <p>Suscripciones a las mejores plataformas de streaming. Netflix, Disney+, HBO Max y más al mejor precio de Chile.</p>
             <div class="hero-actions">
-                <a href="#planes" class="btn-primary" style="background: var(--streaming-purple);"><i class="fa-solid fa-crown"></i> Ver Planes</a>
-                <a href="https://wa.me/56976739157?text=Interesado%20en%20Streaming" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> Preguntar por WhatsApp</a>
+                <a href="#planes" class="btn-primary"><i class="fa-solid fa-crown"></i> Ver Planes</a>
+                <a href="https://wa.me/56976739157?text=Interesado%20en%20Streaming" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </header>
 
     <section id="plataformas" class="section">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header">
                 <h2>Plataformas Disponibles</h2>
                 <p>Todas las plataformas que necesitas en un solo lugar</p>
             </div>
             <div class="platforms-grid">
-                <div class="platform-card netflix">
+                <div class="platform-card netflix reveal">
                     <i class="fa-brands fa-netflix"></i>
                     <h3>Netflix</h3>
                     <p>Películas, series y documentales en 4K</p>
                 </div>
-                <div class="platform-card disney">
+                <div class="platform-card disney reveal">
                     <i class="fa-solid fa-film"></i>
                     <h3>Disney+</h3>
                     <p>Disney, Pixar, Marvel, Star Wars y National Geographic</p>
                 </div>
-                <div class="platform-card hbo">
+                <div class="platform-card hbo reveal">
                     <i class="fa-solid fa-tv"></i>
                     <h3>HBO Max</h3>
                     <p>Los mejores estrenos y clásicos de HBO</p>
                 </div>
-                <div class="platform-card prime">
+                <div class="platform-card prime reveal">
                     <i class="fa-solid fa-play"></i>
                     <h3>Amazon Prime</h3>
                     <p>Series originales, películas y envíos gratis</p>
                 </div>
-                <div class="platform-card spotify">
+                <div class="platform-card spotify reveal">
                     <i class="fa-brands fa-spotify"></i>
                     <h3>Spotify</h3>
                     <p>Música y podcasts sin anuncios</p>
                 </div>
-                <div class="platform-card getParamount">
+                <div class="platform-card getParamount reveal">
                     <i class="fa-solid fa-mountain-sun"></i>
                     <h3>Paramount+</h3>
                     <p>Series y películas Paramount</p>
@@ -278,10 +561,10 @@
                 <p>Precios especiales para nuestros clientes</p>
             </div>
             <div class="plans-streaming">
-                <div class="plan-streaming-card">
+                <div class="plan-streaming-card reveal">
                     <div class="plan-streaming-header">
                         <i class="fa-solid fa-user"></i>
-                        <h3>Plan Básico</h3>
+                        <h3>Básico</h3>
                         <div class="plan-streaming-price">Próximamente<span></span></div>
                     </div>
                     <ul class="plan-streaming-features">
@@ -295,11 +578,11 @@
                     </div>
                 </div>
 
-                <div class="plan-streaming-card popular">
-                    <div class="badge-popular">Más Popular</div>
+                <div class="plan-streaming-card popular reveal">
+                    <div class="badge-popular">Popular</div>
                     <div class="plan-streaming-header">
                         <i class="fa-solid fa-crown"></i>
-                        <h3>Plan Premium</h3>
+                        <h3>Premium</h3>
                         <div class="plan-streaming-price">Próximamente<span></span></div>
                     </div>
                     <ul class="plan-streaming-features">
@@ -310,14 +593,14 @@
                         <li><i class="fa-solid fa-check"></i> Sin anuncios</li>
                     </ul>
                     <div class="plan-streaming-actions">
-                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Plan%20Premium%20Streaming" class="btn-primary" style="background: var(--streaming-purple);" target="_blank">Consultar Precio</a>
+                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Plan%20Premium%20Streaming" class="btn-primary" target="_blank">Consultar Precio</a>
                     </div>
                 </div>
 
-                <div class="plan-streaming-card">
+                <div class="plan-streaming-card reveal">
                     <div class="plan-streaming-header">
                         <i class="fa-solid fa-users"></i>
-                        <h3>Plan Familiar</h3>
+                        <h3>Familiar</h3>
                         <div class="plan-streaming-price">Próximamente<span></span></div>
                     </div>
                     <ul class="plan-streaming-features">
