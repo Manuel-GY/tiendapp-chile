@@ -8,14 +8,9 @@ function closeAgencyModal() {
 }
 
 function attemptAgencyLogin() {
-    const pin = document.getElementById('agency-pin').value;
-    if(btoa(pin) === 'OTk5OQ==') {
-        showERP();
-        closeAgencyModal();
-        document.getElementById('agency-pin').value = '';
-    } else {
-        alert('PIN de Agencia Incorrecto. Acceso denegado.');
-    }
+    document.getElementById('agency-pin').value = '';
+    alert('Autenticación requiere servidor. Acceso no disponible en cliente.');
+    closeAgencyModal();
 }
 
 let tickets = [];
@@ -36,13 +31,9 @@ function closeSupportModal() {
 }
 
 function attemptSupportLogin() {
-    const pass = document.getElementById('support-password').value;
-    if(btoa(pass) === 'dGllbmRhcHBjaGlsZQ==') {
-        showSupportPortal();
-        closeSupportModal();
-    } else {
-        alert('Clave de acceso incorrecta. Si eres cliente, contacta por WhatsApp para obtener tu clave.');
-    }
+    document.getElementById('support-password').value = '';
+    alert('Autenticación requiere servidor. Contacta por WhatsApp para soporte.');
+    closeSupportModal();
 }
 
 function showSupportPortal() {

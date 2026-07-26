@@ -446,35 +446,9 @@ function closeLoginModal() {
 function attemptLogin() {
     const pin = document.getElementById('staff-pin').value;
     
-    // Superusuario
-    if(pin === '9999' || pin.toLowerCase() === 'superadmin') {
-        document.body.classList.add('logged-in');
-        document.body.classList.add('super-logged-in'); // Desbloquea finanzas
-        closeLoginModal();
-        document.getElementById('staff-pin').value = '';
-        
-        // Redirigir a Finanzas para destacar el panel nuevo
-        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-        const financeBtn = document.querySelector('.nav-item[data-view="finances"]');
-        if(financeBtn) financeBtn.classList.add('active');
-        switchView('finances');
-        
-    } 
-    // Staff Normal
-    else if(pin === '1234' || pin.toLowerCase() === 'admin') {
-        document.body.classList.add('logged-in');
-        closeLoginModal();
-        document.getElementById('staff-pin').value = '';
-        
-        // Redirigir a la cocina
-        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-        const dashboardBtn = document.querySelector('.nav-item[data-view="dashboard"]');
-        if(dashboardBtn) dashboardBtn.classList.add('active');
-        switchView('dashboard');
-        
-    } else {
-        alert('PIN Incorrecto. Intenta de nuevo.');
-    }
+    document.getElementById('staff-pin').value = '';
+    closeLoginModal();
+    alert('Autenticación requiere servidor. PINs no disponibles en cliente.');
 }
 
 function logoutStaff() {
