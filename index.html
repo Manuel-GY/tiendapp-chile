@@ -126,8 +126,8 @@
         .metric .label { font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
 
         /* ===== SECTION STYLES ===== */
-        .section { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 60px; }
+        .section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 48px; }
         .section-header .chip {
             display: inline-flex; align-items: center; gap: 8px;
             border: 1px solid var(--border);
@@ -135,7 +135,7 @@
             color: var(--text-muted); margin-bottom: 20px; font-weight: 600;
             text-transform: uppercase; letter-spacing: 3px;
         }
-        .section-header h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 12px; }
+        .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 12px; }
         .section-header p { color: var(--text-muted); font-size: 1rem; max-width: 480px; margin: 0 auto; }
 
         /* ===== SERVICES ===== */
@@ -143,15 +143,15 @@
 
         .services-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-            background: var(--border); border: 1px solid var(--border);
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
         }
 
         .service-card {
-            background: var(--bg); padding: 48px 28px; text-align: center;
+            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 40px 24px; text-align: center;
             transition: all 0.2s; text-decoration: none; color: var(--text); display: block;
         }
-        .service-card:hover { background: #0a0a0a; }
+        .service-card:hover { border-color: var(--border-hover); background: #0d0d0d; }
 
         .service-icon {
             width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;
@@ -174,13 +174,13 @@
         .features { border-bottom: 1px solid var(--border); }
         .features-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-            background: var(--border); border: 1px solid var(--border);
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
         }
         .feature-card {
-            background: var(--bg); padding: 32px 24px; transition: all 0.2s;
+            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 28px 20px; transition: all 0.2s;
         }
-        .feature-card:hover { background: #0a0a0a; }
+        .feature-card:hover { border-color: var(--border-hover); }
         .feature-icon {
             width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
             margin-bottom: 16px; font-size: 1.2rem; border: 1px solid var(--border);
@@ -200,21 +200,16 @@
 
         .showcase-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-            background: var(--border); border: 1px solid var(--border);
-        }
-        .showcase-grid > :nth-child(4),
-        .showcase-grid > :nth-child(5) {
-            /* last two cards span in a 2-col layout on wider screens */
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
         }
 
         .showcase-card {
             overflow: hidden; position: relative;
             transition: all 0.2s;
             text-decoration: none; color: var(--text); display: block;
-            background: var(--bg);
+            background: var(--bg-card); border: 1px solid var(--border);
         }
-        .showcase-card:hover { background: #0a0a0a; }
+        .showcase-card:hover { border-color: var(--border-hover); }
 
         .showcase-img {
             height: 200px; background-size: cover; background-position: center;
@@ -240,13 +235,13 @@
         .testimonials { border-bottom: 1px solid var(--border); }
         .testimonials-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
-            background: var(--border); border: 1px solid var(--border);
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
         }
         .testimonial {
-            background: var(--bg); padding: 36px; transition: all 0.2s;
+            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 32px; transition: all 0.2s;
         }
-        .testimonial:hover { background: #0a0a0a; }
+        .testimonial:hover { border-color: var(--border-hover); }
         .testimonial .stars { color: var(--amber); font-size: 0.85rem; margin-bottom: 14px; letter-spacing: 2px; }
         .testimonial blockquote { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
         .testimonial .author { display: flex; align-items: center; gap: 12px; }
@@ -470,6 +465,16 @@
                         <h3>Almacén Express</h3>
                         <p>Catálogo de abarrotes, control de stock y pedidos vecinales.</p>
                         <span class="showcase-link">Probar Demo <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="https://wa.me/56976739157" class="showcase-card reveal" target="_blank">
+                    <div class="showcase-img" style="background: #0a0a0a; display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-plus" style="font-size: 2rem; color: var(--neon); position: relative; z-index: 2;"></i>
+                    </div>
+                    <div class="showcase-body">
+                        <h3>Tu idea aquí</h3>
+                        <p>¿Tienes un proyecto en mente? Lo construimos para ti.</p>
+                        <span class="showcase-link">Escribir <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </a>
             </div>
