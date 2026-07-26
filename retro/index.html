@@ -341,6 +341,53 @@
             letter-spacing: 0;
         }
 
+        /* ===== SYSTEMS GRID ===== */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .system-chip {
+            background: var(--arcade-card);
+            border: 2px solid var(--arcade-border);
+            border-radius: 10px;
+            padding: 18px 10px;
+            text-align: center;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .system-chip:hover {
+            border-color: var(--arcade-cyan);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 229, 255, 0.1);
+        }
+
+        .system-icon {
+            font-size: 1.6rem;
+        }
+
+        .system-chip p {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--arcade-text);
+            margin: 0;
+        }
+
+        .system-sub {
+            font-size: 0.6rem;
+            color: var(--arcade-muted);
+            font-family: 'Press Start 2P', monospace;
+            letter-spacing: 0;
+        }
+
         /* ===== GAMES GRID ===== */
         .games-section {
             padding: 80px 0;
@@ -572,8 +619,13 @@
         @media (max-width: 768px) {
             .consoles-grid,
             .plans-retro,
-            .games-grid {
+            .games-grid,
+            .systems-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .systems-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .games-grid {
@@ -725,48 +777,33 @@
         <div class="container">
             <div class="section-header">
                 <h2>Sistemas Incluidos</h2>
+                <p>Desde MAME arcade hasta PS3. Todos los sistemas en un solo lugar.</p>
             </div>
-            <div class="consoles-grid">
-                <div class="console-card reveal">
-                    <div class="console-img">
-                        <i class="fa-solid fa-microchip"></i>
-                        <span class="arcade-badge">NES</span>
-                    </div>
-                    <div class="console-info">
-                        <h3>Nintendo NES</h3>
-                        <p>Super Mario Bros, Contra, Castlevania, Mega Man y más.</p>
-                    </div>
-                </div>
-                <div class="console-card reveal">
-                    <div class="console-img">
-                        <i class="fa-solid fa-gem"></i>
-                        <span class="arcade-badge">SEGA</span>
-                    </div>
-                    <div class="console-info">
-                        <h3>Sega Genesis / Mega Drive</h3>
-                        <p>Sonic, Streets of Rage, Golden Axe, Altered Beast.</p>
-                    </div>
-                </div>
-                <div class="console-card reveal">
-                    <div class="console-img">
-                        <i class="fa-solid fa-star"></i>
-                        <span class="arcade-badge">SNES</span>
-                    </div>
-                    <div class="console-info">
-                        <h3>Super Nintendo</h3>
-                        <p>Super Mario World, Donkey Kong Country, Street Fighter II.</p>
-                    </div>
-                </div>
-                <div class="console-card reveal">
-                    <div class="console-img">
-                        <i class="fa-solid fa-gamepad"></i>
-                        <span class="arcade-badge">PS1</span>
-                    </div>
-                    <div class="console-info">
-                        <h3>PlayStation 1</h3>
-                        <p>Crash Bandicoot, Spyro, Final Fantasy VII y más.</p>
-                    </div>
-                </div>
+            <div class="systems-grid">
+                <div class="system-chip reveal"><span class="system-icon">🕹️</span><p>MAME</p><span class="system-sub">Arcade</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📺</span><p>Atari 2600</p><span class="system-sub">Clásico</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📺</span><p>Atari 7800</p><span class="system-sub">Clásico</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🎮</span><p>NES</p><span class="system-sub">8-bit</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🎮</span><p>SNES</p><span class="system-sub">16-bit</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📺</span><p>Sega Master System</p><span class="system-sub">8-bit</span></div>
+                <div class="system-chip reveal"><span class="system-icon">💎</span><p>Sega Genesis</p><span class="system-sub">Mega Drive</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📱</span><p>Game Gear</p><span class="system-sub">Portable</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🎮</span><p>PC Engine</p><span class="system-sub">TurboGrafx</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🎮</span><p>Neo Geo</p><span class="system-sub">Arcade AES</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🍄</span><p>Nintendo 64</p><span class="system-sub">64-bit</span></div>
+                <div class="system-chip reveal"><span class="system-icon">⭐</span><p>Sega Saturn</p><span class="system-sub">32-bit</span></div>
+                <div class="system-chip reveal"><span class="system-icon">💿</span><p>PlayStation 1</p><span class="system-sub">32-bit</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📀</span><p>PlayStation 2</p><span class="system-sub">128-bit</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🎯</span><p>GameCube</p><span class="system-sub">Nintendo</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🌀</span><p>Dreamcast</p><span class="system-sub">Sega</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📱</span><p>Game Boy</p><span class="system-sub">Portable</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📱</span><p>Game Boy Color</p><span class="system-sub">Portable</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📱</span><p>Game Boy Advance</p><span class="system-sub">Portable</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📱</span><p>Nintendo DS</p><span class="system-sub">Dual Screen</span></div>
+                <div class="system-chip reveal"><span class="system-icon">📱</span><p>PSP</p><span class="system-sub">PlayStation Portable</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🔥</span><p>PlayStation 3</p><span class="system-sub">HD Gaming</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🎮</span><p>Nintendo Wii</p><span class="system-sub">Motion</span></div>
+                <div class="system-chip reveal"><span class="system-icon">🎮</span><p>Nintendo Wii U</p><span class="system-sub">GamePad</span></div>
             </div>
         </div>
     </section>
