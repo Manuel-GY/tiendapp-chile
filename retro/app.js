@@ -1,16 +1,29 @@
+function sanitize(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+let ticking = false;
+
 document.addEventListener('DOMContentLoaded', () => {
     function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
-        for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 150;
+        const reveals = document.querySelectorAll(".reveal");
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
+            const elementVisible = 150;
             if (elementTop < windowHeight - elementVisible) {
                 reveals[i].classList.add("active");
             }
         }
     }
-    window.addEventListener("scroll", reveal);
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            requestAnimationFrame(() => { reveal(); ticking = false; });
+            ticking = true;
+        }
+    });
     reveal();
 
     // Mobile menu toggle
@@ -78,7 +91,8 @@ function attemptAgencyLogin() {
     }
 }
 
-let tickets = JSON.parse(localStorage.getItem('tiendapp_tickets')) || [];
+let tickets = [];
+try { tickets = JSON.parse(localStorage.getItem('tiendapp_tickets')) || []; } catch(e) { tickets = []; }
 
 function saveTickets() {
     localStorage.setItem('tiendapp_tickets', JSON.stringify(tickets));
@@ -157,7 +171,7 @@ function consultarTicket() {
     }
     const t = tickets.find(x => x.id.toString().slice(-4) === query);
     if(!t) {
-        container.innerHTML = `<p style="color: #ef4444; padding: 10px;">No se encontró ningún ticket con el número #${query}. Verifica que lo hayas escrito bien.</p>`;
+        container.innerHTML = `<p style="color: #ef4444; padding: 10px;">No se encontró ningún ticket con el número #${sanitize(query)}. Verifica que lo hayas escrito bien.</p>`;
         return;
     }
     let statusColor = t.estado === 'Pendiente' ? '#f59e0b' : '#10b981';
@@ -167,8 +181,8 @@ function consultarTicket() {
                 <strong>Ticket #${t.id.toString().slice(-4)} - ${t.tipo}</strong>
                 <span style="color: ${statusColor}; font-weight: 600; font-size: 0.9rem;">${t.estado}</span>
             </div>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px;"><strong>Tu Solicitud:</strong> ${t.detalle}</p>
-            ${t.respuesta ? `<div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; padding: 10px 15px; margin-top: 15px; border-radius: 4px;"><strong style="display:block; font-size:0.85rem; color: #10b981; margin-bottom:5px;">Respuesta de TiendApp:</strong><p style="font-size: 0.9rem;">${t.respuesta}</p></div>` : ''}
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px;"><strong>Tu Solicitud:</strong> ${sanitize(t.detalle)}</p>
+            ${t.respuesta ? `<div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; padding: 10px 15px; margin-top: 15px; border-radius: 4px;"><strong style="display:block; font-size:0.85rem; color: #10b981; margin-bottom:5px;">Respuesta de TiendApp:</strong><p style="font-size: 0.9rem;">${sanitize(t.respuesta)}</p></div>` : ''}
         </div>
     `;
 }
@@ -208,10 +222,10 @@ function renderAgencyTickets() {
         <tr>
             <td>
                 <span style="font-size: 0.8rem; color: var(--primary); font-weight: bold; background: rgba(59, 130, 246, 0.1); padding: 2px 6px; border-radius: 4px; margin-bottom: 5px; display: inline-block;">#${ticketNum}</span><br>
-                <strong>${t.negocio}</strong><br>
+                <strong>${sanitize(t.negocio)}</strong><br>
                 <span style="font-size:0.75rem; color:var(--text-muted);"><i class="fa-regular fa-clock"></i> ${dateDisplay}</span>
             </td>
-            <td><strong style="font-size:0.9rem;">${t.tipo}</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">${shortDetail}</span></td>
+            <td><strong style="font-size:0.9rem;">${sanitize(t.tipo)}</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">${sanitize(shortDetail)}</span></td>
             <td>${statusBadge}</td>
             <td>${actionBtn}</td>
         </tr>

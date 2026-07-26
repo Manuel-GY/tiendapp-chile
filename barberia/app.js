@@ -1,3 +1,9 @@
+function sanitize(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 const services = [
     { id: 1, title: "Corte Clásico + Fade", price: "$12.000", desc: "Corte fade con navaja y perfilado experto", img: "barber_haircut.png" },
     { id: 2, title: "Ritual Barba VIP", price: "$8.000", desc: "Recorte de barba, toalla caliente y aceites esenciales", img: "barber_beard.png" }
@@ -54,8 +60,8 @@ function updateLists() {
     clList.innerHTML = myAppointments.length === 0 ? '<p style="color:var(--text-muted)">No tienes citas programadas.</p>' :
         myAppointments.map(a => `
             <div class="appointment-item">
-                <div class="a-time"><i class="fa-regular fa-clock"></i> Jueves, ${a.time}</div>
-                <div class="a-client">${a.service}</div>
+                <div class="a-time"><i class="fa-regular fa-clock"></i> Jueves, ${sanitize(a.time)}</div>
+                <div class="a-client">${sanitize(a.service)}</div>
                 <div class="a-service">Estado: Confirmado</div>
             </div>
         `).join('');
@@ -63,9 +69,9 @@ function updateLists() {
     const bList = document.getElementById('barber-agenda-list');
     bList.innerHTML = barberAgenda.map((a, i) => `
         <div class="appointment-item" id="ba-${i}">
-            <div class="a-time">${a.time}</div>
-            <div class="a-client">Cliente: ${a.client}</div>
-            <div class="a-service">Servicio: ${a.service}</div>
+            <div class="a-time">${sanitize(a.time)}</div>
+            <div class="a-client">Cliente: ${sanitize(a.client)}</div>
+            <div class="a-service">Servicio: ${sanitize(a.service)}</div>
             <button class="btn-finish" onclick="finishAppt(${i})">Completar Cita</button>
         </div>
     `).join('');

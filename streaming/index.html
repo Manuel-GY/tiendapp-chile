@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: http:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:;">
     <title>Streaming - TiendApp Chile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -90,7 +96,7 @@
         .hbo i { color: #b535f6; }
         .prime i { color: #00a8e1; }
         .spotify i { color: #1db954; }
-        ..getParamount i { color: #0064ff; }
+        .getParamount i { color: #0064ff; }
         .plans-streaming {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -256,7 +262,7 @@
                     <h3>Spotify</h3>
                     <p>Música y podcasts sin anuncios</p>
                 </div>
-                <div class="platform-card.getParamount">
+                <div class="platform-card getParamount">
                     <i class="fa-solid fa-mountain-sun"></i>
                     <h3>Paramount+</h3>
                     <p>Series y películas Paramount</p>

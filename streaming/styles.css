@@ -304,6 +304,10 @@ body {
     position: relative;
 }
 
+.bg-alt {
+    background: rgba(99, 102, 241, 0.03);
+}
+
 .section-header {
     margin-bottom: 60px;
 }

@@ -1,3 +1,10 @@
+// Sanitizar HTML para prevenir XSS
+function sanitize(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 // Datos Ficticios Premium
 let products = [
     {
@@ -77,10 +84,10 @@ function renderViews() {
                         </div>
                         <div class="product-info">
                             <div class="product-header">
-                                <h3 class="product-title">${p.title}</h3>
-                                <span class="product-price">${p.price}</span>
+                                <h3 class="product-title">${sanitize(p.title)}</h3>
+                                <span class="product-price">${sanitize(p.price)}</span>
                             </div>
-                            <p class="product-desc">${p.desc}</p>
+                            <p class="product-desc">${sanitize(p.desc)}</p>
                             <button class="btn-add" onclick="addToCart()">
                                 Agregar a la Reserva
                             </button>
@@ -466,7 +473,7 @@ function attemptLogin() {
         switchView('dashboard');
         
     } else {
-        alert('PIN Incorrecto. Prueba: 1234 (Staff) o 9999 (Gerencia)');
+        alert('PIN Incorrecto. Intenta de nuevo.');
     }
 }
 
@@ -545,7 +552,7 @@ function trackOrder() {
 
 function showToast(message) {
     const toast = document.getElementById('toast');
-    toast.innerHTML = `<i class="fa-brands fa-whatsapp" style="font-size:1.5rem;"></i> ${message}`;
+    toast.innerHTML = `<i class="fa-brands fa-whatsapp" style="font-size:1.5rem;"></i> ${sanitize(message)}`;
     toast.classList.add('visible');
     
     setTimeout(() => {

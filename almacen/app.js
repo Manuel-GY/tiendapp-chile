@@ -1,3 +1,9 @@
+function sanitize(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 const catalog = [
     { id: 1, title: "Frutas de Estación", price: 3500, img: "almacen_fruits.png" },
     { id: 2, title: "Pack Snacks Tarde", price: 5400, img: "almacen_snacks.png" }
@@ -120,8 +126,8 @@ function processPayment() {
 function updateCashier() {
     document.getElementById('orders-list').innerHTML = orders.map(o => `
         <div class="order-card">
-            <div class="order-id">${o.id} <span><i class="fa-regular fa-clock"></i> ${o.time}</span></div>
-            <div class="order-list">${o.items.join('<br>')}</div>
+            <div class="order-id">${sanitize(o.id)} <span><i class="fa-regular fa-clock"></i> ${sanitize(o.time)}</span></div>
+            <div class="order-list">${o.items.map(i => sanitize(i)).join('<br>')}</div>
             <div style="font-weight: 800; color: var(--primary); margin-top: 5px;">Total Pagado: $${o.total.toLocaleString('es-CL')}</div>
         </div>
     `).join('');
