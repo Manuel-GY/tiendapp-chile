@@ -224,7 +224,22 @@
             z-index: 1;
         }
 
-        .netflix i { color: #e50914; }
+        .netflix i { display: none !important; }
+        .netflix .nf-n {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .netflix .nf-n::before {
+            content: 'N';
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(180deg, #e50914 0%, #b81d24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
         .disney i { color: #0057e7; }
         .hbo i { color: #b535f6; }
         .prime i { color: #00a8e1; }
@@ -522,6 +537,7 @@
             <div class="platforms-grid">
                 <div class="platform-card netflix reveal">
                     <i class="fa-brands fa-netflix"></i>
+                    <span class="nf-n">N</span>
                     <h3>Netflix</h3>
                     <p>Películas, series y documentales en 4K</p>
                 </div>

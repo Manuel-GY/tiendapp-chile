@@ -12,6 +12,598 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="../shared.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dev-green: #4ade80;
+            --dev-cyan: #22d3ee;
+            --dev-purple: #a78bfa;
+            --dev-pink: #f472b6;
+            --dev-orange: #fb923c;
+            --dev-yellow: #facc15;
+            --dev-red: #f87171;
+            --dev-bg: #0d1117;
+            --dev-surface: #161b22;
+            --dev-border: #30363d;
+            --dev-text: #e6edf3;
+            --dev-muted: #7d8590;
+        }
+
+        * { font-family: 'Space Grotesk', sans-serif; }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        body { background: var(--dev-bg); }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(13, 17, 23, 0.95) !important;
+            border-bottom: 1px solid var(--dev-border) !important;
+        }
+
+        .logo span {
+            background: none !important;
+            -webkit-text-fill-color: var(--dev-green) !important;
+        }
+
+        /* ===== HERO TERMINAL ===== */
+        .hero {
+            background: var(--dev-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg { display: none; }
+        .hero-overlay { display: none; }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        .terminal-window {
+            background: var(--dev-surface);
+            border-radius: 12px;
+            border: 1px solid var(--dev-border);
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            background: #1c2128;
+            border-bottom: 1px solid var(--dev-border);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #f87171; }
+        .terminal-dot.yellow { background: #facc15; }
+        .terminal-dot.green { background: #4ade80; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--dev-muted);
+        }
+
+        .terminal-body {
+            padding: 30px;
+            min-height: 300px;
+        }
+
+        .terminal-line {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 4px;
+        }
+
+        .terminal-prompt {
+            color: var(--dev-green);
+        }
+
+        .terminal-cmd {
+            color: var(--dev-text);
+        }
+
+        .terminal-flag {
+            color: var(--dev-cyan);
+        }
+
+        .terminal-string {
+            color: var(--dev-orange);
+        }
+
+        .terminal-comment {
+            color: var(--dev-muted);
+        }
+
+        .terminal-output {
+            color: var(--dev-muted);
+            padding-left: 0;
+        }
+
+        .terminal-highlight {
+            color: var(--dev-purple);
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--dev-green);
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .hero-subtitle {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.3rem;
+            color: var(--dev-muted);
+        }
+
+        .hero-subtitle strong {
+            color: var(--dev-text);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .hero-actions .btn-primary {
+            background: var(--dev-green) !important;
+            color: var(--dev-bg) !important;
+            font-weight: 700;
+        }
+
+        .hero-actions .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
+        }
+
+        .hero-actions .btn-outline {
+            border-color: var(--dev-border);
+            color: var(--dev-text) !important;
+        }
+
+        .hero-actions .btn-outline:hover {
+            border-color: var(--dev-green);
+            color: var(--dev-green) !important;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header h2 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-header h2::before {
+            content: '// ';
+            color: var(--dev-green);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .section-header p {
+            color: var(--dev-muted);
+        }
+
+        /* ===== PORTFOLIO — GITHUB STYLE ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--dev-surface);
+            border: 1px solid var(--dev-border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--dev-green);
+            box-shadow: 0 8px 30px rgba(74, 222, 128, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .project-card::before { display: none; }
+
+        .project-img {
+            height: 200px;
+            position: relative;
+        }
+
+        .project-img::after {
+            opacity: 0.3;
+        }
+
+        .project-tag {
+            background: var(--dev-surface);
+            color: var(--dev-green);
+            border: 1px solid var(--dev-border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--dev-text);
+        }
+
+        .project-info p {
+            color: var(--dev-muted);
+            font-size: 0.85rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .tech-stack span {
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--dev-green);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(74, 222, 128, 0.15);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-card .btn-outline {
+            margin-top: 16px;
+            border-color: var(--dev-border);
+            font-size: 0.85rem;
+        }
+
+        .project-card .btn-outline:hover {
+            border-color: var(--dev-green);
+            color: var(--dev-green);
+        }
+
+        /* ===== SERVICES ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-item {
+            background: var(--dev-surface);
+            border: 1px solid var(--dev-border);
+            border-radius: 10px;
+            padding: 36px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-item::before { display: none; }
+
+        .service-item:hover {
+            border-color: var(--dev-green);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(74, 222, 128, 0.1);
+        }
+
+        .service-item i {
+            font-size: 2.2rem;
+            color: var(--dev-green);
+            margin-bottom: 16px;
+            -webkit-text-fill-color: initial;
+        }
+
+        .service-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .service-item p {
+            color: var(--dev-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ===== PROCESS — SPRINT BOARD ===== */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .process-step {
+            background: var(--dev-surface);
+            border: 1px solid var(--dev-border);
+            border-radius: 10px;
+            padding: 28px 20px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            border-color: var(--dev-green);
+            transform: translateY(-3px);
+        }
+
+        .step-num {
+            font-size: 2.5rem;
+            background: none;
+            -webkit-text-fill-color: var(--dev-green);
+            opacity: 0.3;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .process-step h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .process-step p {
+            color: var(--dev-muted);
+            font-size: 0.8rem;
+        }
+
+        .process-step .step-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid;
+        }
+
+        .step-tag.todo { color: var(--dev-muted); border-color: var(--dev-border); }
+        .step-tag.progress { color: var(--dev-yellow); border-color: rgba(250, 204, 21, 0.3); background: rgba(250, 204, 21, 0.05); }
+        .step-tag.review { color: var(--dev-purple); border-color: rgba(167, 139, 250, 0.3); background: rgba(167, 139, 250, 0.05); }
+        .step-tag.done { color: var(--dev-green); border-color: rgba(74, 222, 128, 0.3); background: rgba(74, 222, 128, 0.05); }
+
+        /* ===== PRICING ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .pricing-card {
+            background: var(--dev-surface);
+            border: 1px solid var(--dev-border);
+            border-radius: 10px;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--dev-green);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--dev-green);
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.15);
+        }
+
+        .popular-badge {
+            background: var(--dev-green);
+            color: var(--dev-bg);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+        }
+
+        .pricing-header {
+            border-bottom: 1px solid var(--dev-border);
+        }
+
+        .pricing-header h3 {
+            color: var(--dev-text);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .price {
+            color: var(--dev-text);
+        }
+
+        .price span {
+            color: var(--dev-muted);
+        }
+
+        .setup-fee {
+            color: var(--dev-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+
+        .pricing-features li {
+            color: var(--dev-muted);
+        }
+
+        .pricing-features li i.fa-check {
+            color: var(--dev-green);
+        }
+
+        .pricing-features li i.fa-xmark {
+            color: var(--dev-red);
+        }
+
+        .pricing-actions .btn-primary {
+            background: var(--dev-green) !important;
+            color: var(--dev-bg) !important;
+        }
+
+        .pricing-actions .btn-outline {
+            border-color: var(--dev-border);
+        }
+
+        .pricing-actions .btn-outline:hover {
+            border-color: var(--dev-green);
+            color: var(--dev-green);
+        }
+
+        .btn-link-small {
+            color: var(--dev-muted);
+        }
+
+        .btn-link-small:hover {
+            color: var(--dev-cyan);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: var(--dev-surface);
+            border: 1px solid var(--dev-border);
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--dev-green);
+        }
+
+        .quote {
+            color: var(--dev-green);
+            font-size: 1.5rem;
+        }
+
+        .testimonial-card p {
+            color: var(--dev-muted);
+            font-style: normal;
+        }
+
+        .user h4 {
+            color: var(--dev-text);
+        }
+
+        .user span {
+            color: var(--dev-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            background: var(--dev-surface);
+            border: 1px solid var(--dev-border);
+        }
+
+        .faq-item.active {
+            border-color: var(--dev-green);
+        }
+
+        .faq-question {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .faq-question i {
+            color: var(--dev-green);
+        }
+
+        .faq-answer p {
+            color: var(--dev-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dev-bg) !important;
+            border-top: 1px solid var(--dev-border);
+        }
+
+        footer::before {
+            background: var(--dev-green) !important;
+            width: 100px !important;
+        }
+
+        .footer-cta h2 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-whatsapp-large {
+            background: var(--dev-green) !important;
+            color: var(--dev-bg) !important;
+        }
+
+        .btn-email-large {
+            background: var(--dev-surface) !important;
+            border: 1px solid var(--dev-border) !important;
+            color: var(--dev-text) !important;
+        }
+
+        .btn-email-large:hover {
+            background: var(--dev-bg) !important;
+            border-color: var(--dev-green) !important;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--dev-border);
+        }
+
+        .footer-bottom p {
+            color: var(--dev-muted);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .services-grid,
+            .pricing-grid,
+            .testimonials-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content {
+                padding: 0 12px;
+            }
+
+            .terminal-body {
+                padding: 20px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="public-site">
@@ -39,10 +631,45 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Transformamos negocios en <span>experiencias digitales</span></h1>
-            <p>Aplicaciones web y móviles para restaurantes, barberías, almacenes y más. Diseño premium que convierte visitas en ventas.</p>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">tiendapp ~ ~/proyecto</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-cmd"> tiendapp</span>
+                        <span class="terminal-flag"> --crear</span>
+                        <span class="terminal-string"> "negocio"</span>
+                        <span class="terminal-comment"> # tu app en 7 días</span>
+                    </div>
+                    <div class="terminal-line terminal-output">
+                        <span class="terminal-highlight">✓</span> Analizando necesidades del negocio...
+                    </div>
+                    <div class="terminal-line terminal-output">
+                        <span class="terminal-highlight">✓</span> Diseñando interfaz premium...
+                    </div>
+                    <div class="terminal-line terminal-output">
+                        <span class="terminal-highlight">✓</span> Desarrollando con tecnología moderna...
+                    </div>
+                    <div class="terminal-line terminal-output">
+                        <span class="terminal-highlight">✓</span> Optimizando para móviles...
+                    </div>
+                    <div class="terminal-line terminal-output" style="margin-top: 10px;">
+                        <span style="color: var(--dev-green);">→ Tu negocio está listo para vender en línea.</span>
+                    </div>
+                    <div class="terminal-line" style="margin-top: 16px;">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+            </div>
+            <p class="hero-subtitle"><strong>Creamos apps y páginas web</strong> que convierten visitas en ventas</p>
             <div class="hero-actions">
-                <a href="#proyectos" class="btn-primary"><i class="fa-solid fa-arrow-down"></i> Ver Portafolio</a>
+                <a href="#proyectos" class="btn-primary"><i class="fa-solid fa-code"></i> Ver Proyectos</a>
                 <a href="https://wa.me/56976739157" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> Cotizar Gratis</a>
             </div>
         </div>
@@ -85,13 +712,13 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('../sushi/sushi_nigiri_platter_1776376913002.webp');">
-                        <div class="project-tag">Restaurantes</div>
+                        <div class="project-tag">restaurantes/</div>
                     </div>
                     <div class="project-info">
                         <h3>SushiApp Premium</h3>
                         <p>Menú interactivo, carrito de compras y panel de despacho para cocina en tiempo real.</p>
                         <div class="tech-stack">
-                            <span>HTML5</span><span>CSS3</span><span>JS</span>
+                            <span>HTML5</span><span>CSS3</span><span>JS</span><span>Chart.js</span>
                         </div>
                         <a href="../sushi/index.html" class="btn-outline">
                             <i class="fa-solid fa-play"></i> Probar Demo
@@ -101,13 +728,13 @@
 
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('../barberia/barber_haircut.webp');">
-                        <div class="project-tag">Barberías</div>
+                        <div class="project-tag">barberias/</div>
                     </div>
                     <div class="project-info">
                         <h3>Agenda Barber VIP</h3>
                         <p>Reservas con calendario interactivo, panel de barberos y recordatorios automáticos.</p>
                         <div class="tech-stack">
-                            <span>React</span><span>Node.js</span>
+                            <span>React</span><span>Node.js</span><span>Calendar</span>
                         </div>
                         <a href="../barberia/index.html" class="btn-outline">
                             <i class="fa-solid fa-play"></i> Probar Demo
@@ -117,13 +744,13 @@
 
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('../almacen/almacen_fruits.webp');">
-                        <div class="project-tag">Minimarkets</div>
+                        <div class="project-tag">minimarkets/</div>
                     </div>
                     <div class="project-info">
                         <h3>Almacén Express</h3>
                         <p>Catálogo de abarrotes, control de stock y pedidos vecinales con entrega rápida.</p>
                         <div class="tech-stack">
-                            <span>Mobile App</span><span>UX/UI</span>
+                            <span>Mobile App</span><span>UX/UI</span><span>Stock</span>
                         </div>
                         <a href="../almacen/index.html" class="btn-outline">
                             <i class="fa-solid fa-play"></i> Probar Demo
@@ -133,13 +760,13 @@
 
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('../lubricentro/oil.webp');">
-                        <div class="project-tag">Lubricentros</div>
+                        <div class="project-tag">lubricentros/</div>
                     </div>
                     <div class="project-info">
                         <h3>LubriScan Chile</h3>
                         <p>Gestión de mantenciones con selector de insumos y agendamiento en línea.</p>
                         <div class="tech-stack">
-                            <span>IoT Ready</span><span>Booking AI</span>
+                            <span>IoT Ready</span><span>Booking AI</span><span>CRM</span>
                         </div>
                         <a href="../lubricentro/index.html" class="btn-outline">
                             <i class="fa-solid fa-play"></i> Probar Demo
@@ -149,13 +776,13 @@
 
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('../ropa/jacket.webp');">
-                        <div class="project-tag">E-commerce</div>
+                        <div class="project-tag">ecommerce/</div>
                     </div>
                     <div class="project-info">
                         <h3>Rider Gear Premium</h3>
                         <p>Tienda de alta gama con carrito dinámico y visualización de productos en 4K.</p>
                         <div class="tech-stack">
-                            <span>High Perf</span><span>E-commerce</span>
+                            <span>High Perf</span><span>E-commerce</span><span>4K</span>
                         </div>
                         <a href="../ropa/index.html" class="btn-outline">
                             <i class="fa-solid fa-play"></i> Probar Demo
@@ -166,10 +793,10 @@
         </div>
     </section>
 
-    <section id="servicios" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(99,102,241,0.03) 50%, var(--bg-dark) 100%);">
+    <section id="servicios" class="section bg-alt">
         <div class="container">
             <div class="section-header center">
-                <h2>¿Qué hacemos?</h2>
+                <h2>Servicios</h2>
                 <p>Soluciones completas para digitalizar tu negocio</p>
             </div>
             <div class="services-grid">
@@ -195,26 +822,30 @@
     <section id="proceso" class="section reveal">
         <div class="container">
             <div class="section-header center">
-                <h2>Tu éxito en 4 pasos</h2>
-                <p>Metodología comprobada para digitalizar tu negocio</p>
+                <h2>Proceso</h2>
+                <p>Metodología ágil para digitalizar tu negocio</p>
             </div>
             <div class="process-grid">
                 <div class="process-step">
+                    <span class="step-tag todo">TODO</span>
                     <div class="step-num">01</div>
-                    <h3>Prototipo</h3>
+                    <h3>Descubrimiento</h3>
+                    <p>Entendemos tu negocio, tus clientes y qué necesitas para vender más.</p>
+                </div>
+                <div class="process-step">
+                    <span class="step-tag progress">SPRINT 1</span>
+                    <div class="step-num">02</div>
+                    <h3>Diseño</h3>
                     <p>Creamos la experiencia visual antes de escribir una línea de código.</p>
                 </div>
                 <div class="process-step">
-                    <div class="step-num">02</div>
+                    <span class="step-tag review">REVIEW</span>
+                    <div class="step-num">03</div>
                     <h3>Desarrollo</h3>
                     <p>Construimos con las mejores tecnologías, asegurando velocidad y seguridad.</p>
                 </div>
                 <div class="process-step">
-                    <div class="step-num">03</div>
-                    <h3>Pruebas</h3>
-                    <p>Auditamos cada detalle para garantizar perfección en todos los dispositivos.</p>
-                </div>
-                <div class="process-step">
+                    <span class="step-tag done">DONE</span>
                     <div class="step-num">04</div>
                     <h3>Lanzamiento</h3>
                     <p>Publicamos tu solución y te acompañamos en el crecimiento digital.</p>
@@ -223,10 +854,10 @@
         </div>
     </section>
 
-    <section id="planes" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(6,182,212,0.03) 50%, var(--bg-dark) 100%);">
+    <section id="planes" class="section">
         <div class="container">
             <div class="section-header center">
-                <h2>Planes de Desarrollo</h2>
+                <h2>Planes</h2>
                 <p>Opciones flexibles para potenciar tu marca desde el primer día</p>
             </div>
             <div class="pricing-grid">
@@ -251,7 +882,7 @@
                 </div>
 
                 <div class="pricing-card popular">
-                    <div class="popular-badge">Más Popular</div>
+                    <div class="popular-badge">MAIN</div>
                     <div class="pricing-header">
                         <h3>Plan Pro</h3>
                         <p class="price">Desde $60.000</p>
@@ -273,17 +904,17 @@
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>Otros Servicios</h3>
-                        <p class="price" style="font-size: 1.3rem;">Streaming & Retro Gaming</p>
+                        <p class="price" style="font-size: 1.2rem;">Streaming & Retro Gaming</p>
                         <p class="setup-fee">Visita nuestras tiendas</p>
                     </div>
                     <ul class="pricing-features">
-                        <li><i class="fa-solid fa-tv" style="color: #8b5cf6;"></i> Netflix, Disney+, HBO y más</li>
-                        <li><i class="fa-solid fa-gamepad" style="color: #ec4899;"></i> Consolas con +10,000 juegos</li>
+                        <li><i class="fa-solid fa-tv" style="color: #e50914;"></i> Netflix, Disney+, HBO y más</li>
+                        <li><i class="fa-solid fa-gamepad" style="color: var(--dev-pink);"></i> Consolas con +10,000 juegos</li>
                         <li><i class="fa-solid fa-check"></i> Soporte 24/7 incluido</li>
                     </ul>
                     <div class="pricing-actions">
-                            <a href="../streaming/index.html" class="btn-outline" style="border-color: #8b5cf6; color: #8b5cf6;"><i class="fa-solid fa-tv"></i> Ver Streaming</a>
-                            <a href="../retro/index.html" class="btn-outline" style="border-color: #ec4899; color: #ec4899; margin-top: 4px;"><i class="fa-solid fa-gamepad"></i> Ver Retro Gaming</a>
+                        <a href="../streaming/index.html" class="btn-outline" style="border-color: #e50914; color: #e50914;"><i class="fa-solid fa-tv"></i> Ver Streaming</a>
+                        <a href="../retro/index.html" class="btn-outline" style="border-color: var(--dev-pink); color: var(--dev-pink); margin-top: 4px;"><i class="fa-solid fa-gamepad"></i> Ver Retro Gaming</a>
                     </div>
                 </div>
             </div>
@@ -293,7 +924,7 @@
     <section id="testimonios" class="section reveal">
         <div class="container">
             <div class="section-header center">
-                <h2>Clientes de confianza</h2>
+                <h2>Clientes</h2>
                 <p>Lo que dicen quienes ya trabajan con nosotros</p>
             </div>
             <div class="testimonials-grid">
@@ -302,7 +933,7 @@
                     <p>"TiendApp Chile transformó mi restaurante. Ahora todos mis clientes piden por la web y la cocina recibe todo ordenado."</p>
                     <div class="user">
                         <h4>Ricardo M.</h4>
-                        <span>Sushiman Owner</span>
+                        <span>@sushiman-owner</span>
                     </div>
                 </div>
                 <div class="testimonial-card">
@@ -310,17 +941,17 @@
                     <p>"La aplicación de reservas para mi barbería es increíble. Ya no pierdo tiempo en WhatsApp y mis clientes están fascinados."</p>
                     <div class="user">
                         <h4>Felipe G.</h4>
-                        <span>The Boss Barber</span>
+                        <span>@the-boss-barber</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="faq" class="section" style="background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(139,92,246,0.03) 50%, var(--bg-dark) 100%);">
+    <section id="faq" class="section bg-alt">
         <div class="container">
             <div class="section-header center">
-                <h2>Preguntas Frecuentes</h2>
+                <h2>FAQ</h2>
             </div>
             <div class="faq-accordion">
                 <div class="faq-item">
@@ -367,7 +998,7 @@
             </div>
             <div class="footer-bottom">
                 <div class="logo">⚡ TiendApp <span>Chile</span></div>
-                <p>&copy; 2026 Todos los derechos reservados. | <a href="javascript:void(0)" onclick="openAgencyLogin()" style="color:var(--text-muted); text-decoration:none; font-size:0.8rem;">Gestión Interna</a></p>
+                <p>&copy; 2026 Todos los derechos reservados. | <a href="javascript:void(0)" onclick="openAgencyLogin()" style="color:var(--dev-muted); text-decoration:none; font-size:0.8rem;">Gestión Interna</a></p>
             </div>
         </div>
     </footer>
