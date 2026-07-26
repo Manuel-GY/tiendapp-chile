@@ -15,16 +15,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ps1-dark: #1a1a2e;
-            --ps1-mid: #2a2a3e;
-            --ps1-gray: #3a3a4e;
-            --ps1-light: #8c8c9e;
-            --ps1-green: #00cc66;
-            --ps1-red: #ff3333;
-            --ps1-blue: #3366ff;
-            --ps1-pink: #cc33cc;
-            --ps1-amber: #ffaa00;
-            --ps1-bg: #0d0d1a;
+            --snes-gray: #c8c8c8;
+            --snes-dark: #2a2a3a;
+            --snes-purple: #7b2d8e;
+            --snes-purple-dark: #5a1f6a;
+            --snes-red: #cc0000;
+            --snes-yellow: #f5c518;
+            --snes-blue: #2255cc;
+            --snes-green: #009944;
+            --snes-bg: #1a1a2e;
+            --snes-card: #222238;
+            --snes-border: #3a3a52;
+            --snes-text: #e8e8f0;
+            --snes-muted: #8888a0;
         }
 
         * { font-family: 'Space Grotesk', sans-serif; }
@@ -34,18 +37,17 @@
         }
 
         body {
-            background: var(--ps1-bg);
+            background: var(--snes-bg);
         }
 
-        /* CRT Scanline overlay */
         body::after {
             content: '';
             position: fixed;
             inset: 0;
             background: repeating-linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.08) 0px,
-                rgba(0, 0, 0, 0.08) 1px,
+                rgba(0, 0, 0, 0.06) 0px,
+                rgba(0, 0, 0, 0.06) 1px,
                 transparent 1px,
                 transparent 3px
             );
@@ -53,18 +55,17 @@
             z-index: 9999;
         }
 
-        /* ===== NAVBAR PS1 ===== */
         .navbar {
-            background: rgba(13, 13, 26, 0.95) !important;
-            border-bottom: 2px solid var(--ps1-gray) !important;
+            background: rgba(26, 26, 46, 0.95) !important;
+            border-bottom: 3px solid var(--snes-purple) !important;
         }
 
         .logo span {
             background: none !important;
-            -webkit-text-fill-color: var(--ps1-amber) !important;
+            -webkit-text-fill-color: var(--snes-yellow) !important;
         }
 
-        /* ===== HERO PS1 STARTUP ===== */
+        /* ===== HERO SNES ===== */
         .hero-retro {
             position: relative;
             min-height: 100vh;
@@ -73,25 +74,29 @@
             justify-content: center;
             text-align: center;
             padding-top: 80px;
-            background: radial-gradient(ellipse at center, #1a1a3e 0%, #0d0d1a 70%);
+            background: linear-gradient(180deg, #1e1040 0%, var(--snes-bg) 60%);
             overflow: hidden;
         }
 
         .hero-retro::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
-            animation: ps1Glow 4s ease-in-out infinite alternate;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 30%, rgba(123, 45, 142, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(245, 197, 24, 0.08) 0%, transparent 40%);
+            z-index: 1;
         }
 
-        @keyframes ps1Glow {
-            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        .hero-retro::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--snes-bg), transparent);
+            z-index: 1;
         }
 
         .hero-retro .hero-content {
@@ -99,20 +104,37 @@
             z-index: 2;
         }
 
-        .ps1-symbols {
-            font-size: 2rem;
+        .snes-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
             margin-bottom: 30px;
-            letter-spacing: 20px;
-            opacity: 0.6;
         }
 
-        .ps1-symbols .triangle { color: var(--ps1-green); }
-        .ps1-symbols .circle { color: var(--ps1-red); }
-        .ps1-symbols .cross { color: var(--ps1-blue); }
-        .ps1-symbols .square { color: var(--ps1-pink); }
+        .snes-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            position: relative;
+        }
+
+        .snes-btn::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: inherit;
+            filter: brightness(1.3);
+        }
+
+        .snes-btn.red { background: var(--snes-red); box-shadow: 0 0 15px rgba(204, 0, 0, 0.4); }
+        .snes-btn.yellow { background: var(--snes-yellow); box-shadow: 0 0 15px rgba(245, 197, 24, 0.4); }
+        .snes-btn.blue { background: var(--snes-blue); box-shadow: 0 0 15px rgba(34, 85, 204, 0.4); }
+        .snes-btn.green { background: var(--snes-green); box-shadow: 0 0 15px rgba(0, 153, 68, 0.4); }
 
         .hero-retro h1 {
-            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 20px;
@@ -122,23 +144,22 @@
 
         .hero-retro h1 .pixel-font {
             display: block;
-            font-size: clamp(0.7rem, 2vw, 1.2rem);
-            color: var(--ps1-amber);
+            font-size: clamp(0.6rem, 1.8vw, 1rem);
+            color: var(--snes-yellow);
             margin-bottom: 15px;
             letter-spacing: 4px;
-            text-transform: uppercase;
         }
 
         .hero-retro h1 span {
             background: none;
-            -webkit-text-fill-color: var(--text-main);
+            -webkit-text-fill-color: var(--snes-purple);
         }
 
         .hero-retro p {
             font-size: 1.1rem;
-            color: var(--ps1-light);
-            margin-bottom: 30px;
-            max-width: 500px;
+            color: var(--snes-muted);
+            margin-bottom: 35px;
+            max-width: 520px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
@@ -146,41 +167,58 @@
 
         .hero-actions {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .hero-retro .btn-primary {
-            background: var(--ps1-green) !important;
-            color: #000 !important;
+            background: var(--snes-purple) !important;
+            color: #fff !important;
             font-weight: 700;
+            border-radius: 8px;
         }
 
         .hero-retro .btn-primary:hover {
-            box-shadow: 0 0 30px rgba(0, 204, 102, 0.4);
+            background: var(--snes-purple-dark) !important;
+            box-shadow: 0 0 30px rgba(123, 45, 142, 0.5);
         }
 
         .hero-retro .btn-outline {
-            border-color: var(--ps1-gray);
+            border-color: var(--snes-border) !important;
+            color: var(--snes-text) !important;
+            border-radius: 8px;
         }
 
         .hero-retro .btn-outline:hover {
-            border-color: var(--ps1-green);
-            color: var(--ps1-green);
+            border-color: var(--snes-purple) !important;
+            color: var(--snes-purple) !important;
         }
 
-        /* ===== SECTION HEADERS ===== */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-header {
+            text-align: center;
+        }
+
         .section-header h2 {
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 10px;
         }
 
         .section-header p {
-            color: var(--ps1-light);
+            color: var(--snes-muted);
         }
 
-        /* ===== CONSOLE CARDS — MEMORY CARD STYLE ===== */
+        .section.bg-alt {
+            background: linear-gradient(180deg, #15152a 0%, var(--snes-bg) 100%) !important;
+        }
+
+        /* ===== CONSOLE CARDS ===== */
         .consoles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -189,56 +227,45 @@
         }
 
         .console-card {
-            background: linear-gradient(145deg, #1e1e32, #15152a);
-            border-radius: 4px;
-            border: 2px solid var(--ps1-gray);
+            background: var(--snes-card);
+            border-radius: 12px;
+            border: 2px solid var(--snes-border);
             overflow: hidden;
             transition: all 0.3s;
-            position: relative;
-        }
-
-        .console-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--ps1-green), var(--ps1-blue), var(--ps1-pink), var(--ps1-red));
         }
 
         .console-card:hover {
             transform: translateY(-5px);
-            border-color: var(--ps1-green);
-            box-shadow: 0 0 30px rgba(0, 204, 102, 0.15);
+            border-color: var(--snes-purple);
+            box-shadow: 0 12px 40px rgba(123, 45, 142, 0.2);
         }
 
         .console-img {
             height: 160px;
-            background: linear-gradient(135deg, #12122a, #1a1a3e);
+            background: linear-gradient(135deg, #1a1040, #2a1858);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            border-bottom: 2px solid var(--ps1-gray);
+            border-bottom: 2px solid var(--snes-border);
         }
 
         .console-img i {
             font-size: 4rem;
-            color: var(--ps1-light);
-            opacity: 0.7;
+            color: var(--snes-purple);
+            opacity: 0.8;
         }
 
-        .console-img .ps1-badge {
+        .console-img .snes-badge {
             position: absolute;
             top: 12px;
             right: 12px;
             font-family: 'Press Start 2P', monospace;
             font-size: 0.5rem;
-            color: var(--ps1-amber);
+            color: var(--snes-yellow);
             background: rgba(0,0,0,0.5);
             padding: 4px 8px;
-            border: 1px solid var(--ps1-amber);
+            border: 1px solid var(--snes-yellow);
         }
 
         .console-info {
@@ -253,7 +280,7 @@
         }
 
         .console-info p {
-            color: var(--ps1-light);
+            color: var(--snes-muted);
             font-size: 0.85rem;
             margin-bottom: 16px;
             line-height: 1.6;
@@ -267,21 +294,21 @@
         }
 
         .console-specs span {
-            background: rgba(0, 204, 102, 0.1);
-            color: var(--ps1-green);
+            background: rgba(123, 45, 142, 0.15);
+            color: var(--snes-purple);
             padding: 4px 10px;
-            border-radius: 2px;
+            border-radius: 4px;
             font-size: 0.7rem;
             font-weight: 600;
-            border: 1px solid rgba(0, 204, 102, 0.2);
+            border: 1px solid rgba(123, 45, 142, 0.3);
             font-family: 'Press Start 2P', monospace;
             letter-spacing: 0;
         }
 
-        /* ===== GAMES SECTION — CARTRIDGE GRID ===== */
+        /* ===== GAMES GRID ===== */
         .games-section {
             padding: 80px 0;
-            background: linear-gradient(180deg, var(--ps1-bg) 0%, #0f0f24 100%);
+            background: linear-gradient(180deg, var(--snes-bg) 0%, #15152a 100%);
         }
 
         .games-grid {
@@ -292,24 +319,22 @@
         }
 
         .game-tag {
-            background: linear-gradient(145deg, #1a1a30, #12122a);
-            border: 2px solid var(--ps1-gray);
-            border-radius: 4px;
+            background: var(--snes-card);
+            border: 2px solid var(--snes-border);
+            border-radius: 8px;
             padding: 20px 12px;
             text-align: center;
             transition: all 0.3s;
-            cursor: default;
         }
 
         .game-tag:hover {
-            border-color: var(--ps1-green);
-            background: linear-gradient(145deg, #1e1e3a, #16162e);
+            border-color: var(--snes-purple);
             transform: scale(1.05);
         }
 
         .game-tag i {
             font-size: 1.8rem;
-            color: var(--ps1-amber);
+            color: var(--snes-yellow);
             margin-bottom: 10px;
             display: block;
         }
@@ -319,10 +344,9 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text-main);
         }
 
-        /* ===== PRICING — PS1 UI STYLE ===== */
+        /* ===== PRICING ===== */
         .plans-retro {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -331,9 +355,9 @@
         }
 
         .plan-retro-card {
-            background: linear-gradient(145deg, #1e1e32, #15152a);
-            border-radius: 4px;
-            border: 2px solid var(--ps1-gray);
+            background: var(--snes-card);
+            border-radius: 12px;
+            border: 2px solid var(--snes-border);
             overflow: hidden;
             transition: all 0.3s;
             position: relative;
@@ -341,12 +365,12 @@
 
         .plan-retro-card:hover {
             transform: translateY(-5px);
-            border-color: var(--ps1-green);
+            border-color: var(--snes-purple);
         }
 
         .plan-retro-card.popular {
-            border-color: var(--ps1-green);
-            box-shadow: 0 0 40px rgba(0, 204, 102, 0.2);
+            border-color: var(--snes-purple);
+            box-shadow: 0 0 40px rgba(123, 45, 142, 0.2);
         }
 
         .badge-retro-popular {
@@ -354,20 +378,19 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--ps1-green);
-            color: #000;
+            background: var(--snes-purple);
+            color: #fff;
             padding: 8px;
             font-family: 'Press Start 2P', monospace;
             font-size: 0.55rem;
             text-align: center;
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
         .plan-retro-header {
             padding: 40px 30px 30px;
             text-align: center;
-            border-bottom: 2px solid var(--ps1-gray);
+            border-bottom: 2px solid var(--snes-border);
         }
 
         .plan-retro-card.popular .plan-retro-header {
@@ -376,7 +399,7 @@
 
         .plan-retro-header i {
             font-size: 2.2rem;
-            color: var(--ps1-green);
+            color: var(--snes-purple);
             margin-bottom: 16px;
         }
 
@@ -390,12 +413,11 @@
         .plan-retro-price {
             font-size: 2.2rem;
             font-weight: 800;
-            color: var(--text-main);
         }
 
         .plan-retro-price span {
             font-size: 0.85rem;
-            color: var(--ps1-light);
+            color: var(--snes-muted);
             font-weight: 400;
         }
 
@@ -409,8 +431,8 @@
             align-items: center;
             gap: 12px;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--ps1-light);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--snes-muted);
             font-size: 0.9rem;
         }
 
@@ -419,7 +441,7 @@
         }
 
         .plan-retro-features i {
-            color: var(--ps1-green);
+            color: var(--snes-green);
             font-size: 0.8rem;
         }
 
@@ -435,37 +457,18 @@
         }
 
         .plan-retro-actions .btn-primary {
-            background: var(--ps1-green) !important;
-            color: #000 !important;
+            background: var(--snes-purple) !important;
+            color: #fff !important;
         }
-
-        /* ===== CONSOLES DETALLADAS ===== */
-        .section.bg-alt {
-            background: linear-gradient(180deg, #0f0f24 0%, var(--ps1-bg) 100%) !important;
-        }
-
-        .console-img .ps1-symbols-small {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.6rem;
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            opacity: 0.3;
-        }
-
-        .console-img .ps1-symbols-small .t { color: var(--ps1-green); }
-        .console-img .ps1-symbols-small .c { color: var(--ps1-red); }
-        .console-img .ps1-symbols-small .x { color: var(--ps1-blue); }
-        .console-img .ps1-symbols-small .s { color: var(--ps1-pink); }
 
         /* ===== FOOTER ===== */
         footer {
-            background: linear-gradient(180deg, var(--ps1-bg), #080816) !important;
-            border-top: 2px solid var(--ps1-gray);
+            background: linear-gradient(180deg, var(--snes-bg), #101020) !important;
+            border-top: 3px solid var(--snes-purple);
         }
 
         footer::before {
-            background: linear-gradient(90deg, var(--ps1-green), var(--ps1-blue), var(--ps1-pink), var(--ps1-red)) !important;
+            background: linear-gradient(90deg, var(--snes-purple), var(--snes-yellow), var(--snes-green), var(--snes-blue)) !important;
             width: 300px !important;
         }
 
@@ -475,32 +478,43 @@
         }
 
         .footer-cta p {
-            color: var(--ps1-light);
+            color: var(--snes-muted);
         }
 
         .btn-whatsapp-large {
-            background: var(--ps1-green) !important;
-            color: #000 !important;
+            background: var(--snes-green) !important;
+            color: #fff !important;
+            border-radius: 8px;
         }
 
         .btn-whatsapp-large:hover {
-            box-shadow: 0 0 30px rgba(0, 204, 102, 0.4);
+            box-shadow: 0 0 30px rgba(0, 153, 68, 0.4);
         }
 
         .btn-email-large {
-            border-color: var(--ps1-gray);
+            background: var(--snes-card) !important;
+            border: 1px solid var(--snes-border) !important;
+            color: var(--snes-muted) !important;
+            border-radius: 8px;
         }
 
         .btn-email-large:hover {
-            background: var(--ps1-gray);
-            border-color: var(--ps1-gray);
+            background: var(--snes-dark) !important;
+            border-color: var(--snes-purple) !important;
         }
 
         .cotizacion-note {
-            color: var(--ps1-light);
+            color: var(--snes-muted);
         }
 
-        /* ===== RESPONSIVE ===== */
+        .footer-bottom {
+            border-top: 1px solid var(--snes-border);
+        }
+
+        .footer-bottom p {
+            color: var(--snes-muted);
+        }
+
         @media (max-width: 768px) {
             .consoles-grid,
             .plans-retro,
@@ -512,13 +526,13 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .ps1-symbols {
-                letter-spacing: 10px;
-                font-size: 1.5rem;
+            .snes-buttons {
+                gap: 10px;
             }
 
-            .hero-retro h1 {
-                font-size: clamp(1.5rem, 5vw, 2.5rem);
+            .snes-btn {
+                width: 28px;
+                height: 28px;
             }
         }
     </style>
@@ -544,17 +558,17 @@
 
     <header class="hero-retro">
         <div class="hero-content">
-            <div class="ps1-symbols">
-                <span class="triangle">&#9650;</span>
-                <span class="circle">&#9679;</span>
-                <span class="cross">&#10005;</span>
-                <span class="square">&#9632;</span>
+            <div class="snes-buttons">
+                <div class="snes-btn green"></div>
+                <div class="snes-btn red"></div>
+                <div class="snes-btn yellow"></div>
+                <div class="snes-btn blue"></div>
             </div>
             <h1>
-                <span class="pixel-font">PlayStation Experience</span>
+                <span class="pixel-font">Retro Gaming</span>
                 Revive la <span>Nostalgia</span>
             </h1>
-            <p>Consolas emuladoras con miles de juegos precargados. PS1, PS2, Nintendo 64, SNES y mucho más. El gaming clásico en tu hogar.</p>
+            <p>Consolas emuladoras con miles de juegos precargados. SNES, PS1, Nintendo 64 y mucho más. El gaming clásico en tu hogar.</p>
             <div class="hero-actions">
                 <a href="#consolas" class="btn-primary"><i class="fa-solid fa-gamepad"></i> Ver Consolas</a>
                 <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Retro" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
@@ -564,7 +578,7 @@
 
     <section id="consolas" class="section">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header">
                 <h2>Nuestras Consolas</h2>
                 <p>Elige la consola perfecta para revivir tus juegos favoritos</p>
             </div>
@@ -572,16 +586,15 @@
                 <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-gamepad"></i>
-                        <span class="ps1-badge">PS1</span>
-                        <div class="ps1-symbols-small"><span class="t">&#9650;</span> <span class="c">&#9679;</span> <span class="x">&#10005;</span> <span class="s">&#9632;</span></div>
+                        <span class="snes-badge">SNES</span>
                     </div>
                     <div class="console-info">
                         <h3>Consola Básica</h3>
-                        <p>Perfecta para comenzar. Incluye los juegos clásicos de PS1 y SNES.</p>
+                        <p>Perfecta para comenzar. Incluye los juegos clásicos de SNES y NES.</p>
                         <div class="console-specs">
-                            <span>PS1</span>
                             <span>SNES</span>
                             <span>NES</span>
+                            <span>GB</span>
                         </div>
                         <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Básica%20Retro" class="btn-outline" target="_blank">Consultar Precio</a>
                     </div>
@@ -590,17 +603,16 @@
                 <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-tv"></i>
-                        <span class="ps1-badge">PRO</span>
-                        <div class="ps1-symbols-small"><span class="t">&#9650;</span> <span class="c">&#9679;</span> <span class="x">&#10005;</span> <span class="s">&#9632;</span></div>
+                        <span class="snes-badge">PRO</span>
                     </div>
                     <div class="console-info">
                         <h3>Consola Pro</h3>
-                        <p>La más vendida. PS1, PS2, N64 y más de 10,000 juegos.</p>
+                        <p>La más vendida. SNES, PS1, N64 y más de 10,000 juegos.</p>
                         <div class="console-specs">
-                            <span>PS1</span>
-                            <span>PS2</span>
-                            <span>N64</span>
                             <span>SNES</span>
+                            <span>PS1</span>
+                            <span>N64</span>
+                            <span>GBA</span>
                         </div>
                         <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Pro%20Retro" class="btn-primary" target="_blank">Consultar Precio</a>
                     </div>
@@ -609,8 +621,7 @@
                 <div class="console-card reveal">
                     <div class="console-img">
                         <i class="fa-solid fa-robot"></i>
-                        <span class="ps1-badge">ULTRA</span>
-                        <div class="ps1-symbols-small"><span class="t">&#9650;</span> <span class="c">&#9679;</span> <span class="x">&#10005;</span> <span class="s">&#9632;</span></div>
+                        <span class="snes-badge">ULTRA</span>
                     </div>
                     <div class="console-info">
                         <h3>Consola Ultra</h3>
@@ -630,14 +641,24 @@
 
     <section class="section bg-alt">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header">
                 <h2>Consolas que Incluimos</h2>
             </div>
             <div class="consoles-grid">
                 <div class="console-card reveal">
                     <div class="console-img">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="snes-badge">SNES</span>
+                    </div>
+                    <div class="console-info">
+                        <h3>Super Nintendo</h3>
+                        <p>Super Mario World, Donkey Kong Country, Street Fighter II, Zelda.</p>
+                    </div>
+                </div>
+                <div class="console-card reveal">
+                    <div class="console-img">
                         <i class="fa-solid fa-microchip"></i>
-                        <span class="ps1-badge">PS1</span>
+                        <span class="snes-badge">PS1</span>
                     </div>
                     <div class="console-info">
                         <h3>PlayStation 1</h3>
@@ -646,18 +667,8 @@
                 </div>
                 <div class="console-card reveal">
                     <div class="console-img">
-                        <i class="fa-solid fa-memory"></i>
-                        <span class="ps1-badge">PS2</span>
-                    </div>
-                    <div class="console-info">
-                        <h3>PlayStation 2</h3>
-                        <p>La consola más vendida de la historia con miles de títulos.</p>
-                    </div>
-                </div>
-                <div class="console-card reveal">
-                    <div class="console-img">
                         <i class="fa-solid fa-leaf"></i>
-                        <span class="ps1-badge">N64</span>
+                        <span class="snes-badge">N64</span>
                     </div>
                     <div class="console-info">
                         <h3>Nintendo 64</h3>
@@ -666,12 +677,12 @@
                 </div>
                 <div class="console-card reveal">
                     <div class="console-img">
-                        <i class="fa-solid fa-star"></i>
-                        <span class="ps1-badge">SNES</span>
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span class="snes-badge">PS2</span>
                     </div>
                     <div class="console-info">
-                        <h3>SNES</h3>
-                        <p>Super Mario World, Donkey Kong Country, Street Fighter II.</p>
+                        <h3>PlayStation 2</h3>
+                        <p>La consola más vendida de la historia con miles de títulos.</p>
                     </div>
                 </div>
             </div>
@@ -680,7 +691,7 @@
 
     <section class="games-section">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header">
                 <h2>Más de 10,000 Juegos</h2>
                 <p>Todos los juegos clásicos precargados y listos para jugar</p>
             </div>
@@ -723,7 +734,7 @@
 
     <section id="planes" class="section">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header">
                 <h2>Elige tu Consola</h2>
                 <p>Pagos únicos con garantía incluida</p>
             </div>
@@ -737,7 +748,7 @@
                     <ul class="plan-retro-features">
                         <li><i class="fa-solid fa-check"></i> Consola emuladora</li>
                         <li><i class="fa-solid fa-check"></i> +3,000 juegos</li>
-                        <li><i class="fa-solid fa-check"></i> PS1, SNES, NES</li>
+                        <li><i class="fa-solid fa-check"></i> SNES, NES, Game Boy</li>
                         <li><i class="fa-solid fa-check"></i> 1 control inalámbrico</li>
                         <li><i class="fa-solid fa-check"></i> Garantía 3 meses</li>
                     </ul>
@@ -756,7 +767,7 @@
                     <ul class="plan-retro-features">
                         <li><i class="fa-solid fa-check"></i> Consola emuladora</li>
                         <li><i class="fa-solid fa-check"></i> +10,000 juegos</li>
-                        <li><i class="fa-solid fa-check"></i> PS1, PS2, N64, SNES</li>
+                        <li><i class="fa-solid fa-check"></i> SNES, PS1, N64, GBA</li>
                         <li><i class="fa-solid fa-check"></i> 2 controles inalámbricos</li>
                         <li><i class="fa-solid fa-check"></i> Garantía 6 meses</li>
                     </ul>
@@ -774,7 +785,7 @@
                     <ul class="plan-retro-features">
                         <li><i class="fa-solid fa-check"></i> Consola emuladora premium</li>
                         <li><i class="fa-solid fa-check"></i> +20,000 juegos</li>
-                        <li><i class="fa-solid fa-check"></i> PS1, PS2, PSP, Dreamcast</li>
+                        <li><i class="fa-solid fa-check"></i> PS2, PSP, Dreamcast</li>
                         <li><i class="fa-solid fa-check"></i> 4 controles inalámbricos</li>
                         <li><i class="fa-solid fa-check"></i> Garantía 12 meses</li>
                     </ul>
