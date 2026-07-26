@@ -638,7 +638,7 @@
                 <a href="#por-que">¿Por qué nosotros?</a>
                 <a href="#contacto" class="btn-primary">Contactar</a>
             </div>
-            <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+            <button class="mobile-toggle" aria-label="Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -740,21 +740,9 @@
         </div>
     </footer>
 
+    <script src="shared.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Reveal on scroll
-            const reveals = document.querySelectorAll('.reveal');
-            const checkReveal = () => {
-                reveals.forEach(el => {
-                    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-                        el.classList.add('active');
-                    }
-                });
-            };
-            window.addEventListener('scroll', checkReveal);
-            checkReveal();
-
-            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(a => {
                 a.addEventListener('click', e => {
                     e.preventDefault();
