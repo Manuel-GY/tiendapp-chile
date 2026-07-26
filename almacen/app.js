@@ -5,8 +5,8 @@ function sanitize(str) {
 }
 
 const catalog = [
-    { id: 1, title: "Frutas de Estación", price: 3500, img: "almacen_fruits.png" },
-    { id: 2, title: "Pack Snacks Tarde", price: 5400, img: "almacen_snacks.png" }
+    { id: 1, title: "Frutas de Estación", price: 3500, img: "almacen_fruits.webp" },
+    { id: 2, title: "Pack Snacks Tarde", price: 5400, img: "almacen_snacks.webp" }
 ];
 
 let cart = { 1: 0, 2: 0 };

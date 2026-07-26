@@ -5,8 +5,8 @@ function sanitize(str) {
 }
 
 const services = [
-    { id: 1, title: "Corte Clásico + Fade", price: "$12.000", desc: "Corte fade con navaja y perfilado experto", img: "barber_haircut.png" },
-    { id: 2, title: "Ritual Barba VIP", price: "$8.000", desc: "Recorte de barba, toalla caliente y aceites esenciales", img: "barber_beard.png" }
+    { id: 1, title: "Corte Clásico + Fade", price: "$12.000", desc: "Corte fade con navaja y perfilado experto", img: "barber_haircut.webp" },
+    { id: 2, title: "Ritual Barba VIP", price: "$8.000", desc: "Recorte de barba, toalla caliente y aceites esenciales", img: "barber_beard.webp" }
 ];
 
 let myAppointments = [];

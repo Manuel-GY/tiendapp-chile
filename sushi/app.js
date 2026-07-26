@@ -12,7 +12,7 @@ let products = [
         title: "Kibo Signature Roll",
         price: "$14.990",
         desc: "Nuestra creación maestra. Salmón noruego gravlax, palta hass y texturas de caviar Oscietra con toques ahumados, presentado sobre piedra laja.",
-        image: "premium_roll.png",
+        image: "premium_roll.webp",
         stock: 15
     },
     {
@@ -20,7 +20,7 @@ let products = [
         title: "Omakase Nigiri Experience",
         price: "$28.500",
         desc: "Auténtica experiencia japonesa. Selección del Itamae con cortes madurados de salmón, bluefin tuna y ebi, sazonados al estilo edomae.",
-        image: "premium_nigiri.png",
+        image: "premium_nigiri.webp",
         stock: 8
     }
 ];
