@@ -226,12 +226,19 @@
 
         .netflix i { display: none !important; }
         .netflix .nf-logo {
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-        .netflix .nf-logo svg {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 60px;
             height: 60px;
+            margin-bottom: 15px;
+            background: #e50914;
+            border-radius: 8px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #000;
+            line-height: 1;
+            letter-spacing: -2px;
         }
         .disney i { color: #0057e7; }
         .hbo i { color: #b535f6; }
@@ -530,9 +537,7 @@
             <div class="platforms-grid">
                 <div class="platform-card netflix reveal">
                     <i class="fa-brands fa-netflix"></i>
-                    <div class="nf-logo">
-                        <svg viewBox="0 0 111 30" fill="#e50914" xmlns="http://www.w3.org/2000/svg"><path d="M105.062 14.28L111 30c-1.75-.25-3.499-.563-5.28-.845l-3.345-8.686-3.437 7.969c-1.687-.282-3.344-.625-5.063-.906l6.156-13.844L94.999 0H100.28l3.031 7.719L106.562 0h5.28l-6.782 14.28zM90.47 0l-2.969 17.062h-.094L84.47 0H79.187l-3.468 20.063h5.062l1.001-6.469h.219l5.624 6.469h5.563L89.47 0h-8.999zm-15.156 0l-5.469 30h5.312l3.75-21.344h.25l3.75 21.344h5.375l5.437-30h-5.25l-3.125 18.5h-.25l-3.187-18.5H51.187zM33.969 0v20.125h.094l10.374-20.125h5.563l-8.187 30h-5.219l-7.813-30h5.156l4.5 20.125h.25L44.47 0h-10.5zM17.157 0l-5.344 30h5.313l3.687-21.344h.25l3.687 21.344h5.344l5.375-30h-5.5l-3.468 20.125h-.25L22.657 0h-5.5zM0 0v30h5.156V0H0z"/></svg>
-                    </div>
+                    <div class="nf-logo">N</div>
                     <h3>Netflix</h3>
                     <p>Películas, series y documentales en 4K</p>
                 </div>
