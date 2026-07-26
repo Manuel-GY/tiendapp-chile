@@ -14,7 +14,22 @@ function attemptAgencyLogin() {
 }
 
 let tickets = [];
-try { tickets = JSON.parse(localStorage.getItem('tiendapp_tickets')) || []; } catch(e) { tickets = []; }
+try {
+    const raw = JSON.parse(localStorage.getItem('tiendapp_tickets'));
+    if (Array.isArray(raw)) {
+        tickets = raw.filter(t =>
+            t && typeof t === 'object' &&
+            typeof t.id === 'number' &&
+            typeof t.fecha === 'string' &&
+            typeof t.hora === 'string' &&
+            typeof t.negocio === 'string' &&
+            typeof t.tipo === 'string' &&
+            typeof t.detalle === 'string' &&
+            typeof t.estado === 'string' &&
+            typeof t.respuesta === 'string'
+        );
+    }
+} catch(e) { tickets = []; }
 
 function saveTickets() {
     localStorage.setItem('tiendapp_tickets', JSON.stringify(tickets));
