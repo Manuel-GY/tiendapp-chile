@@ -14,46 +14,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --nf-red: #e50914;
-            --nf-red-dark: #b81d24;
-            --nf-black: #141414;
-            --nf-dark: #1a1a1a;
-            --nf-card: #1f1f1f;
-            --nf-border: #333;
-            --nf-text: #ffffff;
-            --nf-muted: #808080;
-            --nf-muted-light: #b3b3b3;
+            --ap-cyan: #00a8e1;
+            --ap-cyan-dark: #007eb5;
+            --ap-navy: #0f1b2d;
+            --ap-dark: #152238;
+            --ap-card: #1a2d47;
+            --ap-border: #253a54;
+            --ap-text: #ffffff;
+            --ap-muted: #7b8fa3;
+            --ap-muted-light: #b0c4d8;
         }
 
         body {
-            background: var(--nf-black);
+            background: var(--ap-navy);
         }
 
-        /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(20, 20, 20, 0.95) !important;
-            border-bottom: 1px solid var(--nf-border) !important;
+            background: rgba(15, 27, 45, 0.95) !important;
+            border-bottom: 1px solid var(--ap-border) !important;
         }
 
         .logo span {
             background: none !important;
-            -webkit-text-fill-color: var(--nf-red) !important;
+            -webkit-text-fill-color: var(--ap-cyan) !important;
         }
 
         .nav-links a:hover {
-            color: var(--nf-text) !important;
+            color: var(--ap-text) !important;
         }
 
-        /* ===== HERO NETFLIX-STYLE ===== */
         .hero-streaming {
             position: relative;
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
-            text-align: left;
-            padding: 0 0 80px 0;
-            background: var(--nf-black);
+            text-align: center;
+            padding: 100px 20px 80px;
+            background: linear-gradient(135deg, #0a1628 0%, #0f1b2d 40%, #162a44 100%);
             overflow: hidden;
         }
 
@@ -62,9 +60,8 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(229, 9, 20, 0.25) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 30%, rgba(229, 9, 20, 0.1) 0%, transparent 40%),
-                linear-gradient(to bottom, transparent 40%, var(--nf-black) 100%);
+                radial-gradient(ellipse at 30% 20%, rgba(0, 168, 225, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0, 168, 225, 0.08) 0%, transparent 40%);
             z-index: 1;
         }
 
@@ -74,16 +71,15 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 200px;
-            background: linear-gradient(to top, var(--nf-black), transparent);
+            height: 150px;
+            background: linear-gradient(to top, var(--ap-navy), transparent);
             z-index: 1;
         }
 
         .hero-streaming .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 600px;
-            padding: 0 60px;
+            max-width: 650px;
         }
 
         .hero-tag {
@@ -92,310 +88,92 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: var(--nf-red);
-            margin-bottom: 16px;
-            padding: 6px 14px;
-            border: 1px solid var(--nf-red);
-            border-radius: 4px;
+            color: var(--ap-cyan);
+            margin-bottom: 20px;
+            padding: 6px 16px;
+            border: 1px solid var(--ap-cyan);
+            border-radius: 20px;
         }
 
         .hero-streaming h1 {
-            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-size: clamp(2.4rem, 5vw, 4rem);
             font-weight: 800;
-            line-height: 1.05;
+            line-height: 1.1;
             margin-bottom: 20px;
-            letter-spacing: -1.5px;
-            color: var(--nf-text);
+            letter-spacing: -1px;
+            color: var(--ap-text);
         }
 
         .hero-streaming h1 span {
             background: none;
-            -webkit-text-fill-color: var(--nf-red);
+            -webkit-text-fill-color: var(--ap-cyan);
         }
 
         .hero-streaming > .hero-content > p {
             font-size: 1.1rem;
-            color: var(--nf-muted-light);
-            margin-bottom: 30px;
-            line-height: 1.6;
-            max-width: 500px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .hero-streaming .btn-primary {
-            background: var(--nf-red) !important;
-            font-weight: 700;
-            border-radius: 6px;
-        }
-
-        .hero-streaming .btn-primary:hover {
-            background: var(--nf-red-dark) !important;
-            box-shadow: 0 0 30px rgba(229, 9, 20, 0.4);
-        }
-
-        .hero-streaming .btn-outline {
-            background: rgba(109, 109, 110, 0.7) !important;
-            border: none;
-            color: var(--nf-text) !important;
-            border-radius: 6px;
-        }
-
-        .hero-streaming .btn-outline:hover {
-            background: rgba(109, 109, 110, 0.5) !important;
-        }
-
-        /* ===== PLATFORMS — CATEGORY ROWS ===== */
-        .section {
-            padding: 60px 0;
-        }
-
-        .section-header h2 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--nf-text);
-        }
-
-        .section-header p {
-            color: var(--nf-muted);
-        }
-
-        .platforms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-top: 30px;
-        }
-
-        .platform-card {
-            background: var(--nf-card);
-            border-radius: 8px;
-            padding: 30px 20px;
-            text-align: center;
-            border: none;
-            transition: all 0.25s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .platform-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.03);
-            opacity: 0;
-            transition: opacity 0.25s;
-        }
-
-        .platform-card:hover {
-            transform: scale(1.05);
-            z-index: 2;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-        }
-
-        .platform-card:hover::after {
-            opacity: 1;
-        }
-
-        .platform-card i {
-            font-size: 3rem;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .platform-card h3 {
-            font-size: 1rem;
-            margin-bottom: 6px;
-            color: var(--nf-text);
-            position: relative;
-            z-index: 1;
-        }
-
-        .platform-card p {
-            font-size: 0.8rem;
-            line-height: 1.4;
-            position: relative;
-            z-index: 1;
-        }
-
-        .netflix i { display: none !important; }
-        .netflix .nf-logo {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            margin-bottom: 15px;
-            background: #e50914;
-            border-radius: 8px;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #000;
-            line-height: 1;
-            letter-spacing: -2px;
-        }
-        .disney i { color: #0057e7; }
-        .hbo i { color: #b535f6; }
-        .prime i { color: #00a8e1; }
-        .spotify i { color: #1db954; }
-        .getParamount i { color: #0064ff; }
-
-        .platform-card h3 { color: var(--nf-text); }
-        .platform-card p { color: var(--nf-muted); }
-
-        /* ===== PLANS — NETFLIX PRICING ===== */
-        .section.bg-alt {
-            background: var(--nf-dark) !important;
-        }
-
-        .plans-streaming {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-            max-width: 1000px;
+            color: var(--ap-muted-light);
+            margin-bottom: 35px;
+            line-height: 1.7;
+            max-width: 520px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .plan-streaming-card {
-            background: var(--nf-card);
-            border-radius: 8px;
-            border: 1px solid var(--nf-border);
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .plan-streaming-card:hover {
-            transform: scale(1.03);
-            border-color: #555;
-        }
-
-        .plan-streaming-card.popular {
-            border-color: var(--nf-red);
-            box-shadow: 0 0 40px rgba(229, 9, 20, 0.2);
-        }
-
-        .plan-streaming-header {
-            padding: 36px 28px;
-            text-align: center;
-            border-bottom: 1px solid var(--nf-border);
-            position: relative;
-        }
-
-        .plan-streaming-card.popular .plan-streaming-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--nf-red);
-        }
-
-        .plan-streaming-header i {
-            font-size: 2rem;
-            color: var(--nf-red);
-            margin-bottom: 16px;
-        }
-
-        .plan-streaming-header h3 {
-            font-size: 1.1rem;
-            color: var(--nf-text);
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .plan-streaming-price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--nf-text);
-        }
-
-        .plan-streaming-price span {
-            font-size: 0.85rem;
-            color: var(--nf-muted);
-            font-weight: 400;
-        }
-
-        .plan-streaming-features {
-            list-style: none;
-            padding: 24px 28px;
-        }
-
-        .plan-streaming-features li {
+        .hero-actions {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--nf-muted-light);
-            font-size: 0.9rem;
-        }
-
-        .plan-streaming-features li:last-child {
-            border-bottom: none;
-        }
-
-        .plan-streaming-features i {
-            color: var(--nf-red);
-            font-size: 0.8rem;
-        }
-
-        .plan-streaming-actions {
-            padding: 0 28px 28px;
-        }
-
-        .plan-streaming-actions .btn-primary,
-        .plan-streaming-actions .btn-outline {
-            width: 100%;
+            gap: 14px;
+            flex-wrap: wrap;
             justify-content: center;
-            display: flex;
-            border-radius: 6px;
         }
 
-        .plan-streaming-actions .btn-primary {
-            background: var(--nf-red) !important;
-            color: var(--nf-text) !important;
-        }
-
-        .plan-streaming-actions .btn-primary:hover {
-            background: var(--nf-red-dark) !important;
-        }
-
-        .plan-streaming-actions .btn-outline {
-            background: transparent !important;
-            border: 1px solid var(--nf-border) !important;
-            color: var(--nf-muted-light) !important;
-        }
-
-        .plan-streaming-actions .btn-outline:hover {
-            border-color: var(--nf-text) !important;
-            color: var(--nf-text) !important;
-        }
-
-        .badge-popular {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--nf-red);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.7rem;
+        .hero-streaming .btn-primary {
+            background: var(--ap-cyan) !important;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border-radius: 8px;
+            padding: 14px 32px;
         }
 
-        /* ===== PRICING GRID ===== */
+        .hero-streaming .btn-primary:hover {
+            background: var(--ap-cyan-dark) !important;
+            box-shadow: 0 0 30px rgba(0, 168, 225, 0.4);
+        }
+
+        .hero-streaming .btn-outline {
+            background: rgba(37, 58, 84, 0.6) !important;
+            border: 1px solid var(--ap-border) !important;
+            color: var(--ap-text) !important;
+            border-radius: 8px;
+            padding: 14px 32px;
+        }
+
+        .hero-streaming .btn-outline:hover {
+            background: rgba(37, 58, 84, 0.9) !important;
+            border-color: var(--ap-cyan) !important;
+        }
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-header {
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--ap-text);
+        }
+
+        .section-header p {
+            color: var(--ap-muted);
+        }
+
+        .section.bg-alt {
+            background: var(--ap-dark) !important;
+        }
+
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -407,31 +185,31 @@
         }
 
         .pricing-platform {
-            background: var(--nf-card);
-            border-radius: 10px;
-            border: 1px solid var(--nf-border);
+            background: var(--ap-card);
+            border-radius: 12px;
+            border: 1px solid var(--ap-border);
             overflow: hidden;
             transition: all 0.3s;
         }
 
         .pricing-platform:hover {
-            transform: scale(1.03);
-            border-color: #555;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-4px);
+            border-color: var(--ap-cyan);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
 
         .pricing-platform-header {
-            padding: 24px 20px;
+            padding: 26px 20px;
             text-align: center;
-            border-bottom: 1px solid var(--nf-border);
+            border-bottom: 1px solid var(--ap-border);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .pricing-platform-header i {
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
 
         .pricing-platform-header h3 {
@@ -439,7 +217,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--nf-text);
+            color: var(--ap-text);
             margin: 0;
         }
 
@@ -450,7 +228,7 @@
             width: 44px;
             height: 44px;
             background: #e50914;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 1.8rem;
             font-weight: 900;
             color: #000;
@@ -473,18 +251,18 @@
             justify-content: space-between;
             align-items: center;
             padding: 14px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
 
         .pricing-label {
             font-size: 0.85rem;
-            color: var(--nf-muted-light);
+            color: var(--ap-muted-light);
         }
 
         .pricing-value {
             font-size: 1.1rem;
             font-weight: 800;
-            color: var(--nf-text);
+            color: var(--ap-text);
         }
 
         .btn-pricing {
@@ -492,21 +270,20 @@
             margin: 16px 20px 20px;
             padding: 12px;
             text-align: center;
-            background: var(--nf-red);
-            color: white;
+            background: var(--ap-cyan);
+            color: #0f1b2d;
             font-weight: 700;
             font-size: 0.9rem;
-            border-radius: 6px;
+            border-radius: 8px;
             text-decoration: none;
             transition: all 0.25s;
         }
 
         .btn-pricing:hover {
-            background: var(--nf-red-dark);
-            box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+            background: var(--ap-cyan-dark);
+            box-shadow: 0 0 20px rgba(0, 168, 225, 0.3);
         }
 
-        /* ===== GUARANTEE ===== */
         .guarantee-section {
             text-align: center;
             padding: 60px 0;
@@ -514,46 +291,45 @@
 
         .guarantee-section i {
             font-size: 3.5rem;
-            color: var(--nf-red);
+            color: var(--ap-cyan);
             margin-bottom: 20px;
         }
 
         .guarantee-section h3 {
             font-size: 1.4rem;
-            color: var(--nf-text);
+            color: var(--ap-text);
             margin-bottom: 12px;
         }
 
         .guarantee-section p {
-            color: var(--nf-muted);
+            color: var(--ap-muted);
             max-width: 550px;
             margin: 0 auto;
             line-height: 1.7;
         }
 
-        /* ===== FOOTER ===== */
         footer {
-            background: var(--nf-black) !important;
-            border-top: 1px solid var(--nf-border);
+            background: var(--ap-navy) !important;
+            border-top: 1px solid var(--ap-border);
         }
 
         footer::before {
-            background: var(--nf-red) !important;
+            background: var(--ap-cyan) !important;
             width: 100px !important;
         }
 
         .footer-cta h2 {
-            color: var(--nf-text);
+            color: var(--ap-text);
         }
 
         .footer-cta p {
-            color: var(--nf-muted);
+            color: var(--ap-muted);
         }
 
         .btn-whatsapp-large {
             background: #25d366 !important;
             color: white !important;
-            border-radius: 6px;
+            border-radius: 8px;
         }
 
         .btn-whatsapp-large:hover {
@@ -561,48 +337,36 @@
         }
 
         .btn-email-large {
-            background: var(--nf-card) !important;
-            border: 1px solid var(--nf-border) !important;
-            color: var(--nf-muted-light) !important;
-            border-radius: 6px;
+            background: var(--ap-card) !important;
+            border: 1px solid var(--ap-border) !important;
+            color: var(--ap-muted-light) !important;
+            border-radius: 8px;
         }
 
         .btn-email-large:hover {
-            background: var(--nf-dark) !important;
-            border-color: #555 !important;
+            background: var(--ap-dark) !important;
+            border-color: var(--ap-cyan) !important;
         }
 
         .cotizacion-note {
-            color: var(--nf-muted);
+            color: var(--ap-muted);
         }
 
         .footer-bottom {
-            border-top: 1px solid var(--nf-border);
+            border-top: 1px solid var(--ap-border);
         }
 
         .footer-bottom p {
-            color: var(--nf-muted);
+            color: var(--ap-muted);
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .hero-streaming {
                 align-items: center;
-                padding-bottom: 60px;
-                min-height: 80vh;
+                padding: 80px 24px 60px;
+                min-height: 70vh;
             }
 
-            .hero-streaming .hero-content {
-                padding: 0 24px;
-                text-align: center;
-            }
-
-            .hero-actions {
-                justify-content: center;
-            }
-
-            .platforms-grid,
-            .plans-streaming,
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
@@ -617,7 +381,6 @@
             <div class="nav-links">
                 <a href="../index.html">Inicio</a>
                 <a href="../desarrollo/index.html">Desarrollo Web</a>
-                <a href="#plataformas">Plataformas</a>
                 <a href="#planes">Planes</a>
                 <a href="../retro/index.html">Retro Gaming</a>
                 <a href="#contacto" class="btn-primary">Suscribirse</a>
@@ -640,51 +403,9 @@
         </div>
     </header>
 
-    <section id="plataformas" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Plataformas Disponibles</h2>
-                <p>Todas las plataformas que necesitas en un solo lugar</p>
-            </div>
-            <div class="platforms-grid">
-                <div class="platform-card netflix reveal">
-                    <i class="fa-brands fa-netflix"></i>
-                    <div class="nf-logo">N</div>
-                    <h3>Netflix</h3>
-                    <p>Películas, series y documentales en 4K</p>
-                </div>
-                <div class="platform-card disney reveal">
-                    <i class="fa-solid fa-film"></i>
-                    <h3>Disney+</h3>
-                    <p>Disney, Pixar, Marvel, Star Wars y National Geographic</p>
-                </div>
-                <div class="platform-card hbo reveal">
-                    <i class="fa-solid fa-tv"></i>
-                    <h3>HBO Max</h3>
-                    <p>Los mejores estrenos y clásicos de HBO</p>
-                </div>
-                <div class="platform-card prime reveal">
-                    <i class="fa-solid fa-play"></i>
-                    <h3>Amazon Prime</h3>
-                    <p>Series originales, películas y envíos gratis</p>
-                </div>
-                <div class="platform-card spotify reveal">
-                    <i class="fa-brands fa-spotify"></i>
-                    <h3>Spotify</h3>
-                    <p>Música y podcasts sin anuncios</p>
-                </div>
-                <div class="platform-card getParamount reveal">
-                    <i class="fa-solid fa-mountain-sun"></i>
-                    <h3>Paramount+</h3>
-                    <p>Series y películas Paramount</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="planes" class="section bg-alt">
         <div class="container">
-            <div class="section-header center">
+            <div class="section-header">
                 <h2>Elige tu Plan</h2>
                 <p>Precios por plataforma. Elige lo que necesitas.</p>
             </div>
