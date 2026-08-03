@@ -1,0 +1,25 @@
+<svg viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sistema Full + PC con más de 10.000 juegos">
+    <rect x="1" y="1" width="258" height="148" rx="14" fill="#151938" stroke="#2e3460" stroke-width="2"/>
+    <rect x="40" y="24" width="130" height="84" rx="8" fill="#0e1128" stroke="#00b0ff" stroke-width="2"/>
+    <rect x="47" y="31" width="116" height="70" rx="4" fill="#00b0ff"/>
+    <rect x="53" y="84" width="104" height="10" fill="#00c853"/>
+    <rect x="61" y="72" width="12" height="12" fill="#7b2fbe"/>
+    <rect x="88" y="66" width="12" height="12" fill="#ffd600"/>
+    <circle cx="120" cy="78" r="6" fill="#ffffff"/>
+    <rect x="95" y="108" width="20" height="6" fill="#2e3460"/>
+    <rect x="82" y="114" width="46" height="4" rx="2" fill="#2e3460"/>
+    <path d="M186 26 l10 14 h-20 z" fill="#ffd600"/>
+    <circle cx="196" cy="44" r="4" fill="#ffd600"/>
+    <rect x="26" y="122" width="64" height="18" rx="9" fill="#1c2145" stroke="#00c853" stroke-width="2"/>
+    <circle cx="38" cy="131" r="2.5" fill="#ff1744"/>
+    <circle cx="50" cy="128" r="3.5" fill="#2e3460"/>
+    <circle cx="62" cy="128" r="3.5" fill="#2e3460"/>
+    <circle cx="74" cy="131" r="2.5" fill="#00b0ff"/>
+    <rect x="120" y="122" width="64" height="18" rx="9" fill="#1c2145" stroke="#7b2fbe" stroke-width="2"/>
+    <circle cx="132" cy="131" r="2.5" fill="#ff1744"/>
+    <circle cx="144" cy="128" r="3.5" fill="#2e3460"/>
+    <circle cx="156" cy="128" r="3.5" fill="#2e3460"/>
+    <circle cx="168" cy="131" r="2.5" fill="#00b0ff"/>
+    <rect x="196" y="122" width="34" height="18" rx="9" fill="#00c853"/>
+    <text x="213" y="134" font-family="sans-serif" font-size="8" font-weight="bold" fill="#0e1128" text-anchor="middle">+10K</text>
+</svg>

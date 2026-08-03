@@ -312,20 +312,21 @@
             letter-spacing: 2px;
         }
 
+        .plan-retro-art {
+            padding: 24px 24px 0;
+        }
+
+        .plan-retro-art img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
         .plan-retro-header {
-            padding: 40px 30px 30px;
+            padding: 24px 30px 24px;
             text-align: center;
             border-bottom: 2px solid var(--n64-border);
-        }
-
-        .plan-retro-card.popular .plan-retro-header {
-            padding-top: 55px;
-        }
-
-        .plan-retro-header i {
-            font-size: 2.2rem;
-            color: var(--n64-purple);
-            margin-bottom: 16px;
         }
 
         .plan-retro-header h3 {
@@ -387,6 +388,46 @@
             font-weight: 700;
         }
 
+        /* ===== VIDEO ===== */
+        .plan-retro-video {
+            padding: 0 30px 30px;
+        }
+
+        .video-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            color: var(--n64-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .video-label i {
+            color: var(--n64-red);
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 2px solid var(--n64-border);
+            background: #000;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         /* ===== INSERT COIN ===== */
         .insert-coin {
             text-align: center;
@@ -442,13 +483,13 @@
             box-shadow: 0 14px 40px var(--n64-purple-glow), 0 0 30px var(--n64-green-glow);
         }
 
-        .plan-retro-header i {
-            transition: transform 0.3s ease, color 0.3s ease;
+        .plan-retro-art img {
+            transition: transform 0.35s ease, filter 0.35s ease;
         }
 
-        .plan-retro-card:hover .plan-retro-header i {
-            transform: scale(1.18) rotate(-5deg);
-            color: var(--n64-green);
+        .plan-retro-card:hover .plan-retro-art img {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 18px var(--n64-purple-glow));
         }
 
         .plan-retro-features li {
@@ -631,8 +672,10 @@
             </div>
             <div class="plans-retro">
                 <div class="plan-retro-card reveal">
+                    <div class="plan-retro-art">
+                        <img src="assets/light.svg" alt="Sistema Light para celular Android y TV Box">
+                    </div>
                     <div class="plan-retro-header">
-                        <i class="fa-solid fa-mobile-screen"></i>
                         <h3>Sistema Light</h3>
                         <div class="plan-retro-price">$10.000</div>
                     </div>
@@ -650,8 +693,10 @@
                 </div>
 
                 <div class="plan-retro-card reveal">
+                    <div class="plan-retro-art">
+                        <img src="assets/sf3000.svg" alt="Consola portátil retro SF3000">
+                    </div>
                     <div class="plan-retro-header">
-                        <i class="fa-solid fa-gamepad"></i>
                         <h3>Consola SF3000</h3>
                         <div class="plan-retro-price">$70.000</div>
                     </div>
@@ -667,11 +712,19 @@
                     <div class="plan-retro-actions">
                         <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20SF3000%20Retro%20%2470.000" class="btn-outline" target="_blank" rel="noopener noreferrer">Comprar</a>
                     </div>
+                    <div class="plan-retro-video">
+                        <div class="video-label"><i class="fa-solid fa-play"></i> Mírala en acción</div>
+                        <div class="video-frame">
+                            <iframe src="https://www.youtube-nocookie.com/embed/1mdAO3JR_9U" title="Review y unboxing de la consola retro SF3000" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="plan-retro-card reveal">
+                    <div class="plan-retro-art">
+                        <img src="assets/portable.svg" alt="Sistema Portable con disco duro externo">
+                    </div>
                     <div class="plan-retro-header">
-                        <i class="fa-solid fa-hard-drive"></i>
                         <h3>Sistema Portable</h3>
                         <div class="plan-retro-price">$80.000</div>
                     </div>
@@ -691,8 +744,10 @@
 
                 <div class="plan-retro-card popular reveal">
                     <div class="badge-retro-popular">Más Popular</div>
+                    <div class="plan-retro-art">
+                        <img src="assets/light-pc.svg" alt="Sistema Light + PC con controles inalámbricos">
+                    </div>
                     <div class="plan-retro-header">
-                        <i class="fa-solid fa-desktop"></i>
                         <h3>Sistema Light + PC</h3>
                         <div class="plan-retro-price">$90.000</div>
                     </div>
@@ -712,8 +767,10 @@
                 </div>
 
                 <div class="plan-retro-card reveal">
+                    <div class="plan-retro-art">
+                        <img src="assets/full-pc.svg" alt="Sistema Full + PC con más de 10.000 juegos">
+                    </div>
                     <div class="plan-retro-header">
-                        <i class="fa-solid fa-crown"></i>
                         <h3>Sistema Full + PC</h3>
                         <div class="plan-retro-price">$140.000</div>
                     </div>
@@ -733,8 +790,10 @@
                 </div>
 
                 <div class="plan-retro-card reveal">
+                    <div class="plan-retro-art">
+                        <img src="assets/software.svg" alt="Solo Software, instalación en tu PC">
+                    </div>
                     <div class="plan-retro-header">
-                        <i class="fa-solid fa-wrench"></i>
                         <h3>Solo Software</h3>
                         <div class="plan-retro-price">A evaluar</div>
                     </div>

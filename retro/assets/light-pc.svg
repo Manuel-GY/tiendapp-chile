@@ -1,0 +1,18 @@
+<svg viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sistema Light + PC con controles inalámbricos">
+    <rect x="1" y="1" width="258" height="148" rx="14" fill="#151938" stroke="#2e3460" stroke-width="2"/>
+    <rect x="40" y="26" width="130" height="84" rx="8" fill="#0e1128" stroke="#00b0ff" stroke-width="2"/>
+    <rect x="47" y="33" width="116" height="70" rx="4" fill="#00b0ff"/>
+    <rect x="53" y="86" width="104" height="10" fill="#00c853"/>
+    <rect x="61" y="74" width="12" height="12" fill="#7b2fbe"/>
+    <rect x="88" y="68" width="12" height="12" fill="#ffd600"/>
+    <circle cx="120" cy="80" r="6" fill="#ffffff"/>
+    <rect x="95" y="110" width="20" height="6" fill="#2e3460"/>
+    <rect x="82" y="116" width="46" height="4" rx="2" fill="#2e3460"/>
+    <rect x="30" y="124" width="70" height="18" rx="9" fill="#1c2145" stroke="#00c853" stroke-width="2"/>
+    <circle cx="42" cy="133" r="2.5" fill="#ff1744"/>
+    <circle cx="55" cy="130" r="3.5" fill="#2e3460"/>
+    <circle cx="68" cy="130" r="3.5" fill="#2e3460"/>
+    <circle cx="80" cy="133" r="2.5" fill="#00b0ff"/>
+    <rect x="170" y="124" width="34" height="12" rx="6" fill="#7b2fbe"/>
+    <text x="187" y="133" font-family="sans-serif" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">HDMI</text>
+</svg>
