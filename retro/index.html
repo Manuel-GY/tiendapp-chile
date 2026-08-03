@@ -405,6 +405,79 @@
             50% { opacity: 0; }
         }
 
+        /* ===== ANIMACIONES Y EFECTOS ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 6px currentColor; }
+            50% { box-shadow: 0 0 20px currentColor, 0 0 36px currentColor; }
+        }
+
+        .hero-retro .n64-logo {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .n64-btn {
+            animation: pulse-glow 1.8s ease-in-out infinite;
+        }
+
+        .n64-btn.r { animation-delay: 0.15s; }
+        .n64-btn.a { animation-delay: 0.3s; }
+        .n64-btn.l { animation-delay: 0.45s; }
+        .n64-btn.z { animation-delay: 0.6s; }
+
+        .plan-retro-card.reveal {
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.35s ease,
+                        border-color 0.35s ease,
+                        box-shadow 0.35s ease;
+        }
+
+        .plan-retro-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--n64-green);
+            box-shadow: 0 14px 40px var(--n64-purple-glow), 0 0 30px var(--n64-green-glow);
+        }
+
+        .plan-retro-header i {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .plan-retro-card:hover .plan-retro-header i {
+            transform: scale(1.18) rotate(-5deg);
+            color: var(--n64-green);
+        }
+
+        .plan-retro-features li {
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+
+        .plan-retro-card:hover .plan-retro-features li:hover {
+            color: var(--n64-text);
+            transform: translateX(5px);
+        }
+
+        .plan-retro-actions .btn-primary,
+        .plan-retro-actions .btn-outline {
+            transition: transform 0.15s ease, box-shadow 0.25s ease;
+        }
+
+        .plan-retro-actions .btn-primary:active,
+        .plan-retro-actions .btn-outline:active {
+            transform: scale(0.96);
+        }
+
+        .system-chip {
+            transition: all 0.3s;
+        }
+
+        .system-chip:hover {
+            transform: translateY(-4px) scale(1.04);
+        }
+
         /* ===== FOOTER ===== */
         footer {
             background: linear-gradient(180deg, var(--n64-bg), #080a18) !important;
@@ -564,15 +637,35 @@
                         <div class="plan-retro-price">$10.000</div>
                     </div>
                     <ul class="plan-retro-features">
-                        <li><i class="fa-solid fa-check"></i> Sistema light 50GB</li>
-                        <li><i class="fa-solid fa-check"></i> Sistema full 380GB</li>
+                        <li><i class="fa-solid fa-check"></i> Sistema retro completo 50GB</li>
+                        <li><i class="fa-solid fa-check"></i> NES, Sega, SNES, PS1 y más</li>
                         <li><i class="fa-solid fa-check"></i> App para celular Android</li>
                         <li><i class="fa-solid fa-check"></i> App para TV Box</li>
-                        <li><i class="fa-solid fa-check"></i> Envío digital</li>
+                        <li><i class="fa-solid fa-check"></i> Envío digital al instante</li>
                         <li><i class="fa-solid fa-bolt"></i> <strong>Entrega inmediata</strong></li>
                     </ul>
                     <div class="plan-retro-actions">
                         <a href="https://wa.me/56976739157?text=Interesado%20en%20Sistema%20Light%20Retro%20%2410.000" class="btn-outline" target="_blank" rel="noopener noreferrer">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="plan-retro-card reveal">
+                    <div class="plan-retro-header">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <h3>Consola SF3000</h3>
+                        <div class="plan-retro-price">$70.000</div>
+                    </div>
+                    <ul class="plan-retro-features">
+                        <li><i class="fa-solid fa-check"></i> Consola portátil retro SF3000</li>
+                        <li><i class="fa-solid fa-check"></i> Pantalla IPS 4.5" de alta nitidez</li>
+                        <li><i class="fa-solid fa-check"></i> +30.000 juegos precargados</li>
+                        <li><i class="fa-solid fa-check"></i> PS1, NES, SNES, Mega Drive, GBA</li>
+                        <li><i class="fa-solid fa-check"></i> Batería 3000mAh (hasta 6 hrs)</li>
+                        <li><i class="fa-solid fa-bolt"></i> Carga USB-C rápida</li>
+                        <li><i class="fa-solid fa-truck"></i> <strong>Envío a todo Chile</strong></li>
+                    </ul>
+                    <div class="plan-retro-actions">
+                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20SF3000%20Retro%20%2470.000" class="btn-outline" target="_blank" rel="noopener noreferrer">Comprar</a>
                     </div>
                 </div>
 
@@ -583,11 +676,12 @@
                         <div class="plan-retro-price">$80.000</div>
                     </div>
                     <ul class="plan-retro-features">
-                        <li><i class="fa-solid fa-check"></i> Disco duro externo</li>
-                        <li><i class="fa-solid fa-check"></i> Llegar y jugar</li>
-                        <li><i class="fa-solid fa-check"></i> Compatible con PC</li>
-                        <li><i class="fa-solid fa-check"></i> Plug & play</li>
-                        <li><i class="fa-solid fa-check"></i> Garantía 3 meses</li>
+                        <li><i class="fa-solid fa-check"></i> Disco duro externo con sistema retro</li>
+                        <li><i class="fa-solid fa-check"></i> +10.000 juegos listos para jugar</li>
+                        <li><i class="fa-solid fa-check"></i> Compatible con cualquier PC</li>
+                        <li><i class="fa-solid fa-check"></i> Plug & play, sin instalación</li>
+                        <li><i class="fa-solid fa-check"></i> Llegar, conectar y jugar</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> Garantía 3 meses</li>
                         <li><i class="fa-solid fa-truck"></i> <strong>Entrega en 3 días</strong> post pago</li>
                     </ul>
                     <div class="plan-retro-actions">
@@ -603,11 +697,13 @@
                         <div class="plan-retro-price">$90.000</div>
                     </div>
                     <ul class="plan-retro-features">
-                        <li><i class="fa-solid fa-check"></i> Sistema light 50GB</li>
-                        <li><i class="fa-solid fa-check"></i> 2 controles inalámbricos</li>
-                        <li><i class="fa-solid fa-check"></i> PC configurada para jugar</li>
-                        <li><i class="fa-solid fa-check"></i> NES, Sega, SNES, PS1</li>
-                        <li><i class="fa-solid fa-check"></i> Garantía 6 meses</li>
+                        <li><i class="fa-solid fa-check"></i> PC optimizada para juegos retro</li>
+                        <li><i class="fa-solid fa-check"></i> Sistema light 50GB precargado</li>
+                        <li><i class="fa-solid fa-check"></i> NES, Sega, SNES, PS1 y más</li>
+                        <li><i class="fa-solid fa-check"></i> 2 controles inalámbricos incluidos</li>
+                        <li><i class="fa-solid fa-check"></i> Conecta al TV vía HDMI</li>
+                        <li><i class="fa-solid fa-check"></i> Llegar y jugar sin configurar</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> Garantía 6 meses</li>
                         <li><i class="fa-solid fa-truck"></i> <strong>Entrega en 5 días</strong> post pago</li>
                     </ul>
                     <div class="plan-retro-actions">
@@ -622,11 +718,13 @@
                         <div class="plan-retro-price">$140.000</div>
                     </div>
                     <ul class="plan-retro-features">
+                        <li><i class="fa-solid fa-check"></i> PC optimizada para juegos retro</li>
                         <li><i class="fa-solid fa-check"></i> Sistema full 380GB</li>
-                        <li><i class="fa-solid fa-check"></i> +10,000 juegos</li>
-                        <li><i class="fa-solid fa-check"></i> 2 controles inalámbricos</li>
-                        <li><i class="fa-solid fa-check"></i> PC configurada para jugar</li>
-                        <li><i class="fa-solid fa-check"></i> Garantía 12 meses</li>
+                        <li><i class="fa-solid fa-check"></i> +10.000 juegos de todas las épocas</li>
+                        <li><i class="fa-solid fa-check"></i> NES, SNES, Sega, PS1, N64 y más</li>
+                        <li><i class="fa-solid fa-check"></i> 2 controles inalámbricos incluidos</li>
+                        <li><i class="fa-solid fa-check"></i> Conecta al TV vía HDMI</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> Garantía 12 meses</li>
                         <li><i class="fa-solid fa-truck"></i> <strong>Entrega en 5 días</strong> post pago</li>
                     </ul>
                     <div class="plan-retro-actions">
@@ -641,11 +739,11 @@
                         <div class="plan-retro-price">A evaluar</div>
                     </div>
                     <ul class="plan-retro-features">
-                        <li><i class="fa-solid fa-check"></i> ¿Ya tienes PC?</li>
-                        <li><i class="fa-solid fa-check"></i> Evaluamos tu equipo</li>
-                        <li><i class="fa-solid fa-check"></i> Instalamos el sistema</li>
-                        <li><i class="fa-solid fa-check"></i> Configuramos todo</li>
-                        <li><i class="fa-solid fa-check"></i> Precio según condiciones</li>
+                        <li><i class="fa-solid fa-check"></i> ¿Ya tienes PC o notebook?</li>
+                        <li><i class="fa-solid fa-check"></i> Evaluamos tu equipo sin costo</li>
+                        <li><i class="fa-solid fa-check"></i> Instalamos el sistema completo</li>
+                        <li><i class="fa-solid fa-check"></i> Configuramos controles y juegos</li>
+                        <li><i class="fa-solid fa-check"></i> Precio según condiciones de tu equipo</li>
                         <li><i class="fa-solid fa-clock"></i> <strong>Entrega a evaluar</strong> según condiciones</li>
                     </ul>
                     <div class="plan-retro-actions">

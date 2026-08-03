@@ -431,10 +431,13 @@
             background: var(--vs-sidebar);
             border: 1px solid var(--vs-border);
             border-radius: 6px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .pricing-card:hover {
             border-color: var(--vs-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 122, 204, 0.18);
         }
 
         .pricing-card.popular {
@@ -447,6 +450,12 @@
             color: #fff;
             font-size: 0.65rem;
             letter-spacing: 1px;
+            animation: badge-pulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .pricing-header {
@@ -814,8 +823,8 @@
                     <div class="popular-badge">MAIN</div>
                     <div class="pricing-header">
                         <h3>Plan Pro</h3>
-                        <p class="price">Desde $60.000</p>
-                        <p class="setup-fee">Pago único de implementación</p>
+                        <p class="price" style="font-size: 1.5rem;">A evaluar</p>
+                        <p class="setup-fee">El valor se define según tu proyecto</p>
                     </div>
                     <ul class="pricing-features">
                         <li><i class="fa-solid fa-check"></i> <strong>Dominio Propio .cl</strong></li>
