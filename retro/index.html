@@ -388,44 +388,8 @@
             font-weight: 700;
         }
 
-        /* ===== VIDEO ===== */
-        .plan-retro-video {
-            padding: 0 30px 30px;
-        }
-
-        .video-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 12px;
-            color: var(--n64-muted);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .video-label i {
-            color: var(--n64-red);
-        }
-
-        .video-frame {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            border: 2px solid var(--n64-border);
-            background: #000;
-        }
-
-        .video-frame iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+        .plan-retro-actions a + a {
+            margin-top: 8px;
         }
 
         /* ===== INSERT COIN ===== */
@@ -680,11 +644,12 @@
                         <div class="plan-retro-price">$10.000</div>
                     </div>
                     <ul class="plan-retro-features">
-                        <li><i class="fa-solid fa-check"></i> Sistema retro completo 50GB</li>
-                        <li><i class="fa-solid fa-check"></i> NES, Sega, SNES, PS1 y más</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Sistema light 50GB</strong></li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Sistema full 380GB</strong></li>
+                        <li><i class="fa-solid fa-check"></i> Ambos sistemas por un solo pago</li>
                         <li><i class="fa-solid fa-check"></i> App para celular Android</li>
                         <li><i class="fa-solid fa-check"></i> App para TV Box</li>
-                        <li><i class="fa-solid fa-check"></i> Envío digital al instante</li>
+                        <li><i class="fa-solid fa-download"></i> <strong>Solo link de descarga</strong></li>
                         <li><i class="fa-solid fa-bolt"></i> <strong>Entrega inmediata</strong></li>
                     </ul>
                     <div class="plan-retro-actions">
@@ -711,12 +676,7 @@
                     </ul>
                     <div class="plan-retro-actions">
                         <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20SF3000%20Retro%20%2470.000" class="btn-outline" target="_blank" rel="noopener noreferrer">Comprar</a>
-                    </div>
-                    <div class="plan-retro-video">
-                        <div class="video-label"><i class="fa-solid fa-play"></i> Mírala en acción</div>
-                        <div class="video-frame">
-                            <iframe src="https://www.youtube-nocookie.com/embed/1mdAO3JR_9U" title="Review y unboxing de la consola retro SF3000" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
+                        <a href="https://www.youtube.com/watch?v=1mdAO3JR_9U" class="btn-outline" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-play"></i> Ver review en YouTube</a>
                     </div>
                 </div>
 
