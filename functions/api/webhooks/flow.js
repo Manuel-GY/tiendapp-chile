@@ -23,7 +23,7 @@ async function processFlowPayment(token, env) {
   const FLOW_API_KEY = env.FLOW_API_KEY;
   const FLOW_SECRET_KEY = env.FLOW_SECRET_KEY;
   const RESEND_API_KEY = env.RESEND_API_KEY;
-  const RESEND_FROM = env.RESEND_FROM || "ventas@tiendapp.cl";
+  const RESEND_FROM = env.RESEND_FROM || "ventas@tiendappchile.cl";
   const isProduction = FLOW_API_KEY && !FLOW_API_KEY.startsWith("TEST-");
 
   if (!FLOW_API_KEY || !FLOW_SECRET_KEY || !token) return;
