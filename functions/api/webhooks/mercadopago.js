@@ -9,72 +9,33 @@ export async function onRequestOptions() {
   return new Response(null, { status: 204, headers: CORS_HEADERS });
 }
 
-export async function onRequestPost(context) {
-  const { env } = context;
+async function processPayment(paymentId, env) {
   const MP_ACCESS_TOKEN = env.MP_ACCESS_TOKEN;
   const RESEND_API_KEY = env.RESEND_API_KEY;
   const RESEND_FROM = env.RESEND_FROM || "ventas@tiendappchile.cl";
-  const MP_WEBHOOK_SECRET = env.MP_WEBHOOK_SECRET || null;
 
-  let body;
-  try {
-    body = await context.request.json();
-  } catch {
-    return new Response("Bad request", { status: 400 });
-  }
-
-  if (MP_WEBHOOK_SECRET) {
-    const signature = context.request.headers.get("x-signature");
-    if (!signature) {
-      console.error("Missing webhook signature");
-      return new Response("Unauthorized", { status: 401 });
-    }
-  }
-
-  if (body.type !== "payment") {
-    return new Response("OK", { status: 200 });
-  }
-
-  const paymentId = body.data?.id;
-  if (!paymentId) {
-    return new Response("OK", { status: 200 });
-  }
-
-  if (!MP_ACCESS_TOKEN) {
-    console.error("MP_ACCESS_TOKEN not configured");
-    return new Response("OK", { status: 200 });
-  }
+  if (!MP_ACCESS_TOKEN) return "OK";
+  if (!paymentId) return "OK";
 
   try {
     const paymentResponse = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
       headers: { Authorization: `Bearer ${MP_ACCESS_TOKEN}` },
     });
 
-    if (!paymentResponse.ok) {
-      console.error("Failed to fetch payment:", paymentResponse.status);
-      return new Response("OK", { status: 200 });
-    }
+    if (!paymentResponse.ok) return "OK";
 
     const payment = await paymentResponse.json();
 
-    if (payment.status !== "approved") {
-      return new Response("OK", { status: 200 });
-    }
+    if (payment.status !== "approved") return "OK";
 
     const payerEmail = payment.payer?.email;
-    if (!payerEmail) {
-      console.error("No payer email in payment:", paymentId);
-      return new Response("OK", { status: 200 });
-    }
+    if (!payerEmail) return "OK";
 
-    if (!RESEND_API_KEY) {
-      console.error("RESEND_API_KEY not configured");
-      return new Response("OK", { status: 200 });
-    }
+    if (!RESEND_API_KEY) return "OK";
 
     const emailHtml = buildEmailHtml(payment);
 
-    const emailResponse = await fetch("https://api.resend.com/emails", {
+    await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -88,18 +49,52 @@ export async function onRequestPost(context) {
       }),
     });
 
-    if (!emailResponse.ok) {
-      const emailError = await emailResponse.text();
-      console.error("Resend error:", emailResponse.status, emailError);
-    } else {
-      console.log(`Email sent to ${payerEmail} for payment ${paymentId}`);
-    }
-
-    return new Response("OK", { status: 200 });
+    return "OK";
   } catch (error) {
-    console.error("Webhook processing error:", error.message || error);
-    return new Response("OK", { status: 200 });
+    return "OK";
   }
+}
+
+export async function onRequestGet(context) {
+  const { env } = context;
+  const url = new URL(context.request.url);
+  const topic = url.searchParams.get("topic");
+  const id = url.searchParams.get("id");
+
+  if (topic === "payment" && id) {
+    await processPayment(id, env);
+  }
+
+  return new Response("OK", { status: 200, headers: CORS_HEADERS });
+}
+
+export async function onRequestPost(context) {
+  const { env } = context;
+
+  let body;
+  try {
+    body = await context.request.json();
+  } catch {
+    return new Response("Bad request", { status: 400, headers: CORS_HEADERS });
+  }
+
+  const MP_WEBHOOK_SECRET = env.MP_WEBHOOK_SECRET || null;
+
+  if (MP_WEBHOOK_SECRET) {
+    const signature = context.request.headers.get("x-signature");
+    if (!signature) {
+      return new Response("Unauthorized", { status: 401, headers: CORS_HEADERS });
+    }
+  }
+
+  if (body.type !== "payment") {
+    return new Response("OK", { status: 200, headers: CORS_HEADERS });
+  }
+
+  const paymentId = body.data?.id;
+  await processPayment(paymentId, env);
+
+  return new Response("OK", { status: 200, headers: CORS_HEADERS });
 }
 
 function buildEmailHtml(payment) {
