@@ -10,20 +10,28 @@ export async function onRequestOptions() {
 }
 
 export async function onRequestPost(context) {
-  const { env } = context;
-  const MP_ACCESS_TOKEN = env.MP_ACCESS_TOKEN;
-
-  if (!MP_ACCESS_TOKEN) {
-    return new Response(JSON.stringify({ error: "MP_ACCESS_TOKEN not configured" }), {
-      status: 500,
-      headers: CORS_HEADERS,
-    });
-  }
-
-  const origin = new URL(context.request.url).origin;
-
   try {
-    const body = await context.request.json();
+    const { env } = context;
+    const MP_ACCESS_TOKEN = env.MP_ACCESS_TOKEN;
+
+    if (!MP_ACCESS_TOKEN) {
+      return new Response(JSON.stringify({ error: "MP_ACCESS_TOKEN not configured", debug: Object.keys(env || {}) }), {
+        status: 500,
+        headers: CORS_HEADERS,
+      });
+    }
+
+    const origin = new URL(context.request.url).origin;
+    let body;
+    try {
+      body = await context.request.json();
+    } catch (e) {
+      return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
+        status: 400,
+        headers: CORS_HEADERS,
+      });
+    }
+
     const { product } = body;
 
     if (!product || !product.id || !product.title || !product.price) {
@@ -73,8 +81,7 @@ export async function onRequestPost(context) {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error("MercadoPago API error:", response.status, JSON.stringify(data));
-      return new Response(JSON.stringify({ error: "Failed to create payment preference" }), {
+      return new Response(JSON.stringify({ error: "Failed to create payment preference", mp_error: data }), {
         status: 502,
         headers: CORS_HEADERS,
       });
@@ -85,8 +92,7 @@ export async function onRequestPost(context) {
       headers: CORS_HEADERS,
     });
   } catch (error) {
-    console.error("Error creating payment:", error.message || error);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
+    return new Response(JSON.stringify({ error: "Internal server error", message: error.message }), {
       status: 500,
       headers: CORS_HEADERS,
     });
