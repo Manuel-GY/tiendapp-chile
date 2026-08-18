@@ -70,29 +70,25 @@ export async function onRequestGet(context) {
 
 export async function onRequestPost(context) {
   const { env } = context;
+  const url = new URL(context.request.url);
+  const topic = url.searchParams.get("topic");
+  const id = url.searchParams.get("id");
+
+  if (topic === "payment" && id) {
+    await processPayment(id, env);
+    return new Response("OK", { status: 200, headers: CORS_HEADERS });
+  }
 
   let body;
   try {
     body = await context.request.json();
   } catch {
-    return new Response("Bad request", { status: 400, headers: CORS_HEADERS });
-  }
-
-  const MP_WEBHOOK_SECRET = env.MP_WEBHOOK_SECRET || null;
-
-  if (MP_WEBHOOK_SECRET) {
-    const signature = context.request.headers.get("x-signature");
-    if (!signature) {
-      return new Response("Unauthorized", { status: 401, headers: CORS_HEADERS });
-    }
-  }
-
-  if (body.type !== "payment") {
     return new Response("OK", { status: 200, headers: CORS_HEADERS });
   }
 
-  const paymentId = body.data?.id;
-  await processPayment(paymentId, env);
+  if (body.type === "payment" && body.data?.id) {
+    await processPayment(body.data.id, env);
+  }
 
   return new Response("OK", { status: 200, headers: CORS_HEADERS });
 }
