@@ -28,7 +28,8 @@ export async function onRequestPost(context) {
     const { env } = context;
     const FLOW_API_KEY = env.FLOW_API_KEY;
     const FLOW_SECRET_KEY = env.FLOW_SECRET_KEY;
-    const isProduction = env.FLOW_API_KEY && !env.FLOW_API_KEY.startsWith("TEST-");
+    const isProduction = env.FLOW_MODE === "production";
+    const baseUrl = isProduction ? "https://api.flow.cl" : "https://sandbox.flow.cl";
 
     if (!FLOW_API_KEY || !FLOW_SECRET_KEY) {
       return new Response(JSON.stringify({ error: "Flow credentials not configured" }), {
@@ -75,8 +76,6 @@ export async function onRequestPost(context) {
 
     const s = await signFlowParams(params, FLOW_SECRET_KEY);
     params.s = s;
-
-    const baseUrl = isProduction ? "https://api.flow.cl" : "https://sandbox.flow.cl";
 
     const flowResponse = await fetch(baseUrl + "/api/payment/create", {
       method: "POST",
