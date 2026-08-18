@@ -6,20 +6,46 @@ export async function onRequestPost(context) {
     if (!MP_ACCESS_TOKEN) {
       return new Response(JSON.stringify({ error: "MP_ACCESS_TOKEN not configured" }), {
         status: 500,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
       });
     }
 
     const origin = new URL(context.request.url).origin;
+    let body;
+    try {
+      body = await context.request.json();
+    } catch (e) {
+      return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      });
+    }
+
+    const { product } = body;
+
+    if (!product || !product.id || !product.title || !product.price) {
+      return new Response(JSON.stringify({ error: "Missing required product fields" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      });
+    }
+
+    if (typeof product.price !== "number" || product.price <= 0) {
+      return new Response(JSON.stringify({ error: "Invalid price" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      });
+    }
 
     const preference = {
       items: [
         {
-          id: "sistema-light-retro",
-          title: "Sistema Light Retro - EmulaPlays",
+          id: product.id,
+          title: product.title,
+          description: product.description || "",
           quantity: 1,
           currency_id: "CLP",
-          unit_price: 10000,
+          unit_price: product.price,
         },
       ],
       back_urls: {
@@ -29,7 +55,7 @@ export async function onRequestPost(context) {
       },
       auto_return: "approved",
       notification_url: origin + "/api/webhooks/mercadopago",
-      external_reference: "sistema-light-retro",
+      external_reference: product.id,
     };
 
     const mpResponse = await fetch("https://api.mercadopago.com/checkout/preferences", {
@@ -43,20 +69,21 @@ export async function onRequestPost(context) {
 
     const data = await mpResponse.json();
 
-    return new Response(JSON.stringify({ 
-      ok: mpResponse.ok, 
-      status: mpResponse.status,
-      init_point: data.init_point || null,
-      id: data.id || null,
-      error: data.message || null
-    }), {
+    if (!mpResponse.ok) {
+      return new Response(JSON.stringify({ error: "Failed to create payment preference", mp_error: data }), {
+        status: 502,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      });
+    }
+
+    return new Response(JSON.stringify({ init_point: data.init_point, id: data.id }), {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
+    return new Response(JSON.stringify({ error: "Internal server error", message: err.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
     });
   }
 }
