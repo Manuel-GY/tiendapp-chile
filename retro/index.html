@@ -653,7 +653,10 @@
                         <li><i class="fa-solid fa-bolt"></i> <strong>Entrega inmediata</strong></li>
                     </ul>
                     <div class="plan-retro-actions">
-                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Sistema%20Light%20Retro%20%2410.000" class="btn-outline" target="_blank" rel="noopener noreferrer">Comprar</a>
+                        <button onclick="buyPlan('sistema-light-retro', 'Sistema Light Retro - EmulaPlays', 10000)" class="btn-primary" id="btn-sistema-light">
+                            <i class="fa-solid fa-credit-card"></i> Pagar con MercadoPago
+                        </button>
+                        <a href="https://wa.me/56976739157?text=Interesado%20en%20Sistema%20Light%20Retro%20%2410.000" class="btn-outline" target="_blank" rel="noopener noreferrer" style="margin-top: 8px;">Consultar por WhatsApp</a>
                     </div>
                 </div>
 
@@ -800,5 +803,42 @@
     </div>
 
     <script src="shared.js"></script>
+    <script>
+        async function buyPlan(id, title, price) {
+            var btn = document.getElementById('btn-sistema-light');
+            if (!btn) return;
+
+            var originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Procesando...';
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'wait';
+
+            try {
+                var response = await fetch('/api/create-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        product: { id: id, title: title, price: price }
+                    })
+                });
+
+                var data = await response.json();
+
+                if (!response.ok || !data.init_point) {
+                    throw new Error(data.error || 'Error creating payment');
+                }
+
+                window.location.href = data.init_point;
+            } catch (error) {
+                console.error('Payment error:', error);
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+                alert('Hubo un error al procesar el pago. Por favor, intenta de nuevo o contactanos por WhatsApp.');
+            }
+        }
+    </script>
 </body>
 </html>

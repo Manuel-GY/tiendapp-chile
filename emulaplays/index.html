@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Instalación EmulaPlays - TiendApp Chile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        :root {
+            --n64-bg: #0e1128;
+            --n64-dark: #151938;
+            --n64-card: #1c2145;
+            --n64-border: #2e3460;
+            --n64-purple: #7b2fbe;
+            --n64-purple-glow: rgba(123, 47, 190, 0.4);
+            --n64-green: #00c853;
+            --n64-green-glow: rgba(0, 200, 83, 0.3);
+            --n64-orange: #ff6d00;
+            --n64-blue: #00b0ff;
+            --n64-yellow: #ffd600;
+            --n64-red: #ff1744;
+            --n64-text: #ffffff;
+            --n64-muted: #b0b3d0;
+        }
+
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--n64-bg);
+            color: var(--n64-text);
+            line-height: 1.6;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .pixel-font {
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        /* HEADER / PORTADA */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--n64-bg);
+            position: relative;
+            overflow: hidden;
+            padding: 40px 20px;
+            page-break-after: always;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 25% 30%, rgba(123, 47, 190, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 70%, rgba(0, 200, 83, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 176, 255, 0.1) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        .cover-page > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .n64-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 40px;
+        }
+
+        .n64-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .n64-btn.b { background: var(--n64-blue); box-shadow: 0 0 12px var(--n64-blue); }
+        .n64-btn.r { background: var(--n64-green); box-shadow: 0 0 12px var(--n64-green); }
+        .n64-btn.a { background: var(--n64-yellow); box-shadow: 0 0 12px var(--n64-yellow); }
+        .n64-btn.l { background: var(--n64-purple); box-shadow: 0 0 12px var(--n64-purple); }
+        .n64-btn.z { background: var(--n64-red); box-shadow: 0 0 12px var(--n64-red); }
+
+        .cover-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .cover-title .pixel-font {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--n64-green);
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .cover-title span {
+            background: none;
+            -webkit-text-fill-color: var(--n64-purple);
+            text-shadow: 0 0 30px var(--n64-purple-glow);
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            color: var(--n64-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .cover-brands {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .cover-brand {
+            background: var(--n64-card);
+            border: 2px solid var(--n64-border);
+            border-radius: 10px;
+            padding: 15px 25px;
+            text-align: center;
+            min-width: 160px;
+        }
+
+        .cover-brand i {
+            font-size: 1.8rem;
+            color: var(--n64-green);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .cover-brand p {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .cover-brand small {
+            font-size: 0.65rem;
+            color: var(--n64-muted);
+        }
+
+        .tiendapp-badge {
+            background: var(--n64-card);
+            border: 2px solid var(--n64-green);
+            border-radius: 12px;
+            padding: 20px 35px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+            box-shadow: 0 0 30px var(--n64-green-glow);
+        }
+
+        .tiendapp-badge .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .tiendapp-badge .logo span {
+            color: var(--n64-green);
+        }
+
+        .tiendapp-badge small {
+            color: var(--n64-muted);
+            font-size: 0.8rem;
+        }
+
+        .date-badge {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--n64-muted);
+        }
+
+        /* NEON DIVIDER */
+        .neon-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--n64-purple), var(--n64-green), var(--n64-blue), var(--n64-orange), transparent);
+            margin: 0 auto;
+            max-width: 400px;
+            border-radius: 2px;
+            box-shadow: 0 0 15px var(--n64-purple-glow), 0 0 30px var(--n64-green-glow);
+        }
+
+        /* CONTENT PAGES */
+        .content-page {
+            padding: 40px 30px;
+            background: var(--n64-bg);
+            page-break-before: always;
+            min-height: 100vh;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--n64-muted);
+            font-size: 1rem;
+        }
+
+        /* REQUIREMENTS CARD */
+        .req-card {
+            background: var(--n64-card);
+            border: 2px solid var(--n64-border);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 35px;
+        }
+
+        .req-card h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--n64-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .req-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border: 1px solid var(--n64-border);
+        }
+
+        .req-item i {
+            color: var(--n64-purple);
+            font-size: 0.9rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .req-item strong {
+            font-size: 0.85rem;
+        }
+
+        .req-item small {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--n64-muted);
+        }
+
+        /* EDITION CARDS */
+        .edition-card {
+            background: var(--n64-card);
+            border: 2px solid var(--n64-border);
+            border-radius: 14px;
+            margin-bottom: 35px;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .edition-card.popular {
+            border-color: var(--n64-green);
+            box-shadow: 0 0 30px var(--n64-green-glow);
+        }
+
+        .edition-header {
+            padding: 25px 30px;
+            border-bottom: 2px solid var(--n64-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .edition-card.popular .edition-header {
+            background: rgba(0, 200, 83, 0.08);
+        }
+
+        .edition-header h3 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .edition-header .badge {
+            background: var(--n64-green);
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .edition-body {
+            padding: 30px;
+        }
+
+        .edition-desc {
+            color: var(--n64-muted);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* STEPS */
+        .steps-container {
+            margin-top: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background: var(--n64-purple);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 0 15px var(--n64-purple-glow);
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 6px;
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+            color: var(--n64-text);
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--n64-muted);
+            line-height: 1.6;
+        }
+
+        .step-content .code-block {
+            background: #0a0d20;
+            border: 1px solid var(--n64-border);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--n64-green);
+            word-break: break-all;
+        }
+
+        .step-content .highlight {
+            color: var(--n64-yellow);
+            font-weight: 600;
+        }
+
+        .step-content .warn {
+            color: var(--n64-orange);
+            font-weight: 600;
+        }
+
+        .step-content .danger {
+            color: var(--n64-red);
+            font-weight: 600;
+        }
+
+        /* TIP BOXES */
+        .tip-box {
+            background: rgba(0, 200, 83, 0.08);
+            border: 1px solid rgba(0, 200, 83, 0.3);
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-top: 20px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .tip-box i {
+            color: var(--n64-green);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .tip-box p {
+            font-size: 0.9rem;
+            color: var(--n64-muted);
+            line-height: 1.6;
+        }
+
+        .tip-box.warning {
+            background: rgba(255, 109, 0, 0.08);
+            border-color: rgba(255, 109, 0, 0.3);
+        }
+
+        .tip-box.warning i {
+            color: var(--n64-orange);
+        }
+
+        .tip-box.danger {
+            background: rgba(255, 23, 68, 0.08);
+            border-color: rgba(255, 23, 68, 0.3);
+        }
+
+        .tip-box.danger i {
+            color: var(--n64-red);
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--n64-muted);
+            font-size: 0.9rem;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li i {
+            color: var(--n64-green);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* SYSTEMS GRID */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .system-chip {
+            background: var(--n64-card);
+            border: 2px solid var(--n64-border);
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        .system-chip .system-icon {
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .system-chip p {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+        .page-footer {
+            background: var(--n64-dark);
+            border-top: 3px solid var(--n64-purple);
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            page-break-before: always;
+        }
+
+        .page-footer h2 {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .page-footer p {
+            color: var(--n64-muted);
+            margin-bottom: 10px;
+        }
+
+        .contact-btns {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-btns a {
+            background: var(--n64-green);
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .contact-btns a.secondary {
+            background: var(--n64-card);
+            border: 1px solid var(--n64-border);
+            color: var(--n64-muted);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--n64-border);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-bottom .logo {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .footer-bottom .logo span {
+            color: var(--n64-green);
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+        }
+
+        @media print {
+            body {
+                background: var(--n64-bg) !important;
+            }
+            .cover-page {
+                min-height: 100vh;
+            }
+            .content-page {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PORTADA -->
+    <div class="cover-page">
+        <div class="n64-logo">
+            <div class="n64-btn b"></div>
+            <div class="n64-btn r"></div>
+            <div class="n64-btn a"></div>
+            <div class="n64-btn l"></div>
+            <div class="n64-btn z"></div>
+        </div>
+
+        <h1 class="cover-title">
+            <span class="pixel-font">Player 1 Ready</span>
+            Guía de Instalación<br><span>EmulaPlays</span>
+        </h1>
+
+        <p class="cover-subtitle">
+            Guía completa para instalar y configurar EmulaPlays en tu PC o dispositivo Android.
+            Incluye Edición Básica, Edición Definitiva y Edición Android.
+        </p>
+
+        <div class="cover-brands">
+            <div class="cover-brand">
+                <i class="fa-solid fa-desktop"></i>
+                <p>PC Windows</p>
+                <small>Edición Básica y Definitiva</small>
+            </div>
+            <div class="cover-brand">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <p>Android</p>
+                <small>Edición Android</small>
+            </div>
+            <div class="cover-brand">
+                <i class="fa-solid fa-gamepad"></i>
+                <p>+5000 Juegos</p>
+                <small>De Atari a PS3</small>
+            </div>
+        </div>
+
+        <div class="tiendapp-badge">
+            <div class="logo">⚡ TiendApp <span>Chile</span></div>
+            <small>Soporte técnico incluido</small>
+        </div>
+
+        <p class="date-badge">Versión actualizada &bull; Agosto 2026</p>
+    </div>
+
+    <!-- REQUISITOS DEL SISTEMA -->
+    <div class="content-page">
+        <div class="section-header">
+            <h2>Requisitos del Sistema</h2>
+            <p>Verifica que tu equipo cumpla con lo mínimo antes de instalar</p>
+        </div>
+        <div class="neon-divider" style="margin-bottom: 35px;"></div>
+
+        <div class="req-card">
+            <h3><i class="fa-solid fa-microchip"></i> PC - Edición Básica / Definitiva</h3>
+            <div class="req-grid">
+                <div class="req-item">
+                    <i class="fa-brands fa-windows"></i>
+                    <div>
+                        <strong>Sistema Operativo</strong>
+                        <small>Windows 10/11 64 bits</small>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div>
+                        <strong>Procesador</strong>
+                        <small>Intel i3 3GHz+ / AMD Ryzen 3</small>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <i class="fa-solid fa-memory"></i>
+                    <div>
+                        <strong>Memoria RAM</strong>
+                        <small>Mínimo 4 GB</small>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <i class="fa-solid fa-display"></i>
+                    <div>
+                        <strong>Tarjeta Gráfica</strong>
+                        <small>Intel HD 620 / GTX / Radeon R5</small>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <i class="fa-solid fa-hard-drive"></i>
+                    <div>
+                        <strong>Espacio en Disco (Básica)</strong>
+                        <small>Mínimo 120 GB libres</small>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <i class="fa-solid fa-hard-drive"></i>
+                    <div>
+                        <strong>Espacio en Disco (Definitiva)</strong>
+                        <small>Mínimo 700 GB libres</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box warning">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p><strong>Importante:</strong> La Edición Definitiva puede pesar hasta 85 GB una vez descomprimida. Asegúrate de tener suficiente espacio antes de iniciar la descarga.</p>
+        </div>
+
+        <div class="req-card" style="margin-top: 25px;">
+            <h3><i class="fa-solid fa-mobile-screen"></i> Android - Edición Android</h3>
+            <div class="req-grid">
+                <div class="req-item">
+                    <i class="fa-brands fa-android"></i>
+                    <div>
+                        <strong>Sistema Operativo</strong>
+                        <small>Android 7.0 o superior</small>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div>
+                        <strong>Procesador</strong>
+                        <small>Octa-core recomendado</small>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <i class="fa-solid fa-memory"></i>
+                    <div>
+                        <strong>Memoria RAM</strong>
+                        <small>Mínimo 4 GB (6 GB ideal)</small>
+                    </div>
+                </div>
+                <div class="req-item">
+                    <i class="fa-solid fa-hard-drive"></i>
+                    <div>
+                        <strong>Espacio en Disco</strong>
+                        <small>Según versión descargada</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INSTALACIÓN EDICIÓN BÁSICA -->
+    <div class="content-page">
+        <div class="section-header">
+            <h2>Edición Básica - PC</h2>
+            <p>Sistema ligero con los emuladores esenciales</p>
+        </div>
+        <div class="neon-divider" style="margin-bottom: 35px;"></div>
+
+        <div class="edition-card">
+            <div class="edition-header">
+                <h3><i class="fa-solid fa-bolt" style="color: var(--n64-yellow); margin-right: 10px;"></i> EmulaPlays - Edición Básica</h3>
+            </div>
+            <div class="edition-body">
+                <p class="edition-desc">
+                    Archivo: <strong>EmulaPlays - Edicion Basica.zip</strong><br>
+                    Contiene los emuladores principales precargados con una selección de juegos clásicos. Ideal para equipos con espacio limitado o para empezar a disfrutar rápido.
+                </p>
+
+                <div style="background: #0a0d20; border: 2px solid var(--n64-yellow); border-radius: 10px; padding: 18px 22px; margin-bottom: 25px;">
+                    <p style="font-size: 0.85rem; color: var(--n64-muted); margin-bottom: 8px;"><strong style="color: var(--n64-yellow);"><i class="fa-solid fa-download"></i> Link de Descarga:</strong> Copia y pega en tu navegador</p>
+                    <div class="code-block" style="margin-top: 0; font-size: 0.72rem; word-break: break-all;">https://bucket-cf-weur-a.uploadnow.io/LmuSBXZ9jFXuYhKmoTQUJyNhTpk1/3591a86c-fd57-43e0-b675-41a4ffd89e7b?download-verify=1786985307-tYdVuRApzC0VWQudCI1sVowSFUPiejwTxqcqfgdrtdg%3D&amp;response-content-disposition=attachment%3B+filename%3D%22EmulaPlays+-+Edicion+Basica.zip%22</div>
+                </div>
+
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Descarga el archivo ZIP</h4>
+                            <p>Descarga <strong>EmulaPlays - Edicion Basica.zip</strong> desde el link que te proporcionamos. Guarda el archivo en un lugar fácil de encontrar, como el Escritorio o la carpeta de Descargas.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Verifica el espacio en disco</h4>
+                            <p>Antes de descomprimir, verifica que tengas al menos <span class="highlight">120 GB libres</span> en tu disco duro. Haz clic derecho en el disco → Propiedades para revisar el espacio disponible.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Descomprime el archivo</h4>
+                            <p>Clic derecho sobre el archivo ZIP → <span class="highlight">"Extraer todo"</span> o usa WinRAR/7-Zip. Selecciona la ruta de destino (se recomienda una raíz limpia como <code>C:\EmulaPlays</code>).</p>
+                            <div class="code-block">Clic derecho → Extraer todo → Seleccionar destino → Extraer</div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Accede a la carpeta del sistema</h4>
+                            <p>Una vez extraído, abre la carpeta <strong>GPBOXPC</strong> (o el nombre que aparezca). Ahí encontrarás todos los emuladores y juegos organizados por consola.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Ejecuta el archivo principal</h4>
+                            <p>Busca el archivo <span class="highlight">.exe</span> principal o el atajo de inicio. Haz doble clic para abrir el sistema. Se abrirá la interfaz con todos los sistemas disponibles.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Configura tu control</h4>
+                            <p>Conecta tu control por USB o Bluetooth. Dentro del sistema, ve a <span class="highlight">Configuración → Controles</span> y asigna los botones según tu mando. La mayoría de controles Xbox, PlayStation o genéricos se detectan automáticamente.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>¡Listo para jugar!</h4>
+                            <p>Selecciona la consola que quieras, elige un juego y presiona <span class="highlight">Enter</span> o el botón A del control para iniciar. Disfruta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <p><strong>Consejo:</strong> Si algún emulador no funciona, verifica que tu antivirus no esté bloqueando archivos. Agrega la carpeta de EmulaPlays a las excepciones de tu antivirus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INSTALACIÓN EDICIÓN DEFINITIVA -->
+    <div class="content-page">
+        <div class="section-header">
+            <h2>Edición Definitiva - PC</h2>
+            <p>El sistema completo con todos los emuladores y juegos</p>
+        </div>
+        <div class="neon-divider" style="margin-bottom: 35px;"></div>
+
+        <div class="edition-card popular">
+            <div class="edition-header">
+                <h3><i class="fa-solid fa-crown" style="color: var(--n64-green); margin-right: 10px;"></i> EmulaPlays - Definitive Edition</h3>
+                <div class="badge">COMPLETA</div>
+            </div>
+            <div class="edition-body">
+                <p class="edition-desc">
+                    Archivo: <strong>EmulaPlays - Definitive Edition.rar</strong><br>
+                    El paquete más completo. Incluye todos los emuladores configurados, +5000 juegos de Atari hasta PlayStation 3, con tema, organizadores y optimización incluidos. El sistema definitivo para tu PC.
+                </p>
+
+                <div style="background: #0a0d20; border: 2px solid var(--n64-green); border-radius: 10px; padding: 18px 22px; margin-bottom: 25px;">
+                    <p style="font-size: 0.85rem; color: var(--n64-muted); margin-bottom: 8px;"><strong style="color: var(--n64-green);"><i class="fa-solid fa-download"></i> Link de Descarga:</strong> Copia y pega en tu navegador</p>
+                    <div class="code-block" style="margin-top: 0; font-size: 0.72rem; word-break: break-all;">https://bucket-cf-weur-a.uploadnow.io/LmuSBXZ9jFXuYhKmoTQUJyNhTpk1/528c5129-ae2d-4aa4-a05a-7cef73a0471b?download-verify=1786985341-AF%2BKShT6V%2Fmg8%2FxH5oAgoEoCX%2BCNGjlrvrtGg7elRms%3D&amp;response-content-disposition=attachment%3B+filename%3D%22EmulaPlays+-+Definitive+Edition.rar%22</div>
+                </div>
+
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Descarga el archivo RAR</h4>
+                            <p>Descarga <strong>EmulaPlays - Definitive Edition.rar</strong> desde el link proporcionado. Este archivo es pesado (~71 GB comprimido), así que ten paciencia con la descarga.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Instala WinRAR o 7-Zip</h4>
+                            <p>Necesitas un programa para descomprimir archivos RAR. Descarga <span class="highlight">7-Zip</span> (gratis) desde <strong>7-zip.org</strong> o usa <strong>WinRAR</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Verifica el espacio en disco</h4>
+                            <p><span class="warn">MUY IMPORTANTE:</span> Necesitas al menos <span class="highlight">700 GB libres</span> para descomprimir el sistema completo. El sistema descomprimido pesa ~85 GB, pero se necesita espacio temporal para la extracción.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Descomprime el archivo</h4>
+                            <p>Clic derecho sobre el archivo RAR → <span class="highlight">"Extraer aquí"</span> o "Extraer en GPBOXPC". Selecciona la ruta destino. Se recomienda:</p>
+                            <div class="code-block">Ruta recomendada: C:\EmulaPlays\GPBOXPC</div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Espera la extracción completa</h4>
+                            <p>La descompresión puede tardar <span class="warn">30 minutos o más</span> dependiendo de tu disco. No cierres la ventana ni apagues el PC durante el proceso.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Ejecuta el sistema</h4>
+                            <p>Abre la carpeta <strong>GPBOXPC</strong> y ejecuta el archivo <span class="highlight">.exe</span> principal. El sistema arrancará con toda la interfaz de consolas y juegos listos.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>Configura controles y disfruta</h4>
+                            <p>Conecta tu control (USB o Bluetooth). Ve a <span class="highlight">Configuración → Controles</span> para mapear los botones. Ya puedes navegar por todas las consolas y jugar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box danger">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <p><strong>No interrumpas la extracción:</strong> Si el proceso se corta, el archivo puede corromperse y tendrás que descargar de nuevo. Asegúrate de tener buena conexión y no usar el PC para otras tareas pesadas mientras extraes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SISTEMAS INCLUIDOS -->
+    <div class="content-page">
+        <div class="section-header">
+            <h2>Sistemas Incluidos</h2>
+            <p>Todas las consolas disponibles en EmulaPlays</p>
+        </div>
+        <div class="neon-divider" style="margin-bottom: 35px;"></div>
+
+        <div class="systems-grid">
+            <div class="system-chip"><span class="system-icon">🕹️</span><p>MAME</p></div>
+            <div class="system-chip"><span class="system-icon">📺</span><p>Atari 2600</p></div>
+            <div class="system-chip"><span class="system-icon">📺</span><p>Atari 7800</p></div>
+            <div class="system-chip"><span class="system-icon">🎮</span><p>NES</p></div>
+            <div class="system-chip"><span class="system-icon">🎮</span><p>SNES</p></div>
+            <div class="system-chip"><span class="system-icon">📺</span><p>Sega Master</p></div>
+            <div class="system-chip"><span class="system-icon">💎</span><p>Sega Genesis</p></div>
+            <div class="system-chip"><span class="system-icon">📱</span><p>Game Gear</p></div>
+            <div class="system-chip"><span class="system-icon">🎮</span><p>PC Engine</p></div>
+            <div class="system-chip"><span class="system-icon">🎮</span><p>Neo Geo</p></div>
+            <div class="system-chip"><span class="system-icon">🍄</span><p>Nintendo 64</p></div>
+            <div class="system-chip"><span class="system-icon">⭐</span><p>Sega Saturn</p></div>
+            <div class="system-chip"><span class="system-icon">💿</span><p>PlayStation 1</p></div>
+            <div class="system-chip"><span class="system-icon">📀</span><p>PlayStation 2</p></div>
+            <div class="system-chip"><span class="system-icon">🎯</span><p>GameCube</p></div>
+            <div class="system-chip"><span class="system-icon">🌀</span><p>Dreamcast</p></div>
+            <div class="system-chip"><span class="system-icon">📱</span><p>Game Boy</p></div>
+            <div class="system-chip"><span class="system-icon">📱</span><p>GB Color</p></div>
+            <div class="system-chip"><span class="system-icon">📱</span><p>GB Advance</p></div>
+            <div class="system-chip"><span class="system-icon">📱</span><p>Nintendo DS</p></div>
+            <div class="system-chip"><span class="system-icon">📱</span><p>PSP</p></div>
+            <div class="system-chip"><span class="system-icon">🔥</span><p>PlayStation 3</p></div>
+            <div class="system-chip"><span class="system-icon">🎮</span><p>Nintendo Wii</p></div>
+            <div class="system-chip"><span class="system-icon">🎮</span><p>Wii U</p></div>
+        </div>
+
+        <div class="tip-box" style="margin-top: 30px;">
+            <i class="fa-solid fa-circle-info"></i>
+            <p><strong>Nota:</strong> La Edición Básica incluye una selección de los sistemas más populares. La Edición Definitiva incluye todos los sistemas listados arriba con la totalidad de juegos.</p>
+        </div>
+    </div>
+
+    <!-- INSTALACIÓN ANDROID -->
+    <div class="content-page">
+        <div class="section-header">
+            <h2>Edición Android</h2>
+            <p>Juega en tu celular o tablet Android</p>
+        </div>
+        <div class="neon-divider" style="margin-bottom: 35px;"></div>
+
+        <div class="edition-card">
+            <div class="edition-header">
+                <h3><i class="fa-solid fa-mobile-screen" style="color: var(--n64-blue); margin-right: 10px;"></i> EmulaPlays - Edición Android</h3>
+            </div>
+            <div class="edition-body">
+                <p class="edition-desc">
+                    Descarga disponible desde Google Drive. Esta versión está optimizada para dispositivos móviles Android con emuladores configurados para touch screen.
+                </p>
+
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Prepara tu dispositivo</h4>
+                            <p>Asegúrate de tener Android 7.0 o superior y al menos <span class="highlight">4 GB de RAM</span>. Ve a Ajustes → Información del teléfono para verificar.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Activa instalación de fuentes desconocidas</h4>
+                            <p>Ve a <span class="highlight">Ajustes → Seguridad → Orígenes desconocidos</span> y actívalo. En Android 8+, se solicita permiso al momento de instalar.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Descarga desde Google Drive</h4>
+                            <p>Abre el link de Google Drive que te proporcionamos en el navegador de tu celular. Toca <span class="highlight">"Descargar"</span> y espera a que termine.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Instala la APK o descomprime</h4>
+                            <p>Si el archivo es una <strong>.apk</strong>, toca sobre él para instalar. Si es un <strong>.zip/.7z</strong>, usa un explorador de archivos como <span class="highlight">ZArchiver</span> (gratis en Play Store) para descomprimir.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Permisos de almacenamiento</h4>
+                            <p>Al abrir la app por primera vez, otorga permisos de acceso a almacenamiento. Sin estos permisos, la app no podrá cargar los juegos.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Configura los controles touch</h4>
+                            <p>La mayoría de emuladores incluyen controles en pantalla. Puedes ajustar su tamaño y posición en la configuración de cada emulador. También puedes conectar un <span class="highlight">control Bluetooth</span> para una mejor experiencia.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>¡A jugar!</h4>
+                            <p>Selecciona la consola, elige tu juego y disfruta directamente desde tu celular. Ideal para jugar en cualquier lugar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <p><strong>Controles recomendados:</strong> Para la mejor experiencia en Android, conecta un control Bluetooth compatible con Xbox, PlayStation o un control genérico USB OTG. Los controles en pantalla funcionan bien pero son limitados para juegos que requieren precisión.</p>
+                </div>
+
+                <!-- VIDEO TUTORIAL -->
+                <div style="margin-top: 30px;">
+                    <h4 style="text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-brands fa-youtube" style="color: var(--n64-red); font-size: 1.3rem;"></i> Video Tutorial - Instalación Android
+                    </h4>
+                    <div style="background: #0a0d20; border: 1px solid var(--n64-border); border-radius: 10px; padding: 18px 22px;">
+                        <p style="font-size: 0.9rem; color: var(--n64-muted); margin-bottom: 8px;">Copia y pega este link en tu navegador para ver el tutorial paso a paso:</p>
+                        <div class="code-block" style="margin-top: 0;">https://www.youtube.com/watch?v=d0d-wVS-PzY</div>
+                    </div>
+                </div>
+
+                <!-- LINKS DE DESCARGA -->
+                <div style="margin-top: 25px;">
+                    <h4 style="text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-download" style="color: var(--n64-green); font-size: 1.1rem;"></i> Links de Descarga
+                    </h4>
+
+                    <div style="background: #0a0d20; border: 2px solid var(--n64-green); border-radius: 10px; padding: 18px 22px; margin-bottom: 12px;">
+                        <p style="font-size: 0.85rem; color: var(--n64-muted); margin-bottom: 6px;"><strong style="color: var(--n64-green);">Link Principal:</strong> Copia y pega en tu navegador</p>
+                        <div class="code-block" style="margin-top: 0; font-size: 0.75rem;">https://drive.usercontent.google.com/download?id=1agu7DHixMAouCsOJxP4PjTFMY75KMtpr&amp;export=download&amp;authuser=0</div>
+                    </div>
+
+                    <div style="background: #0a0d20; border: 1px solid var(--n64-border); border-radius: 10px; padding: 18px 22px;">
+                        <p style="font-size: 0.85rem; color: var(--n64-muted); margin-bottom: 6px;"><strong style="color: var(--n64-blue);">Link Alternativo:</strong> Si el principal no funciona</p>
+                        <div class="code-block" style="margin-top: 0; font-size: 0.75rem;">https://drive.google.com/file/d/192HPEVWR5epHMea_5Ekr0Ysd-EvwkNSs/view?usp=drive_link</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLUCIÓN DE PROBLEMAS -->
+    <div class="content-page">
+        <div class="section-header">
+            <h2>Solución de Problemas</h2>
+            <p>Resolución de los problemas más comunes</p>
+        </div>
+        <div class="neon-divider" style="margin-bottom: 35px;"></div>
+
+        <div class="edition-card">
+            <div class="edition-body">
+                <ul class="checklist">
+                    <li>
+                        <i class="fa-solid fa-triangle-exclamation" style="color: var(--n64-orange);"></i>
+                        <div>
+                            <strong>El antivirus bloquea archivos</strong><br>
+                            Algunos antivirus detectan emuladores como falsos positivos. Solución: Agrega la carpeta de EmulaPlays a las <span class="highlight">excepciones</span> de tu antivirus antes de extraer.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-triangle-exclamation" style="color: var(--n64-orange);"></i>
+                        <div>
+                            <strong>Falta espacio en disco</strong><br>
+                            Si no tienes suficiente espacio, puedes eliminar juegos que no quieras jugar desde la carpeta del sistema. Cada juego ocupa diferente espacio según la consola.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-triangle-exclamation" style="color: var(--n64-orange);"></i>
+                        <div>
+                            <strong>El juego no carga o se cierra</strong><br>
+                            Verifica que tu PC cumpla los requisitos mínimos. Algunos juegos de PS2/PS3 requieren hardware potente. Cierra otros programas para liberar RAM.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-triangle-exclamation" style="color: var(--n64-orange);"></i>
+                        <div>
+                            <strong>El control no se detecta</strong><br>
+                            Reconecta el control por USB. Si es Bluetooth, empareja nuevamente. Dentro del emulador, ve a Configuración → Controles y reasigna los botones manualmente.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-triangle-exclamation" style="color: var(--n64-orange);"></i>
+                        <div>
+                            <strong>No hay imagen o sonido</strong><br>
+                            Actualiza los drivers de tu tarjeta gráfica. Ve al Administrador de dispositivos → Adaptadores de pantalla → Clic derecho → Actualizar driver.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-triangle-exclamation" style="color: var(--n64-orange);"></i>
+                        <div>
+                            <strong>La descarga se interrumpió</strong><br>
+                            Si la descarga falló, intenta con un navegador diferente o usa un gestor de descargas como <span class="highlight">IDM</span> (Internet Download Manager).
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tip-box" style="margin-top: 20px;">
+            <i class="fa-solid fa-headset"></i>
+            <p><strong>¿Necesitas ayuda?</strong> Si ningúna de estas soluciones funciona, contáctanos por WhatsApp y te ayudamos personalizado. Estamos para que disfrutes tu sistema.</p>
+        </div>
+    </div>
+
+    <!-- CONTACTO / CIERRE -->
+    <div class="page-footer">
+        <div class="n64-logo" style="margin-bottom: 25px;">
+            <div class="n64-btn b"></div>
+            <div class="n64-btn r"></div>
+            <div class="n64-btn a"></div>
+            <div class="n64-btn l"></div>
+            <div class="n64-btn z"></div>
+        </div>
+
+        <h2>¿Necesitas Ayuda?</h2>
+        <p>Nuestro equipo de soporte está listo para asistirte con cualquier problema de instalación.</p>
+
+        <div class="contact-btns">
+            <a href="https://wa.me/56976739157?text=Necesito%20ayuda%20con%20EmulaPlays" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Soporte
+            </a>
+            <a href="mailto:soporte@tiendappchile.cl" class="secondary">
+                <i class="fa-solid fa-envelope"></i> soporte@tiendappchile.cl
+            </a>
+        </div>
+
+        <p style="font-size: 0.85rem;">Visita nuestra tienda: <strong>www.tiendappchile.cl</strong></p>
+
+        <div class="footer-bottom">
+            <div class="logo">⚡ TiendApp <span>Chile</span></div>
+            <p>&copy; 2026 Todos los derechos reservados. Guía de instalación EmulaPlays.</p>
+        </div>
+    </div>
+
+</body>
+</html>

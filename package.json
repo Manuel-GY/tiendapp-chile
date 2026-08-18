@@ -1,0 +1,11 @@
+{
+  "name": "tiendapp-chile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TiendApp Chile - Soluciones digitales, streaming y retro gaming",
+  "scripts": {
+    "dev": "npx wrangler pages dev .",
+    "deploy": "npx wrangler pages deploy ."
+  },
+  "dependencies": {}
+}
