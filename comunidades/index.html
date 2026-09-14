@@ -5,413 +5,329 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta name="description" content="TiendApp Comunidades - Software integral de gestión para condominios, edificios y comunidades. Reportes con foto, panel de comité, PWA móvil y estadísticas en tiempo real.">
+    <meta name="description" content="TiendApp Comunidades - Software de gestión para condominios y comunidades en Chile. 100% adaptable a tus reglamentos. Reportes con foto, panel de comité, PWA y estadísticas.">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tiendappchile.cl/comunidades/">
-    <meta property="og:title" content="TiendApp Comunidades - Software de Gestión para Condominios">
-    <meta property="og:description" content="Plataforma web y PWA móvil para administración transparente de condominios: reportes con evidencias fotográficas, sugerencias, avisos in-app y gráficos estadísticos.">
-    <meta property="og:image" content="https://tiendappchile.cl/screenshots/streaming_ref.jpg">
+    <meta property="og:title" content="TiendApp Comunidades - Software de Gestión de Condominios 100% Adaptable">
+    <meta property="og:description" content="Plataforma de administración para condominios y edificios. Personalizable a la medida de tu comunidad: reportes vecinales, sugerencias, avisos in-app y control de comité.">
 
-    <title>Gestión de Comunidades y Condominios - TiendApp Chile</title>
+    <title>Software de Gestión de Condominios 100% Adaptable - TiendApp Comunidades</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="../shared.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <style>
         :root {
-            --com-emerald: #10b981;
-            --com-emerald-dark: #059669;
-            --com-emerald-light: #34d399;
-            --com-cyan: #06b6d4;
-            --com-bg: #040914;
-            --com-card: #0a1326;
-            --com-card-hover: #0f1c38;
-            --com-border: #1a2947;
-            --com-border-bright: #253e6b;
-            --com-text: #f8fafc;
-            --com-muted: #94a3b8;
-            --com-glow: 0 0 35px rgba(16, 185, 129, 0.15);
+            --brand-blue: #1e40af;
+            --brand-blue-hover: #1e3a8a;
+            --brand-accent: #0284c7;
+            --brand-teal: #0d9488;
+            --brand-green: #16a34a;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-subtle: #f1f5f9;
+            --text-heading: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --border-light: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+            --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--com-bg);
-            color: var(--com-text);
+            background-color: var(--bg-page);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: rgba(4, 9, 20, 0.92) !important;
-            border-bottom: 1px solid var(--com-border) !important;
-            backdrop-filter: blur(16px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 16px 24px;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo i {
+            color: var(--brand-blue);
+            font-size: 1.4rem;
         }
 
         .logo span {
-            background: linear-gradient(135deg, var(--com-emerald-light), var(--com-cyan)) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
+            color: var(--brand-blue);
         }
 
-        .nav-links a {
-            color: var(--com-muted) !important;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
-        .nav-links a:hover {
-            color: var(--com-emerald-light) !important;
-            background: rgba(16, 185, 129, 0.08) !important;
+        .nav-links a:not(.btn-cotizar-nav) {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: color 0.2s ease;
         }
 
-        .btn-com-primary {
-            background: linear-gradient(135deg, var(--com-emerald), var(--com-cyan)) !important;
-            color: #000 !important;
+        .nav-links a:not(.btn-cotizar-nav):hover {
+            color: var(--brand-blue);
+        }
+
+        /* BOTÓN COTIZAR NAVEGACIÓN — ALTA VISIBILIDAD */
+        .btn-cotizar-nav {
+            background-color: #2563eb !important;
+            color: #ffffff !important;
             font-weight: 700 !important;
+            font-size: 0.92rem !important;
             padding: 10px 22px !important;
             border-radius: 8px !important;
             text-decoration: none !important;
-            transition: all 0.3s ease !important;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+            transition: all 0.2s ease !important;
+            border: 1px solid #1d4ed8 !important;
+            cursor: pointer !important;
+            white-space: nowrap !important;
         }
 
-        .btn-com-primary:hover {
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4) !important;
-            transform: translateY(-2px);
+        .btn-cotizar-nav:hover {
+            background-color: #1d4ed8 !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4) !important;
         }
 
-        .btn-com-outline {
-            background: transparent !important;
-            border: 1px solid var(--com-border-bright) !important;
-            color: var(--com-text) !important;
-            font-weight: 600 !important;
-            padding: 10px 22px !important;
-            border-radius: 8px !important;
-            text-decoration: none !important;
-            transition: all 0.3s ease !important;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-com-outline:hover {
-            border-color: var(--com-emerald-light) !important;
-            color: var(--com-emerald-light) !important;
-            background: rgba(16, 185, 129, 0.05) !important;
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--text-heading);
+            cursor: pointer;
         }
 
         /* ===== HERO SECTION ===== */
-        .hero-comunidades {
-            position: relative;
-            padding: 140px 24px 90px;
+        .hero {
+            padding: 150px 24px 80px;
+            background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);
+            border-bottom: 1px solid var(--border-light);
             text-align: center;
-            overflow: hidden;
-            border-bottom: 1px solid var(--com-border);
-            background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.08) 0%, rgba(4, 9, 20, 1) 70%);
         }
 
-        .hero-badge {
+        .hero-chip {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 18px;
+            padding: 6px 16px;
             border-radius: 30px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: var(--com-emerald-light);
+            background: #dbeafe;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
             font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 28px;
-            letter-spacing: 0.5px;
-        }
-
-        .hero-comunidades h1 {
-            font-size: clamp(2.4rem, 5vw, 4.2rem);
-            font-weight: 800;
-            line-height: 1.15;
+            font-weight: 700;
             margin-bottom: 24px;
-            letter-spacing: -1.5px;
         }
 
-        .hero-comunidades h1 .highlight {
-            background: linear-gradient(135deg, var(--com-emerald-light), var(--com-cyan));
+        .hero h1 {
+            font-size: clamp(2.3rem, 4.8vw, 3.8rem);
+            font-weight: 800;
+            color: var(--text-heading);
+            line-height: 1.15;
+            letter-spacing: -1px;
+            max-width: 920px;
+            margin: 0 auto 20px;
+        }
+
+        .hero h1 span {
+            color: var(--brand-blue);
+            background: linear-gradient(135deg, #1e40af 0%, #0284c7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-comunidades p {
+        .hero p {
             font-size: 1.15rem;
-            color: var(--com-muted);
+            color: var(--text-body);
             max-width: 760px;
             margin: 0 auto 36px;
             line-height: 1.7;
         }
 
-        .hero-ctas {
+        .hero-actions {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
-        .metrics-bar {
+        .btn-primary-hero {
+            background-color: #2563eb;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary-hero:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary-hero {
+            background-color: #ffffff;
+            color: var(--text-heading);
+            border: 1px solid var(--border-strong);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary-hero:hover {
+            border-color: var(--brand-blue);
+            color: var(--brand-blue);
+            transform: translateY(-2px);
+        }
+
+        /* METRICS BAR */
+        .trust-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
         }
 
-        .metric-card {
-            background: var(--com-card);
-            border: 1px solid var(--com-border);
-            padding: 20px 16px;
+        .trust-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
             border-radius: 12px;
+            padding: 20px 16px;
             text-align: center;
-            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
         }
 
-        .metric-card:hover {
-            border-color: var(--com-emerald);
-            transform: translateY(-3px);
-            box-shadow: var(--com-glow);
+        .trust-card .icon {
+            font-size: 1.5rem;
+            color: var(--brand-blue);
+            margin-bottom: 8px;
         }
 
-        .metric-card .num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--com-emerald-light);
-            display: block;
+        .trust-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
             margin-bottom: 4px;
         }
 
-        .metric-card .label {
+        .trust-card p {
             font-size: 0.8rem;
-            color: var(--com-muted);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: var(--text-muted);
         }
 
-        /* ===== MOCKUP INTERACTIVO / PREVIEW ===== */
-        .preview-section {
+        /* ===== SECCIÓN: 100% PERSONALIZABLE & ADAPTABLE ===== */
+        .adaptable-section {
             padding: 90px 24px;
-            border-bottom: 1px solid var(--com-border);
-            background: #030710;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .preview-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background: var(--com-card);
-            border: 1px solid var(--com-border);
-            color: var(--com-muted);
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .tab-btn:hover, .tab-btn.active {
-            background: rgba(16, 185, 129, 0.15);
-            border-color: var(--com-emerald);
-            color: var(--com-emerald-light);
-        }
-
-        .tab-content {
-            display: none;
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--com-card);
-            border: 1px solid var(--com-border-bright);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .mockup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 20px;
-            margin-bottom: 24px;
-            border-bottom: 1px solid var(--com-border);
-        }
-
-        .mockup-header h3 {
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--com-text);
-        }
-
-        .mockup-badge {
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--com-emerald-light);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .mockup-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .mockup-card {
-            background: #060d1c;
-            border: 1px solid var(--com-border);
-            border-radius: 10px;
-            padding: 18px;
-        }
-
-        .mockup-card h4 {
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            color: var(--com-emerald-light);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .mockup-card p {
-            font-size: 0.85rem;
-            color: var(--com-muted);
-            line-height: 1.5;
-        }
-
-        .status-pill {
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .status-nuevo { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        .status-revision { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-        .status-resuelto { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-
-        /* ===== CATEGORIES GRID ===== */
-        .categories-section {
-            padding: 90px 24px;
-            border-bottom: 1px solid var(--com-border);
-        }
-
-        .section-title {
+        .section-header {
             text-align: center;
-            max-width: 700px;
+            max-width: 760px;
             margin: 0 auto 50px;
         }
 
-        .section-title .sub {
-            color: var(--com-emerald-light);
-            font-weight: 700;
+        .section-header .sub {
+            color: var(--brand-blue);
+            font-weight: 800;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
             display: block;
         }
 
-        .section-title h2 {
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        .section-header h2 {
+            font-size: clamp(1.9rem, 3.5vw, 2.7rem);
             font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
+            color: var(--text-heading);
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
         }
 
-        .section-title p {
-            color: var(--com-muted);
-            font-size: 1rem;
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
         }
 
-        .cat-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-
-        .cat-card {
-            background: var(--com-card);
-            border: 1px solid var(--com-border);
-            border-radius: 12px;
-            padding: 24px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .cat-card:hover {
-            border-color: var(--com-emerald);
-            background: var(--com-card-hover);
-            transform: translateY(-3px);
-        }
-
-        .cat-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--com-emerald-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin: 0 auto 16px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .cat-card h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--com-text);
-        }
-
-        .cat-card p {
-            font-size: 0.82rem;
-            color: var(--com-muted);
-            line-height: 1.4;
-        }
-
-        /* ===== FEATURES & MODULES ===== */
-        .features-section {
-            padding: 90px 24px;
-            border-bottom: 1px solid var(--com-border);
-            background: #030710;
-        }
-
-        .feat-grid {
+        .adaptable-grid {
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
@@ -419,53 +335,246 @@
             gap: 24px;
         }
 
-        .feat-card {
-            background: var(--com-card);
-            border: 1px solid var(--com-border);
-            border-radius: 14px;
-            padding: 30px 24px;
-            transition: all 0.3s;
+        .adaptable-card {
+            background: var(--bg-page);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 32px 24px;
+            transition: all 0.3s ease;
             position: relative;
         }
 
-        .feat-card:hover {
-            border-color: var(--com-emerald);
-            box-shadow: var(--com-glow);
+        .adaptable-card:hover {
+            border-color: var(--brand-blue);
+            box-shadow: var(--shadow-md);
             transform: translateY(-4px);
+            background: #ffffff;
         }
 
-        .feat-icon-top {
-            font-size: 1.8rem;
-            color: var(--com-emerald-light);
-            margin-bottom: 18px;
+        .adaptable-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: #dbeafe;
+            color: var(--brand-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
 
-        .feat-card h3 {
-            font-size: 1.15rem;
+        .adaptable-card h3 {
+            font-size: 1.2rem;
             font-weight: 700;
+            color: var(--text-heading);
             margin-bottom: 10px;
-            color: var(--com-text);
         }
 
-        .feat-card p {
-            font-size: 0.9rem;
-            color: var(--com-muted);
+        .adaptable-card p {
+            font-size: 0.92rem;
+            color: var(--text-body);
             line-height: 1.6;
         }
 
-        /* ===== COMPARATIVE TABLE ===== */
-        .comparison-section {
+        /* ===== MÓDULOS DEL SISTEMA ===== */
+        .modules-section {
             padding: 90px 24px;
-            border-bottom: 1px solid var(--com-border);
+            background: var(--bg-page);
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .table-wrapper {
-            max-width: 950px;
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-strong);
+            color: var(--text-body);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--brand-blue);
+            border-color: var(--brand-blue);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+        }
+
+        .tab-card {
+            display: none;
+            max-width: 1050px;
             margin: 0 auto;
-            overflow-x: auto;
-            border: 1px solid var(--com-border);
-            border-radius: 14px;
-            background: var(--com-card);
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .tab-card.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .tab-header h3 {
+            font-size: 1.35rem;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-role {
+            background: #dbeafe;
+            color: #1e40af;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .tab-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .sub-card {
+            background: var(--bg-page);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .sub-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sub-card p {
+            font-size: 0.88rem;
+            color: var(--text-body);
+            line-height: 1.5;
+        }
+
+        .tag-status {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .status-new { background: #dbeafe; color: #1e40af; }
+        .status-proc { background: #fef3c7; color: #b45309; }
+        .status-ok { background: #dcfce7; color: #15803d; }
+
+        /* ===== CATEGORÍAS DE OPERACIÓN ===== */
+        .cat-section {
+            padding: 90px 24px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .cat-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .cat-item {
+            background: var(--bg-page);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .cat-item:hover {
+            border-color: var(--brand-blue);
+            background: #ffffff;
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-2px);
+        }
+
+        .cat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: #e0f2fe;
+            color: #0284c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 auto 14px;
+        }
+
+        .cat-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 6px;
+        }
+
+        .cat-item p {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* ===== TABLA COMPARATIVA ===== */
+        .comp-section {
+            padding: 90px 24px;
+            background: var(--bg-page);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .table-box {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
         }
 
         table.comp-table {
@@ -476,122 +585,210 @@
         }
 
         table.comp-table th, table.comp-table td {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--com-border);
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border-light);
         }
 
         table.comp-table th {
-            background: #060d1c;
-            color: var(--com-text);
+            background: #f1f5f9;
+            color: var(--text-heading);
             font-weight: 700;
         }
 
-        table.comp-table th.highlight-col {
-            color: var(--com-emerald-light);
-            background: rgba(16, 185, 129, 0.08);
+        table.comp-table th.col-highlight {
+            background: #eff6ff;
+            color: var(--brand-blue);
         }
 
-        table.comp-table td.highlight-col {
-            background: rgba(16, 185, 129, 0.04);
-            font-weight: 600;
-            color: var(--com-emerald-light);
+        table.comp-table td.col-highlight {
+            background: #f8fafc;
+            color: var(--brand-blue);
+            font-weight: 700;
         }
 
-        /* ===== FAQ SECTION ===== */
+        /* ===== PREGUNTAS FRECUENTES ===== */
         .faq-section {
             padding: 90px 24px;
-            border-bottom: 1px solid var(--com-border);
-            background: #030710;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .faq-container {
+        .faq-wrap {
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .faq-item {
-            background: var(--com-card);
-            border: 1px solid var(--com-border);
+        .faq-card {
+            background: var(--bg-page);
+            border: 1px solid var(--border-light);
             border-radius: 12px;
             margin-bottom: 14px;
             overflow: hidden;
-            transition: all 0.3s;
+            transition: border-color 0.2s;
         }
 
-        .faq-question {
+        .faq-q {
             padding: 20px 24px;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
+            color: var(--text-heading);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--com-text);
         }
 
-        .faq-question i {
-            color: var(--com-emerald-light);
+        .faq-q i {
+            color: var(--brand-blue);
             transition: transform 0.3s;
         }
 
-        .faq-answer {
+        .faq-a {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
-            color: var(--com-muted);
+            color: var(--text-body);
             font-size: 0.92rem;
             line-height: 1.6;
             padding: 0 24px;
         }
 
-        .faq-item.active {
-            border-color: var(--com-emerald);
+        .faq-card.active {
+            border-color: var(--brand-blue);
+            background: #ffffff;
         }
 
-        .faq-item.active .faq-answer {
+        .faq-card.active .faq-a {
             max-height: 300px;
             padding: 0 24px 20px;
         }
 
-        /* ===== CTA SECTION ===== */
-        .cta-comunidades {
-            padding: 100px 24px;
+        /* ===== CTA FINAL ===== */
+        .cta-final {
+            padding: 90px 24px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
             text-align: center;
-            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.12) 0%, rgba(4, 9, 20, 1) 80%);
         }
 
-        .cta-box {
-            max-width: 700px;
+        .cta-content {
+            max-width: 720px;
             margin: 0 auto;
         }
 
-        .cta-box h2 {
+        .cta-content h2 {
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             margin-bottom: 16px;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
-        .cta-box p {
-            color: var(--com-muted);
+        .cta-content p {
             font-size: 1.1rem;
+            color: #cbd5e1;
             margin-bottom: 36px;
-            line-height: 1.6;
         }
 
-        /* ===== RESPONSIVE ===== */
+        .btn-cta-whatsapp {
+            background-color: #25d366;
+            color: #ffffff !important;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 16px 36px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .btn-cta-whatsapp:hover {
+            background-color: #1eb956;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(37, 211, 102, 0.5);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 32px 0;
+            background: #090d16;
+            color: #94a3b8;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-content {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .footer-logo span {
+            color: #38bdf8;
+        }
+
+        /* FLOATING WHATSAPP BUTTON */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 58px;
+            height: 58px;
+            background-color: #25D366;
+            color: #ffffff !important;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
-            .cat-grid, .feat-grid { grid-template-columns: repeat(2, 1fr); }
-            .metrics-bar { grid-template-columns: repeat(2, 1fr); }
-            .mockup-grid { grid-template-columns: 1fr; }
+            .adaptable-grid, .tab-grid { grid-template-columns: repeat(2, 1fr); }
+            .cat-grid { grid-template-columns: repeat(2, 1fr); }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        @media (max-width: 640px) {
-            .cat-grid, .feat-grid, .metrics-bar { grid-template-columns: 1fr; }
-            .hero-comunidades { padding: 110px 16px 60px; }
-            .hero-ctas { flex-direction: column; }
-            .tab-btn { width: 100%; justify-content: center; }
-            .tab-content { padding: 20px; }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #ffffff;
+                flex-direction: column;
+                padding: 20px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border-light);
+                box-shadow: var(--shadow-md);
+            }
+            .nav-links.active { display: flex; }
+            .mobile-toggle { display: block; }
+            .btn-cotizar-nav { width: 100%; justify-content: center; }
+            .adaptable-grid, .tab-grid, .cat-grid, .trust-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 12px; text-align: center; }
         }
     </style>
 </head>
@@ -600,152 +797,204 @@
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="nav-content">
-            <a href="../index.html" class="logo" style="text-decoration:none; color:inherit;">
-                TiendApp <span>Comunidades</span>
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-building-user"></i> TiendApp <span>Comunidades</span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="../index.html">Inicio</a>
+                <a href="#adaptable">Personalización</a>
                 <a href="#modulos">Módulos</a>
                 <a href="#categorias">Categorías</a>
-                <a href="#caracteristicas">Beneficios</a>
                 <a href="#preguntas">FAQ</a>
-                <a href="https://wa.me/56976739157?text=Hola!%20Me%20interesa%20el%20software%20de%20gesti%C3%B3n%20para%20comunidades%20y%20condominios" class="btn-com-primary" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/56976739157?text=Hola!%20Me%20interesa%20cotizar%20el%20software%20de%20gesti%C3%B3n%20para%20mi%20condominio" class="btn-cotizar-nav" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-whatsapp"></i> Cotizar Software
                 </a>
             </div>
-            <button class="mobile-toggle" aria-label="Menu">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </nav>
 
     <!-- HERO -->
-    <header class="hero-comunidades">
+    <header class="hero">
         <div class="container">
-            <div class="hero-badge">
-                <i class="fa-solid fa-shield-halved"></i> Software de Gestión Integral de Condominios & Comunidades
+            <div class="hero-chip">
+                <i class="fa-solid fa-sliders"></i> Software de Gestión 100% Adaptable a tu Condominio
             </div>
             <h1>
-                Administración transparente,<br>
-                <span class="highlight">vecinos conectados y comités eficientes</span>
+                La plataforma de gestión que se <span>adapta a la medida</span> de tu comunidad
             </h1>
             <p>
-                Olvídate de los chats desordenados de WhatsApp y los reclamos perdidos. Nuestra plataforma PWA permite registrar reportes con fotos, gestionar sugerencias, publicar avisos in-app y generar estadísticas clave en tiempo real para tu comunidad.
+                No fuerces a tu condominio a amarrarse a sistemas rígidos. Diseñamos y configuramos la plataforma según las reglas, áreas comunes, casas y necesidades exactas de tu administración y comité.
             </p>
 
-            <div class="hero-ctas">
-                <a href="https://wa.me/56976739157?text=Hola!%20Quiero%20solicitar%20informaci%C3%B3n%20para%20mi%20condominio" class="btn-com-primary" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> Solicitar Presentación
+            <div class="hero-actions">
+                <a href="https://wa.me/56976739157?text=Hola!%20Quiero%20cotizar%20el%20software%20adaptado%20a%20mi%20condominio" class="btn-primary-hero" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-whatsapp"></i> Cotizar a la Medida
                 </a>
-                <a href="#modulos" class="btn-com-outline">
-                    <i class="fa-solid fa-layer-group"></i> Explorar Módulos
+                <a href="#adaptable" class="btn-secondary-hero">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Ver Personalizaciones
                 </a>
             </div>
 
-            <div class="metrics-bar">
-                <div class="metric-card">
-                    <span class="num">100%</span>
-                    <span class="label">PWA Móvil sin descargas</span>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="icon"><i class="fa-solid fa-sliders"></i></div>
+                    <h4>100% Adaptable</h4>
+                    <p>Ajustado a tus reglas e infraestructura</p>
                 </div>
-                <div class="metric-card">
-                    <span class="num">8</span>
-                    <span class="label">Áreas de Gestión</span>
+                <div class="trust-card">
+                    <div class="icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h4>PWA Instalable</h4>
+                    <p>Acceso móvil directo sin descargas</p>
                 </div>
-                <div class="metric-card">
-                    <span class="num">0 Sec</span>
-                    <span class="label">Fórmulas seguras CSV/Excel</span>
+                <div class="trust-card">
+                    <div class="icon"><i class="fa-solid fa-camera"></i></div>
+                    <h4>Fotos & Privacidad</h4>
+                    <p>Evidencias con borrado automático al resolver</p>
                 </div>
-                <div class="metric-card">
-                    <span class="num">100%</span>
-                    <span class="label">Seguridad Supabase RLS</span>
+                <div class="trust-card">
+                    <div class="icon"><i class="fa-solid fa-file-excel"></i></div>
+                    <h4>Reportes para Asambleas</h4>
+                    <p>Descarga en Excel / CSV seguro en 1 clic</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- INTERACTIVE MOCKUP PREVIEW -->
-    <section id="modulos" class="preview-section">
+    <!-- SECCIÓN: 100% PERSONALIZABLE & ADAPTABLE -->
+    <section id="adaptable" class="adaptable-section">
         <div class="container">
-            <div class="section-title reveal">
-                <span class="sub">VISTA GENERAL DEL SISTEMA</span>
-                <h2>Diseñado para Vecinos, Comités y Administración</h2>
-                <p>Una experiencia intuitiva y rápida adaptada a cada rol dentro del condominio.</p>
+            <div class="section-header">
+                <span class="sub">ADAPTABILIDAD TOTAL</span>
+                <h2>Diseñado para Moldearse a las Necesidades de Tu Comunidad</h2>
+                <p>Cada condominio o edificio funciona diferente. Personalizamos cada aspecto del sistema sin costos sorpresas ni limitaciones.</p>
             </div>
 
-            <div class="preview-tabs reveal">
+            <div class="adaptable-grid">
+                <div class="adaptable-card">
+                    <div class="adaptable-icon"><div class="icon"><i class="fa-solid fa-house-signal"></i></div></div>
+                    <h3>Estructura & Número de Unidades</h3>
+                    <p>Configuramos la cantidad exacta de casas, parcelas o departamentos de tu comunidad con límites de usuarios por propiedad para proteger el acceso.</p>
+                </div>
+
+                <div class="adaptable-card">
+                    <div class="adaptable-icon"><div class="icon"><i class="fa-solid fa-tags"></i></div></div>
+                    <h3>Catálogo de Categorías Personalizado</h3>
+                    <p>Elegimos junto a ti las áreas clave de tu condominio: Seguridad, Quinchos, Piscinas, Basura, Luminarias, Mascotas o Estacionamientos.</p>
+                </div>
+
+                <div class="adaptable-card">
+                    <div class="adaptable-icon"><div class="icon"><i class="fa-solid fa-user-gear"></i></div></div>
+                    <h3>Roles & Permisos del Comité</h3>
+                    <p>Definimos qué miembros del comité o administración pueden revisar, responder, archivar o descargar informes contables y de gestión.</p>
+                </div>
+
+                <div class="adaptable-card">
+                    <div class="adaptable-icon"><div class="icon"><i class="fa-solid fa-shield-halved"></i></div></div>
+                    <h3>Reglamento Interno & Privacidad</h3>
+                    <p>Ajustamos las políticas de registro y privacidad a tus reglamentos internos y a la Ley de Copropiedad Inmobiliaria N° 21.442.</p>
+                </div>
+
+                <div class="adaptable-card">
+                    <div class="adaptable-icon"><div class="icon"><i class="fa-solid fa-chart-line"></i></div></div>
+                    <h3>Formatos de Reporte para Asambleas</h3>
+                    <p>Adaptamos los campos de exportación CSV/Excel para que cuadren perfectamente con las rendiciones de cuentas de tus reuniones.</p>
+                </div>
+
+                <div class="adaptable-card">
+                    <div class="adaptable-icon"><div class="icon"><i class="fa-solid fa-palette"></i></div></div>
+                    <h3>Identidad Visual de Tu Comunidad</h3>
+                    <p>Personalizamos el entorno web con la imagen, nombre y distintivos corporativos de tu administración o condominio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREVIEW INTERACTIVO DE MÓDULOS -->
+    <section id="modulos" class="modules-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub">VISTA GENERAL DEL SISTEMA</span>
+                <h2>Una Experiencia Fluida para Vecinos y Comité</h2>
+                <p>Plataforma intuitiva desarrollada para operar desde cualquier smartphone, tablet o computador.</p>
+            </div>
+
+            <div class="tab-buttons">
                 <button class="tab-btn active" onclick="switchTab('vecino')">
-                    <i class="fa-solid fa-mobile-screen-button"></i> Portal del Vecino (PWA)
+                    <i class="fa-solid fa-mobile-screen"></i> Portal del Vecino (PWA)
                 </button>
                 <button class="tab-btn" onclick="switchTab('comite')">
-                    <i class="fa-solid fa-user-gear"></i> Panel del Comité & Admin
+                    <i class="fa-solid fa-user-shield"></i> Panel de Comité & Admin
                 </button>
                 <button class="tab-btn" onclick="switchTab('stats')">
-                    <i class="fa-solid fa-chart-column"></i> Reportes & Estadísticas
+                    <i class="fa-solid fa-chart-pie"></i> Reportes & Métricas
                 </button>
             </div>
 
             <!-- TAB 1: VECINO -->
-            <div id="tab-vecino" class="tab-content active">
-                <div class="mockup-header">
-                    <h3><i class="fa-solid fa-house-user" style="color: var(--com-emerald-light);"></i> Experiencia del Vecino desde el Celular</h3>
-                    <span class="mockup-badge">PWA Instalable</span>
+            <div id="tab-vecino" class="tab-card active">
+                <div class="tab-header">
+                    <h3><i class="fa-solid fa-house-user" style="color: var(--brand-blue);"></i> Experiencia Móvil del Vecino</h3>
+                    <span class="badge-role">PWA Instalable</span>
                 </div>
-                <div class="mockup-grid">
-                    <div class="mockup-card">
+                <div class="tab-grid">
+                    <div class="sub-card">
                         <h4><i class="fa-solid fa-camera"></i> Reportes con Foto</h4>
-                        <p>Selecciona la categoría (seguridad, luminarias, aseo, etc.), adjunta 1 fotografía de evidencia y sigue el estado en vivo.</p>
+                        <p>Envía incidencias con 1 fotografía de evidencia y sigue el estado de atención en tiempo real.</p>
                     </div>
-                    <div class="mockup-card">
+                    <div class="sub-card">
                         <h4><i class="fa-solid fa-bell"></i> Novedades In-App</h4>
-                        <p>Campana de avisos con contador en tiempo real. Entérate de noticias y resoluciones sin spam en tu correo.</p>
+                        <p>Campana de aviso instantáneo. Entérate de resoluciones y noticias sin saturar tu correo.</p>
                     </div>
-                    <div class="mockup-card">
+                    <div class="sub-card">
                         <h4><i class="fa-solid fa-lightbulb"></i> Sugerencias Comunitarias</h4>
-                        <p>Espacio transparente para proponer mejoras al condominio y recibir respuestas oficiales del Comité.</p>
+                        <p>Canal directo para proponer ideas y mejoras al condominio con respuesta oficial del Comité.</p>
                     </div>
                 </div>
             </div>
 
             <!-- TAB 2: COMITÉ -->
-            <div id="tab-comite" class="tab-content">
-                <div class="mockup-header">
-                    <h3><i class="fa-solid fa-list-check" style="color: var(--com-emerald-light);"></i> Panel de Control para Comité y Administración</h3>
-                    <span class="mockup-badge">Gestión Centralizada</span>
+            <div id="tab-comite" class="tab-card">
+                <div class="tab-header">
+                    <h3><i class="fa-solid fa-list-check" style="color: var(--brand-blue);"></i> Panel de Administración</h3>
+                    <span class="badge-role">Comité & Conserjería</span>
                 </div>
-                <div class="mockup-grid">
-                    <div class="mockup-card">
-                        <h4><i class="fa-solid fa-magnifying-glass"></i> Buscador Avanzado <span class="status-pill status-nuevo">Nuevos</span></h4>
-                        <p>Filtra por número de casa, palabra clave, categoría o estado (Nuevo, En revisión, Resuelto) en milisegundos.</p>
+                <div class="tab-grid">
+                    <div class="sub-card">
+                        <h4><i class="fa-solid fa-magnifying-glass"></i> Buscador en Tiempo Real <span class="tag-status status-new">Nuevos</span></h4>
+                        <p>Filtra instantáneamente por número de vivienda, categoría, palabra clave o estado.</p>
                     </div>
-                    <div class="mockup-card">
-                        <h4><i class="fa-solid fa-file-excel"></i> Exportación CSV / Excel <span class="status-pill status-revision">En Revisión</span></h4>
-                        <p>Descarga de datos sanitizados contra inyección de fórmulas para análisis contables y asambleas ordinarias.</p>
+                    <div class="sub-card">
+                        <h4><i class="fa-solid fa-file-excel"></i> Exportación CSV / Excel <span class="tag-status status-proc">En Revisión</span></h4>
+                        <p>Descarga planillas sanitizadas contra inyección de fórmulas para asambleas y auditorías.</p>
                     </div>
-                    <div class="mockup-card">
-                        <h4><i class="fa-solid fa-shield-halved"></i> Control de Roles <span class="status-pill status-resuelto">Resuelto</span></h4>
-                        <p>Gestión de permisos de administrador, comités y vecinos con límites de cupos por propiedad.</p>
+                    <div class="sub-card">
+                        <h4><i class="fa-solid fa-user-lock"></i> Gestión de Usuarios <span class="tag-status status-ok">Resuelto</span></h4>
+                        <p>Validación de correos y control de límites de cupos por casa para prevenir accesos indebidos.</p>
                     </div>
                 </div>
             </div>
 
             <!-- TAB 3: STATS -->
-            <div id="tab-stats" class="tab-content">
-                <div class="mockup-header">
-                    <h3><i class="fa-solid fa-chart-pie" style="color: var(--com-emerald-light);"></i> Indicadores de Gestión y Auditoría</h3>
-                    <span class="mockup-badge">HTML5 Canvas Charts</span>
+            <div id="tab-stats" class="tab-card">
+                <div class="tab-header">
+                    <h3><i class="fa-solid fa-chart-column" style="color: var(--brand-blue);"></i> Métricas & Auditoría</h3>
+                    <span class="badge-role">Gráficos HTML5</span>
                 </div>
-                <div class="mockup-grid">
-                    <div class="mockup-card">
-                        <h4><i class="fa-solid fa-chart-area"></i> Frecuencia por Categoría</h4>
-                        <p>Visualiza en qué áreas del condominio se concentran las solicitudes para tomar decisiones de inversión inteligentes.</p>
+                <div class="tab-grid">
+                    <div class="sub-card">
+                        <h4><i class="fa-solid fa-chart-area"></i> Incidencias por Categoría</h4>
+                        <p>Identifica en qué áreas del condominio se concentran las solicitudes de los vecinos.</p>
                     </div>
-                    <div class="mockup-card">
+                    <div class="sub-card">
                         <h4><i class="fa-solid fa-clock-rotate-left"></i> Tiempo de Respuesta</h4>
-                        <p>Mide el tiempo de resolución de casos entre el reporte del vecino y la gestión del proveedor o conserjería.</p>
+                        <p>Mide los tiempos entre el reporte vecinal y la resolución del proveedor o mantenimiento.</p>
                     </div>
-                    <div class="mockup-card">
-                        <h4><i class="fa-solid fa-trash-arrow-up"></i> Borrado Seguro de Fotos</h4>
-                        <p>Al resolverse un caso, las evidencias se borran automáticamente para cuidar almacenamiento y mantener privacidad.</p>
+                    <div class="sub-card">
+                        <h4><i class="fa-solid fa-shield-cat"></i> Borrado Seguro de Fotos</h4>
+                        <p>Al resolverse un caso, la foto se elimina automáticamente para resguardar la privacidad.</p>
                     </div>
                 </div>
             </div>
@@ -753,152 +1002,103 @@
         </div>
     </section>
 
-    <!-- CATEGORÍAS DE GESTIÓN -->
-    <section id="categorias" class="categories-section">
+    <!-- CATEGORÍAS -->
+    <section id="categorias" class="cat-section">
         <div class="container">
-            <div class="section-title reveal">
-                <span class="sub">COBERTURA COMPLETA</span>
-                <h2>8 Categorías de Gestión Integral</h2>
-                <p>Cubre todos los aspectos operativos de un condominio o comunidad residencial.</p>
+            <div class="section-header">
+                <span class="sub">COBERTURA INTEGRAL</span>
+                <h2>Categorías Operativas Personalizables</h2>
+                <p>Cubrimos todos los aspectos clave del mantenimiento y convivencia comunitaria.</p>
             </div>
 
-            <div class="cat-grid reveal">
-                <div class="cat-card">
-                    <div class="cat-icon"><i class="fa-solid fa-shield-cat"></i></div>
+            <div class="cat-grid">
+                <div class="cat-item">
+                    <div class="cat-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h4>Seguridad</h4>
-                    <p>Accesos, rondas, cámaras, intrusiones y novedades con conserjería.</p>
+                    <p>Accesos, rondas, cámaras y novedades de conserjería.</p>
                 </div>
-                <div class="cat-card">
+                <div class="cat-item">
                     <div class="cat-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                     <h4>Instalaciones</h4>
-                    <p>Bombas de agua, portones automáticos, citofonía y recintos.</p>
+                    <p>Bombas de agua, portones, citofonía y recintos.</p>
                 </div>
-                <div class="cat-card">
+                <div class="cat-item">
                     <div class="cat-icon"><i class="fa-solid fa-tree"></i></div>
-                    <h4>Plazas & Áreas Verdes</h4>
-                    <p>Mantención de jardines, juegos infantiles y riego comunitario.</p>
+                    <h4>Áreas Verdes</h4>
+                    <p>Jardines, juegos infantiles y riego comunitario.</p>
                 </div>
-                <div class="cat-card">
+                <div class="cat-item">
                     <div class="cat-icon"><i class="fa-solid fa-road"></i></div>
                     <h4>Calles & Pasajes</h4>
-                    <p>Lomos de toro, demarcaciones, señalética e infraestructura.</p>
+                    <p>Lomos de toro, señalética e infraestructura.</p>
                 </div>
-                <div class="cat-card">
+                <div class="cat-item">
                     <div class="cat-icon"><i class="fa-solid fa-lightbulb"></i></div>
                     <h4>Luminarias</h4>
-                    <p>Alumbrado público interno, focos de seguridad y ampolletas quemadas.</p>
+                    <p>Alumbrado interno y focos de seguridad.</p>
                 </div>
-                <div class="cat-card">
+                <div class="cat-item">
                     <div class="cat-icon"><i class="fa-solid fa-trash-can"></i></div>
                     <h4>Aseo & Extracción</h4>
-                    <p>Retiro de basura, puntos limpios y limpieza de espacios comunes.</p>
+                    <p>Retiro de basura y puntos limpios.</p>
                 </div>
-                <div class="cat-card">
+                <div class="cat-item">
                     <div class="cat-icon"><i class="fa-solid fa-car-side"></i></div>
                     <h4>Estacionamientos</h4>
-                    <p>Uso de espacios de visitas, mal estacionados y reglas de convivencia.</p>
+                    <p>Uso de espacios de visitas y mal estacionados.</p>
                 </div>
-                <div class="cat-card">
+                <div class="cat-item">
                     <div class="cat-icon"><i class="fa-solid fa-comments"></i></div>
-                    <h4>General & Otros</h4>
-                    <p>Asuntos de convivencia, mascotas, ruidos molestos y consultas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CARACTERÍSTICAS & BENEFICIOS -->
-    <section id="caracteristicas" class="features-section">
-        <div class="container">
-            <div class="section-title reveal">
-                <span class="sub">ARQUITECTURA DE ALTO NIVEL</span>
-                <h2>¿Por qué elegir TiendApp Comunidades?</h2>
-                <p>Tecnología moderna pensada para ser ligera, segura y fácil de operar.</p>
-            </div>
-
-            <div class="feat-grid reveal">
-                <div class="feat-card">
-                    <div class="feat-icon-top"><i class="fa-solid fa-mobile-screen"></i></div>
-                    <h3>PWA Instalable (Sin App Store)</h3>
-                    <p>Los vecinos no deben descargar apps pesadas desde tiendas. Se instala directamente desde el navegador en iOS y Android en 2 segundos.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon-top"><i class="fa-solid fa-lock"></i></div>
-                    <h3>Seguridad Supabase (PostgreSQL RLS)</h3>
-                    <p>Cada vecino solo puede ver y gestionar sus propios reportes. Protección de datos mediante Row Level Security a nivel de base de datos.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon-top"><i class="fa-solid fa-camera-retro"></i></div>
-                    <h3>Fotos Adjuntas & Privacidad</h3>
-                    <p>Permite subir evidencias fotográficas resguardadas. Una vez resuelto el incidente, la foto se elimina automáticamente para no saturar espacio.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon-top"><i class="fa-solid fa-user-shield"></i></div>
-                    <h3>Validación por Vivienda</h3>
-                    <p>Control de registro atómico con límite de cupos por casa o departamento (ej. máximo 2 usuarios por propiedad) para evitar cuentas no autorizadas.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon-top"><i class="fa-solid fa-bolt"></i></div>
-                    <h3>Cero Servidores (Serverless)</h3>
-                    <p>Carga ultrarrápida en menos de 1.5 segundos. Disponibilidad 24/7 sin caídas y sin cobros de mantenimiento de servidores físicos.</p>
-                </div>
-                <div class="feat-card">
-                    <div class="feat-icon-top"><i class="fa-solid fa-file-excel"></i></div>
-                    <h3>Exportación CSV Segura</h3>
-                    <p>Descarga informes en formato Excel neutralizados contra inyección de código. Listo para presentar balances en asambleas.</p>
+                    <h4>Convivencia</h4>
+                    <p>Mascotas, ruidos molestos y sugerencias.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- TABLA COMPARATIVA -->
-    <section class="comparison-section">
+    <section class="comp-section">
         <div class="container">
-            <div class="section-title reveal">
-                <span class="sub">COMPARATIVA</span>
-                <h2>Software Tradicional vs. TiendApp Comunidades</h2>
-                <p>Descubre la diferencia de trabajar con una plataforma ágil y a tu medida.</p>
+            <div class="section-header">
+                <span class="sub">DIFERENCIACIÓN</span>
+                <h2>Software Rígido vs. TiendApp Comunidades</h2>
+                <p>Compara las ventajas de una plataforma 100% adaptable frente a sistemas empaquetados tradicionalmente.</p>
             </div>
 
-            <div class="table-wrapper reveal">
+            <div class="table-box">
                 <table class="comp-table">
                     <thead>
                         <tr>
                             <th>Característica</th>
-                            <th>Software Tradicional de Condominios</th>
-                            <th class="highlight-col"><i class="fa-solid fa-star"></i> TiendApp Comunidades</th>
+                            <th>Software Enlatado Tradicional</th>
+                            <th class="col-highlight"><i class="fa-solid fa-star"></i> TiendApp Comunidades</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Instalación Móvil</strong></td>
-                            <td>Requiere buscar y descargar en App Store / Play Store</td>
-                            <td class="highlight-col">PWA Instalable inmediata en 1 clic desde el navegador</td>
+                            <td><strong>Adaptabilidad</strong></td>
+                            <td>Módulos rígidos que no se pueden modificar</td>
+                            <td class="col-highlight">100% adaptable a tus categorías y reglas internas</td>
                         </tr>
                         <tr>
-                            <td><strong>Evidencias Fotográficas</strong></td>
-                            <td>Límites rígidos o cobros extra por almacenamiento</td>
-                            <td class="highlight-col">Fotos adjuntas con borrado automático tras ser resueltos</td>
+                            <td><strong>Acceso Móvil</strong></td>
+                            <td>Descarga obligatoria en tiendas de apps</td>
+                            <td class="col-highlight">PWA Instalable directa en 1 segundo desde el navegador</td>
                         </tr>
                         <tr>
-                            <td><strong>Privacidad & Seguridad</strong></td>
-                            <td>Bases de datos genéricas multitarget</td>
-                            <td class="highlight-col">PostgreSQL independiente + RLS por usuario y vivienda</td>
+                            <td><strong>Manejo de Evidencias</strong></td>
+                            <td>Cobros extra por gigabytes de almacenamiento</td>
+                            <td class="col-highlight">Borrado automático de fotos al resolver la incidencia</td>
                         </tr>
                         <tr>
-                            <td><strong>Alertas e Incidencias</strong></td>
-                            <td>Emails masivos molestos que van a Spam</td>
-                            <td class="highlight-col">Notificaciones y campana in-app sin saturar correos</td>
+                            <td><strong>Notificaciones</strong></td>
+                            <td>Correos masivos que terminan en Spam</td>
+                            <td class="col-highlight">Campana e avisos in-app sin saturar mails</td>
                         </tr>
                         <tr>
-                            <td><strong>Exportación de Datos</strong></td>
-                            <td>Planillas desordenadas o sin formato seguro</td>
-                            <td class="highlight-col">CSV/Excel sanitizado contra inyección de fórmulas</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Costo & Mantenimiento</strong></td>
-                            <td>Planes mensuales caros por departamento</td>
-                            <td class="highlight-col">Planes transparentes, flexibles y sin letras chicas</td>
+                            <td><strong>Exportación</strong></td>
+                            <td>Formatos planos sin sanitizar</td>
+                            <td class="col-highlight">CSV/Excel sanitizado contra inyección de fórmulas</td>
                         </tr>
                     </tbody>
                 </table>
@@ -909,80 +1109,65 @@
     <!-- PREGUNTAS FRECUENTES -->
     <section id="preguntas" class="faq-section">
         <div class="container">
-            <div class="section-title reveal">
+            <div class="section-header">
                 <span class="sub">RESOLVEMOS TUS DUDAS</span>
                 <h2>Preguntas Frecuentes</h2>
-                <p>Todo lo que necesitas saber antes de implementar en tu comunidad.</p>
+                <p>Respuestas claras sobre implementación, personalización y cotización.</p>
             </div>
 
-            <div class="faq-container reveal">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Los vecinos necesitan descargar alguna aplicación desde App Store o Google Play?</span>
+            <div class="faq-wrap">
+                <div class="faq-card">
+                    <div class="faq-q">
+                        <span>¿Qué significa que el software sea 100% adaptable?</span>
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">
-                        No. TiendApp Comunidades utiliza tecnología PWA (Progressive Web App). Los vecinos entran desde cualquier navegador en su smartphone y pueden tocar "Agregar a la pantalla de inicio". Tendrán un icono directo como cualquier app pero sin ocupar espacio de memoria ni depender de descargas.
+                    <div class="faq-a">
+                        Significa que no debes modificar el funcionamiento de tu condominio para usar la app. Nosotros adaptamos el número de casas, las categorías de reporte, las reglas de acceso por propiedad y los permisos del comité exactamente a lo que tu administración requiere.
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Cómo evitan que personas ajenas al condominio se registren?</span>
+                <div class="faq-card">
+                    <div class="faq-q">
+                        <span>¿Los vecinos deben descargar una app desde App Store o Play Store?</span>
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">
-                        El sistema incluye verificación obligatoria por correo electrónico, límite de intentos por hora y control de cupos por propiedad (por ejemplo, máximo 2 vecinos verificados por casa/departamento). Además, la administración puede validar o revocar accesos en cualquier momento.
+                    <div class="faq-a">
+                        No. TiendApp Comunidades opera como una PWA (Progressive Web App). Los vecinos ingresan desde su celular y pueden presionar "Agregar a la pantalla de inicio". Tendrán un icono directo como cualquier app pero sin ocupar espacio ni requerir descargas pesadas.
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Qué sucede con las fotos subidas a los reportes?</span>
+                <div class="faq-card">
+                    <div class="faq-q">
+                        <span>¿Cómo resguardan la privacidad de los vecinos y las fotos?</span>
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">
-                        Las fotografías se almacenan en un bucket privado protegido por políticas de seguridad RLS. Para resguardar la privacidad y optimizar almacenamiento, cuando el Comité o la Administración marca el reporte como "Resuelto", la foto se elimina automáticamente de la nube, manteniendo el registro histórico sin la imagen.
+                    <div class="faq-a">
+                        Utilizamos seguridad PostgreSQL Row Level Security (RLS). Cada vecino solo consulta sus propias gestiones. Además, cuando un incidente o sugerencia se marca como "Resuelto", la evidencia fotográfica se elimina automáticamente del almacenamiento en la nube.
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Se pueden exportar los datos para presentaciones o auditorías?</span>
+                <div class="faq-card">
+                    <div class="faq-q">
+                        <span>¿Se pueden descargar informes para las asambleas?</span>
                         <i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">
-                        Sí. Con un solo clic, el Comité o los Administradores pueden descargar el listado completo de reportes y sugerencias en formato CSV compatible con Microsoft Excel y Google Sheets, con protección contra inyección de fórmulas para garantizar la seguridad contable.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Se puede personalizar para las reglas o categorías de nuestro condominio?</span>
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                    <div class="faq-answer">
-                        ¡Por supuesto! Como desarrollamos la solución a la medida, podemos ajustar el número de propiedades, añadir categorías específicas (ej. quincho, piscina, gimnasio) y adaptar la identidad visual del sistema a las necesidades de tu comunidad.
+                    <div class="faq-a">
+                        Sí. El Comité o la Administración puede descargar en 1 clic planillas en formato CSV compatible con Microsoft Excel y Google Sheets, preparadas con protección contra inyección de fórmulas para presentaciones contables y reuniones.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CALL TO ACTION FINAL -->
-    <section id="contacto" class="cta-comunidades">
+    <!-- CTA FINAL -->
+    <section class="cta-final">
         <div class="container">
-            <div class="cta-box reveal">
-                <h2>¿Quieres modernizar la gestión de tu comunidad o condominio?</h2>
-                <p>Contáctanos hoy mismo para coordinar una demostración guiada o cotizar el plan ideal para tu proyecto.</p>
-                <div class="hero-ctas">
-                    <a href="https://wa.me/56976739157?text=Hola!%20Me%20interesa%20cotizar%20el%20software%20de%20gesti%C3%B3n%20para%20mi%20condominio" class="btn-com-primary" target="_blank" rel="noopener noreferrer">
-                        <i class="fa-brands fa-whatsapp"></i> Hablar por WhatsApp
-                    </a>
-                    <a href="mailto:ventas@tiendappchile.cl" class="btn-com-outline">
-                        <i class="fa-solid fa-envelope"></i> Enviar Correo
-                    </a>
-                </div>
+            <div class="cta-content">
+                <h2>¿Listo para un software que realmente se adapte a tu condominio?</h2>
+                <p>Conversa directamente con nosotros por WhatsApp para coordinar una cotización a la medida de tu comunidad.</p>
+                <a href="https://wa.me/56976739157?text=Hola!%20Quiero%20cotizar%20el%20software%20de%20gesti%C3%B3n%20personalizado%20para%20mi%20condominio" class="btn-cta-whatsapp" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
+                </a>
             </div>
         </div>
     </section>
@@ -990,7 +1175,7 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <div class="logo">TiendApp <span>Comunidades</span></div>
+            <div class="footer-logo">TiendApp <span>Comunidades</span></div>
             <p>&copy; 2026 TiendApp Chile. Todos los derechos reservados.</p>
         </div>
     </footer>
@@ -1000,18 +1185,59 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="../shared.js"></script>
     <script>
+        // Toggle menú móvil
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileToggle && navLinks) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = mobileToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+
+        // Tabs interactivos
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
+            document.querySelectorAll('.tab-card').forEach(card => card.classList.remove('active'));
+
             const selectedBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
-            if(selectedBtn) selectedBtn.classList.add('active');
-            
-            const selectedContent = document.getElementById('tab-' + tabId);
-            if(selectedContent) selectedContent.classList.add('active');
+            if (selectedBtn) selectedBtn.classList.add('active');
+
+            const selectedCard = document.getElementById('tab-' + tabId);
+            if (selectedCard) selectedCard.classList.add('active');
         }
+
+        // FAQ Acordeón
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                const card = q.parentElement;
+                const isOpen = card.classList.contains('active');
+                document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('active'));
+                if (!isOpen) {
+                    card.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
