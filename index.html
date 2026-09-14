@@ -160,7 +160,7 @@
 
         .services-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
         }
 
         .service-card {
@@ -217,7 +217,7 @@
 
         .showcase-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
         }
 
         .showcase-card {
@@ -349,6 +349,7 @@
             <div class="logo">TiendApp <span>Chile</span></div>
             <div class="nav-links">
                 <a href="#servicios">Servicios</a>
+                <a href="comunidades/index.html">Comunidades</a>
                 <a href="#portafolio">Portafolio</a>
                 <a href="#por-que">¿Por qué nosotros?</a>
                 <a href="#contacto" class="btn-nav">Contactar</a>
@@ -363,10 +364,10 @@
         <div class="hero-scanlines"></div>
         <div class="hero-content">
             <div class="hero-chip">
-                Streaming, gaming y más para ti
+                Streaming, gaming y soluciones web para ti
             </div>
-            <h1>Entretenimiento<br><span class="line2">al alcance de todos</span></h1>
-            <p>Streaming al mejor precio, consolas retro con miles de juegos y desarrollo web profesional. Todo lo que buscas, en un solo lugar.</p>
+            <h1>Entretenimiento y Software<br><span class="line2">al alcance de todos</span></h1>
+            <p>Streaming al mejor precio, consolas retro con miles de juegos, desarrollo web profesional y software de gestión comunitaria. Todo en un solo lugar.</p>
             <div class="hero-cta">
                 <a href="#servicios" class="btn-primary">Ver Servicios</a>
                 <a href="https://wa.me/56976739157" class="btn-outline" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
@@ -398,6 +399,7 @@
             <span><i class="fa-brands fa-react"></i> React</span>
             <span><i class="fa-brands fa-node-js"></i> Node.js</span>
             <span><i class="fa-solid fa-code"></i> HTML5 / CSS3 / JS</span>
+            <span><i class="fa-solid fa-building-user"></i> Gestión Comunitaria</span>
             <span><i class="fa-solid fa-mobile-screen"></i> Mobile First</span>
             <span><i class="fa-brands fa-netflix"></i> Netflix</span>
             <span><i class="fa-solid fa-tv"></i> HBO Max</span>
@@ -410,6 +412,7 @@
             <span><i class="fa-brands fa-react"></i> React</span>
             <span><i class="fa-brands fa-node-js"></i> Node.js</span>
             <span><i class="fa-solid fa-code"></i> HTML5 / CSS3 / JS</span>
+            <span><i class="fa-solid fa-building-user"></i> Gestión Comunitaria</span>
             <span><i class="fa-solid fa-mobile-screen"></i> Mobile First</span>
             <span><i class="fa-brands fa-netflix"></i> Netflix</span>
             <span><i class="fa-solid fa-tv"></i> HBO Max</span>
@@ -427,7 +430,7 @@
             <div class="section-header reveal">
                 <div class="chip">Servicios</div>
                 <h2>Todo lo que buscas, en un solo lugar</h2>
-                <p>Streaming, retro gaming y desarrollo web. Elige lo que necesitas.</p>
+                <p>Streaming, retro gaming, desarrollo web y software para condominios.</p>
             </div>
             <div class="services-grid">
                 <a href="desarrollo/index.html" class="service-card dev reveal">
@@ -435,6 +438,12 @@
                     <h3>Desarrollo Web</h3>
                     <p>Páginas web y apps profesionales para emprendedores y negocios. Diseño moderno que conecta con tus clientes.</p>
                     <div class="card-link">Ver Desarrollo <i class="fa-solid fa-arrow-right"></i></div>
+                </a>
+                <a href="comunidades/index.html" class="service-card dev reveal" style="border-color: rgba(16, 185, 129, 0.4);">
+                    <div class="service-icon" style="color: #10b981; border-color: rgba(16, 185, 129, 0.4);"><i class="fa-solid fa-building-user"></i></div>
+                    <h3>Gestión Comunitaria</h3>
+                    <p>Software integral para la administración de condominios y comunidades. Reportes con foto, panel de comité, PWA y estadísticas.</p>
+                    <div class="card-link" style="color: #10b981;">Ver Comunidades <i class="fa-solid fa-arrow-right"></i></div>
                 </a>
                 <a href="streaming/index.html" class="service-card stream reveal">
                     <div class="service-icon"><i class="fa-solid fa-tv"></i></div>
@@ -460,6 +469,17 @@
                 <p>Ejemplos reales de lo que puedes encontrar en TiendApp.</p>
             </div>
             <div class="showcase-grid">
+                <a href="comunidades/index.html" class="showcase-card reveal">
+                    <div class="showcase-img" style="background: linear-gradient(135deg, #0a1326 0%, #059669 100%); display: flex; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-building-user" style="font-size: 3.8rem; color: #ffffff; opacity: 0.95;"></i>
+                        <div class="showcase-tag" style="border-color: #34d399; color: #34d399;">Gestión Condominios</div>
+                    </div>
+                    <div class="showcase-body">
+                        <h3>Software de Comunidades</h3>
+                        <p>Reportes vecinales con fotos, avisos in-app, panel de comité y métricas estadísticas.</p>
+                        <span class="showcase-link" style="color: #34d399;">Ver Software <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
                 <a href="streaming/index.html" class="showcase-card reveal">
                     <div class="showcase-img" style="background-image: url('screenshots/streaming_ref.jpg');">
                         <div class="showcase-tag">Streaming</div>
@@ -490,7 +510,6 @@
                         <span class="showcase-link">Probar Demo <i class="fa-solid fa-arrow-right"></i></span>
                     </div>
                 </a>
-
             </div>
         </div>
     </section>

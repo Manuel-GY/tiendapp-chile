@@ -15,6 +15,9 @@ tiendapp-chile/
 ├── desarrollo/             # Desarrollo Web & Apps
 │   └── index.html          # Estética VS Code
 │
+├── comunidades/            # Software de Gestión Comunitaria & Condominios
+│   └── index.html          # Landing de Gestión para Condominios
+│
 ├── streaming/              # Suscripciones de Streaming
 │   └── index.html          # Estética Netflix
 │
