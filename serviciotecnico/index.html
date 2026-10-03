@@ -21,18 +21,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
         :root {
-            --tk-blue: #60a5fa;
-            --tk-blue-dark: #3b82f6;
+            --tk-blue: #00e5ff;
+            --tk-blue-dark: #00c4db;
             --tk-navy: #0b0f14;
             --tk-dark: #10161e;
             --tk-card: #141b24;
             --tk-border: #27313d;
             --tk-text: #ffffff;
-            --tk-muted: #9aa6b2;
+            --tk-muted: #b0bbc7;
             --tk-muted-light: #c2cad3;
         }
 
         body { background: var(--tk-navy); }
+        :root { --text-muted: var(--tk-muted); }
+        [id] { scroll-margin-top: 100px; }
+        :focus-visible { outline: 3px solid var(--tk-blue); outline-offset: 5px; }
+        .skip-link { position: fixed; top: 12px; left: 16px; z-index: 1100; padding: 12px 18px; background: var(--tk-blue); color: var(--tk-navy); transform: translateY(-160%); }
+        .skip-link:focus { transform: translateY(0); }
+        .logo { text-decoration: none; color: var(--tk-text); }
+        .reveal { opacity: 1; transform: none; }
+        .btn-primary, .nav-links a.btn-primary { color: var(--tk-navy) !important; }
+        .nav-links a { color: var(--tk-muted-light); }
+        .mobile-toggle { min-width: 44px; min-height: 44px; }
+        body:not(.navigation-ready) .mobile-toggle { display: none; }
 
         .navbar { background: rgba(6, 11, 24, 0.95) !important; border-bottom: 1px solid var(--tk-border) !important; }
         .logo span { background: none !important; -webkit-text-fill-color: var(--tk-blue) !important; }
@@ -42,13 +53,13 @@
         /* ===== HERO ===== */
         .hero-tech {
             position: relative;
-            min-height: 78vh;
+            min-height: 640px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             text-align: left;
-            padding: 130px 24px 80px;
-            background: #0b0f14;
+            padding: 138px 24px 88px;
+            background: radial-gradient(ellipse at 90% 20%, #13313b 0%, #0b0f14 65%);
             overflow: hidden;
         }
         .hero-tech::before {
@@ -62,7 +73,15 @@
             background: linear-gradient(to top, var(--tk-navy), transparent);
             z-index: 1;
         }
-        .hero-tech .hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; width: 100%; }
+        .hero-layout { position: relative; z-index: 2; max-width: 1152px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+        .hero-tech .hero-content { width: 100%; }
+        .hero-guide { background: var(--tk-card); border: 1px solid var(--tk-border); border-top: 3px solid var(--tk-blue); border-radius: 16px; padding: 28px; }
+        .hero-guide h2 { font-size: 1.2rem; margin-bottom: 12px; }
+        .hero-guide p, .hero-guide li { color: var(--tk-muted-light); font-size: 0.95rem; }
+        .hero-guide ul { padding-left: 20px; margin: 18px 0; }
+        .hero-guide li + li { margin-top: 10px; }
+        .text-link { color: var(--tk-blue); text-underline-offset: 4px; font-weight: 600; }
+        .hero-note { margin-top: 18px; color: var(--tk-muted); font-size: 0.85rem; }
         .hero-tag {
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
@@ -70,7 +89,7 @@
         }
         .hero-tech h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.13; margin-bottom: 20px; letter-spacing: -1px; color: var(--tk-text); max-width: 680px; }
         .hero-tech h1 span { background: none; -webkit-text-fill-color: var(--tk-blue); }
-        .hero-tech > .hero-content > p { font-size: 1.05rem; color: var(--tk-muted-light); margin-bottom: 28px; line-height: 1.7; max-width: 610px; }
+        .hero-tech .hero-content > p:not(.hero-note) { font-size: 1.05rem; color: var(--tk-muted-light); margin-bottom: 28px; line-height: 1.7; max-width: 610px; }
         .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-start; }
         .hero-tech .btn-primary { background: var(--tk-blue-dark) !important; font-weight: 600; border-radius: 8px; padding: 13px 24px; }
         .hero-tech .btn-primary:hover { background: var(--tk-blue) !important; box-shadow: none; }
@@ -97,8 +116,14 @@
         .cat-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; border-bottom: 1px solid var(--tk-border); }
         .cat-tab { background: transparent; border: 0; border-bottom: 2px solid transparent; color: var(--tk-muted-light); padding: 12px 20px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
         .cat-tab.active, .cat-tab:hover { background: transparent; border-color: var(--tk-blue); color: #fff; }
-        .cat-panel { display: none; }
-        .cat-panel.active { display: grid; }
+        .cat-tabs { display: none; }
+        .tabs-ready .cat-tabs { display: flex; }
+        .cat-panel { display: grid; }
+        .cat-panel + .cat-panel { margin-top: 24px; }
+        .tabs-ready .cat-panel { margin-top: 0; }
+        .cat-panel[hidden] { display: none; }
+        .service-note { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; padding: 22px 24px; border: 1px solid var(--tk-border); border-radius: 12px; }
+        .service-note p { color: var(--tk-muted-light); max-width: 660px; }
 
         /* Process */
         .process-step { background: var(--tk-card); border: 1px solid var(--tk-border); border-radius: 12px; }
@@ -116,6 +141,18 @@
         .faq-item.active { border-color: var(--tk-blue); }
         .faq-question i { color: var(--tk-blue); }
         .faq-answer p { color: var(--tk-muted); }
+        .faq-item[open] { border-color: var(--tk-blue); }
+        .faq-question { list-style: none; gap: 18px; }
+        .faq-question::-webkit-details-marker { display: none; }
+        .faq-question:hover { color: var(--tk-blue); }
+        .faq-item[open] .faq-question i { transform: rotate(45deg); }
+        .faq-item[open] .faq-answer { max-height: none; padding: 0 24px 20px; }
+        .contact-checklist { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 24px 0; }
+        .contact-checklist li { border: 1px solid var(--tk-border); border-radius: 8px; padding: 8px 14px; color: var(--tk-muted-light); }
+        .btn-whatsapp-large { background: #25d366; color: #071810; }
+        .btn-email-large { border-color: var(--tk-border); overflow-wrap: anywhere; }
+        .float-whatsapp { color: #071810 !important; }
+        footer { padding-bottom: 96px; }
 
         /* Footer */
         footer { background: linear-gradient(to bottom, var(--tk-navy), #050810) !important; }
@@ -130,49 +167,83 @@
         }
         .float-whatsapp:hover { transform: scale(1.08); }
 
+        @media (max-width: 1024px) {
+            .hero-layout { gap: 28px; }
+            .nav-links a { padding: 8px 10px; }
+        }
         @media (max-width: 768px) {
-            .hero-tech { min-height: 80vh; padding: 120px 20px 64px; }
+            .hero-tech { min-height: auto; padding: 112px 20px 56px; }
+            .hero-layout { grid-template-columns: 1fr; }
             .hero-tech .hero-content { margin: 0; }
-            .hero-tech h1 { letter-spacing: -0.5px; }
+            .hero-tech h1 { font-size: clamp(2rem, 8vw, 2.8rem); letter-spacing: -0.5px; }
+            .hero-actions a { width: 100%; justify-content: center; }
+            .hero-guide { padding: 24px; }
+            .section { padding: 56px 0; }
+            .cat-tab { padding: 12px 14px; min-height: 44px; }
+            .nav-links { background: var(--tk-dark); border-bottom: 1px solid var(--tk-border); max-height: calc(100dvh - 76px); overflow-y: auto; }
+            body:not(.navigation-ready) .navbar { position: static; }
+            body:not(.navigation-ready) .nav-content { flex-wrap: wrap; gap: 16px; }
+            body:not(.navigation-ready) .nav-links { position: static; display: flex; width: 100%; }
+            .contact-methods { flex-direction: column; align-items: stretch; }
+            .contact-methods a { justify-content: center; padding: 16px; font-size: 0.95rem; }
             .trust-strip { gap: 10px 18px; }
             .audience-grid { grid-template-columns: 1fr; }
             .float-whatsapp { bottom: 16px; right: 16px; width: 50px; height: 50px; font-size: 26px; }
         }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+        }
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div id="public-site">
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" aria-label="Navegación principal">
         <div class="nav-content">
-            <div class="logo">⚡ TiendApp <span>Chile</span></div>
-            <div class="nav-links">
+            <a class="logo" href="../index.html" aria-label="TiendApp Chile, inicio">⚡ TiendApp <span>Chile</span></a>
+            <div class="nav-links" id="menu-principal">
                 <a href="../index.html">Inicio</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#atencion">Atención</a>
                 <a href="#proceso">Cómo funciona</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contacto" class="btn-primary">Cotizar Ahora</a>
+                <a href="#faq">Preguntas</a>
+                <a href="#contacto" class="btn-primary">Consultar mi caso</a>
             </div>
-            <button class="mobile-toggle" aria-label="Menu">
-                <i class="fa-solid fa-bars"></i>
+            <button class="mobile-toggle" type="button" aria-label="Abrir menú" aria-controls="menu-principal" aria-expanded="false">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
         </div>
     </nav>
 
+    <main id="contenido" tabindex="-1">
     <header class="hero-tech">
+        <div class="hero-layout">
         <div class="hero-content">
             <span class="hero-tag"><i class="fa-solid fa-laptop-medical"></i> Servicio Técnico</span>
-            <h1>Servicio técnico para computadores y notebooks</h1>
-            <p>Revisión de fallas, mantenimiento, instalación de software y actualización de componentes. Te explicamos las alternativas y confirmamos el trabajo antes de comenzar.</p>
+            <h1>Tu computador merece <span>una revisión clara.</span></h1>
+            <p>Servicio técnico para PC y notebooks: diagnóstico, mantenimiento, software y componentes. Cuéntanos qué ocurre para evaluar las opciones según tu equipo.</p>
             <div class="hero-actions">
-                <a href="#servicios" class="btn-primary"><i class="fa-solid fa-screwdriver-wrench"></i> Conocer servicios</a>
-                <a href="https://wa.me/56976739157?text=Hola!%20Necesito%20servicio%20t%C3%A9cnico%20para%20mi%20PC" class="btn-outline" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+                <a href="https://wa.me/56976739157?text=Hola!%20Necesito%20servicio%20t%C3%A9cnico%20para%20mi%20PC" class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Consultar por WhatsApp</a>
+                <a href="#servicios" class="btn-outline"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Explorar servicios</a>
             </div>
             <div class="trust-strip">
                 <span><i class="fa-solid fa-desktop"></i> PC de escritorio</span>
                 <span><i class="fa-solid fa-laptop"></i> Notebooks</span>
                 <span><i class="fa-brands fa-windows"></i> Windows y Linux</span>
             </div>
+            <p class="hero-note">La modalidad y el alcance se confirman según el caso.</p>
+        </div>
+        <aside class="hero-guide" aria-labelledby="guia-titulo">
+            <h2 id="guia-titulo">¿No sabes por dónde empezar?</h2>
+            <p>No necesitas identificar la falla. Describe lo que ves:</p>
+            <ul>
+                <li>Está lento o se queda pegado.</li>
+                <li>No enciende o muestra un error.</li>
+                <li>Se calienta o hace más ruido.</li>
+                <li>Necesitas instalar o actualizar algo.</li>
+            </ul>
+            <a class="text-link" href="#contacto">Qué incluir en tu consulta →</a>
+        </aside>
         </div>
     </header>
 
@@ -287,6 +358,10 @@
                     <p>Revisión y mantenimiento de computadores para pequeñas empresas y equipos de trabajo.</p>
                 </div>
             </div>
+            <div class="service-note">
+                <p>¿Tu problema no aparece aquí? Describe los síntomas y el modelo; no hace falta elegir un servicio antes de consultar.</p>
+                <a class="text-link" href="#contacto">Consultar mi caso →</a>
+            </div>
         </div>
     </section>
 
@@ -348,48 +423,55 @@
                 <h2>Preguntas frecuentes</h2>
             </div>
             <div class="faq-accordion">
-                <div class="faq-item reveal">
-                    <div class="faq-question">¿Cómo solicito una evaluación? <i class="fa-solid fa-plus"></i></div>
+                <details class="faq-item reveal">
+                    <summary class="faq-question">¿Cómo solicito una evaluación? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
                     <div class="faq-answer"><p>Escríbenos por WhatsApp e indica la marca, el modelo y los síntomas del equipo. Te diremos cómo continuar y si hace falta revisarlo presencialmente.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question">¿Atienden a domicilio? <i class="fa-solid fa-plus"></i></div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary class="faq-question">¿Atienden a domicilio? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
                     <div class="faq-answer"><p>La modalidad depende de la comuna y del tipo de trabajo. Consúltanos para confirmar disponibilidad de atención, retiro o entrega.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question">¿Me informan antes de reparar? <i class="fa-solid fa-plus"></i></div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary class="faq-question">¿Me informan antes de reparar? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
                     <div class="faq-answer"><p>Sí. Primero revisamos el problema y te explicamos el trabajo recomendado. No comenzamos una reparación sin tu aprobación.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question">¿Pueden actualizar Windows a una versión más reciente? <i class="fa-solid fa-plus"></i></div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary class="faq-question">¿Pueden actualizar Windows a una versión más reciente? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
                     <div class="faq-answer"><p>Revisamos primero la compatibilidad del equipo y te indicamos las opciones disponibles. Antes de cualquier cambio, recomendamos respaldar tus archivos importantes.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question">¿Trabajan con notebooks y PC de escritorio? <i class="fa-solid fa-plus"></i></div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary class="faq-question">¿Trabajan con notebooks y PC de escritorio? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
                     <div class="faq-answer"><p>Sí, atendemos computadores de escritorio y notebooks. Envíanos el modelo para confirmar el tipo de servicio que requiere.</p></div>
-                </div>
-                <div class="faq-item reveal">
-                    <div class="faq-question">¿Qué pasa si el equipo necesita un repuesto? <i class="fa-solid fa-plus"></i></div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary class="faq-question">¿Qué pasa si el equipo necesita un repuesto? <i class="fa-solid fa-plus" aria-hidden="true"></i></summary>
                     <div class="faq-answer"><p>Te informaremos qué componente se requiere y las alternativas compatibles antes de instalarlo.</p></div>
-                </div>
+                </details>
             </div>
         </div>
     </section>
 
+    </main>
     <footer id="contacto">
         <div class="container">
             <div class="footer-cta">
                 <h2>¿Qué problema presenta tu equipo?</h2>
-                <p>Envíanos los detalles por WhatsApp y te orientaremos sobre los pasos a seguir.</p>
+                <p>Para conversar sobre tu caso, incluye estos datos en tu mensaje:</p>
+                <ul class="contact-checklist">
+                    <li>Marca y modelo</li>
+                    <li>Qué ocurre y desde cuándo</li>
+                    <li>Tu comuna</li>
+                </ul>
                 <div class="contact-methods">
                     <a href="https://wa.me/56976739157?text=Hola!%20Necesito%20servicio%20t%C3%A9cnico%20para%20mi%20PC" class="btn-whatsapp-large" target="_blank" rel="noopener noreferrer">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Soporte
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Consultar por WhatsApp
                     </a>
                     <a href="mailto:ventas@tiendappchile.cl" class="btn-email-large">
                         <i class="fa-solid fa-envelope"></i> ventas@tiendappchile.cl
                     </a>
                 </div>
                 <p class="cotizacion-note">La disponibilidad y el alcance del servicio se confirman antes de coordinar.</p>
+                <p class="cotizacion-note">No envíes contraseñas ni archivos personales en la consulta inicial.</p>
             </div>
             <div class="footer-bottom">
                 <div class="logo">⚡ TiendApp <span>Chile</span></div>
@@ -403,16 +485,70 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="../shared.js"></script>
     <script>
-        document.querySelectorAll('.cat-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById('panel-' + tab.dataset.cat).classList.add('active');
+        const tabs = Array.from(document.querySelectorAll('.cat-tab'));
+        const tabList = document.querySelector('.cat-tabs');
+        tabList.setAttribute('role', 'tablist');
+        tabList.setAttribute('aria-label', 'Tipos de servicio');
+
+        function selectTab(selected) {
+            tabs.forEach(tab => {
+                const active = tab === selected;
+                tab.classList.toggle('active', active);
+                tab.setAttribute('aria-selected', String(active));
+                tab.tabIndex = active ? 0 : -1;
+                document.getElementById('panel-' + tab.dataset.cat).hidden = !active;
+            });
+        }
+
+        tabs.forEach((tab, index) => {
+            const panel = document.getElementById('panel-' + tab.dataset.cat);
+            tab.id = 'tab-' + tab.dataset.cat;
+            tab.type = 'button';
+            tab.setAttribute('role', 'tab');
+            tab.setAttribute('aria-controls', panel.id);
+            panel.setAttribute('role', 'tabpanel');
+            panel.setAttribute('aria-labelledby', tab.id);
+            panel.tabIndex = 0;
+            tab.addEventListener('click', () => selectTab(tab));
+            tab.addEventListener('keydown', event => {
+                let next;
+                if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+                if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+                if (event.key === 'Home') next = 0;
+                if (event.key === 'End') next = tabs.length - 1;
+                if (next === undefined) return;
+                event.preventDefault();
+                selectTab(tabs[next]);
+                tabs[next].focus();
             });
         });
+        selectTab(tabs[0]);
+        document.getElementById('servicios').classList.add('tabs-ready');
+
+        const menuToggle = document.querySelector('.mobile-toggle');
+        const menu = document.getElementById('menu-principal');
+        function setMenu(open) {
+            menu.classList.toggle('active', open);
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+            menuToggle.querySelector('i').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        }
+        menuToggle.addEventListener('click', () => {
+            setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+        });
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => setMenu(false));
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+                setMenu(false);
+                menuToggle.focus();
+            }
+        });
+        window.matchMedia('(max-width: 768px)').addEventListener('change', () => setMenu(false));
+        document.querySelectorAll('i').forEach(icon => icon.setAttribute('aria-hidden', 'true'));
+        document.body.classList.add('navigation-ready');
     </script>
 </body>
 </html>
