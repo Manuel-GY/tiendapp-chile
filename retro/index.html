@@ -6,6 +6,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <title>Consolas Retro - TiendApp Chile</title>
+    <meta name="description" content="Compara sistemas digitales y consolas retro en TiendApp Chile. Revisa los packs, sus valores y consulta compatibilidad y disponibilidad antes de comprar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -548,19 +549,21 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="../service-pages.css">
 </head>
-<body>
+<body class="retro-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div id="public-site">
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Navegación principal">
         <div class="nav-content">
-            <div class="logo">⚡ TiendApp <span>Chile</span></div>
+            <a class="logo" href="../index.html">TiendApp <span>Chile</span></a>
             <div class="nav-links">
                 <a href="../index.html">Inicio</a>
                 <a href="../desarrollo/index.html">Desarrollo Web</a>
                 <a href="../streaming/index.html">Streaming</a>
                 <a href="#sistemas">Sistemas</a>
                 <a href="#planes">Packs</a>
-                <a href="#contacto" class="btn-primary">Comprar</a>
+                <a href="#contacto" class="btn-primary">Consultar</a>
             </div>
             <button class="mobile-toggle" aria-label="Menu">
                 <i class="fa-solid fa-bars"></i>
@@ -568,6 +571,7 @@
         </div>
     </nav>
 
+    <main id="contenido" tabindex="-1">
     <header class="hero-retro">
         <div class="hero-content">
             <div class="n64-logo">
@@ -578,10 +582,10 @@
                 <div class="n64-btn z"></div>
             </div>
             <h1>
-                <span class="pixel-font">Player 1 Ready</span>
-                Revive la <span>Nostalgia</span>
+                <span class="pixel-font">Retro Gaming</span>
+                Vuelve a tus <span>clásicos favoritos.</span>
             </h1>
-            <p>Sistemas de gaming retro con miles de juegos precargados. NES, Sega, SNES, PS1, PS2, N64 y mucho más.</p>
+            <p>Opciones digitales, consola portátil y sistema en disco externo. Compara los formatos y consulta cuál se ajusta a tu equipo y a los juegos que buscas.</p>
             <div class="hero-actions">
                 <a href="#sistemas" class="btn-primary"><i class="fa-solid fa-gamepad"></i> Ver Sistemas</a>
                 <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20Retro" class="btn-outline" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
@@ -594,8 +598,8 @@
     <section id="sistemas" class="section bg-alt">
         <div class="container">
             <div class="section-header">
-                <h2>Sistemas Incluidos</h2>
-                <p>Desde MAME arcade hasta PS3. Todos los sistemas en un solo lugar.</p>
+                <h2>Sistemas del catálogo</h2>
+                <p>La selección disponible depende del pack. Confirma los sistemas y juegos que te interesan; el rendimiento depende del equipo que los ejecuta.</p>
             </div>
             <div class="systems-grid">
                 <div class="system-chip reveal"><span class="system-icon">🕹️</span><p>MAME</p><span class="system-sub">Arcade</span></div>
@@ -632,7 +636,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Elige tu Pack</h2>
-                <p>Pagos únicos con garantía incluida</p>
+                <p>Valores en pesos chilenos. Cada formato requiere revisar compatibilidad, contenido y disponibilidad antes de comprar.</p>
             </div>
             <div class="plans-retro">
                 <div class="plan-retro-card reveal">
@@ -644,13 +648,13 @@
                         <div class="plan-retro-price">$10.000</div>
                     </div>
                     <ul class="plan-retro-features">
-                        <li><i class="fa-solid fa-bolt"></i> <strong>Acceso inmediato:</strong> descarga al instante, empieza a jugar hoy</li>
+                        <li><i class="fa-solid fa-download"></i> <strong>Formato digital:</strong> consulta cómo se entrega el acceso a las descargas</li>
                         <li><i class="fa-solid fa-gamepad"></i> <strong>3 packs en 1 sola compra:</strong> Básico, Full y Android incluidos</li>
                         <li><i class="fa-solid fa-star"></i> <strong>Básico (50GB):</strong> NES, SNES, Mega Drive, N64, GBA, PS1</li>
                         <li><i class="fa-solid fa-fire"></i> <strong>Full (380GB):</strong> todo lo anterior + PS2, PS3, PSP, GameCube, Wii, Dreamcast</li>
                         <li><i class="fa-solid fa-mobile-screen"></i> <strong>Android incluido:</strong> revive tus clásicos favoritos en el celular</li>
-                        <li><i class="fa-solid fa-database"></i> +10.000 juegos listos para jugar. Sin configuraciones complicadas</li>
-                        <li><i class="fa-solid fa-download"></i> 3 links de descarga + guía paso a paso. <strong>Tu nostalgia en minutos</strong></li>
+                        <li><i class="fa-solid fa-database"></i> Consulta el catálogo y el espacio necesario antes de descargar</li>
+                        <li><i class="fa-solid fa-download"></i> Enlaces de descarga y guía de instalación. Utiliza contenido que tengas derecho a usar</li>
                     </ul>
                     <div class="plan-retro-actions">
                         <a href="https://wa.me/56976739157?text=Interesado%20en%20Sistema%20Light%20Retro%20%2410.000" class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Comprar</a>
@@ -667,12 +671,12 @@
                     </div>
                     <ul class="plan-retro-features">
                         <li><i class="fa-solid fa-gamepad"></i> <strong>SF3000 en tus manos:</strong> tu arcade de infancia ahora es portátil</li>
-                        <li><i class="fa-solid fa-eye"></i> Pantalla IPS 4.5" con colores vivos y ángulos perfectos</li>
-                        <li><i class="fa-solid fa-database"></i> <strong>+30.000 juegos precargados:</strong> el catálogo definitivo en un dispositivo</li>
+                        <li><i class="fa-solid fa-eye"></i> Pantalla IPS de 4.5"</li>
+                        <li><i class="fa-solid fa-database"></i> Consulta los juegos y sistemas disponibles en la unidad</li>
                         <li><i class="fa-solid fa-star"></i> NES, SNES, Mega Drive, GBA, PS1: los clásicos que marcaron tu vida</li>
-                        <li><i class="fa-solid fa-battery-full"></i> Batería de 3000mAh: hasta <strong>6 horas seguidas</strong> sin interrupciones</li>
-                        <li><i class="fa-solid fa-bolt"></i> Carga rápida USB-C: de cero a juego en minutos</li>
-                        <li><i class="fa-solid fa-truck-fast"></i> <strong>Envío gratis a todo Chile:</strong> llega directo a tu puerta</li>
+                        <li><i class="fa-solid fa-battery-full"></i> Batería de 3000mAh; la autonomía depende del uso</li>
+                        <li><i class="fa-solid fa-bolt"></i> Conexión de carga USB-C</li>
+                        <li><i class="fa-solid fa-truck-fast"></i> Consulta disponibilidad, despacho y condiciones para tu comuna</li>
                     </ul>
                     <div class="plan-retro-actions">
                         <a href="https://wa.me/56976739157?text=Interesado%20en%20Consola%20SF3000%20Retro%20%2470.000" class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Comprar</a>
@@ -692,10 +696,10 @@
                         <li><i class="fa-solid fa-hard-drive"></i> <strong>Disco externo 1TB:</strong> toda la era retro en tu bolsillo</li>
                         <li><i class="fa-solid fa-box-open"></i> <strong>3 packs completos:</strong> Básico, Full y Android — listos para conectar</li>
                         <li><i class="fa-solid fa-fire"></i> <strong>Full (380GB):</strong> PS1, PS2, PS3, PSP, N64, GameCube, Wii y más</li>
-                        <li><i class="fa-solid fa-laptop"></i> Funciona en <strong>Windows o Linux:</strong> cualquier PC o notebook</li>
-                        <li><i class="fa-solid fa-plug"></i> Plug & play: conectas, juegas. <strong>Cero configuración</strong></li>
-                        <li><i class="fa-solid fa-shield-halved"></i> <strong>3 meses de garantía:</strong> tu compra está 100% protegida</li>
-                        <li><i class="fa-solid fa-truck-fast"></i> Envío a todo Chile · <strong>Entrega garantizada en 4 días</strong></li>
+                        <li><i class="fa-solid fa-laptop"></i> Para Windows o Linux, sujeto a los requisitos de tu computador</li>
+                        <li><i class="fa-solid fa-plug"></i> Confirma puertos, almacenamiento y configuración necesaria</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> Consulta condiciones de soporte y garantía antes de comprar</li>
+                        <li><i class="fa-solid fa-truck-fast"></i> Despacho y plazo de entrega a confirmar según destino</li>
                     </ul>
                     <div class="plan-retro-actions">
                         <a href="https://wa.me/56976739157?text=Interesado%20en%20Sistema%20Portable%20Retro%20%2480.000" class="btn-primary" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Comprar</a>
@@ -707,9 +711,24 @@
         </div>
     </section>
 
-    <div class="insert-coin">
-        <p>INSERT COIN</p>
-    </div>
+    <section class="section">
+        <div class="container">
+            <div class="service-guide">
+                <h2>¿Qué formato te conviene?</h2>
+                <ul>
+                    <li><strong>Light:</strong> opción digital para quien dispone de un equipo compatible y espacio de almacenamiento.</li>
+                    <li><strong>SF3000:</strong> consola portátil para jugar sin utilizar tu computador.</li>
+                    <li><strong>Portable:</strong> sistema en disco externo que se utiliza con un computador compatible.</li>
+                </ul>
+            </div>
+            <div class="service-faq">
+                <details><summary>¿Todos los packs ejecutan los mismos sistemas?</summary><p>No. El catálogo y el rendimiento dependen del pack y del hardware. Indícanos los sistemas y juegos que buscas para revisar la opción adecuada.</p></details>
+                <details><summary>¿Cómo reviso si mi computador es compatible?</summary><p>Envíanos el sistema operativo, procesador, memoria RAM y tarjeta gráfica. Así podemos revisar los requisitos antes de que elijas un pack.</p></details>
+                <details><summary>¿Cómo coordino la entrega?</summary><p>Escríbenos con el pack y tu comuna. Confirmaremos disponibilidad, modalidad de entrega y condiciones antes de cerrar la compra.</p></details>
+            </div>
+        </div>
+    </section>
+    </main>
 
     <footer id="contacto">
         <div class="container">
@@ -723,7 +742,7 @@
                         <i class="fa-solid fa-envelope"></i> ventas@tiendappchile.cl
                     </a>
                 </div>
-                <p class="cotizacion-note">Envíos a todo Chile. Garantía incluida.</p>
+                <p class="cotizacion-note">Indícanos el pack, los sistemas que buscas y tu comuna para confirmar los detalles.</p>
             </div>
             <div class="footer-bottom">
                 <div class="logo">⚡ TiendApp <span>Chile</span></div>
@@ -733,6 +752,6 @@
     </footer>
     </div>
 
-    <script src="shared.js"></script>
+    <script src="../service-pages.js" defer></script>
 </body>
 </html>

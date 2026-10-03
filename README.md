@@ -9,6 +9,8 @@ tiendapp-chile/
 ├── index.html              # Página principal (landing)
 ├── shared.css              # Estilos compartidos (dark theme)
 ├── shared.js               # JS compartido (reveal, nav, FAQ)
+├── service-pages.css       # Mejoras visuales para Comunidades, Streaming y Retro
+├── service-pages.js        # Navegación accesible y pestañas de estas secciones
 ├── app.js                  # Funciones ERP y soporte
 ├── styles.css              # Estilos legacy landing
 │

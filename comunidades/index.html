@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta name="description" content="TiendApp Comunidades - Software de gestión para condominios y comunidades en Chile. 100% adaptable a tus reglamentos. Reportes con foto, panel de comité, PWA y estadísticas.">
+    <meta name="description" content="Software de gestión para condominios y comunidades en Chile. Reportes vecinales, panel de comité y personalización según las necesidades de tu comunidad.">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tiendappchile.cl/comunidades/">
-    <meta property="og:title" content="TiendApp Comunidades - Software de Gestión de Condominios 100% Adaptable">
+    <meta property="og:title" content="TiendApp Comunidades - Gestión de Condominios">
     <meta property="og:description" content="Plataforma de administración para condominios y edificios. Personalizable a la medida de tu comunidad: reportes vecinales, sugerencias, avisos in-app y control de comité.">
 
-    <title>Software de Gestión de Condominios 100% Adaptable - TiendApp Comunidades</title>
+    <title>Gestión de Condominios y Comunidades - TiendApp Chile</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -791,11 +791,13 @@
             .footer-content { flex-direction: column; gap: 12px; text-align: center; }
         }
     </style>
+    <link rel="stylesheet" href="../service-pages.css">
 </head>
-<body>
+<body class="community-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <!-- NAVBAR -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" aria-label="Navegación principal">
         <div class="nav-content">
             <a href="../index.html" class="logo">
                 <i class="fa-solid fa-building-user"></i> TiendApp <span>Comunidades</span>
@@ -817,16 +819,17 @@
     </nav>
 
     <!-- HERO -->
+    <main id="contenido" tabindex="-1">
     <header class="hero">
         <div class="container">
             <div class="hero-chip">
-                <i class="fa-solid fa-sliders"></i> Software de Gestión 100% Adaptable a tu Condominio
+                <i class="fa-solid fa-sliders"></i> Gestión para condominios y comunidades
             </div>
             <h1>
-                La plataforma de gestión que se <span>adapta a la medida</span> de tu comunidad
+                Reportes, avisos y seguimiento <span>para tu comunidad.</span>
             </h1>
             <p>
-                No fuerces a tu condominio a amarrarse a sistemas rígidos. Diseñamos y configuramos la plataforma según las reglas, áreas comunes, casas y necesidades exactas de tu administración y comité.
+                Centraliza las solicitudes de los vecinos y el trabajo del comité. Revisamos contigo las unidades, categorías y permisos para definir una configuración acorde a tu administración.
             </p>
 
             <div class="hero-actions">
@@ -841,13 +844,13 @@
             <div class="trust-grid">
                 <div class="trust-card">
                     <div class="icon"><i class="fa-solid fa-sliders"></i></div>
-                    <h4>100% Adaptable</h4>
+                    <h4>Configuración a medida</h4>
                     <p>Ajustado a tus reglas e infraestructura</p>
                 </div>
                 <div class="trust-card">
                     <div class="icon"><i class="fa-solid fa-mobile-screen"></i></div>
                     <h4>PWA Instalable</h4>
-                    <p>Acceso móvil directo sin descargas</p>
+                    <p>Acceso desde el navegador del celular</p>
                 </div>
                 <div class="trust-card">
                     <div class="icon"><i class="fa-solid fa-camera"></i></div>
@@ -857,7 +860,7 @@
                 <div class="trust-card">
                     <div class="icon"><i class="fa-solid fa-file-excel"></i></div>
                     <h4>Reportes para Asambleas</h4>
-                    <p>Descarga en Excel / CSV seguro en 1 clic</p>
+                    <p>Exportación de datos para tus reuniones</p>
                 </div>
             </div>
         </div>
@@ -867,9 +870,9 @@
     <section id="adaptable" class="adaptable-section">
         <div class="container">
             <div class="section-header">
-                <span class="sub">ADAPTABILIDAD TOTAL</span>
-                <h2>Diseñado para Moldearse a las Necesidades de Tu Comunidad</h2>
-                <p>Cada condominio o edificio funciona diferente. Personalizamos cada aspecto del sistema sin costos sorpresas ni limitaciones.</p>
+                <span class="sub">CONFIGURACIÓN</span>
+                <h2>Partimos por cómo funciona tu comunidad</h2>
+                <p>Definimos las necesidades, las opciones de personalización y el alcance del proyecto antes de comenzar.</p>
             </div>
 
             <div class="adaptable-grid">
@@ -894,13 +897,13 @@
                 <div class="adaptable-card">
                     <div class="adaptable-icon"><div class="icon"><i class="fa-solid fa-shield-halved"></i></div></div>
                     <h3>Reglamento Interno & Privacidad</h3>
-                    <p>Ajustamos las políticas de registro y privacidad a tus reglamentos internos y a la Ley de Copropiedad Inmobiliaria N° 21.442.</p>
+                    <p>Revisamos los requisitos de registro y privacidad de tu administración para definir los permisos y el manejo de la información.</p>
                 </div>
 
                 <div class="adaptable-card">
                     <div class="adaptable-icon"><div class="icon"><i class="fa-solid fa-chart-line"></i></div></div>
                     <h3>Formatos de Reporte para Asambleas</h3>
-                    <p>Adaptamos los campos de exportación CSV/Excel para que cuadren perfectamente con las rendiciones de cuentas de tus reuniones.</p>
+                    <p>Definimos los campos de exportación CSV/Excel que necesitas para el seguimiento de solicitudes y las reuniones de la comunidad.</p>
                 </div>
 
                 <div class="adaptable-card">
@@ -917,18 +920,18 @@
         <div class="container">
             <div class="section-header">
                 <span class="sub">VISTA GENERAL DEL SISTEMA</span>
-                <h2>Una Experiencia Fluida para Vecinos y Comité</h2>
-                <p>Plataforma intuitiva desarrollada para operar desde cualquier smartphone, tablet o computador.</p>
+                <h2>Un espacio para vecinos y administración</h2>
+                <p>Explora los módulos y los flujos de trabajo que podemos configurar para tu comunidad.</p>
             </div>
 
             <div class="tab-buttons">
-                <button class="tab-btn active" onclick="switchTab('vecino')">
+                <button class="tab-btn active" data-tab="vecino">
                     <i class="fa-solid fa-mobile-screen"></i> Portal del Vecino (PWA)
                 </button>
-                <button class="tab-btn" onclick="switchTab('comite')">
+                <button class="tab-btn" data-tab="comite">
                     <i class="fa-solid fa-user-shield"></i> Panel de Comité & Admin
                 </button>
-                <button class="tab-btn" onclick="switchTab('stats')">
+                <button class="tab-btn" data-tab="stats">
                     <i class="fa-solid fa-chart-pie"></i> Reportes & Métricas
                 </button>
             </div>
@@ -1060,45 +1063,45 @@
     <section class="comp-section">
         <div class="container">
             <div class="section-header">
-                <span class="sub">DIFERENCIACIÓN</span>
-                <h2>Software Rígido vs. TiendApp Comunidades</h2>
-                <p>Compara las ventajas de una plataforma 100% adaptable frente a sistemas empaquetados tradicionalmente.</p>
+                <span class="sub">IMPLEMENTACIÓN</span>
+                <h2>Qué revisamos antes de comenzar</h2>
+                <p>Estos puntos nos ayudan a preparar una propuesta con un alcance claro.</p>
             </div>
 
-            <div class="table-box">
+            <div class="table-box" tabindex="0" role="region" aria-label="Puntos de implementación; desliza para ver todas las columnas">
                 <table class="comp-table">
                     <thead>
                         <tr>
-                            <th>Característica</th>
-                            <th>Software Enlatado Tradicional</th>
-                            <th class="col-highlight"><i class="fa-solid fa-star"></i> TiendApp Comunidades</th>
+                            <th scope="col">Tema</th>
+                            <th scope="col">Qué necesitamos conocer</th>
+                            <th scope="col" class="col-highlight">Qué definimos contigo</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Adaptabilidad</strong></td>
-                            <td>Módulos rígidos que no se pueden modificar</td>
-                            <td class="col-highlight">100% adaptable a tus categorías y reglas internas</td>
+                            <td>Unidades, áreas comunes y categorías de solicitudes</td>
+                            <td class="col-highlight">Estructura de la comunidad y módulos a configurar</td>
                         </tr>
                         <tr>
                             <td><strong>Acceso Móvil</strong></td>
-                            <td>Descarga obligatoria en tiendas de apps</td>
-                            <td class="col-highlight">PWA Instalable directa en 1 segundo desde el navegador</td>
+                            <td>Dispositivos y navegadores utilizados por los vecinos</td>
+                            <td class="col-highlight">Acceso web y opciones de instalación PWA</td>
                         </tr>
                         <tr>
                             <td><strong>Manejo de Evidencias</strong></td>
-                            <td>Cobros extra por gigabytes de almacenamiento</td>
-                            <td class="col-highlight">Borrado automático de fotos al resolver la incidencia</td>
+                            <td>Información y evidencias que necesita registrar la administración</td>
+                            <td class="col-highlight">Permisos y políticas de conservación de datos</td>
                         </tr>
                         <tr>
                             <td><strong>Notificaciones</strong></td>
-                            <td>Correos masivos que terminan en Spam</td>
-                            <td class="col-highlight">Campana e avisos in-app sin saturar mails</td>
+                            <td>Cómo se comunican hoy los avisos y resoluciones</td>
+                            <td class="col-highlight">Flujo de avisos y responsables de publicación</td>
                         </tr>
                         <tr>
                             <td><strong>Exportación</strong></td>
-                            <td>Formatos planos sin sanitizar</td>
-                            <td class="col-highlight">CSV/Excel sanitizado contra inyección de fórmulas</td>
+                            <td>Reportes que utilizan en reuniones y seguimiento</td>
+                            <td class="col-highlight">Campos y formatos de exportación necesarios</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1116,61 +1119,62 @@
             </div>
 
             <div class="faq-wrap">
-                <div class="faq-card">
-                    <div class="faq-q">
-                        <span>¿Qué significa que el software sea 100% adaptable?</span>
+                <details class="faq-card">
+                    <summary class="faq-q">
+                        <span>¿Qué se puede personalizar?</span>
                         <i class="fa-solid fa-plus"></i>
-                    </div>
+                    </summary>
                     <div class="faq-a">
-                        Significa que no debes modificar el funcionamiento de tu condominio para usar la app. Nosotros adaptamos el número de casas, las categorías de reporte, las reglas de acceso por propiedad y los permisos del comité exactamente a lo que tu administración requiere.
+                        Revisamos la estructura de unidades, las categorías de reportes y los permisos de la administración. Las personalizaciones y sus condiciones se definen en la propuesta del proyecto.
                     </div>
-                </div>
+                </details>
 
-                <div class="faq-card">
-                    <div class="faq-q">
+                <details class="faq-card">
+                    <summary class="faq-q">
                         <span>¿Los vecinos deben descargar una app desde App Store o Play Store?</span>
                         <i class="fa-solid fa-plus"></i>
-                    </div>
+                    </summary>
                     <div class="faq-a">
-                        No. TiendApp Comunidades opera como una PWA (Progressive Web App). Los vecinos ingresan desde su celular y pueden presionar "Agregar a la pantalla de inicio". Tendrán un icono directo como cualquier app pero sin ocupar espacio ni requerir descargas pesadas.
+                        Pueden acceder desde el navegador. La opción de agregar la PWA a la pantalla de inicio depende del dispositivo y navegador; no es necesario buscarla en una tienda de aplicaciones.
                     </div>
-                </div>
+                </details>
 
-                <div class="faq-card">
-                    <div class="faq-q">
+                <details class="faq-card">
+                    <summary class="faq-q">
                         <span>¿Cómo resguardan la privacidad de los vecinos y las fotos?</span>
                         <i class="fa-solid fa-plus"></i>
-                    </div>
+                    </summary>
                     <div class="faq-a">
-                        Utilizamos seguridad PostgreSQL Row Level Security (RLS). Cada vecino solo consulta sus propias gestiones. Además, cuando un incidente o sugerencia se marca como "Resuelto", la evidencia fotográfica se elimina automáticamente del almacenamiento en la nube.
+                        Los permisos de acceso y las políticas de conservación de fotos se revisan en la implementación. Antes de contratar, consulta quién puede acceder a cada dato y cómo se gestiona su eliminación.
                     </div>
-                </div>
+                </details>
 
-                <div class="faq-card">
-                    <div class="faq-q">
+                <details class="faq-card">
+                    <summary class="faq-q">
                         <span>¿Se pueden descargar informes para las asambleas?</span>
                         <i class="fa-solid fa-plus"></i>
-                    </div>
+                    </summary>
                     <div class="faq-a">
-                        Sí. El Comité o la Administración puede descargar en 1 clic planillas en formato CSV compatible con Microsoft Excel y Google Sheets, preparadas con protección contra inyección de fórmulas para presentaciones contables y reuniones.
+                        Podemos definir exportaciones CSV compatibles con Excel y Google Sheets. Cuéntanos qué información necesitas presentar para incluir los campos y permisos adecuados en la propuesta.
                     </div>
-                </div>
+                </details>
             </div>
         </div>
     </section>
 
     <!-- CTA FINAL -->
-    <section class="cta-final">
+    <section class="cta-final" id="contacto">
         <div class="container">
             <div class="cta-content">
-                <h2>¿Listo para un software que realmente se adapte a tu condominio?</h2>
-                <p>Conversa directamente con nosotros por WhatsApp para coordinar una cotización a la medida de tu comunidad.</p>
+                <h2>Conversemos sobre tu comunidad</h2>
+                <p>Cuéntanos cuántas unidades tiene, cómo gestionan las solicitudes y qué necesitan mejorar. Con esa información podemos preparar una propuesta.</p>
                 <a href="https://wa.me/56976739157?text=Hola!%20Quiero%20cotizar%20el%20software%20de%20gesti%C3%B3n%20personalizado%20para%20mi%20condominio" class="btn-cta-whatsapp" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp
                 </a>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
@@ -1185,59 +1189,6 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script>
-        // Toggle menú móvil
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        if (mobileToggle && navLinks) {
-            mobileToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                const icon = mobileToggle.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-xmark');
-                } else {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
-            });
-
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    const icon = mobileToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-xmark');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-            });
-        }
-
-        // Tabs interactivos
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-card').forEach(card => card.classList.remove('active'));
-
-            const selectedBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
-            if (selectedBtn) selectedBtn.classList.add('active');
-
-            const selectedCard = document.getElementById('tab-' + tabId);
-            if (selectedCard) selectedCard.classList.add('active');
-        }
-
-        // FAQ Acordeón
-        document.querySelectorAll('.faq-q').forEach(q => {
-            q.addEventListener('click', () => {
-                const card = q.parentElement;
-                const isOpen = card.classList.contains('active');
-                document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('active'));
-                if (!isOpen) {
-                    card.classList.add('active');
-                }
-            });
-        });
-    </script>
+    <script src="../service-pages.js" defer></script>
 </body>
 </html>
