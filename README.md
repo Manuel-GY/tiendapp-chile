@@ -13,7 +13,7 @@ tiendapp-chile/
 ├── styles.css              # Estilos legacy landing
 │
 ├── desarrollo/             # Desarrollo Web & Apps
-│   └── index.html          # Estética VS Code
+│   └── index.html          # Landing de desarrollo: demos, planes y contacto
 │
 ├── comunidades/            # Software de Gestión Comunitaria & Condominios
 │   └── index.html          # Landing de Gestión para Condominios

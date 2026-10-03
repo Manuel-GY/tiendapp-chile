@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta name="description" content="TiendApp Chile - Soluciones digitales, desarrollo de páginas web y aplicaciones para pymes, suscripciones de streaming al mejor precio y consolas retro gaming.">
+    <!-- Security headers are configured in _headers, not in HTML meta tags. -->
+    <meta name="description" content="TiendApp Chile: desarrollo web para negocios, gestión de comunidades, servicio técnico de PC, streaming y retro gaming. Explora los servicios y consulta por WhatsApp.">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tiendappchile.cl/">
     <meta property="og:title" content="TiendApp Chile - Soluciones Digitales, Streaming y Retro Gaming">
-    <meta property="og:description" content="Desarrollo Web & Apps para negocios, cuentas de streaming premium y consolas retro con +10,000 juegos en Chile.">
+    <meta property="og:description" content="Desarrollo web, gestión de comunidades, servicio técnico de PC, streaming y retro gaming. Encuentra tu servicio en TiendApp Chile.">
     <meta property="og:image" content="https://tiendappchile.cl/screenshots/streaming_ref.jpg">
 
     <!-- Twitter -->
@@ -23,10 +22,10 @@
     <!-- Favicon SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0a0a'/><rect width='96' height='96' x='2' y='2' rx='20' fill='none' stroke='%2300e5ff' stroke-width='3'/><text x='50%' y='68%' font-size='65' font-weight='800' font-family='sans-serif' fill='%2300e5ff' text-anchor='middle'>T</text></svg>">
 
-    <title>TiendApp Chile - Todo lo que necesitas en un solo lugar</title>
+    <title>TiendApp Chile | Desarrollo web, servicio técnico y entretenimiento</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
@@ -35,22 +34,27 @@
             --magenta: #ff00ff;
             --green: #39ff14;
             --amber: #ffb300;
-            --bg: #000000;
-            --bg-card: #0a0a0a;
-            --border: #1a1a1a;
-            --border-hover: #333333;
+            --bg: #080b0d;
+            --bg-card: #101619;
+            --border: #2b353a;
+            --border-hover: #60727a;
             --text: #ffffff;
-            --text-muted: #777777;
+            --text-muted: #b2bdc3;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Grotesk', sans-serif; }
         html { scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+        a { color: inherit; }
+        a:focus-visible, button:focus-visible, main:focus-visible { outline: 3px solid var(--neon); outline-offset: 5px; }
+        section, header, main { scroll-margin-top: 100px; }
+        .skip-link { position: fixed; top: 12px; left: 24px; padding: 12px 20px; background: var(--neon); color: var(--bg); z-index: 2000; transform: translateY(-160%); }
+        .skip-link:focus { transform: translateY(0); }
 
         /* ===== NAVBAR ===== */
         .navbar {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(0,0,0,0.95);
+            background: rgba(8,11,13,0.98);
             border-bottom: 1px solid var(--border);
             transition: all 0.3s;
         }
@@ -59,20 +63,20 @@
             max-width: 1100px; margin: 0 auto; padding: 16px 24px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; color: var(--text); }
+        .logo { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; white-space: nowrap; }
         .logo span { color: var(--neon); }
         .nav-links { display: flex; gap: 4px; align-items: center; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; padding: 8px 16px; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; padding: 12px; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
         .nav-links a:hover { color: var(--neon); }
         .nav-links .btn-nav { color: var(--bg) !important; background: var(--neon); padding: 8px 20px; font-weight: 700; }
         .nav-links .btn-nav:hover { box-shadow: 0 0 20px rgba(0,229,255,0.4); }
-        .mobile-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; }
+        .mobile-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); font-size: 1rem; cursor: pointer; min-height: 44px; padding: 8px 12px; }
 
         /* ===== HERO ===== */
         .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; position: relative; padding: 120px 24px 80px;
+            position: relative; padding: 156px 24px 88px;
             border-bottom: 1px solid var(--border);
+            background: radial-gradient(ellipse at top right, #123039 0%, transparent 60%);
         }
 
         .hero-scanlines {
@@ -86,30 +90,37 @@
             );
         }
 
-        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-layout { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: center; }
+        .hero-content { min-width: 0; }
+        .hero-guide { border: 1px solid var(--border-hover); background: var(--bg-card); padding: 28px; }
+        .hero-guide h2 { font-size: 1.2rem; margin-bottom: 8px; }
+        .hero-guide > p { margin: 0 0 20px; font-size: 0.9rem; }
+        .hero-guide ul { list-style: none; }
+        .hero-guide a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; font-weight: 600; }
+        .hero-guide a:hover { color: var(--neon); }
+        .hero-guide small { display: block; font-weight: 400; color: var(--text-muted); margin-top: 4px; font-size: 0.8rem; }
 
         .hero-chip {
             display: inline-flex; align-items: center; gap: 8px;
-            border: 1px solid var(--neon);
-            padding: 6px 18px; font-size: 0.8rem;
-            color: var(--neon); margin-bottom: 32px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 3px;
+            font-size: 0.8rem;
+            color: var(--neon); margin-bottom: 24px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px;
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800;
-            line-height: 1.05; margin-bottom: 24px; letter-spacing: -3px;
+            font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700;
+            line-height: 1.12; margin-bottom: 24px; letter-spacing: -2px;
             color: var(--text);
         }
         .hero h1 .line2 { color: var(--neon); }
 
         .hero p {
             font-size: 1.1rem; color: var(--text-muted); max-width: 500px;
-            margin: 0 auto 40px; line-height: 1.7;
+            margin: 0 0 32px; line-height: 1.7;
         }
 
         .hero-cta {
-            display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+            display: flex; gap: 14px; flex-wrap: wrap;
         }
 
         .btn-primary {
@@ -127,24 +138,9 @@
         }
         .btn-outline:hover { border-color: var(--neon); color: var(--neon) !important; }
 
-        .hero-metrics {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-            margin-top: 70px; background: var(--border); border: 1px solid var(--border);
-        }
-        .metric {
-            background: var(--bg); padding: 24px 16px; text-align: center;
-            transition: all 0.2s;
-        }
-        .metric:hover { background: #0a0a0a; }
-        .metric .num {
-            font-size: 2rem; font-weight: 800; letter-spacing: -1px;
-            color: var(--neon); display: block; line-height: 1;
-        }
-        .metric .label { font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
-
         /* ===== SECTION STYLES ===== */
         .section { padding: 80px 0; }
-        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header { max-width: 1100px; margin: 0 auto 32px; padding: 0 24px; }
         .section-header .chip {
             display: inline-flex; align-items: center; gap: 8px;
             border: 1px solid var(--border);
@@ -152,27 +148,27 @@
             color: var(--text-muted); margin-bottom: 20px; font-weight: 600;
             text-transform: uppercase; letter-spacing: 3px;
         }
-        .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 12px; }
-        .section-header p { color: var(--text-muted); font-size: 1rem; max-width: 480px; margin: 0 auto; }
+        .section-header h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
+        .section-header p { color: var(--text-muted); font-size: 1rem; max-width: 640px; line-height: 1.7; }
 
         /* ===== SERVICES ===== */
-        .services { border-bottom: 1px solid var(--border); }
+        .services { padding: 80px 0; border-bottom: 1px solid var(--border); }
 
         .services-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
+            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
         }
 
         .service-card {
             background: var(--bg-card); border: 1px solid var(--border);
-            padding: 40px 24px; text-align: center;
-            transition: all 0.2s; text-decoration: none; color: var(--text); display: block;
+            padding: 28px; text-align: left;
+            transition: all 0.2s; text-decoration: none; color: var(--text); display: flex; flex-direction: column;
         }
         .service-card:hover { border-color: var(--border-hover); background: #0d0d0d; }
 
         .service-icon {
             width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 20px; font-size: 1.8rem; border: 1px solid var(--border);
+            margin: 0 0 20px; font-size: 1.8rem; border: 1px solid var(--border);
         }
         .dev .service-icon { color: var(--neon); border-color: rgba(0,229,255,0.3); }
         .stream .service-icon { color: var(--magenta); border-color: rgba(255,0,255,0.3); }
@@ -180,7 +176,7 @@
 
         .service-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
         .service-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 24px; }
-        .card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; transition: gap 0.2s; }
+        .card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; transition: gap 0.2s; margin-top: auto; }
         .dev .card-link { color: var(--neon); }
         .stream .card-link { color: var(--magenta); }
         .game .card-link { color: var(--green); }
@@ -188,7 +184,7 @@
         .service-card:hover .card-link i { transform: translateX(4px); }
 
         /* ===== FEATURES GRID ===== */
-        .features { border-bottom: 1px solid var(--border); }
+        .features { padding: 80px 0; border-bottom: 1px solid var(--border); }
         .features-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
@@ -204,12 +200,9 @@
         }
         .fi-blue { color: var(--neon); border-color: rgba(0,229,255,0.3); }
         .fi-cyan { color: var(--neon); border-color: rgba(0,229,255,0.3); }
-        .fi-purple { color: var(--magenta); border-color: rgba(255,0,255,0.3); }
-        .fi-pink { color: var(--magenta); border-color: rgba(255,0,255,0.3); }
         .fi-green { color: var(--green); border-color: rgba(57,255,20,0.3); }
-        .fi-amber { color: var(--amber); border-color: rgba(255,179,0,0.3); }
 
-        .feature-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+        .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
         .feature-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
 
         /* ===== SHOWCASE ===== */
@@ -217,13 +210,13 @@
 
         .showcase-grid {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
+            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;
         }
 
         .showcase-card {
             overflow: hidden; position: relative;
             transition: all 0.2s;
-            text-decoration: none; color: var(--text); display: block;
+            text-decoration: none; color: var(--text); display: flex; flex-direction: column;
             background: var(--bg-card); border: 1px solid var(--border);
         }
         .showcase-card:hover { border-color: var(--border-hover); }
@@ -242,78 +235,57 @@
             padding: 4px 10px; font-size: 0.65rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 2px; color: var(--neon);
         }
-        .showcase-body { padding: 20px; }
+        .showcase-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
         .showcase-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
         .showcase-body p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 14px; }
-        .showcase-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.85rem; color: var(--neon); transition: gap 0.2s; }
+        .showcase-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.85rem; color: var(--neon); transition: gap 0.2s; margin-top: auto; }
         .showcase-card:hover .showcase-link { gap: 10px; }
-
-        /* ===== TESTIMONIALS ===== */
-        .testimonials { border-bottom: 1px solid var(--border); }
-        .testimonials-grid {
-            max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
-        }
-        .testimonial {
-            background: var(--bg-card); border: 1px solid var(--border);
-            padding: 32px; transition: all 0.2s;
-        }
-        .testimonial:hover { border-color: var(--border-hover); }
-        .testimonial .stars { color: var(--amber); font-size: 0.85rem; margin-bottom: 14px; letter-spacing: 2px; }
-        .testimonial blockquote { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-        .testimonial .author { display: flex; align-items: center; gap: 12px; }
-        .testimonial .avatar {
-            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 0.85rem; color: var(--bg); background: var(--neon);
-        }
-        .testimonial .author-info h4 { font-size: 0.9rem; font-weight: 600; }
-        .testimonial .author-info span { font-size: 0.75rem; color: var(--text-muted); }
 
         /* ===== CTA ===== */
         .cta { padding: 120px 0; text-align: center; border-bottom: 1px solid var(--border); }
         .cta-content { max-width: 600px; margin: 0 auto; padding: 0 24px; }
-        .cta-content h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 14px; }
-        .cta-content p { color: var(--text-muted); font-size: 1rem; margin-bottom: 36px; }
+        .cta-content h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; margin-bottom: 14px; }
+        .cta-content p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 36px; }
         .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
         .btn-whatsapp {
-            background: #25D366; color: white !important; padding: 14px 32px;
+            background: #25D366; color: #07150c !important; padding: 14px 32px;
             text-decoration: none; font-weight: 700; font-size: 1rem; display: inline-flex;
             align-items: center; gap: 10px; transition: all 0.2s;
         }
         .btn-whatsapp:hover { box-shadow: 0 0 25px rgba(37,211,102,0.4); transform: translateY(-2px); }
 
         /* ===== FOOTER ===== */
-        footer { padding: 40px 0 24px; }
+        footer { padding: 40px 0 100px; }
         .footer-content { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
         .footer-content p { color: var(--text-muted); font-size: 0.8rem; }
 
-        /* ===== MARQUEE ===== */
-        .marquee { padding: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; }
-        .marquee-label { text-align: center; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 600; }
-        .marquee-track { display: flex; gap: 50px; animation: scroll 25s linear infinite; width: max-content; }
-        .marquee-track span { font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.08); white-space: nowrap; display: flex; align-items: center; gap: 10px; }
-        .marquee-track span i { font-size: 1.1rem; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* ===== REVEAL ===== */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1024px) {
+            .services-grid, .showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .hero-layout { gap: 32px; }
+            .nav-links a { padding: 12px 8px; font-size: 0.8rem; }
+        }
         @media (max-width: 768px) {
-            .services-grid, .features-grid, .showcase-grid, .testimonials-grid { grid-template-columns: 1fr; }
-            .hero-metrics { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #000; flex-direction: column; padding: 16px; gap: 4px; border-bottom: 1px solid var(--border); }
-            .nav-links.active { display: flex; }
-            .nav-links a { width: 100%; text-align: center; }
-            .mobile-toggle { display: block; }
-            .hero { padding: 120px 20px 60px; }
-            .hero h1 { letter-spacing: -2px; }
+            .services-grid, .features-grid, .showcase-grid, .hero-layout { grid-template-columns: 1fr; }
+            .navbar { position: sticky; }
+            .nav-content { flex-wrap: wrap; padding: 12px 20px; gap: 12px; }
+            .nav-links { width: 100%; flex-direction: column; align-items: stretch; order: 3; }
+            .nav-links a { font-size: 1rem; min-height: 44px; }
+            .nav-ready .nav-links { display: none; max-height: calc(100dvh - 76px); overflow-y: auto; }
+            .nav-ready .nav-links.active { display: flex; }
+            .nav-ready .mobile-toggle { display: block; }
+            .hero { padding: 52px 20px; }
+            .hero-guide { padding: 24px; }
+            .hero-cta > a { flex: 1 1 220px; justify-content: center; }
+            .services, .section, .features, .cta { padding: 56px 0; }
             .footer-content { flex-direction: column; gap: 12px; text-align: center; }
-            .cta-buttons { flex-direction: column; align-items: center; }
-            .metric .num { font-size: 1.5rem; }
-            .float-whatsapp { bottom: 16px; right: 16px; width: 50px; height: 50px; font-size: 26px; }
+            .cta-buttons { flex-direction: column; align-items: stretch; }
+            .cta-buttons a { justify-content: center; padding: 14px 16px; overflow-wrap: anywhere; }
+            .float-whatsapp { bottom: 16px; right: 16px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition: none !important; animation: none !important; }
         }
 
         /* ===== FLOATING WHATSAPP BUTTON ===== */
@@ -324,7 +296,7 @@
             width: 56px;
             height: 56px;
             background-color: #25D366;
-            color: #ffffff !important;
+            color: #07150c !important;
             border-radius: 50%;
             text-align: center;
             font-size: 30px;
@@ -340,301 +312,222 @@
             transform: scale(1.1);
             box-shadow: 0 6px 28px rgba(37, 211, 102, 0.7);
         }
+        @media (max-width: 768px) {
+            .float-whatsapp { bottom: 16px; right: 16px; width: 50px; height: 50px; font-size: 26px; }
+        }
     </style>
 </head>
 <body>
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" aria-label="Navegación principal">
         <div class="nav-content">
-            <div class="logo">TiendApp <span>Chile</span></div>
-            <div class="nav-links">
+            <a class="logo" href="#inicio" aria-label="TiendApp Chile, inicio">TiendApp <span>Chile</span></a>
+            <button class="mobile-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+                <span>Menú</span> <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="nav-links" id="menu-principal">
                 <a href="#servicios">Servicios</a>
                 <a href="comunidades/index.html">Comunidades</a>
                 <a href="serviciotecnico/index.html">Servicio Técnico</a>
                 <a href="#portafolio">Portafolio</a>
-                <a href="#por-que">¿Por qué nosotros?</a>
+                <a href="#por-que">Cómo elegir</a>
                 <a href="#contacto" class="btn-nav">Contactar</a>
             </div>
-            <button class="mobile-toggle" aria-label="Menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-scanlines"></div>
+    <main id="contenido" tabindex="-1">
+    <header class="hero" id="inicio">
+        <div class="hero-scanlines" aria-hidden="true"></div>
+        <div class="hero-layout">
         <div class="hero-content">
             <div class="hero-chip">
-                Streaming, gaming y soluciones web para ti
+                TiendApp Chile · Tecnología para tu día a día
             </div>
-            <h1>Entretenimiento y Software<br><span class="line2">al alcance de todos</span></h1>
-            <p>Streaming al mejor precio, consolas retro con miles de juegos, desarrollo web profesional y software de gestión comunitaria. Todo en un solo lugar.</p>
+            <h1>Para tu negocio.<br>Para tu comunidad.<br><span class="line2">También para ti.</span></h1>
+            <p>Una web para vender, herramientas para administrar tu comunidad o ayuda con tu PC. Y, cuando toca desconectarse, streaming y consolas retro.</p>
             <div class="hero-cta">
-                <a href="#servicios" class="btn-primary">Ver Servicios</a>
-                <a href="https://wa.me/56976739157" class="btn-outline" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="#servicios" class="btn-primary">Explorar servicios <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+                <a href="https://wa.me/56976739157" class="btn-outline" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Consultar por WhatsApp</a>
             </div>
-            <div class="hero-metrics">
-                <div class="metric">
-                    <span class="num">5+</span>
-                    <span class="label">Demos Interactivas</span>
-                </div>
-                <div class="metric">
-                    <span class="num">10K+</span>
-                    <span class="label">Juegos Retro</span>
-                </div>
-                <div class="metric">
-                    <span class="num">6</span>
-                    <span class="label">Plataformas Streaming</span>
-                </div>
-                <div class="metric">
-                    <span class="num">24/7</span>
-                    <span class="label">Soporte Incluido</span>
-                </div>
-            </div>
+        </div>
+        <aside class="hero-guide" aria-labelledby="guia-titulo">
+            <h2 id="guia-titulo">¿Qué necesitas hoy?</h2>
+            <p>Ve directo a lo que estás buscando.</p>
+            <ul>
+                <li><a href="desarrollo/index.html"><span>Una web para mi negocio<small>Planes y demos de desarrollo</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+                <li><a href="comunidades/index.html"><span>Administrar mi comunidad<small>Reportes vecinales y panel de comité</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+                <li><a href="serviciotecnico/index.html"><span>Revisar o mejorar mi PC<small>Diagnóstico, hardware y software</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+                <li><a href="#entretenimiento"><span>Streaming o juegos retro<small>Plataformas y consolas</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+            </ul>
+        </aside>
         </div>
     </header>
 
-    <div class="marquee">
-        <div class="marquee-label">Lo que ofrecemos</div>
-        <div class="marquee-track">
-            <span><i class="fa-brands fa-react"></i> React</span>
-            <span><i class="fa-brands fa-node-js"></i> Node.js</span>
-            <span><i class="fa-solid fa-code"></i> HTML5 / CSS3 / JS</span>
-            <span><i class="fa-solid fa-building-user"></i> Gestión Comunitaria</span>
-            <span><i class="fa-solid fa-mobile-screen"></i> Mobile First</span>
-            <span><i class="fa-brands fa-netflix"></i> Netflix</span>
-            <span><i class="fa-solid fa-tv"></i> HBO Max</span>
-            <span><i class="fa-solid fa-play"></i> Amazon Prime</span>
-            <span><i class="fa-brands fa-spotify"></i> Spotify</span>
-            <span><i class="fa-solid fa-gamepad"></i> PS1 / PS2</span>
-            <span><i class="fa-solid fa-microchip"></i> Nintendo 64</span>
-            <span><i class="fa-solid fa-star"></i> SNES / NES</span>
-            <span><i class="fa-solid fa-globe"></i> Cloudflare Pages</span>
-            <span><i class="fa-brands fa-react"></i> React</span>
-            <span><i class="fa-brands fa-node-js"></i> Node.js</span>
-            <span><i class="fa-solid fa-code"></i> HTML5 / CSS3 / JS</span>
-            <span><i class="fa-solid fa-building-user"></i> Gestión Comunitaria</span>
-            <span><i class="fa-solid fa-mobile-screen"></i> Mobile First</span>
-            <span><i class="fa-brands fa-netflix"></i> Netflix</span>
-            <span><i class="fa-solid fa-tv"></i> HBO Max</span>
-            <span><i class="fa-solid fa-play"></i> Amazon Prime</span>
-            <span><i class="fa-brands fa-spotify"></i> Spotify</span>
-            <span><i class="fa-solid fa-gamepad"></i> PS1 / PS2</span>
-            <span><i class="fa-solid fa-microchip"></i> Nintendo 64</span>
-            <span><i class="fa-solid fa-star"></i> SNES / NES</span>
-            <span><i class="fa-solid fa-globe"></i> Cloudflare Pages</span>
-        </div>
-    </div>
-
-    <section id="servicios" class="services">
+    <section id="servicios" class="services" aria-labelledby="servicios-titulo">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <div class="chip">Servicios</div>
-                <h2>Todo lo que buscas, en un solo lugar</h2>
-                <p>Streaming, retro gaming, desarrollo web y software para condominios.</p>
+                <h2 id="servicios-titulo">Elige por lo que necesitas resolver</h2>
+                <p>Cada servicio tiene su propia página con detalles. Revisa las opciones y consúltanos antes de elegir.</p>
             </div>
             <div class="services-grid">
-                <a href="desarrollo/index.html" class="service-card dev reveal">
-                    <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+                <a href="desarrollo/index.html" class="service-card dev">
+                    <div class="service-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
                     <h3>Desarrollo Web</h3>
                     <p>Páginas web y apps profesionales para emprendedores y negocios. Diseño moderno que conecta con tus clientes.</p>
-                    <div class="card-link">Ver Desarrollo <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="card-link">Ver Desarrollo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                 </a>
-                <a href="comunidades/index.html" class="service-card dev reveal" style="border-color: rgba(16, 185, 129, 0.4);">
-                    <div class="service-icon" style="color: #10b981; border-color: rgba(16, 185, 129, 0.4);"><i class="fa-solid fa-building-user"></i></div>
+                <a href="comunidades/index.html" class="service-card dev">
+                    <div class="service-icon"><i class="fa-solid fa-building-user" aria-hidden="true"></i></div>
                     <h3>Gestión Comunitaria</h3>
                     <p>Software integral para la administración de condominios y comunidades. Reportes con foto, panel de comité, PWA y estadísticas.</p>
-                    <div class="card-link" style="color: #10b981;">Ver Comunidades <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="card-link">Ver Comunidades <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                 </a>
-                <a href="streaming/index.html" class="service-card stream reveal">
-                    <div class="service-icon"><i class="fa-solid fa-tv"></i></div>
+                <a href="streaming/index.html" class="service-card stream" id="entretenimiento">
+                    <div class="service-icon"><i class="fa-solid fa-tv" aria-hidden="true"></i></div>
                     <h3>Streaming</h3>
-                    <p>Netflix, Disney+, HBO Max y más al mejor precio. Entretenimiento premium con soporte incluido.</p>
-                    <div class="card-link">Ver Streaming <i class="fa-solid fa-arrow-right"></i></div>
+                    <p>Netflix, Disney+, HBO Max y otras plataformas. Revisa los planes y consulta la disponibilidad.</p>
+                    <div class="card-link">Ver Streaming <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                 </a>
-                <a href="retro/index.html" class="service-card game reveal">
-                    <div class="service-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <a href="retro/index.html" class="service-card game">
+                    <div class="service-icon"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></div>
                     <h3>Retro Gaming</h3>
-                    <p>Consolas con miles de juegos. PS1, PS2, N64, SNES y más. Revive los clásicos.</p>
-                    <div class="card-link">Ver Retro Gaming <i class="fa-solid fa-arrow-right"></i></div>
+                    <p>Consolas retro para volver a los clásicos de PS1, PS2, N64 y SNES. Explora los modelos y sus juegos.</p>
+                    <div class="card-link">Ver Retro Gaming <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                 </a>
-                <a href="serviciotecnico/index.html" class="service-card dev reveal" style="border-color: rgba(37, 99, 235, 0.4);">
-                    <div class="service-icon" style="color: #2563eb; border-color: rgba(37, 99, 235, 0.4);"><i class="fa-solid fa-laptop-medical"></i></div>
+                <a href="serviciotecnico/index.html" class="service-card dev">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-medical" aria-hidden="true"></i></div>
                     <h3>Servicio Técnico</h3>
-                    <p>Diagnóstico, upgrade de hardware y software, eliminación de virus y recuperación de datos. Garantía incluida.</p>
-                    <div class="card-link" style="color: #2563eb;">Ver Servicio Técnico <i class="fa-solid fa-arrow-right"></i></div>
+                    <p>Diagnóstico, mejoras de hardware y software, eliminación de virus y recuperación de datos. Consulta por tu equipo.</p>
+                    <div class="card-link">Ver Servicio Técnico <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="portafolio" class="section">
+    <section id="portafolio" class="section" aria-labelledby="portafolio-titulo">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <div class="chip">Portafolio</div>
-                <h2>Mira lo que tenemos para ti</h2>
-                <p>Ejemplos reales de lo que puedes encontrar en TiendApp.</p>
+                <h2 id="portafolio-titulo">Explora antes de decidir</h2>
+                <p>Conoce el software de comunidades, revisa entretenimiento y servicio técnico, o prueba la demo de SushiApp para ver una web en acción.</p>
             </div>
             <div class="showcase-grid">
-                <a href="comunidades/index.html" class="showcase-card reveal">
+                <a href="comunidades/index.html" class="showcase-card">
                     <div class="showcase-img" style="background: linear-gradient(135deg, #0a1326 0%, #059669 100%); display: flex; align-items: center; justify-content: center;">
-                        <i class="fa-solid fa-building-user" style="font-size: 3.8rem; color: #ffffff; opacity: 0.95;"></i>
+                        <i class="fa-solid fa-building-user" aria-hidden="true" style="font-size: 3.8rem; color: #ffffff; opacity: 0.95;"></i>
                         <div class="showcase-tag" style="border-color: #34d399; color: #34d399;">Gestión Condominios</div>
                     </div>
                     <div class="showcase-body">
                         <h3>Software de Comunidades</h3>
                         <p>Reportes vecinales con fotos, avisos in-app, panel de comité y métricas estadísticas.</p>
-                        <span class="showcase-link" style="color: #34d399;">Ver Software <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="showcase-link" style="color: #34d399;">Ver Software <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="streaming/index.html" class="showcase-card reveal">
+                <a href="streaming/index.html" class="showcase-card">
                     <div class="showcase-img" style="background-image: url('screenshots/streaming_ref.jpg');">
                         <div class="showcase-tag">Streaming</div>
                     </div>
                     <div class="showcase-body">
                         <h3>Netflix, Disney+, HBO y más</h3>
-                        <p>Suscripciones a las mejores plataformas al mejor precio de Chile.</p>
-                        <span class="showcase-link">Ver Planes <i class="fa-solid fa-arrow-right"></i></span>
+                        <p>Consulta las plataformas disponibles y los detalles de cada plan.</p>
+                        <span class="showcase-link">Ver Planes <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="retro/index.html" class="showcase-card reveal">
+                <a href="retro/index.html" class="showcase-card">
                     <div class="showcase-img" style="background-image: url('screenshots/retro_ref.jpg');">
                         <div class="showcase-tag">Retro Gaming</div>
                     </div>
                     <div class="showcase-body">
                         <h3>PS1, PS2, N64, SNES y más</h3>
-                        <p>Consolas con +10,000 juegos precargados. Revive los clásicos.</p>
-                        <span class="showcase-link">Ver Consolas <i class="fa-solid fa-arrow-right"></i></span>
+                        <p>Revisa las consolas, los sistemas compatibles y los juegos incluidos.</p>
+                        <span class="showcase-link">Ver Consolas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="sushi/index.html" class="showcase-card reveal">
+                <a href="sushi/index.html" class="showcase-card">
                     <div class="showcase-img" style="background-image: url('sushi/sushi_nigiri_platter_1776376913002.webp');">
                         <div class="showcase-tag">Desarrollo Web</div>
                     </div>
                     <div class="showcase-body">
                         <h3>SushiApp Premium</h3>
-                        <p>Menú interactivo, carrito de compras y panel de despacho en tiempo real.</p>
-                        <span class="showcase-link">Probar Demo <i class="fa-solid fa-arrow-right"></i></span>
+                        <p>Demo de restaurante: explora el menú interactivo, el carrito y el panel de despacho.</p>
+                        <span class="showcase-link">Probar Demo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="serviciotecnico/index.html" class="showcase-card reveal">
+                <a href="serviciotecnico/index.html" class="showcase-card">
                     <div class="showcase-img" style="background: linear-gradient(135deg, #060b18 0%, #2563eb 100%); display: flex; align-items: center; justify-content: center;">
-                        <i class="fa-solid fa-laptop-medical" style="font-size: 3.8rem; color: #ffffff; opacity: 0.95;"></i>
+                        <i class="fa-solid fa-laptop-medical" aria-hidden="true" style="font-size: 3.8rem; color: #ffffff; opacity: 0.95;"></i>
                         <div class="showcase-tag" style="border-color: #60a5fa; color: #60a5fa;">Servicio Técnico</div>
                     </div>
                     <div class="showcase-body">
                         <h3>Reparación y Upgrade de PC</h3>
-                        <p>Diagnóstico gratis, upgrade de hardware/software y recuperación de datos con garantía.</p>
-                        <span class="showcase-link" style="color: #60a5fa;">Ver Servicio <i class="fa-solid fa-arrow-right"></i></span>
+                        <p>Conoce las opciones de diagnóstico, mejoras de tu PC y recuperación de datos.</p>
+                        <span class="showcase-link" style="color: #60a5fa;">Ver Servicio <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="por-que" class="features">
+    <section id="por-que" class="features" aria-labelledby="elegir-titulo">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="chip">Beneficios</div>
-                <h2>¿Por qué TiendApp?</h2>
-                <p>Lo que nos hace diferentes de la competencia</p>
+            <div class="section-header">
+                <div class="chip">Cómo elegir</div>
+                <h2 id="elegir-titulo">Una consulta más clara, una mejor elección</h2>
+                <p>No necesitas saber de tecnología para empezar. Cuéntanos qué buscas y revisemos las opciones.</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card reveal">
-                    <div class="feature-icon fi-blue"><i class="fa-solid fa-bolt"></i></div>
-                    <h4>Carga Ultra-Rápida</h4>
-                    <p>Todas nuestras apps y páginas cargan en menos de 2 segundos. Sin esperas, sin frustraciones.</p>
+                <div class="feature-card">
+                    <div class="feature-icon fi-blue"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+                    <h3>Para tu negocio</h3>
+                    <p>Cuéntanos qué vendes y cómo recibes pedidos o reservas. Puedes probar la demo de SushiApp y revisar los planes de desarrollo.</p>
                 </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon fi-cyan"><i class="fa-solid fa-mobile-screen"></i></div>
-                    <h4>100% Móvil</h4>
-                    <p>Diseñadas para funcionar perfecto en cualquier celular. Mobile first, siempre.</p>
+                <div class="feature-card">
+                    <div class="feature-icon fi-cyan"><i class="fa-solid fa-building-user" aria-hidden="true"></i></div>
+                    <h3>Para tu comunidad</h3>
+                    <p>Revisa los reportes vecinales y el panel de comité. Coméntanos cómo administran hoy los avisos y solicitudes.</p>
                 </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon fi-green"><i class="fa-solid fa-headset"></i></div>
-                    <h4>Soporte 24/7</h4>
-                    <p>Estamos disponibles cuando nos necesites. WhatsApp, email o ticket de soporte.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon fi-purple"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4>Garantía Incluida</h4>
-                    <p>Todos nuestros servicios tienen garantía. Si hay problemas, lo resolvemos.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon fi-pink"><i class="fa-solid fa-tag"></i></div>
-                    <h4>Los Mejores Precios</h4>
-                    <p>Streaming y gaming retro al mejor precio de Chile. Sin sorpresas, sin letra chica.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon fi-amber"><i class="fa-solid fa-rocket"></i></div>
-                    <h4>Activación Inmediata</h4>
-                    <p>Streaming y retro gaming se activan al instante. Tu app web lista en días, no en meses.</p>
+                <div class="feature-card">
+                    <div class="feature-icon fi-green"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
+                    <h3>Para tu PC o tu tiempo libre</h3>
+                    <p>Indícanos el modelo y la falla de tu PC, la plataforma que buscas o la consola que te interesa. Consulta precios y disponibilidad en cada servicio.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="chip">Testimonios</div>
-                <h2>Lo que dicen nuestros clientes</h2>
-                <p>Personas reales que ya disfrutan de TiendApp</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial reveal">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <blockquote>"Tengo Netflix, Disney+ y HBO al mejor precio. Activo al toque y el soporte siempre responde."</blockquote>
-                    <div class="author">
-                        <div class="avatar">CP</div>
-                        <div class="author-info">
-                            <h4>Carolina P.</h4>
-                            <span>Cliente Streaming</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial reveal">
-                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                    <blockquote>"Me compré la consola retro y es increíble. Tiene todos los juegos de mi infancia. ¡La mejor compra!"</blockquote>
-                    <div class="author">
-                        <div class="avatar">MR</div>
-                        <div class="author-info">
-                            <h4>Miguel R.</h4>
-                            <span>Cliente Retro Gaming</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="cta">
-        <div class="cta-content reveal">
-            <h2>¿Te gustó lo que ves?</h2>
-            <p>Escríbenos por WhatsApp y te ayudamos a elegir lo que necesitas.</p>
+    <section id="contacto" class="cta" aria-labelledby="contacto-titulo">
+        <div class="cta-content">
+            <h2 id="contacto-titulo">Conversemos sobre lo que necesitas</h2>
+            <p>Escríbenos indicando el servicio que te interesa. Si es para tu negocio o comunidad, cuéntanos qué quieres resolver; si es por tu PC, describe el problema.</p>
             <div class="cta-buttons">
                 <a href="https://wa.me/56976739157" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Escribir por WhatsApp
                 </a>
                 <a href="mailto:ventas@tiendappchile.cl" class="btn-outline">
-                    <i class="fa-solid fa-envelope"></i> ventas@tiendappchile.cl
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> ventas@tiendappchile.cl
                 </a>
             </div>
         </div>
     </section>
+    </main>
 
     <footer>
         <div class="footer-content">
-            <div class="logo">TiendApp <span>Chile</span></div>
+            <a class="logo" href="#inicio">TiendApp <span>Chile</span></a>
+            <a href="https://wa.me/56976739157" target="_blank" rel="noopener noreferrer">+56 9 7673 9157</a>
             <p>&copy; 2026 Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/56976739157?text=Hola!%20Vengo%20desde%20la%20p%C3%A1gina%20web%20TiendApp%20Chile" class="float-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <script src="shared.js"></script>
+    <!-- Home-only navigation; shared.js remains unchanged for the other pages. -->
+    <script src="home.js" defer></script>
 </body>
 </html>
