@@ -18,6 +18,9 @@ tiendapp-chile/
 ├── comunidades/            # Software de Gestión Comunitaria & Condominios
 │   └── index.html          # Landing de Gestión para Condominios
 │
+├── serviciotecnico/        # Servicio Técnico de PC
+│   └── index.html          # Diagnóstico, upgrade de hardware/software, soporte
+│
 ├── streaming/              # Suscripciones de Streaming
 │   └── index.html          # Estética Netflix
 │
@@ -32,6 +35,13 @@ tiendapp-chile/
 ```
 
 ## Servicios
+
+### Servicio Técnico de PC
+- Diagnóstico gratuito, formateo e instalación de SO (Windows/Linux)
+- Actualización y optimización de software, eliminación de virus/malware
+- Upgrade de hardware: RAM, SSD, tarjeta de video, pasta térmica
+- Recuperación de datos, soporte remoto y retiro a domicilio
+- Planes Básico, Premium y Empresas con garantía de hasta 30 días
 
 ### Desarrollo Web & Apps
 - Páginas web y aplicaciones para negocios

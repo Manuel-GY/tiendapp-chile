@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="description" content="Servicio Técnico de PC en Chile: diagnóstico, upgrade de hardware, actualización e instalación de software, eliminación de virus, recuperación de datos y mantención preventiva. Retiro a domicilio y garantía incluida.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tiendappchile.cl/serviciotecnico/">
+    <meta property="og:title" content="Servicio Técnico de PC - TiendApp Chile">
+    <meta property="og:description" content="Diagnóstico, upgrade de hardware y software, eliminación de virus y recuperación de datos. Técnicos certificados con garantía.">
+
+    <title>Servicio Técnico de PC - TiendApp Chile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        :root {
+            --tk-blue: #2563eb;
+            --tk-blue-dark: #1d4ed8;
+            --tk-amber: #f59e0b;
+            --tk-navy: #060b18;
+            --tk-dark: #0b1424;
+            --tk-card: #111c30;
+            --tk-border: #1c2b45;
+            --tk-text: #ffffff;
+            --tk-muted: #8295b3;
+            --tk-muted-light: #aebfd9;
+        }
+
+        body { background: var(--tk-navy); }
+
+        .navbar { background: rgba(6, 11, 24, 0.95) !important; border-bottom: 1px solid var(--tk-border) !important; }
+        .logo span { background: none !important; -webkit-text-fill-color: var(--tk-blue) !important; }
+        .nav-links a:hover { color: var(--tk-text) !important; }
+        .nav-links .btn-primary, .nav-links a.btn-primary { background: var(--tk-blue) !important; }
+
+        /* ===== HERO ===== */
+        .hero-tech {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 110px 20px 80px;
+            background: linear-gradient(135deg, #05070f 0%, #0b1424 45%, #0e1d35 100%);
+            overflow: hidden;
+        }
+        .hero-tech::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 1;
+            background:
+                radial-gradient(ellipse at 25% 20%, rgba(37, 99, 235, 0.18) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 45%);
+        }
+        .hero-tech::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 150px;
+            background: linear-gradient(to top, var(--tk-navy), transparent);
+            z-index: 1;
+        }
+        .hero-tech .hero-content { position: relative; z-index: 2; max-width: 680px; }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px;
+            color: var(--tk-blue); margin-bottom: 20px; padding: 6px 18px;
+            border: 1px solid var(--tk-blue); border-radius: 20px;
+        }
+        .hero-tech h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; color: var(--tk-text); }
+        .hero-tech h1 span { background: none; -webkit-text-fill-color: var(--tk-blue); }
+        .hero-tech > .hero-content > p { font-size: 1.1rem; color: var(--tk-muted-light); margin-bottom: 30px; line-height: 1.7; max-width: 540px; margin-left: auto; margin-right: auto; }
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+        .hero-tech .btn-primary { background: var(--tk-blue) !important; font-weight: 700; border-radius: 10px; padding: 14px 30px; }
+        .hero-tech .btn-primary:hover { background: var(--tk-blue-dark) !important; box-shadow: 0 0 30px rgba(37,99,235,0.45); }
+        .hero-tech .btn-outline { background: rgba(28, 43, 69, 0.6) !important; border: 1px solid var(--tk-border) !important; color: var(--tk-text) !important; border-radius: 10px; padding: 14px 30px; }
+        .hero-tech .btn-outline:hover { background: rgba(28, 43, 69, 0.9) !important; border-color: var(--tk-blue) !important; }
+
+        .trust-strip { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: center; margin-top: 36px; }
+        .trust-strip span { display: inline-flex; align-items: center; gap: 8px; color: var(--tk-muted-light); font-size: 0.85rem; font-weight: 600; }
+        .trust-strip i { color: var(--tk-amber); }
+
+        .section { padding: 70px 0; }
+        .section-header { text-align: center; }
+        .section-header h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 10px; color: var(--tk-text); }
+        .section-header p { color: var(--tk-muted); }
+        .section.bg-alt { background: var(--tk-dark) !important; }
+
+        /* Stats */
+        .stats-grid .stat-item { background: var(--tk-card); border: 1px solid var(--tk-border); }
+        .stat-icon { background: none !important; -webkit-text-fill-color: var(--tk-blue) !important; color: var(--tk-blue); }
+
+        /* Services */
+        .service-item { background: var(--tk-card); border: 1px solid var(--tk-border); }
+        .service-item:hover { border-color: var(--tk-blue); box-shadow: 0 0 40px rgba(37,99,235,0.15); }
+        .service-item::before { background: linear-gradient(135deg, var(--tk-blue), var(--tk-amber)); }
+        .service-item i { background: none !important; -webkit-text-fill-color: var(--tk-blue) !important; color: var(--tk-blue); }
+        .service-item .price-tag { display: inline-block; margin-top: 14px; background: rgba(245,158,11,0.1); color: var(--tk-amber); padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+
+        /* Category tabs */
+        .cat-tabs { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .cat-tab { background: var(--tk-card); border: 1px solid var(--tk-border); color: var(--tk-muted-light); padding: 10px 22px; border-radius: 30px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.25s; }
+        .cat-tab.active, .cat-tab:hover { background: var(--tk-blue); border-color: var(--tk-blue); color: #fff; }
+        .cat-panel { display: none; }
+        .cat-panel.active { display: grid; }
+
+        /* Process */
+        .process-step { background: var(--tk-card); border: 1px solid var(--tk-border); }
+        .process-step:hover { border-color: var(--tk-blue); }
+        .step-num { background: none !important; -webkit-text-fill-color: var(--tk-blue) !important; color: var(--tk-blue); opacity: 0.25; }
+
+        /* Pricing */
+        .pricing-card { background: var(--tk-card); border: 1px solid var(--tk-border); }
+        .pricing-card.popular { border-color: var(--tk-blue); background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(245,158,11,0.04) 100%); box-shadow: 0 0 40px rgba(37,99,235,0.15); }
+        .popular-badge { background: var(--tk-blue) !important; }
+        .pricing-features li i.fa-check { color: var(--tk-amber) !important; }
+        .pricing-card .btn-primary { background: var(--tk-blue) !important; }
+
+        /* Testimonials */
+        .testimonial-card { background: var(--tk-card); border: 1px solid var(--tk-border); }
+        .testimonial-card:hover { border-color: var(--tk-blue); }
+        .quote { background: none !important; -webkit-text-fill-color: var(--tk-blue) !important; color: var(--tk-blue); }
+
+        /* FAQ */
+        .faq-item { background: var(--tk-card); border: 1px solid var(--tk-border); }
+        .faq-item.active { border-color: var(--tk-blue); }
+        .faq-question i { color: var(--tk-blue); }
+        .faq-answer p { color: var(--tk-muted); }
+
+        /* Footer */
+        footer { background: linear-gradient(to bottom, var(--tk-navy), #050810) !important; }
+        footer::before { background: var(--tk-blue) !important; }
+
+        .guarantee-section { text-align: center; padding: 60px 0; }
+        .guarantee-section i { font-size: 3.5rem; color: var(--tk-blue); margin-bottom: 20px; }
+        .guarantee-section h3 { font-size: 1.4rem; color: var(--tk-text); margin-bottom: 12px; }
+        .guarantee-section p { color: var(--tk-muted); max-width: 600px; margin: 0 auto; }
+
+        /* Floating WhatsApp */
+        .float-whatsapp {
+            position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px;
+            background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 30px; box-shadow: 0 8px 24px rgba(37,211,102,0.4); z-index: 999;
+            transition: transform 0.2s;
+        }
+        .float-whatsapp:hover { transform: scale(1.08); }
+
+        @media (max-width: 768px) {
+            .float-whatsapp { bottom: 16px; right: 16px; width: 50px; height: 50px; font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="public-site">
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <div class="logo">⚡ TiendApp <span>Chile</span></div>
+            <div class="nav-links">
+                <a href="../index.html">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#planes">Planes</a>
+                <a href="#proceso">Cómo funciona</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contacto" class="btn-primary">Cotizar Ahora</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero-tech">
+        <div class="hero-content">
+            <span class="hero-tag"><i class="fa-solid fa-laptop-medical"></i> Servicio Técnico</span>
+            <h1>Reparamos y <span>Potenciamos</span> tu PC</h1>
+            <p>Diagnóstico, upgrade de hardware, actualización de software, eliminación de virus y recuperación de datos. Técnicos certificados, retiro a domicilio y garantía por escrito.</p>
+            <div class="hero-actions">
+                <a href="#servicios" class="btn-primary"><i class="fa-solid fa-screwdriver-wrench"></i> Ver Servicios</a>
+                <a href="https://wa.me/56976739157?text=Hola!%20Necesito%20servicio%20t%C3%A9cnico%20para%20mi%20PC" class="btn-outline" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Cotizar por WhatsApp</a>
+            </div>
+            <div class="trust-strip">
+                <span><i class="fa-solid fa-magnifying-glass"></i> Diagnóstico sin costo</span>
+                <span><i class="fa-solid fa-shield-halved"></i> Garantía 30 días</span>
+                <span><i class="fa-solid fa-truck-fast"></i> Retiro a domicilio</span>
+                <span><i class="fa-solid fa-user-gear"></i> Técnicos certificados</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <i class="fa-solid fa-laptop stat-icon"></i>
+                    <div><span class="stat-value">+800</span><span class="stat-label">Equipos reparados</span></div>
+                </div>
+                <div class="stat-item reveal">
+                    <i class="fa-solid fa-clock stat-icon"></i>
+                    <div><span class="stat-value">24-48h</span><span class="stat-label">Tiempo promedio</span></div>
+                </div>
+                <div class="stat-item reveal">
+                    <i class="fa-solid fa-star stat-icon"></i>
+                    <div><span class="stat-value">4.9/5</span><span class="stat-label">Satisfacción clientes</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section bg-alt">
+        <div class="container">
+            <div class="section-header center reveal">
+                <h2>Todo lo que tu equipo necesita</h2>
+                <p>Software, hardware y soporte técnico en un solo lugar.</p>
+            </div>
+
+            <div class="cat-tabs reveal">
+                <button class="cat-tab active" data-cat="software">Software</button>
+                <button class="cat-tab" data-cat="hardware">Hardware</button>
+                <button class="cat-tab" data-cat="soporte">Soporte</button>
+            </div>
+
+            <div class="services-grid cat-panel active" id="panel-software">
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <h3>Formateo e Instalación de SO</h3>
+                    <p>Instalación limpia de Windows 10/11 o Linux, con drivers y activación incluida.</p>
+                    <span class="price-tag">Desde $20.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                    <h3>Actualización de Software</h3>
+                    <p>Upgrade de Windows 10 a 11, actualización de drivers, BIOS y parches de seguridad.</p>
+                    <span class="price-tag">Desde $12.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-virus-slash"></i>
+                    <h3>Eliminación de Virus y Malware</h3>
+                    <p>Limpieza profunda de virus, ransomware, adware y barras publicitarias. Instalación de antivirus.</p>
+                    <span class="price-tag">Desde $15.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <h3>Optimización de Rendimiento</h3>
+                    <p>Limpieza de archivos basura, desfragmentación, ajuste de inicio y optimización para gaming/streaming.</p>
+                    <span class="price-tag">Desde $10.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-key"></i>
+                    <h3>Instalación de Licencias</h3>
+                    <p>Activación de Windows, Office 365, antivirus y software especializado con licencia original.</p>
+                    <span class="price-tag">Desde $8.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3>Soporte Remoto</h3>
+                    <p>Asistencia vía TeamViewer/AnyDesk para instalar programas, resolver errores o configurar impresoras.</p>
+                    <span class="price-tag">Desde $9.000</span>
+                </div>
+            </div>
+
+            <div class="services-grid cat-panel" id="panel-hardware">
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-memory"></i>
+                    <h3>Upgrade de RAM</h3>
+                    <p>Ampliación de memoria RAM para mayor fluidez en multitarea y juegos. Asesoría de compatibilidad.</p>
+                    <span class="price-tag">Desde $8.000 + pieza</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-hard-drive"></i>
+                    <h3>Migración a SSD</h3>
+                    <p>Cambio de disco mecánico a SSD/NVMe con clonado de datos incluido. Hasta 10x más velocidad.</p>
+                    <span class="price-tag">Desde $15.000 + pieza</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-display"></i>
+                    <h3>Upgrade de Tarjeta de Video</h3>
+                    <p>Instalación y configuración de GPU, actualización de drivers y pruebas de estrés.</p>
+                    <span class="price-tag">Desde $12.000 + pieza</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-fan"></i>
+                    <h3>Limpieza Interna + Pasta Térmica</h3>
+                    <p>Limpieza de polvo, cambio de pasta térmica y revisión de ventiladores para bajar temperaturas.</p>
+                    <span class="price-tag">Desde $12.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-plug-circle-bolt"></i>
+                    <h3>Cambio de Fuente de Poder</h3>
+                    <p>Diagnóstico y reemplazo de fuentes de poder dañadas o insuficientes para tu equipo.</p>
+                    <span class="price-tag">Desde $10.000 + pieza</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-computer"></i>
+                    <h3>Armado de PC a Medida</h3>
+                    <p>Ensamblaje de equipos gamer, oficina o diseño según tu presupuesto, con pruebas de estabilidad.</p>
+                    <span class="price-tag">Cotización gratis</span>
+                </div>
+            </div>
+
+            <div class="services-grid cat-panel" id="panel-soporte">
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <h3>Diagnóstico General</h3>
+                    <p>Revisión completa de hardware y software para identificar fallas antes de cotizar.</p>
+                    <span class="price-tag">Gratis</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-database"></i>
+                    <h3>Recuperación de Datos</h3>
+                    <p>Rescate de archivos, fotos y documentos desde discos dañados, formateados o con errores.</p>
+                    <span class="price-tag">Desde $25.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-wifi"></i>
+                    <h3>Redes y Wi-Fi</h3>
+                    <p>Configuración de router, extensores de señal, redes compartidas e impresoras en red.</p>
+                    <span class="price-tag">Desde $12.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <h3>Backup y Migración</h3>
+                    <p>Respaldo de información y migración completa a un equipo nuevo sin perder tus archivos.</p>
+                    <span class="price-tag">Desde $15.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-house-laptop"></i>
+                    <h3>Retiro y Entrega a Domicilio</h3>
+                    <p>Pasamos a buscar tu equipo y lo devolvemos reparado, en la Región Metropolitana.</p>
+                    <span class="price-tag">Desde $5.000</span>
+                </div>
+                <div class="service-item reveal">
+                    <i class="fa-solid fa-building"></i>
+                    <h3>Mantención Preventiva Empresas</h3>
+                    <p>Planes mensuales de mantención para oficinas y pymes con varios equipos.</p>
+                    <span class="price-tag">Cotización gratis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proceso" class="section">
+        <div class="container">
+            <div class="section-header center reveal">
+                <h2>Así de simple trabajamos</h2>
+                <p>Transparencia total desde el primer contacto hasta la entrega.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="step-num">01</div>
+                    <h3>Diagnóstico</h3>
+                    <p>Nos escribes por WhatsApp o agendas el retiro. Revisamos tu equipo sin costo.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">02</div>
+                    <h3>Cotización</h3>
+                    <p>Te enviamos el detalle de la falla y el valor exacto antes de intervenir el equipo.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">03</div>
+                    <h3>Reparación</h3>
+                    <p>Ejecutamos el servicio o upgrade con repuestos originales y pruebas de estabilidad.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-num">04</div>
+                    <h3>Entrega y Garantía</h3>
+                    <p>Te devolvemos el equipo probado, con garantía por escrito de hasta 30 días.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="planes" class="section bg-alt">
+        <div class="container">
+            <div class="section-header center reveal">
+                <h2>Planes de mantención</h2>
+                <p>Ideales para mantener tu PC o notebook siempre al día.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <div class="pricing-header">
+                        <h3>Básico</h3>
+                        <div class="price">$15.000<span>/visita</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Diagnóstico completo</li>
+                        <li><i class="fa-solid fa-check"></i> Limpieza interna</li>
+                        <li><i class="fa-solid fa-check"></i> Optimización de software</li>
+                        <li class="disabled"><i class="fa-solid fa-xmark"></i> Upgrade de hardware</li>
+                        <li class="disabled"><i class="fa-solid fa-xmark"></i> Soporte prioritario</li>
+                    </ul>
+                    <div class="pricing-actions">
+                        <a href="https://wa.me/56976739157?text=Hola!%20Quiero%20el%20Plan%20B%C3%A1sico%20de%20servicio%20t%C3%A9cnico" class="btn-outline" target="_blank" rel="noopener noreferrer">Elegir Básico</a>
+                    </div>
+                </div>
+                <div class="pricing-card popular reveal">
+                    <div class="popular-badge">Más elegido</div>
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="price">$35.000<span>/visita</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Todo lo del plan Básico</li>
+                        <li><i class="fa-solid fa-check"></i> Formateo + instalación de SO</li>
+                        <li><i class="fa-solid fa-check"></i> Eliminación de virus</li>
+                        <li><i class="fa-solid fa-check"></i> Asesoría de upgrade (RAM/SSD)</li>
+                        <li><i class="fa-solid fa-check"></i> Garantía 30 días</li>
+                    </ul>
+                    <div class="pricing-actions">
+                        <a href="https://wa.me/56976739157?text=Hola!%20Quiero%20el%20Plan%20Premium%20de%20servicio%20t%C3%A9cnico" class="btn-primary" target="_blank" rel="noopener noreferrer">Elegir Premium</a>
+                    </div>
+                </div>
+                <div class="pricing-card reveal">
+                    <div class="pricing-header">
+                        <h3>Empresas</h3>
+                        <div class="price">A medida</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Mantención mensual multi-equipo</li>
+                        <li><i class="fa-solid fa-check"></i> Soporte remoto prioritario</li>
+                        <li><i class="fa-solid fa-check"></i> Gestión de licencias</li>
+                        <li><i class="fa-solid fa-check"></i> Reportes de estado</li>
+                        <li><i class="fa-solid fa-check"></i> Atención preferente</li>
+                    </ul>
+                    <div class="pricing-actions">
+                        <a href="https://wa.me/56976739157?text=Hola!%20Quiero%20cotizar%20mantenci%C3%B3n%20para%20mi%20empresa" class="btn-outline" target="_blank" rel="noopener noreferrer">Cotizar Empresas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header center reveal">
+                <h2>Clientes satisfechos</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="quote"><i class="fa-solid fa-quote-left"></i></div>
+                    <p>"Mi notebook quedó como nuevo después del upgrade a SSD. Pasó de demorar 5 minutos en encender a 20 segundos."</p>
+                    <div class="user"><h4>Francisca R.</h4><span>Providencia, Santiago</span></div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="quote"><i class="fa-solid fa-quote-left"></i></div>
+                    <p>"Tenía virus y pensé que había perdido todos mis archivos de la pega. Me recuperaron todo y además optimizaron el PC."</p>
+                    <div class="user"><h4>Matías S.</h4><span>Maipú, Santiago</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section bg-alt">
+        <div class="container">
+            <div class="section-header center reveal">
+                <h2>Resolvemos tus dudas</h2>
+            </div>
+            <div class="faq-accordion">
+                <div class="faq-item reveal">
+                    <div class="faq-question">¿El diagnóstico tiene costo? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer"><p>No, el diagnóstico inicial es completamente gratuito. Solo cobramos si decides realizar la reparación o el upgrade.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question">¿Hacen retiro y entrega a domicilio? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer"><p>Sí, retiramos y entregamos tu equipo en la Región Metropolitana con un costo adicional desde $5.000, según la comuna.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question">¿Qué garantía ofrecen? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer"><p>Todos los servicios incluyen garantía por escrito de hasta 30 días sobre el trabajo realizado y los repuestos instalados.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question">¿Pueden actualizar mi Windows 10 a Windows 11? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer"><p>Sí, revisamos la compatibilidad de tu equipo, respaldamos tus archivos y realizamos la actualización sin perder tu información.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question">¿Trabajan con notebooks y PC de escritorio? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer"><p>Sí, atendemos notebooks, PC de escritorio, all-in-one y equipos gamer, de cualquier marca.</p></div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question">¿Puedo pagar con transferencia o tarjeta? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-answer"><p>Aceptamos efectivo, transferencia bancaria y pago con tarjeta mediante enlace de pago seguro.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="guarantee-section">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Garantía y Repuestos Originales</h3>
+                <p>Usamos repuestos originales o compatibles de primera calidad. Si algo falla por nuestro trabajo dentro del período de garantía, lo solucionamos sin costo.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-cta">
+                <h2>¿Tu equipo necesita una mano?</h2>
+                <p>Escríbenos y te respondemos con una cotización en minutos.</p>
+                <div class="contact-methods">
+                    <a href="https://wa.me/56976739157?text=Hola!%20Necesito%20servicio%20t%C3%A9cnico%20para%20mi%20PC" class="btn-whatsapp-large" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Soporte
+                    </a>
+                    <a href="mailto:ventas@tiendappchile.cl" class="btn-email-large">
+                        <i class="fa-solid fa-envelope"></i> ventas@tiendappchile.cl
+                    </a>
+                </div>
+                <p class="cotizacion-note">Diagnóstico sin costo y cotización sin compromiso.</p>
+            </div>
+            <div class="footer-bottom">
+                <div class="logo">⚡ TiendApp <span>Chile</span></div>
+                <p>&copy; 2026 Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <a href="https://wa.me/56976739157?text=Hola!%20Necesito%20servicio%20t%C3%A9cnico%20para%20mi%20PC" class="float-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="shared.js"></script>
+    <script>
+        document.querySelectorAll('.cat-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('panel-' + tab.dataset.cat).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
