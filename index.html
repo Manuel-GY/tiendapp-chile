@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Security headers are configured in _headers, not in HTML meta tags. -->
-    <meta name="description" content="TiendApp Chile: desarrollo web para negocios, gestión de comunidades, servicio técnico de PC, streaming y retro gaming. Explora los servicios y consulta por WhatsApp.">
+    <meta name="description" content="TiendApp Chile: desarrollo web para negocios, gestión de comunidades, servicio técnico de PC y retro gaming. Explora los servicios y consulta por WhatsApp.">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tiendappchile.cl/">
-    <meta property="og:title" content="TiendApp Chile - Soluciones Digitales, Streaming y Retro Gaming">
-    <meta property="og:description" content="Desarrollo web, gestión de comunidades, servicio técnico de PC, streaming y retro gaming. Encuentra tu servicio en TiendApp Chile.">
-    <meta property="og:image" content="https://tiendappchile.cl/screenshots/streaming_ref.jpg">
+    <meta property="og:title" content="TiendApp Chile - Soluciones Digitales y Retro Gaming">
+    <meta property="og:description" content="Desarrollo web, gestión de comunidades, servicio técnico de PC y retro gaming. Encuentra tu servicio en TiendApp Chile.">
+    <meta property="og:image" content="https://tiendappchile.cl/screenshots/retro_ref.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TiendApp Chile - Soluciones Digitales">
-    <meta name="twitter:description" content="Desarrollo Web & Apps para negocios, streaming y retro gaming.">
-    <meta name="twitter:image" content="https://tiendappchile.cl/screenshots/streaming_ref.jpg">
+    <meta name="twitter:description" content="Desarrollo Web & Apps para negocios, gestión de comunidades, servicio técnico y retro gaming.">
+    <meta name="twitter:image" content="https://tiendappchile.cl/screenshots/retro_ref.jpg">
 
     <!-- Favicon SVG -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0a0a'/><rect width='96' height='96' x='2' y='2' rx='20' fill='none' stroke='%2300e5ff' stroke-width='3'/><text x='50%' y='68%' font-size='65' font-weight='800' font-family='sans-serif' fill='%2300e5ff' text-anchor='middle'>T</text></svg>">
@@ -31,7 +31,6 @@
     <style>
         :root {
             --neon: #00e5ff;
-            --magenta: #ff00ff;
             --green: #39ff14;
             --amber: #ffb300;
             --bg: #080b0d;
@@ -171,14 +170,12 @@
             margin: 0 0 20px; font-size: 1.8rem; border: 1px solid var(--border);
         }
         .dev .service-icon { color: var(--neon); border-color: rgba(0,229,255,0.3); }
-        .stream .service-icon { color: var(--magenta); border-color: rgba(255,0,255,0.3); }
         .game .service-icon { color: var(--green); border-color: rgba(57,255,20,0.3); }
 
         .service-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
         .service-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 24px; }
         .card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; transition: gap 0.2s; margin-top: auto; }
         .dev .card-link { color: var(--neon); }
-        .stream .card-link { color: var(--magenta); }
         .game .card-link { color: var(--green); }
         .card-link i { transition: transform 0.2s; }
         .service-card:hover .card-link i { transform: translateX(4px); }
@@ -346,7 +343,7 @@
                 TiendApp Chile · Tecnología para tu día a día
             </div>
             <h1>Para tu negocio.<br>Para tu comunidad.<br><span class="line2">También para ti.</span></h1>
-            <p>Una web para vender, herramientas para administrar tu comunidad o ayuda con tu PC. Y, cuando toca desconectarse, streaming y consolas retro.</p>
+            <p>Una web para vender, herramientas para administrar tu comunidad o ayuda con tu PC. Y, cuando toca desconectarse, consolas retro.</p>
             <div class="hero-cta">
                 <a href="#servicios" class="btn-primary">Explorar servicios <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
                 <a href="https://wa.me/56976739157" class="btn-outline" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Consultar por WhatsApp</a>
@@ -359,7 +356,7 @@
                 <li><a href="desarrollo/index.html"><span>Una web para mi negocio<small>Planes y demos de desarrollo</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
                 <li><a href="comunidades/index.html"><span>Administrar mi comunidad<small>Reportes vecinales y panel de comité</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
                 <li><a href="serviciotecnico/index.html"><span>Revisar o mejorar mi PC<small>Diagnóstico, hardware y software</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
-                <li><a href="#entretenimiento"><span>Streaming o juegos retro<small>Plataformas y consolas</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
+                <li><a href="retro/index.html"><span>Juegos retro<small>Sistemas y consolas</small></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li>
             </ul>
         </aside>
         </div>
@@ -384,12 +381,6 @@
                     <h3>Gestión Comunitaria</h3>
                     <p>Software integral para la administración de condominios y comunidades. Reportes con foto, panel de comité, PWA y estadísticas.</p>
                     <div class="card-link">Ver Comunidades <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
-                </a>
-                <a href="streaming/index.html" class="service-card stream" id="entretenimiento">
-                    <div class="service-icon"><i class="fa-solid fa-tv" aria-hidden="true"></i></div>
-                    <h3>Streaming</h3>
-                    <p>Netflix, Disney+, HBO Max y otras plataformas. Revisa los planes y consulta la disponibilidad.</p>
-                    <div class="card-link">Ver Streaming <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
                 </a>
                 <a href="retro/index.html" class="service-card game">
                     <div class="service-icon"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></div>
@@ -424,16 +415,6 @@
                         <h3>Software de Comunidades</h3>
                         <p>Reportes vecinales con fotos, avisos in-app, panel de comité y métricas estadísticas.</p>
                         <span class="showcase-link" style="color: #34d399;">Ver Software <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                    </div>
-                </a>
-                <a href="streaming/index.html" class="showcase-card">
-                    <div class="showcase-img" style="background-image: url('screenshots/streaming_ref.jpg');">
-                        <div class="showcase-tag">Streaming</div>
-                    </div>
-                    <div class="showcase-body">
-                        <h3>Netflix, Disney+, HBO y más</h3>
-                        <p>Consulta las plataformas disponibles y los detalles de cada plan.</p>
-                        <span class="showcase-link">Ver Planes <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
                 <a href="retro/index.html" class="showcase-card">
@@ -492,7 +473,7 @@
                 <div class="feature-card">
                     <div class="feature-icon fi-green"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
                     <h3>Para tu PC o tu tiempo libre</h3>
-                    <p>Indícanos el modelo y la falla de tu PC, la plataforma que buscas o la consola que te interesa. Consulta precios y disponibilidad en cada servicio.</p>
+                    <p>Indícanos el modelo y la falla de tu PC o la consola que te interesa. Consulta las opciones y disponibilidad de cada servicio.</p>
                 </div>
             </div>
         </div>

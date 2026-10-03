@@ -1,6 +1,6 @@
 # TiendApp Chile
 
-Plataforma de servicios digitales para negocios chilenos. Desarrollo de apps y páginas web, suscripciones de streaming y consolas retro gaming.
+Plataforma de servicios digitales para negocios chilenos. Desarrollo de apps y páginas web, gestión de comunidades, servicio técnico de PC y consolas retro gaming.
 
 ## Estructura del sitio
 
@@ -9,7 +9,7 @@ tiendapp-chile/
 ├── index.html              # Página principal (landing)
 ├── shared.css              # Estilos compartidos (dark theme)
 ├── shared.js               # JS compartido (reveal, nav, FAQ)
-├── service-pages.css       # Mejoras visuales para Comunidades, Streaming y Retro
+├── service-pages.css       # Mejoras visuales para Comunidades y Retro
 ├── service-pages.js        # Navegación accesible y pestañas de estas secciones
 ├── app.js                  # Funciones ERP y soporte
 ├── styles.css              # Estilos legacy landing
@@ -22,9 +22,6 @@ tiendapp-chile/
 │
 ├── serviciotecnico/        # Servicio Técnico de PC
 │   └── index.html          # Diagnóstico, upgrade de hardware/software, soporte
-│
-├── streaming/              # Suscripciones de Streaming
-│   └── index.html          # Estética Netflix
 │
 ├── retro/                  # Consolas Retro Gaming
 │   └── index.html          # Estética PlayStation 1
@@ -50,11 +47,6 @@ tiendapp-chile/
 - Diseño responsive optimizado para móvil
 - Soporte técnico incluido
 - Planes desde $20.000/mes
-
-### Streaming
-- Suscripciones a Netflix, Disney+, HBO Max, Amazon Prime, Spotify, Paramount+
-- Planes Básico, Premium y Familiar
-- Soporte 24/7
 
 ### Retro Gaming
 - Consolas emuladoras con +10,000 juegos precargados

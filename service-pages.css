@@ -16,21 +16,12 @@
 .service-faq summary { cursor: pointer; padding: 20px 24px; font-weight: 600; }
 .service-faq summary::marker { color: var(--service-accent); }
 .service-faq details p { padding: 0 24px 24px; color: var(--service-muted); line-height: 1.7; }
-.streaming-page { --service-accent: #62d5fa; --service-ink: #0f1b2d; --service-border: #38516c; --service-card: #1a2d47; --service-muted: #c0d0df; --ap-muted: #b8c9dc; }
 .retro-page { --service-accent: #c4a7f5; --service-ink: #151938; --service-border: #4f567e; --service-card: #1c2145; --service-muted: #c3c8df; }
 .community-page { --service-accent: #1e40af; --service-ink: #fff; --service-border: #cbd5e1; --service-card: #fff; --service-muted: #475569; }
-.streaming-page .hero-streaming, .retro-page .hero-retro { min-height: auto; padding: 148px 24px 80px; }
-.streaming-page .hero-content, .retro-page .hero-content { max-width: 780px; }
-.streaming-page .hero-content > p, .retro-page .hero-content > p { max-width: 640px; }
-.streaming-page .nav-links a, .retro-page .nav-links a { color: var(--service-muted); }
-.streaming-page .pricing-platform { display: flex; flex-direction: column; }
-.streaming-page .btn-pricing { margin-top: auto; min-height: 48px; background: #62d5fa; }
-.streaming-page .btn-pricing:hover { background: #91e3fc; box-shadow: none; }
-.streaming-page .hero-streaming .btn-primary { background: #62d5fa !important; color: #0f1b2d !important; }
-.streaming-page .hero-streaming .btn-primary:hover { box-shadow: none; }
-.streaming-page .pricing-platform:hover { transform: none; box-shadow: none; }
-.streaming-page .pricing-label { color: #c0d0df; }
-.streaming-page .btn-whatsapp-large { color: #071810; }
+.retro-page .hero-retro { min-height: auto; padding: 148px 24px 80px; }
+.retro-page .hero-content { max-width: 780px; }
+.retro-page .hero-content > p { max-width: 640px; }
+.retro-page .nav-links a { color: var(--service-muted); }
 .retro-page::after, .retro-page .insert-coin, .retro-page .neon-divider { display: none; }
 .retro-page .hero-retro h1 { text-transform: none; }
 .retro-page .hero-retro h1 span { -webkit-text-fill-color: var(--service-accent); text-shadow: none; }
@@ -79,7 +70,7 @@
     .retro-page .plans-retro { grid-template-columns: 1fr; max-width: 650px; margin: 0 auto; }
 }
 @media (max-width: 600px) {
-    .streaming-page .hero-streaming, .retro-page .hero-retro, .community-page .hero { padding: 116px 20px 56px; }
+    .retro-page .hero-retro, .community-page .hero { padding: 116px 20px 56px; }
     .hero-content { padding: 0; }
     .section { padding: 56px 0; }
     .hero-actions { flex-direction: column; align-items: stretch; }
